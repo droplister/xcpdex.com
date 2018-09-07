@@ -5,8 +5,8 @@
       <thead class="text-left">
         <tr>
           <th>Date</th>
-          <th>Quantity</th>
           <th>Price</th>
+          <th>Quantity</th>
           <th>Total</th>
           <th>Buyer</th>
           <th>Seller</th>
@@ -15,8 +15,8 @@
       <tbody>
         <tr v-for="match in matches">
           <td>{{ match.date }}</td>
-          <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.price }}</td>
+          <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.total }}</td>
           <td>{{ match.buyer }}</td>
           <td>{{ match.seller }}</td>

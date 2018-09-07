@@ -15,8 +15,8 @@ class CreateMarketsTable extends Migration
     {
         Schema::create('markets', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('xcp_core_base_asset')->unique();
-            $table->string('xcp_core_quote_asset')->unique();
+            $table->string('xcp_core_base_asset')->index();
+            $table->string('xcp_core_quote_asset')->index();
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->timestamps();

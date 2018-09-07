@@ -33,7 +33,7 @@ class MarketOrderMatchesController extends Controller
         return [
             'base_asset' => new AssetResource($market->baseAsset),
             'quote_asset' => new AssetResource($market->quoteAsset),
-            'all_trades' => OrderMatchResource::collection($order_matches),
+            'order_matches' => OrderMatchResource::collection($order_matches),
             'last_page' => ceil($order_matches->total() / 30),
             'current_page' => $request->input('page', 1),
         ];

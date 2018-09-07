@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('order-book', require('./components/OrderBook.vue'));
+Vue.component('order-matches', require('./components/OrderMatches.vue'));
 
 const app = new Vue({
     el: '#app'

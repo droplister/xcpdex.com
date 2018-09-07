@@ -52,8 +52,8 @@ export default {
     infiniteHandler($state) {
       axios.get('/api/markets/' + this.market + '/order-matches').then(response => {
         this.page = response.data.current_page + 1
-        if (response.data.all_trades.length) {
-          this.matches = this.matches.concat(response.data.all_trades)
+        if (response.data.order_matches.length) {
+          this.matches = this.matches.concat(response.data.order_matches)
           $state.loaded()
           if (response.data.current_page === response.data.last_page) {
             $state.complete()

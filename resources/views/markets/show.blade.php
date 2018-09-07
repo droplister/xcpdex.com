@@ -22,6 +22,12 @@
     </div>
     <div class="row">
         <div class="col">
+            <h3 class="mt-3 mb-3">Market Depth</h3>
+            <market-depth market="{{ $market->slug }}"></market-depth>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <h3 class="mt-3 mb-3">All Matches</h3>
             <order-matches market="{{ $market->slug }}"></order-matches>
         </div>

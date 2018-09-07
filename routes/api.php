@@ -13,5 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/markets/{market}/depth', 'Api\MarketDepthController@index')->name('api.market.depth');
 Route::get('/markets/{market}/orders', 'Api\MarketOrdersController@index')->name('api.market.orders');
 Route::get('/markets/{market}/order-matches', 'Api\MarketOrderMatchesController@index')->name('api.market.orderMatches');

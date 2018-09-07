@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Market;
 use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;
-use App\Http\Resources\AssetResource;
 use App\Http\Resources\DepthResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,8 +40,6 @@ class MarketDepthController extends Controller
             ->sortBy('trading_price_normalized');
 
         return [
-            'base_asset' => new AssetResource($market->baseAsset),
-            'quote_asset' => new AssetResource($market->quoteAsset),
             'buy_orders' => DepthResource::collection($buy_orders),
             'sell_orders' => DepthResource::collection($sell_orders),
         ];

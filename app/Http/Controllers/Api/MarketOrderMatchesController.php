@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Market;
 use Droplister\XcpCore\App\OrderMatch;
-use App\Http\Resources\AssetResource;
 use App\Http\Resources\OrderMatchResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,8 +30,6 @@ class MarketOrderMatchesController extends Controller
             ->paginate(30);
 
         return [
-            'base_asset' => new AssetResource($market->baseAsset),
-            'quote_asset' => new AssetResource($market->quoteAsset),
             'order_matches' => OrderMatchResource::collection($order_matches),
             'last_page' => ceil($order_matches->total() / 30),
             'current_page' => (int) $request->input('page', 1),

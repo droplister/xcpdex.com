@@ -44,11 +44,11 @@ export default {
   methods: {
     $_depth_chart_update() {
       axios.get('/api/markets/' + this.market + '/depth').then(response => {
-        self.chartOptions.series.push({
+        this.chartOptions.series.push({
           name: 'Buys',
           data: $_depth_accumulator(response.data.buy_orders),
         })
-        self.chartOptions.series.push({
+        this.chartOptions.series.push({
           name: 'Buys',
           data: $_depth_accumulator(response.data.sell_orders),
         })

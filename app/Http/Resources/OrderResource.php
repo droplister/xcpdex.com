@@ -18,8 +18,8 @@ class OrderResource extends Resource
 
         return [
             'source' => $this->source,
-            'quantity' => ($base_asset === $this->get_asset) ? $this->get_remaining_normalized : $this->give_remaining_normalized,
             'price' => $this->trading_price_normalized,
+            'quantity' => ($base_asset === $this->get_asset) ? $this->get_remaining_normalized : $this->give_remaining_normalized,
             'total' => ($base_asset === $this->get_asset) ? $this->give_remaining_normalized : $this->get_remaining_normalized,
         ];
     }

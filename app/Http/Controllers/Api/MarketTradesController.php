@@ -31,7 +31,7 @@ class MarketTradesController extends Controller
         return [
             'base_asset' => new AssetResource($market->baseAsset),
             'quote_asset' => new AssetResource($market->quoteAsset),
-            'order_matches' => OrderMatchResource::collection($order_matches),
+            'all_trades' => OrderMatchResource::collection($order_matches),
         ];
     }
 }

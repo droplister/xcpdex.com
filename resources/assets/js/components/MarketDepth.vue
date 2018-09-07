@@ -23,7 +23,7 @@ export default {
           }
         },
         title: {
-          text: 'Order Book Depth'
+          text: 'Market Depth'
         },
         subtitle: {
           text: 'Source: XCPDEX.com'
@@ -46,11 +46,11 @@ export default {
       axios.get('/api/markets/' + this.market + '/depth').then(response => {
         this.chartOptions.series.push({
           name: 'Buys',
-          data: $_depth_accumulator(response.data.buy_orders),
+          data: this.$_depth_accumulator(response.data.buy_orders),
         })
         this.chartOptions.series.push({
-          name: 'Buys',
-          data: $_depth_accumulator(response.data.sell_orders),
+          name: 'Sells',
+          data: this.$_depth_accumulator(response.data.sell_orders),
         })
       })
     },
@@ -64,6 +64,6 @@ export default {
       }
       return accumulation
     }
-  },
+  }
 }
 </script>

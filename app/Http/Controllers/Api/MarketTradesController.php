@@ -14,6 +14,8 @@ class MarketTradesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Market  $market
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, Market $market)

@@ -10,3 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/market/{market}', 'MarketsController@show')->name('markets.show');
+Auth::routes();

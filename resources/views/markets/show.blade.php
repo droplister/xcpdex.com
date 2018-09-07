@@ -10,5 +10,10 @@
             <order-book market="{{ $market->slug }}" side="sell"></order-book>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <order-matches market="{{ $market->slug }}"></order-matches>
+        </div>
+    </div>
 </div>
 @endsection

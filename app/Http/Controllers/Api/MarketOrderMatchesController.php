@@ -9,7 +9,7 @@ use App\Http\Resources\OrderMatchResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MarketTradesController extends Controller
+class MarketOrderMatchesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,6 +34,8 @@ class MarketTradesController extends Controller
             'base_asset' => new AssetResource($market->baseAsset),
             'quote_asset' => new AssetResource($market->quoteAsset),
             'all_trades' => OrderMatchResource::collection($order_matches),
+            'last_page' => ceil($order_matches->total() / 30),
+            'current_page' => $request->input('page', 1),
         ];
     }
 }

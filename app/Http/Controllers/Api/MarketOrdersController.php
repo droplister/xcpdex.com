@@ -28,8 +28,7 @@ class MarketOrdersController extends Controller
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
             ->get()
-            ->sortByDesc('trading_price_normalized')
-            ->sortBy('tx_index');
+            ->sortByDesc('trading_price_normalized');
 
         // Market's Sell Orders
         $sell_orders = Order::where('give_asset', '=', $market->xcp_core_base_asset)
@@ -37,8 +36,7 @@ class MarketOrdersController extends Controller
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
             ->get()
-            ->sortBy('trading_price_normalized')
-            ->sortBy('tx_index');
+            ->sortBy('trading_price_normalized');
 
         return [
             'base_asset' => new AssetResource($market->baseAsset),

@@ -25,6 +25,7 @@ class MarketOrdersController extends Controller
         $buy_orders = $market->getOrders()
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
+            ->get()
             ->sortByDesc('trading_price_normalized')
             ->sortBy('tx_index');
 
@@ -32,6 +33,7 @@ class MarketOrdersController extends Controller
         $sell_orders = $market->giveOrders()
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
+            ->get()
             ->sortBy('trading_price_normalized')
             ->sortBy('tx_index');
 

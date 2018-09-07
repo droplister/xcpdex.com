@@ -52,7 +52,7 @@ class Market extends Model
      */
     public function getOrders()
     {
-        return $this->hasMany(OrderMatch::class, 'get_asset', 'xcp_core_base_asset')
+        return $this->hasMany(Order::class, 'get_asset', 'xcp_core_base_asset')
                     ->where('give_asset', '=', $this->xcp_core_quote_asset);
     }
 
@@ -74,7 +74,7 @@ class Market extends Model
      */
     public function backwardOrderMatches()
     {
-        return $this->hasMany(Order::class, 'backward_asset', 'xcp_core_base_asset')
+        return $this->hasMany(OrderMatch::class, 'backward_asset', 'xcp_core_base_asset')
                     ->where('forward_asset', '=', $this->xcp_core_quote_asset);
     }
 

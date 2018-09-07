@@ -35,7 +35,7 @@ class MarketOrderMatchesController extends Controller
             'quote_asset' => new AssetResource($market->quoteAsset),
             'order_matches' => OrderMatchResource::collection($order_matches),
             'last_page' => ceil($order_matches->total() / 30),
-            'current_page' => $request->input('page', 1),
+            'current_page' => (int) $request->input('page', 1),
         ];
     }
 }

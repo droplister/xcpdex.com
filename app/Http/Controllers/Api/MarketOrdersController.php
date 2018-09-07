@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Market;
 use Droplister\XcpCore\App\Block;
+use Droplister\XcpCore\App\Order;
 use App\Http\Resources\AssetResource;
 use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
@@ -22,7 +23,8 @@ class MarketOrdersController extends Controller
         $block = Block::latest('block_index')->first();
 
         // Market's Buy Orders
-        $buy_orders = $market->getOrders()
+        $buy_orders = Order::where('get_asset', '=', $market->xcp_core_base_asset)
+            ->where('give_asset', '=', $market->xcp_core_quote_asset)
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
             ->get()
@@ -30,7 +32,8 @@ class MarketOrdersController extends Controller
             ->sortBy('tx_index');
 
         // Market's Sell Orders
-        $sell_orders = $market->giveOrders()
+        $sell_orders = Order::where('give_asset', '=', $market->xcp_core_base_asset)
+            ->where('get_asset', '=', $market->xcp_core_quote_asset)
             ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
             ->get()

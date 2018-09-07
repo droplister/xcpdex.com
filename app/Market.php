@@ -46,50 +46,6 @@ class Market extends Model
     }
 
     /**
-     * Orders (Buys)
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function getOrders()
-    {
-        return $this->hasMany(Order::class, 'get_asset', 'xcp_core_base_asset')
-                    ->where('give_asset', '=', $this->xcp_core_quote_asset);
-    }
-
-    /**
-     * Orders (Sells)
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function giveOrders()
-    {
-        return $this->hasMany(Order::class, 'give_asset', 'xcp_core_base_asset')
-                    ->where('get_asset', '=', $this->xcp_core_quote_asset);
-    }
-
-    /**
-     * Order Matches (Buys)
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function backwardOrderMatches()
-    {
-        return $this->hasMany(OrderMatch::class, 'backward_asset', 'xcp_core_base_asset')
-                    ->where('forward_asset', '=', $this->xcp_core_quote_asset);
-    }
-
-    /**
-     * Order Matches (Sells)
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function forwardOrderMatches()
-    {
-        return $this->hasMany(OrderMatch::class, 'forward_asset', 'xcp_core_base_asset')
-                    ->where('forward_asset', '=', $this->xcp_core_quote_asset);
-    }
-
-    /**
      * Get the route key for the model.
      *
      * @return string

@@ -14,24 +14,18 @@ class OrderResource extends Resource
      */
     public function toArray($request)
     {
+        // Trading Pair
+        $base_asset = explode('/', $this->trading_pair_normalized)[0];
+        $quote_asset = explode('/', $this->trading_pair_normalized)[1];
+
+        // Base Quantity
+        $quantity = ($base_asset === $this->get_asset) ? $this->get_remaining_normalized : $this->give_remaining_normalized;
+
         return [
-            'block_index' => $this->block_index,
-            'expire_index' => $this->expire_index,
-            'tx_index' => $this->tx_index,
-            'tx_hash' => $this->tx_hash,
             'source' => $this->source,
-            'status' => $this->status,
-            'type' => $this->type,
-            'exchange_rate' => $this->exchange_rate,
-            'exchange_rate_usd' => $this->exchange_rate_usd,
-            'base_quantity' => $this->base_quantity,
-            'base_remaining' => $this->base_remaining,
-            'base_remaining_normalized' => $this->base_remaining_normalized,
-            'quote_quantity' => $this->quote_quantity,
-            'quote_remaining' => $this->quote_remaining,
-            'quote_remaining_normalized' => $this->quote_remaining_normalized,
-            'fee_paid' => $this->fee_paid,
-            'duration' => $this->duration,
+            'quantity' => $quantity,
+            'price' => $this->trading_price_normalized,
+            'total' => ($quantity * $this->trading_price_normalized),
         ];
     }
 }

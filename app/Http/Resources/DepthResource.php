@@ -18,7 +18,7 @@ class DepthResource extends Resource
 
         return [
             (float) $this->trading_price_normalized,
-            (float) ($base_asset === $this->get_asset) ? $this->get_remaining_normalized : $this->give_remaining_normalized,
+            ($base_asset === $this->get_asset) ? (float) $this->get_remaining_normalized : (float) $this->give_remaining_normalized,
         ];
     }
 }

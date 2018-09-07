@@ -62,7 +62,7 @@ export default {
       var runningTotal = 0
       var i = 0
       for (i = 0; i < data.length; i++) {
-        runningTotal += parseFloat(data[i][1]).format('0.00000000')
+        runningTotal += parseFloat(data[i][1]).toFixed(8)
         accumulation.push([data[i][0], runningTotal])
       }
       return accumulation

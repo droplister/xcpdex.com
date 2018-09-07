@@ -16,6 +16,9 @@ export default {
     return {
       chartOptions: {
         chart: {
+          zoomType: 'x',
+          panning: true,
+          panKey: 'shift',
           events: {
             load() {
               setTimeout(this.reflow.bind(this))

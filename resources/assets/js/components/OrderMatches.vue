@@ -50,9 +50,9 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/markets/' + this.market + '/order-matches').then(response => {
-        this.page = response.data.current_page + 1
+      axios.get('/api/markets/' + this.market + '/order-matches?page=' + this.page).then(response => {
         if (response.data.order_matches.length) {
+          this.page = response.data.current_page + 1
           this.matches = this.matches.concat(response.data.order_matches)
           $state.loaded()
           if (response.data.current_page === response.data.last_page) {

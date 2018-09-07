@@ -15,8 +15,8 @@ class AssetResource extends Resource
     public function toArray($request)
     {
         return [
-            'name' => $this->display_name,
-            'slug' => $this->slug,
+            'asset_name' => $this->asset_name,
+            'display_name' => $this->display_name,
         ];
     }
 }

@@ -23,7 +23,7 @@ class MarketTradesController extends Controller
             ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
             ->where('forward_asset', '=', $market->xcp_core_base_asset)
             ->where('status', '=', 'completed')
-            ->orderBy('tx_index', 'desc')
+            ->orderBy('tx1_index', 'desc')
             ->paginate(30);
 
         return $trade_history;

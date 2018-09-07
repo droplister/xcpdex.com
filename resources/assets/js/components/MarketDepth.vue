@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="border">
   <highcharts :options="chartOptions"></highcharts>
 </div>
 </template>
@@ -22,14 +22,11 @@ export default {
             }
           }
         },
-        title: {
-          text: 'Market Depth'
-        },
-        subtitle: {
-          text: 'Source: XCPDEX.com'
-        },
         tooltip: {
           shared: true
+        },
+        labels: {
+          enabled: false
         },
         credits: {
           enabled: false

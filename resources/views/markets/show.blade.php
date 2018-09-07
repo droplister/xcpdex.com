@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $market->name)
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -22,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3 class="mt-3 mb-3">Market Depth</h3>
+            <h3 class="mt-3 mb-3">Book Depth</h3>
             <market-depth market="{{ $market->slug }}"></market-depth>
         </div>
     </div>

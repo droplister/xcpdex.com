@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Market;
 use Droplister\XcpCore\App\OrderMatch;
+use App\Http\Resources\AssetResource;
+use App\Http\Resources\OrderMatchResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +19,7 @@ class MarketTradesController extends Controller
     public function index(Request $request, Market $market)
     {
         // Market's Trade History
-        $trade_history = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
+        $order_matches = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
             ->where('forward_asset', '=', $market->xcp_core_quote_asset)
             ->where('status', '=', 'completed')
             ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
@@ -26,6 +28,10 @@ class MarketTradesController extends Controller
             ->orderBy('tx1_index', 'desc')
             ->paginate(30);
 
-        return $trade_history;
+        return [
+            'base_asset' => new AssetResource($market->baseAsset),
+            'quote_asset' => new AssetResource($market->quoteAsset),
+            'order_matches' => OrderMatchResource::collection($order_matches),
+        ];
     }
 }

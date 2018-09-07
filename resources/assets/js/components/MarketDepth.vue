@@ -22,6 +22,9 @@ export default {
             }
           }
         },
+        title: {
+          text: ''
+        },
         tooltip: {
           shared: true
         },

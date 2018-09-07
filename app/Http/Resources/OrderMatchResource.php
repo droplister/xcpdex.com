@@ -25,26 +25,3 @@ class OrderMatchResource extends Resource
         ];
     }
 }
-
-
-
-        'block_index',
-        'match_expire_index',
-        'tx0_block_index',
-        'tx0_index',
-        'tx0_hash',
-        'tx0_address',
-        'tx0_expiration',
-        'tx1_block_index',
-        'tx1_index',
-        'tx1_hash',
-        'tx1_address',
-        'tx1_expiration',
-        'id',
-        'status',
-        'backward_asset',
-        'backward_quantity',
-        'forward_asset',
-        'forward_quantity',
-        'fee_paid',
-        'confirmed_at',

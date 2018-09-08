@@ -14,6 +14,6 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-        return view('orders.index');
+        return view('orders.index', compact('request'));
     }
 }

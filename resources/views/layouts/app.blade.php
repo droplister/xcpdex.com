@@ -71,8 +71,8 @@
                         <span>Blockchain</span>
                     </h6>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="#">Blocks</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Mempool</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('blocks.index') }}">Blocks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('mempool.index') }}">Mempool</a></li>
                     </ul>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 pb-5 px-4">

@@ -7,12 +7,8 @@
 <script>
 import {Chart} from 'highcharts-vue'
 import Highcharts from 'highcharts'
-import smplTheme from './path/to/smpl.js';
 import stockInit from 'highcharts/modules/stock'
 stockInit(Highcharts)
-
-Highcharts.theme = smplTheme;
-Highcharts.setOptions(Highcharts.theme);
 
 export default {
   props: ['market'],

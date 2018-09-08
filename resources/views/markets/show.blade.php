@@ -13,7 +13,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <market-chart market="{{ $market->slug }}"></market-chart>
+        <market-chart market="{{ $market->slug }}" base_asset="{{ $market->baseAsset->display_name }}" quote_asset="{{ $market->quoteAsset->display_name }}"></market-chart>
     </div>
 </div>
 <div class="row">

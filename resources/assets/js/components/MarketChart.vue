@@ -11,7 +11,7 @@ import stockInit from 'highcharts/modules/stock'
 stockInit(Highcharts)
 
 export default {
-  props: ['market'],
+  props: ['market', 'base_asset', 'quote_asset'],
   components: {
     highcharts: Chart
   },
@@ -33,7 +33,7 @@ export default {
         },
         yAxis: [{
           title: {
-            text: 'Price'
+            text: 'Price (' + this.quote_asset + ')'
           },
           labels: {
             formatter: function () {
@@ -97,7 +97,7 @@ export default {
         this.chartOptions.series.push({
           yAxis: 1,
           type: 'column',
-          name: 'Volume',
+          name: 'Volume (' + this.base_asset + ')',
           data: response.data.volumes
         })
       })

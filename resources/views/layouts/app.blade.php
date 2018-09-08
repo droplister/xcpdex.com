@@ -72,21 +72,59 @@
                                     <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     DEX Markets
                                 </a>
-                                @yield('markets')
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
+                                            <small>BITCORN/XCP</small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
+                                            <small>PEPECASH/XCP</small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'CROPS_XCP']) }}">
+                                            <small>CROPS/XCP</small>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
                                     <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Open Orders
                                 </a>
-                                @yield('orders')
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('orders.index') }}">
+                                            <small>Newest</small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="#">
+                                            <small>Ending Soon</small>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('matches.index') }}">
                                     <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Filled Orders
                                 </a>
-                                @yield('matches')
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="#">
+                                            <small>Cancelled</small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="#">
+                                            <small>Not Filled</small>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

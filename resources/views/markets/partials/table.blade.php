@@ -3,6 +3,10 @@
         <tbody>
             <tr>
                 <td class="font-weight-bold">
+                    <span class="d-block font-weight-normal">{{ $market->baseAsset->display_name }} <small>Supply</small></span>
+                    {{ number_format($market->baseAsset->supply_normalized) }}
+                </td>
+                <td class="font-weight-bold">
                     <span class="d-block font-weight-normal">Last Trade</span>
                     {{ $last_match ? $last_match->confirmed_at->toDateString() : '----------' }}
                 </td>
@@ -12,7 +16,7 @@
                 </td>
             </tr>
             <tr class="bg-light">
-                <td colspan="2">
+                <td colspan="3">
                     @if($last_match)
                         Market Cap: <strong>{{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized) }} <small>{{ $market->quoteAsset->display_name }}</small></strong>
                     @else

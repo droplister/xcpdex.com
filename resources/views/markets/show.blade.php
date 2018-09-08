@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
         @include('markets.partials.title')
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
         @include('markets.partials.table')
     </div>
 </div>

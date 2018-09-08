@@ -14,12 +14,12 @@
       </thead>
       <tbody>
         <tr v-for="match in matches">
-          <td>{{ match.date }}</td>
+          <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
           <td class="text-right">{{ match.price }}</td>
           <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.total }}</td>
-          <td>{{ match.buyer }}</td>
-          <td>{{ match.seller }}</td>
+          <td><a :href="'https://xcpfox.com/address/' + match.buyer" target="_blank">{{ match.buyer }}</a></td>
+          <td><a :href="'https://xcpfox.com/address/' + match.seller" target="_blank">{{ match.seller }}</a></td>
         </tr>
         <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="6">No order matches found.</td>

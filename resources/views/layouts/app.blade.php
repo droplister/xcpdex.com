@@ -127,22 +127,22 @@
                                 </ul>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-5 mb-1 text-muted">
                             <span>Pages</span>       
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-1" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="#">
                                     <small>F.A.Q.</small>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-1" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="#">
                                     <small>Disclaimer</small>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-1" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="#">
                                     <small>Terms of Use</small>
                                 </a>
                             </li>

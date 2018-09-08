@@ -6,7 +6,6 @@
       <thead class="text-left">
         <tr>
           <th>Date</th>
-          <th>Market</th>
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
@@ -15,15 +14,14 @@
       </thead>
       <tbody>
         <tr v-for="order in orders">
-          <td>{{ order.date }}</td>
-          <td>{{ order.market }}</td>
-          <td>{{ order.quantity }}</td>
-          <td>{{ order.price }}</td>
-          <td>{{ order.total }}</td>
-          <td>{{ order.source }}</td>
+          <td><a :href="'https://xcpfox.com/tx/' + order.tx_hash" target="_blank">{{ order.date }}</a></td>
+          <td>{{ order.quantity }} <a :href="'https://xcpdex.com/markets/' + order.market">{{ order.base_asset }}</a></td>
+          <td>{{ order.price }} <a :href="'https://xcpdex.com/markets/' + order.market">{{ order.quote_asset }}</a></td>
+          <td>{{ order.total }} <a :href="'https://xcpdex.com/markets/' + order.market">{{ order.quote_asset }}</a></td>
+          <td><a :href="'https://xcpfox.com/address/' + order.source" target="_blank">{{ order.source }}</a></td>
         </tr>
         <tr v-if="orders && orders.length === 0">
-          <td class="text-center" colspan="6">No order found.</td>
+          <td class="text-center" colspan="5">No order found.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

@@ -102,8 +102,13 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="#">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
                                             <small>Ending Soon</small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal py-1" href="{{ route('matches.index') }}">
+                                            <small>Filled Orders</small>
                                         </a>
                                     </li>
                                 </ul>

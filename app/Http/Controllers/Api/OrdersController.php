@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Cache;
+use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;
 use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
@@ -17,8 +18,26 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = Cache::remember('api_orders_' . $request->input('page', 1), 5, function () {
-            return Order::orderBy('tx_index', 'desc')->paginate(30);
+        // Cached Orders
+        $orders = Cache::remember('api_orders_' . $request->input('status', 'false') . '_' . $request->input('page', 1), 5, function () use ($request) {
+
+            // Block Index
+            $block = Block::latest('block_index')->first();
+
+            // Open Orders (Oldest)
+            if($request->input('status', 'false') === 'ending-soon')
+            {
+                return Order::where('expire_index', '>', $block->block_index)
+                ->where('status', '=', 'open')
+                ->orderBy('expire_index', 'asc')
+                ->paginate(30);
+            }
+
+            // Open Orders (Newest)
+            return Order::where('expire_index', '>', $block->block_index)
+            ->where('status', '=', 'open')
+            ->orderBy('tx_index', 'desc')
+            ->paginate(30);
         });
 
         return [

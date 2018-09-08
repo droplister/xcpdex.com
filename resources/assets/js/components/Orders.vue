@@ -37,6 +37,7 @@
 import InfiniteLoading from 'vue-infinite-loading';
 
 export default {
+  props: ['status'],
   components: {
     InfiniteLoading
   },
@@ -48,7 +49,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/orders?page=' + this.page).then(response => {
+      axios.get('/api/orders?page=' + this.page + '&status=' + this.status).then(response => {
         if (response.data.orders.length) {
           this.page = response.data.current_page + 1
           this.orders = this.orders.concat(response.data.orders)

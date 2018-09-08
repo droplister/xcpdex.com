@@ -1,11 +1,13 @@
 <template>
 <div class="border">
-  <highcharts :options="chartOptions"></highcharts>
+  <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
 </div>
 </template>
 
 <script>
 import {Chart} from 'highcharts-vue'
+import stockInit from 'highcharts/modules/stock'
+stockInit(Chart)
 
 export default {
   props: ['market'],

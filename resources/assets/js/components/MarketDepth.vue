@@ -16,6 +16,7 @@ export default {
     return {
       chartOptions: {
         chart: {
+          type: 'area',
           zoomType: 'x',
           panning: true,
           panKey: 'shift',

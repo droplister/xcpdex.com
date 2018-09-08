@@ -5,10 +5,6 @@
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
 // Bootswatch Variables for your chosen theme
-@import "node_modules/bootswatch/flatly/variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-// Bootswatch theme main CSS files
-@import "node_modules/bootswatch/flatly/bootswatch";
+@import "~bootswatch/dist/darkly/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/darkly/bootswatch";

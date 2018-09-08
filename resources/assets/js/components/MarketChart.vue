@@ -59,40 +59,6 @@ export default {
         credits: {
           enabled: false
         },
-        rangeSelector: {
-            selected: 5,
-            buttons: [{
-                type: 'hour',
-                count: 6,
-                text: '6h'
-            },{
-                type: 'day',
-                count: 1,
-                text: '1d'
-            }, {
-                type: 'week',
-                count: 1,
-                text: '7d'
-            }, {
-                type: 'month',
-                count: 1,
-                text: '1m'
-            }, {
-                type: 'month',
-                count: 3,
-                text: '3m'
-            }, {
-                type: 'year',
-                count: 1,
-                text: '1y'
-            }, {
-                type: 'ytd',
-                text: 'YTD'
-            }, {
-                type: 'all',
-                text: 'All'
-            }]
-        },
         series: []
       }
     }
@@ -108,6 +74,20 @@ export default {
           type: 'candlestick',
           name: this.market,
           data: response.data.history
+           dataGrouping: {
+             units: [
+               [
+                 'day', // unit name
+                 [1] // allowed multiples
+               ], [
+                 'week',
+                 [1]
+               ], [
+                 'month',
+                 [1, 2, 3, 4, 6]
+               ]
+            ]
+          }
         })
         this.chartOptions.series.push({
           yAxis: 1,

@@ -64,9 +64,8 @@
                     </h6>
                     <ul class="nav flex-column">
                         <li class="nav-item"><a class="nav-link" href="{{ route('markets.index') }}">DEX Markets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('assets.index') }}">Assets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">Orders</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('trades.index') }}">Trades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">Open Orders</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('matches.index') }}">Filled Orders</a></li>
                     </ul>
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Blockchain</span>

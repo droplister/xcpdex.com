@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 class MarketsController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return view('markets.index');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \Illuminate\Http\Request  $request

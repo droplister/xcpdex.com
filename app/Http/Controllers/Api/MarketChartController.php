@@ -79,7 +79,7 @@ class MarketChartController extends Controller
                     $timestamp = $row['interval_time'] + 3600000;
 
                     // Fill Data
-                    while($timestamp <= $data[$next]['interval_time'])
+                    while($timestamp < $data[$next]['interval_time'])
                     {
                         // Flatline
                         $history[] = [$timestamp, $close, $close, $close, $close];
@@ -109,7 +109,7 @@ class MarketChartController extends Controller
                 $timestamp = $last['interval_time'] + 3600000;
 
                 // Book End
-                while($timestamp <= Carbon::now()->timestamp * 1000)
+                while($timestamp < Carbon::now()->timestamp * 1000)
                 {
                     // Flatline
                     $history[] = [$timestamp, $close, $close, $close, $close];

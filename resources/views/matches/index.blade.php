@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('markets')
+@section('matches')
 <ul class="nav flex-column">
     <li class="nav-item">
         <a class="nav-link font-weight-normal py-1" href="#">

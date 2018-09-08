@@ -14,7 +14,7 @@ class AddVolumeToMarketsTable extends Migration
     public function up()
     {
         Schema::table('markets', function (Blueprint $table) {
-            $table->bigUnsignedInteger('volume')->after('slug')->index()->default(0);
+            $table->unsignedBigInteger('volume')->after('slug')->index()->default(0);
             $table->decimal('change')->after('volume')->index()->default(0);
         });
     }

@@ -90,7 +90,7 @@ export default {
           yAxis: 1,
           type: 'column',
           name: 'Volume',
-          data: response.data.volume
+          data: response.data.volumes
         })
       })
     }

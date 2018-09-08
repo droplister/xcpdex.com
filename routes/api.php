@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('/orders', 'Api\OrdersController@index')->name('api.orders');
 Route::get('/search', 'Api\MarketSearchController@index')->name('api.search');
 Route::get('/markets/{market}/chart', 'Api\MarketChartController@index')->name('api.market.chart');
 Route::get('/markets/{market}/depth', 'Api\MarketDepthController@index')->name('api.market.depth');

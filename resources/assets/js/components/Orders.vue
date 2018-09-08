@@ -51,7 +51,7 @@ export default {
   methods: {
     infiniteHandler($state) {
       axios.get('/orders?page=' + this.page).then(response => {
-        if (response.data.orders.length) {
+        if (response.data.orders && response.data.orders.length) {
           this.page = response.data.current_page + 1
           this.orders = this.orders.concat(response.data.orders)
           $state.loaded()

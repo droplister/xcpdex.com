@@ -31,6 +31,25 @@ export default {
         title: {
           text: ''
         },
+        yAxis: [{
+          title: {
+            text: 'Price'
+          },
+          labels: {
+            formatter: function () {
+              return '$' + this.value
+            }
+          },
+          height: '75%',
+          opposite: true,
+        },{
+          title: {
+            text: 'Volume'
+          },
+          top: '80%',
+          height: '20%',
+          offset: 0,
+        }],
         tooltip: {
           shared: true
         },
@@ -51,6 +70,7 @@ export default {
     $_chart_update() {
       axios.get('/api/markets/' + this.market + '/chart').then(response => {
         this.chartOptions.series.push({
+          yAxis: 0,
           type: 'candlestick',
           name: this.market,
           data: response.data.history,
@@ -65,6 +85,12 @@ export default {
               ]
             ]
           }
+        })
+        this.chartOptions.series.push({
+          yAxis: 1,
+          type: 'column',
+          name: 'Volume',
+          data: response.data.volume
         })
       })
     }

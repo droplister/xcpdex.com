@@ -59,6 +59,40 @@ export default {
         credits: {
           enabled: false
         },
+        rangeSelector: {
+            selected: {{ 5 }},
+            buttons: [{
+                type: 'hour',
+                count: 6,
+                text: '6h'
+            },{
+                type: 'day',
+                count: 1,
+                text: '1d'
+            }, {
+                type: 'week',
+                count: 1,
+                text: '7d'
+            }, {
+                type: 'month',
+                count: 1,
+                text: '1m'
+            }, {
+                type: 'month',
+                count: 3,
+                text: '3m'
+            }, {
+                type: 'year',
+                count: 1,
+                text: '1y'
+            }, {
+                type: 'ytd',
+                text: 'YTD'
+            }, {
+                type: 'all',
+                text: 'All'
+            }]
+        },
         series: []
       }
     }
@@ -75,15 +109,7 @@ export default {
           name: this.market,
           data: response.data.history,
           dataGrouping: {
-            units: [
-              [
-                'week', // unit name
-                [1] // allowed multiples
-              ], [
-                'month',
-                [1, 2, 3, 4, 6]
-              ]
-            ]
+            forced: true
           }
         })
         this.chartOptions.series.push({

@@ -50,6 +50,11 @@ export default {
           height: '20%',
           offset: 0,
         }],
+        plotOptions: {
+          line: {
+            animation: false
+          }
+        },
         tooltip: {
           shared: true
         },
@@ -72,20 +77,20 @@ export default {
         this.chartOptions.series.push({
           yAxis: 0,
           type: 'candlestick',
-          name: this.market,
-          data: response.data.history
-           dataGrouping: {
-             units: [
-               [
-                 'day', // unit name
-                 [1] // allowed multiples
-               ], [
-                 'week',
-                 [1]
-               ], [
-                 'month',
-                 [1, 2, 3, 4, 6]
-               ]
+          name: this.market.replace('_', '/'),
+          data: response.data.history,
+          dataGrouping: {
+            units: [
+              [
+                'day', // unit name
+                [1] // allowed multiples
+              ], [
+                'week',
+                [1]
+              ], [
+                'month',
+                [1, 2, 3, 4, 6]
+              ]
             ]
           }
         })

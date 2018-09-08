@@ -69,20 +69,43 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('markets.index') }}">
-                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     DEX Markets
                                 </a>
+                                @yield('markets')
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
-                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Open Orders
                                 </a>
+                                @yield('orders')
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('matches.index') }}">
-                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Filled Orders
+                                </a>
+                                @yield('matches')
+                            </li>
+                        </ul>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Pages</span>       
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal py-2" href="#">
+                                    F.A.Q.
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal py-2" href="#">
+                                    Disclaimer
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal py-2" href="#">
+                                    Terms of Use
                                 </a>
                             </li>
                         </ul>

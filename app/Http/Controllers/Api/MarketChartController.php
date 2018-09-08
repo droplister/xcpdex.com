@@ -59,7 +59,7 @@ class MarketChartController extends Controller
                 $asset_pair = $this->getAssetPairFromAssets($market->xcp_core_base_asset, $market->xcp_core_quote_asset);
 
                 // Reciprocal? (Y/N)
-                $reciprocal = $asset_pair[1] === $market->xcp_core_quote_asset;
+                $reciprocal = $asset_pair[0] === $market->xcp_core_quote_asset;
 
                 // Data OHLC
                 $open = $reciprocal ? round(1 / $row['open'], 8) : $row['open'];

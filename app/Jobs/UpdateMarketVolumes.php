@@ -47,27 +47,27 @@ class UpdateMarketVolumes implements ShouldQueue
      */
     public function handle()
     {
-        $buys_today = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
-            ->where('forward_asset', '=', $market->xcp_core_quote_asset)
+        $buys_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_base_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('status', '=', 'completed')
             ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(1))
             ->sum('forward_quantity');
 
-        $sells_today = OrderMatch::where('backward_asset', '=', $market->xcp_core_quote_asset)
-            ->where('forward_asset', '=', $market->xcp_core_base_asset)
+        $sells_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
             ->where('status', '=', 'completed')
             ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(1))
             ->sum('backward_quantity');
 
-        $buys_yesterday = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
-            ->where('forward_asset', '=', $market->xcp_core_quote_asset)
+        $buys_yesterday = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_base_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('status', '=', 'completed')
             ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(2))
             ->where('confirmed_at', '<', $this->block->confirmed_at->subDays(1))
             ->sum('forward_quantity');
 
-        $sells_yesterday = OrderMatch::where('backward_asset', '=', $market->xcp_core_quote_asset)
-            ->where('forward_asset', '=', $market->xcp_core_base_asset)
+        $sells_yesterday = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
             ->where('status', '=', 'completed')
             ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(2))
             ->where('confirmed_at', '<', $this->block->confirmed_at->subDays(1))

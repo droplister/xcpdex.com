@@ -12,6 +12,11 @@
     </div>
 </div>
 <div class="row">
+    <div class="col">
+        <market-chart market="{{ $market->slug }}"></market-chart>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-6">
         <h2 class="mt-3 mb-3">Buy Orders</h2>
         <order-book market="{{ $market->slug }}" side="buy"></order-book>

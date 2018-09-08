@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('order-book', require('./components/OrderBook.vue'));
+Vue.component('market-chart', require('./components/MarketChart.vue'));
 Vue.component('market-depth', require('./components/MarketDepth.vue'));
 Vue.component('order-matches', require('./components/OrderMatches.vue'));
 

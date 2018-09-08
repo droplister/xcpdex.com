@@ -20,6 +20,15 @@ return [
     ],
 
     /**
+     * Counterblock API (Mainnet)
+     */
+    'cb' => [
+        'api' => env('XCP_CORE_CB_API', 'http://public.coindaddy.io:4100/api/'),
+        'user' => env('XCP_CORE_CB_USER', 'rpc'),
+        'password' => env('XCP_CORE_CB_PASSWORD', '1234'),
+    ],
+
+    /**
      * First Block
      */
     'first_block' => env('XCP_CORE_ENV_NET', 'mainnet') === 'mainnet' ? 278270 : 310000,

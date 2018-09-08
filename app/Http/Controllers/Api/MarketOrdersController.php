@@ -27,16 +27,16 @@ class MarketOrdersController extends Controller
         // Market's Buy Orders
         $buy_orders = Order::where('get_asset', '=', $market->xcp_core_base_asset)
             ->where('give_asset', '=', $market->xcp_core_quote_asset)
-            ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
+            ->where('status', '=', 'open')
             ->get()
             ->sortByDesc('trading_price_normalized');
 
         // Market's Sell Orders
         $sell_orders = Order::where('give_asset', '=', $market->xcp_core_base_asset)
             ->where('get_asset', '=', $market->xcp_core_quote_asset)
-            ->where('status', '=', 'open')
             ->where('expire_index', '>', $block->block_index)
+            ->where('status', '=', 'open')
             ->get()
             ->sortBy('trading_price_normalized');
 

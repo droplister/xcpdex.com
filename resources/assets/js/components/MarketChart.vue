@@ -60,7 +60,7 @@ export default {
           enabled: false
         },
         rangeSelector: {
-            selected: {{ 5 }},
+            selected: 5,
             buttons: [{
                 type: 'hour',
                 count: 6,

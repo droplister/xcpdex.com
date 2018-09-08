@@ -6,8 +6,9 @@
 
 <script>
 import {Chart} from 'highcharts-vue'
+import Highcharts from 'highcharts'
 import stockInit from 'highcharts/modules/stock'
-stockInit(Chart)
+stockInit(Highcharts)
 
 export default {
   props: ['market'],

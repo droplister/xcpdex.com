@@ -16,5 +16,5 @@
 @endsection
 
 @section('content')
-
+<orders></orders>
 @endsection

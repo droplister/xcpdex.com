@@ -66,7 +66,7 @@ class MarketChartController extends Controller
                 $high = $reciprocal ? round(1 / $row['high'], 8) : $row['high'];
                 $low = $reciprocal ? round(1 / $row['low'], 8) : $row['low'];
                 $close = $reciprocal ? round(1 / $row['close'], 8) : $row['close'];
-                $volume = $reciprocal ? round($row['vol'] / $row['midline'], 8) : $row['vol'];
+                $volume = $reciprocal ? round($row['vol'] / round(1 / $row['midline'], 8), 8) : $row['vol'];
 
                 // + History
                 $history[] = [$row['interval_time'], $open, $high, $low, $close];

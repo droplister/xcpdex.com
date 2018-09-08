@@ -1,6 +1,11 @@
 <template>
-<div class="border">
-  <highcharts :options="chartOptions"></highcharts>
+<div class="row" v-if="series.length > 0">
+  <div class="col">
+    <h3 class="mt-3 mb-3">Book Depth</h3>
+    <div class="border">
+      <highcharts :options="chartOptions"></highcharts>
+    </div>
+  </div>
 </div>
 </template>
 

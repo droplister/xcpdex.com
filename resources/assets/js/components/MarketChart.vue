@@ -1,6 +1,10 @@
 <template>
-<div class="border">
-  <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
+<div class="row" v-if="series.length > 0">
+  <div class="col">
+    <div class="border">
+      <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
+    </div>
+  </div>
 </div>
 </template>
 

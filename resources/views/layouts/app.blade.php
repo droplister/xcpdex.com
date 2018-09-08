@@ -23,10 +23,38 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-            <a class="navbar-brand" href="{{ url('/') }}">
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-6 col-sm-4 col-md-3 col-lg-2 mr-0" href="{{ url('/') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="XCP DEX" class="mt-2 mr-1" /> XCP DEX
             </a>
+            <div class="col-6 col-sm-8 col-md-4 col-lg-3 p-0">
+            </div>
+            <div class="col-md-5 col-lg-7">
+                <ul class="nav nav-pills float-right">
+                    <li class="nav-item">
+                        <a class="nav-link px-2" href="https://t.me/xcpdex" target="_blank">
+                            <i class="fa fa-telegram fa-lg text-primary"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="https://twitter.com/xcpdex" target="_blank">
+                            <i class="fa fa-twitter fa-lg text-text"></i>
+                        </a>
+                    </li>
+                    @if (Auth::check())
+                    <li class="nav-item">
+                        <a href="{{ route('logout') }}" class="nav-link"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                    @endif
+                </ul>
+            </div>
         </nav>
         <div class="container-fluid">
             <div class="row">

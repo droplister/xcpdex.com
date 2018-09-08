@@ -46,19 +46,16 @@
                 <ul class="nav nav-pills d-md-none">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('markets.index') }}">
-                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                             Markets
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('orders.index') }}">
-                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                             Orders
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('matches.index') }}">
-                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                             Matches
                         </a>
                     </li>

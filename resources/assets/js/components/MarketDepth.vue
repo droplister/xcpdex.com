@@ -1,5 +1,5 @@
 <template>
-<div class="row" v-if="chartOptions.series && chartOptions.series.length > 0">
+<div class="row" v-if="results > 0">
   <div class="col">
     <h3 class="mt-3 mb-3">Book Depth</h3>
     <div class="border">
@@ -19,6 +19,7 @@ export default {
   },
   data() {
     return {
+      results: 0,
       chartOptions: {
         chart: {
           type: 'area',
@@ -53,6 +54,7 @@ export default {
   methods: {
     $_depth_chart_update() {
       axios.get('/api/markets/' + this.market + '/depth').then(response => {
+        this.results = response.data.buy_orders.length + response.data.sell_orders.length
         this.chartOptions.series.push({
           name: 'Buys',
           data: this.$_depth_accumulator(response.data.buy_orders),

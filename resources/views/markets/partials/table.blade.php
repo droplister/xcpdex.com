@@ -5,7 +5,9 @@
                 <td class="font-weight-bold">
                     <span class="d-block font-weight-normal">
                         {{ $market->baseAsset->display_name }}
-                        <small><a href="https://xcpfox.com/asset/{{ $market->baseAsset->display_name }}" target="_blank"><i class="fa fa-info-circle"></i></a></small>
+                        <a href="https://xcpfox.com/asset/{{ $market->baseAsset->display_name }}" target="_blank">
+                            <i class="fa fa-info-circle"></i>
+                        </a>
                     </span>
                     {{ number_format($market->baseAsset->supply_normalized) }}
                 </td>

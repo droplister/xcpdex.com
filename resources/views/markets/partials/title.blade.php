@@ -1,7 +1,7 @@
 <h1>
     {{ $market->baseAsset->display_name }}
     <small class="lead d-none d-sm-inline">
-        {{ $market->name }}
+        <a href="{{ route('assets.show', ['asset' => $market->baseAsset->display_name]) }}">{{ $market->baseAsset->display_name }}</a>/<a href="{{ route('assets.show', ['asset' => $market->quoteAsset->display_name]) }}">{{ $market->quoteAsset->display_name }}</a>
     </small>
 </h1>
 <p class="lead">

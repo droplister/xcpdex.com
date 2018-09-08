@@ -1,5 +1,5 @@
 <template>
-<div class="row" v-if="chartOptions.series && chartOptions.series.length > 0">
+<div class="row" v-if="results > 0">
   <div class="col">
     <div class="border">
       <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>
@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      results: 0,
       chartOptions: {
         chart: {
           zoomType: 'x',
@@ -78,6 +79,7 @@ export default {
   methods: {
     $_chart_update() {
       axios.get('/api/markets/' + this.market + '/chart').then(response => {
+        this.results = response.data.history.length
         this.chartOptions.series.push({
           yAxis: 0,
           type: 'candlestick',

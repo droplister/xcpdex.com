@@ -119,17 +119,22 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.faq') }}">
                                     <small>F.A.Q.</small>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.disclaimer') }}">
                                     <small>Disclaimer</small>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="#">
+                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.privacy') }}">
+                                    <small>Privacy Policy</small>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.terms') }}">
                                     <small>Terms of Use</small>
                                 </a>
                             </li>

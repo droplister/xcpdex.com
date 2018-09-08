@@ -23,7 +23,19 @@ class Market extends Model
         'xcp_core_quote_asset',
         'name',
         'slug',
+        'volume',
+        'change',
     ];
+
+    /**
+     * Volume Normalized
+     *
+     * @return string
+     */
+    public function getVolumeNormalizedAttribute()
+    {
+        return normalizeQuantity($this->volume, $this->quoteAsset->divisible);
+    }
 
     /**
      * Base Asset

@@ -13,6 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        'Droplister\XcpCore\App\Events\BlockWasCreated' => [
+            'App\Listeners\BlockListener',
+        ],
         'Droplister\XcpCore\App\Events\OrderWasCreated' => [
             'App\Listeners\MarketListener',
         ],

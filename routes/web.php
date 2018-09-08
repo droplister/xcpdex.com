@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/assets', 'AssetsController@index')->name('assets.index');
 Route::get('/asset/{asset}', 'AssetsController@show')->name('assets.show');
 Route::get('/markets', 'MarketsController@index')->name('markets.index');
@@ -19,5 +20,9 @@ Route::get('/matches', 'OrderMatchesController@index')->name('matches.index');
 Route::get('/orders', 'OrdersController@index')->name('orders.index');
 Route::get('/blocks', 'BlocksController@index')->name('blocks.index');
 Route::get('/mempool', 'MempoolController@index')->name('mempool.index');
+Route::get('/faq', 'PagesController@faq')->name('faq');
+Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
+Route::get('/privacy', 'PagesController@privacy')->name('privacy');
+Route::get('/terms', 'PagesController@terms')->name('terms');
 
 Auth::routes();

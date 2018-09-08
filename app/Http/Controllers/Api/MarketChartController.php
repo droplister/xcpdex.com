@@ -55,13 +55,19 @@ class MarketChartController extends Controller
             // Formatting
             foreach($data as $key => $row)
             {
+                // Counterblock Logic
+                $asset_pair = $this->getAssetPairFromAssets($market->xcp_core_base_asset, $market->xcp_core_quote_asset);
+
+                // Reciprocal? (Y/N)
+                $reciprocal = $asset_pair[1] === $market->xcp_core_quote_asset;
+
                 // Data OHLC
-                $open = $row['open'];
-                $high = $row['high'];
-                $low = $row['low'];
-                $close = $row['close'];
-                $volume = $row['vol'];
-                $midline = $row['midline'];
+                $open = $reciprocal ? round(1 / $row['open'], 8) : $row['open'];
+                $high = $reciprocal ? round(1 / $row['high'], 8) : $row['high'];
+                $low = $reciprocal ? round(1 / $row['low'], 8) : $row['low'];
+                $close = $reciprocal ? round(1 / $row['close'], 8) : $row['close'];
+                $volume = $reciprocal ? round(1 / $row['vol'], 8) : $row['vol'];
+                $midline = $reciprocal ? round(1 / $row['midline'], 8) : $row['midline'];
 
                 // + History
                 $history[] = [$row['interval_time'], $open, $high, $low, $close];
@@ -98,12 +104,12 @@ class MarketChartController extends Controller
             if(Carbon::now()->timestamp * 1000 - $last['interval_time'] > 3600000)
             {
                 // Data OHLC
-                $open = $last['open'];
-                $high = $last['high'];
-                $low = $last['low'];
-                $close = $last['close'];
-                $volume = $last['vol'];
-                $midline = $last['midline'];
+                $open = $reciprocal ? round(1 / $last['open'], 8) : $last['open'];
+                $high = $reciprocal ? round(1 / $last['high'], 8) : $last['high'];
+                $low = $reciprocal ? round(1 / $last['low'], 8) : $last['low'];
+                $close = $reciprocal ? round(1 / $last['close'], 8) : $last['close'];
+                $volume = $reciprocal ? round(1 / $last['vol'], 8) : $last['vol'];
+                $midline = $reciprocal ? round(1 / $last['midline'], 8) : $last['midline'];
 
                 // Timestamp
                 $timestamp = $last['interval_time'] + 3600000;
@@ -142,5 +148,26 @@ class MarketChartController extends Controller
             'start_ts' => 1387065600, // First Block
             'as_dict'  => True,
         ]);
+    }
+
+    /**
+     * Counterblock Logic
+     * https://github.com/CounterpartyXCP/counterblock/blob/92de24fe0881388b7ffa31ea68eab72f7f1a47d0/counterblock/lib/util.py#L70
+     *
+     * @param  string  $asset1
+     * @param  string  $asset2
+     * @return array
+     */
+    private function getAssetPairFromAssets($asset1, $asset2)
+    {
+        foreach(['BTC', 'XBTC', 'XCP'] as $quote_asset)
+        {
+            if($asset1 == $quote_asset || $asset2 == $quote_asset)
+            {
+                return $asset1 == $quote_asset ? [$asset2, $asset1] : [$asset1, $asset2];
+            }
+        }
+
+        return $asset1 < $asset2 ? [$asset1, $asset2] : [$asset2, $asset1];
     }
 }

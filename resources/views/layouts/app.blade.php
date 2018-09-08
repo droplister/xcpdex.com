@@ -133,17 +133,17 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link font-weight-normal py-1" href="#">
-                                    F.A.Q.
+                                    <small>F.A.Q.</small>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-weight-normal py-1" href="#">
-                                    Disclaimer
+                                    <small>Disclaimer</small>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link font-weight-normal py-1" href="#">
-                                    Terms of Use
+                                    <small>Terms of Use</small>
                                 </a>
                             </li>
                         </ul>

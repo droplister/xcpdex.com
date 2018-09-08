@@ -58,22 +58,29 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <nav class="col-md-3 col-lg-2 pb-5 d-none d-md-block bg-light sidebar">
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Counterparty</span>
-                    </h6>
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('markets.index') }}">DEX Markets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('orders.index') }}">Open Orders</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('matches.index') }}">Filled Orders</a></li>
-                    </ul>
-                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Blockchain</span>
-                    </h6>
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('blocks.index') }}">Blocks</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('mempool.index') }}">Mempool</a></li>
-                    </ul>
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('markets.index') }}">
+                                    <i class="fa fa-server" aria-hidden="true"></i>
+                                    DEX Markets
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('orders.index') }}">
+                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                    Open Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('matches.index') }}">
+                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                    Filled Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 pb-5 px-4">
                     @yield('content')

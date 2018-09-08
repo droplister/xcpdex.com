@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Market;
+use Droplister\XcpCore\App\Order;
 use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Http\Request;
 

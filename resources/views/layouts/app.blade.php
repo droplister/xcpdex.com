@@ -26,7 +26,7 @@
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-6 col-sm-4 col-md-3 col-lg-2 mr-0" href="{{ url('/') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="XCP DEX" class="mt-2 mr-1" /> XCP DEX
-            </a>navbar-brand col-sm-3 col-md-2 mr-0 font-weight-bold
+            </a>
             <div class="col-6 col-sm-8 col-md-4 col-lg-3 p-0">
             </div>
             <div class="col-md-5 col-lg-7">

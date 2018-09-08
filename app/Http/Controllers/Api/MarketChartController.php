@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Cache;
+use App\Market;
 use Carbon\Carbon;
 use JsonRPC\Client;
 use Illuminate\Http\Request;

@@ -73,13 +73,13 @@ class UpdateMarketVolumes implements ShouldQueue
             ->where('confirmed_at', '<', $this->block->confirmed_at->subDays(1))
             ->sum('backward_quantity');
 
-        $24h_volume = $buys_today + $sells_today;
-        $last_24h_volume = $buys_yesterday + $sells_yesterday;
-        $24h_change = $last_24h_volume === 0 ? ($24h_volume / $last_24h_volume - 1) * 100 : 100;
+        $t_volume = $buys_today + $sells_today;
+        $y_volume = $buys_yesterday + $sells_yesterday;
+        $change = $y_volume === 0 ? ($d_volume / $y_volume - 1) * 100 : 100;
 
         $this->market->update([
-            'volume' => $24h_volume,
-            'change' => $24h_change,
+            'volume' => $t_volume,
+            'change' => $change,
         ]);
     }
 }

@@ -19,7 +19,7 @@
           <td class="text-right" :title="baseSubtotal(index) + ' ' + baseAsset">{{ quoteSubtotal(index) }}</td>
           <td><a :href="'https://xcpdex.com/address/' + order.source">{{ order.source }}</a></td>
         </tr>
-        <tr v-if="orders.length === 0">
+        <tr v-if="orders && orders.length === 0">
           <td class="text-center" colspan="5">No {{ side }} orders found.</td>
         </tr>
       </tbody>

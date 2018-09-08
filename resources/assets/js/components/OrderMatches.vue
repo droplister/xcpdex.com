@@ -21,7 +21,7 @@
           <td>{{ match.buyer }}</td>
           <td>{{ match.seller }}</td>
         </tr>
-        <tr v-if="matches.length === 0">
+        <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="6">No order matches found.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">

@@ -22,7 +22,7 @@
           <td>{{ order.total }}</td>
           <td>{{ order.source }}</td>
         </tr>
-        <tr v-if="orders.length === 0">
+        <tr v-if="orders && orders.length === 0">
           <td class="text-center" colspan="6">No order found.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">

@@ -108,24 +108,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('matches.index') }}">
-                                    <i class="fa fa-bars float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    Filled Orders
-                                </a>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="#">
-                                            <small>Cancelled</small>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="#">
-                                            <small>Not Filled</small>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-5 mb-1 text-muted">
                             <span>Pages</span>       

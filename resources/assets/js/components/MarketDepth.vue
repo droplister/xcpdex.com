@@ -1,5 +1,5 @@
 <template>
-<div class="row" v-if="chartOptions.series.length > 0">
+<div class="row" v-if="chartOptions.series && chartOptions.series.length != 0">
   <div class="col">
     <h3 class="mt-3 mb-3">Book Depth</h3>
     <div class="border">

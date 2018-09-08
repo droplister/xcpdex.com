@@ -7,8 +7,12 @@
 <script>
 import {Chart} from 'highcharts-vue'
 import Highcharts from 'highcharts'
+import smplTheme from './path/to/smpl.js';
 import stockInit from 'highcharts/modules/stock'
 stockInit(Highcharts)
+
+Highcharts.theme = smplTheme;
+Highcharts.setOptions(Highcharts.theme);
 
 export default {
   props: ['market'],
@@ -107,10 +111,7 @@ export default {
           yAxis: 0,
           type: 'candlestick',
           name: this.market,
-          data: response.data.history,
-          dataGrouping: {
-            forced: true
-          }
+          data: response.data.history
         })
         this.chartOptions.series.push({
           yAxis: 1,

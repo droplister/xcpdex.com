@@ -75,7 +75,7 @@ class UpdateMarketVolumes implements ShouldQueue
 
         $t_volume = $buys_today + $sells_today;
         $y_volume = $buys_yesterday + $sells_yesterday;
-        $change = $y_volume === 0 ? ($d_volume / $y_volume - 1) * 100 : 100;
+        $change = $y_volume === 0 ? ($t_volume / $y_volume - 1) * 100 : 100;
 
         $this->market->update([
             'volume' => $t_volume,

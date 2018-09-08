@@ -25,9 +25,10 @@
     <div id="app">
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-6 col-sm-4 col-md-3 col-lg-2 mr-0" href="{{ url('/') }}">
-                <img src="{{ asset('images/logo.png') }}" alt="XCP DEX" class="mt-2 mr-1" /> XCP DEX
+                <img src="{{ asset('images/logo.png') }}" alt="XCP DEX" class="mt-1 mr-1" /> XCP DEX
             </a>
             <div class="col-6 col-sm-8 col-md-4 col-lg-3 p-0">
+                <auto-suggest></auto-suggest>
             </div>
             <div class="col-md-5 col-lg-7">
                 <ul class="nav nav-pills float-right">
@@ -63,19 +64,19 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('markets.index') }}">
-                                    <i class="fa fa-server" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                                     DEX Markets
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
-                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                                     Open Orders
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('matches.index') }}">
-                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                    <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
                                     Filled Orders
                                 </a>
                             </li>

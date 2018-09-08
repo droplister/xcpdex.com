@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('auto-suggest', require('./components/AutoSuggest.vue'));
 Vue.component('order-book', require('./components/OrderBook.vue'));
 Vue.component('market-chart', require('./components/MarketChart.vue'));
 Vue.component('market-depth', require('./components/MarketDepth.vue'));

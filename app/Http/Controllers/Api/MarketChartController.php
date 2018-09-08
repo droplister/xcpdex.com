@@ -66,8 +66,7 @@ class MarketChartController extends Controller
                 $high = $reciprocal ? round(1 / $row['high'], 8) : $row['high'];
                 $low = $reciprocal ? round(1 / $row['low'], 8) : $row['low'];
                 $close = $reciprocal ? round(1 / $row['close'], 8) : $row['close'];
-                $volume = $reciprocal ? round(1 / $row['vol'], 8) : $row['vol'];
-                $midline = $reciprocal ? round(1 / $row['midline'], 8) : $row['midline'];
+                $volume = $reciprocal ? round($row['vol'] / $row['midline'], 8) : $row['vol'];
 
                 // + History
                 $history[] = [$row['interval_time'], $open, $high, $low, $close];
@@ -104,12 +103,7 @@ class MarketChartController extends Controller
             if(Carbon::now()->timestamp * 1000 - $last['interval_time'] > 3600000)
             {
                 // Data OHLC
-                $open = $reciprocal ? round(1 / $last['open'], 8) : $last['open'];
-                $high = $reciprocal ? round(1 / $last['high'], 8) : $last['high'];
-                $low = $reciprocal ? round(1 / $last['low'], 8) : $last['low'];
                 $close = $reciprocal ? round(1 / $last['close'], 8) : $last['close'];
-                $volume = $reciprocal ? round(1 / $last['vol'], 8) : $last['vol'];
-                $midline = $reciprocal ? round(1 / $last['midline'], 8) : $last['midline'];
 
                 // Timestamp
                 $timestamp = $last['interval_time'] + 3600000;

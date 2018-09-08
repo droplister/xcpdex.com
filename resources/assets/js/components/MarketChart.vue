@@ -1,5 +1,5 @@
 <template>
-<div class="row" v-if="chartOptions.series && chartOptions.series.length != 0">
+<div class="row" v-if="chartOptions.series && chartOptions.series.length > 0">
   <div class="col">
     <div class="border">
       <highcharts :constructor-type="'stockChart'" :options="chartOptions"></highcharts>

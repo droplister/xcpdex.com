@@ -42,18 +42,26 @@
                             <i class="fa fa-twitter fa-lg text-text"></i>
                         </a>
                     </li>
-                    @if (Auth::check())
+                </ul>
+                <ul class="nav nav-pills d-md-none">
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                        <a class="nav-link" href="{{ route('markets.index') }}">
+                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                            Markets
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
                     </li>
-                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('orders.index') }}">
+                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                            Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('matches.index') }}">
+                            <i class="fa fa-bars float-right mt-1" aria-hidden="true"></i>
+                            Matches
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

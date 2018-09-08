@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Market;
+use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;
 use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class MarketsController extends Controller
      */
     public function show(Request $request, Market $market)
     {
+        // Current Block Index
+        $block = Block::latest('block_index')->first();
+
         // Market's Buy Orders
         $buy_orders = Order::where('get_asset', '=', $market->xcp_core_base_asset)
             ->where('give_asset', '=', $market->xcp_core_quote_asset)

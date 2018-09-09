@@ -16,7 +16,7 @@ class MarketsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('markets.index');
+        return view('markets.index', compact('request'));
     }
 
     /**

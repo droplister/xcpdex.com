@@ -18,18 +18,18 @@
 <div class="row">
     <div class="col-md-6">
         <h2 class="mt-3 mb-3">Buy Orders</h2>
-        <order-book market="{{ $market->slug }}" side="buy"></order-book>
+        <market-orders market="{{ $market->slug }}" side="buy"></market-orders>
     </div>
     <div class="col-md-6">
         <h2 class="mt-3 mb-3">Sell Orders</h2>
-        <order-book market="{{ $market->slug }}" side="sell"></order-book>
+        <market-orders market="{{ $market->slug }}" side="sell"></market-orders>
     </div>
 </div>
 <market-depth market="{{ $market->slug }}"></market-depth>
 <div class="row">
     <div class="col">
         <h3 class="mt-4 mb-3">All Matches</h3>
-        <order-matches market="{{ $market->slug }}"></order-matches>
+        <market-order-matches market="{{ $market->slug }}"></market-order-matches>
     </div>
 </div>
 @endsection

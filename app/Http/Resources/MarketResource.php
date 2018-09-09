@@ -17,6 +17,9 @@ class MarketResource extends Resource
         return [
             'name' => $this->name,
             'slug' => $this->slug,
+            'volume' => $this->volume_normalized,
+            'change' => $this->change,
+            'base_asset' => $this->baseAsset->display_name,
         ];
     }
 }

@@ -20,6 +20,7 @@ class MarketResource extends Resource
             'volume' => $this->volume_normalized,
             'change' => $this->change,
             'base_asset' => $this->baseAsset->display_name,
+            'price' => $this->lastMatch() ? $this->lastMatch()->trading_price_normalized : number_format(0, 8),
         ];
     }
 }

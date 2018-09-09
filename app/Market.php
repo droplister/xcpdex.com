@@ -58,6 +58,23 @@ class Market extends Model
     }
 
     /**
+     * Last Match
+     * 
+     * @return \Droplister\XcpCore\App\OrderMatch
+     */
+    public function lastMatch()
+    {
+        return OrderMatch::where('backward_asset', '=', $this->xcp_core_base_asset)
+            ->where('forward_asset', '=', $this->xcp_core_quote_asset)
+            ->where('status', '=', 'completed')
+            ->orWhere('backward_asset', '=', $this->xcp_core_quote_asset)
+            ->where('forward_asset', '=', $this->xcp_core_base_asset)
+            ->where('status', '=', 'completed')
+            ->orderBy('tx1_index', 'desc')
+            ->first();
+    }
+
+    /**
      * Get the route key for the model.
      *
      * @return string

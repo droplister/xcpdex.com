@@ -35,9 +35,9 @@ class OrdersController extends Controller
 
             // Open Orders (Newest)
             return Order::where('expire_index', '>', $block->block_index)
-            ->where('status', '=', 'open')
-            ->orderBy('tx_index', 'desc')
-            ->paginate(30);
+                ->where('status', '=', 'open')
+                ->orderBy('tx_index', 'desc')
+                ->paginate(30);
         });
 
         return [

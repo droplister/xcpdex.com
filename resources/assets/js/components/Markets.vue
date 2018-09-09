@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr v-for="market in markets">
-          <td><a :href="'/market/' + market.slug" target="_blank">{{ market.base_asset }}</a></td>
+          <td><a :href="'/market/' + market.slug">{{ market.base_asset }}</a></td>
           <td class="text-right">{{ market.price }}</td>
           <td class="text-right">{{ market.volume }}</td>
           <td class="text-right">{{ market.change }}</td>

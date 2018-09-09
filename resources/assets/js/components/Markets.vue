@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h1 class="mb-3">Markets</h1>
   <div class="table-responsive asset-markets" infinite-wrapper>
     <table class="table table-striped table-sm">
       <thead class="text-left">
@@ -13,9 +14,9 @@
       <tbody>
         <tr v-for="market in markets">
           <td><a :href="'/markets/' + market.slug" target="_blank">{{ market.base_asset }}</a></td>
-          <td class="text-right">{{ match.price }}</td>
-          <td class="text-right">{{ match.volume }}</td>
-          <td class="text-right">{{ match.change }}</td>
+          <td class="text-right">{{ market.price }}</td>
+          <td class="text-right">{{ market.volume }}</td>
+          <td class="text-right">{{ market.change }}</td>
         </tr>
         <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="4">No markets found.</td>

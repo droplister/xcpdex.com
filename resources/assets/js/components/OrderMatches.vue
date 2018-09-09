@@ -1,10 +1,12 @@
 <template>
 <div>
+  <h1 class="mb-3">Order Matches</h1>
   <div class="table-responsive order-matches" infinite-wrapper>
     <table class="table table-striped table-sm">
       <thead class="text-left">
         <tr>
           <th>Date</th>
+          <th>Market</th>
           <th>Price</th>
           <th>Quantity</th>
           <th>Total</th>
@@ -15,9 +17,10 @@
       <tbody>
         <tr v-for="match in matches">
           <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
-          <td class="text-right">{{ match.price }} <a :href="'/markets/' + match.market_slug">{{ match.quote_asset }}</a></td>
-          <td class="text-right">{{ match.quantity }} <a :href="'/markets/' + match.market_slug"{{ match.base_asset }}</a></td>
-          <td class="text-right">{{ match.total }} <a :href="'/markets/' + match.market_slug"{{ match.quote_asset }}</a></td>
+          <td><a :href="'/markets/' + match.market_slug">{{ match.market }}</a></td>
+          <td class="text-right">{{ match.price }}</td>
+          <td class="text-right">{{ match.quantity }}</td>
+          <td class="text-right">{{ match.total }}</td>
           <td><a :href="'https://xcpfox.com/address/' + match.buyer" target="_blank">{{ match.buyer }}</a></td>
           <td><a :href="'https://xcpfox.com/address/' + match.seller" target="_blank">{{ match.seller }}</a></td>
         </tr>

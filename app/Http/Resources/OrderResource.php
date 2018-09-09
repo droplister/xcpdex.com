@@ -15,10 +15,13 @@ class OrderResource extends Resource
      */
     public function toArray($request)
     {
-        $base_asset = explode('/', $this->trading_pair_normalized)[0];
-        $base_asset = Asset::find($base_asset);
-        $quote_asset = explode('/', $this->trading_pair_normalized)[1];
-        $quote_asset = Asset::find($quote_asset);
+        $base_asset = Asset::where('asset_name', '=', explode('/', $this->trading_pair_normalized)[0])
+            ->orWhere('asset_longname', '=', explode('/', $this->trading_pair_normalized)[0])
+            ->first();
+
+        $quote_asset = Asset::where('asset_name', '=', explode('/', $this->trading_pair_normalized)[1])
+            ->orWhere('asset_longname', '=', explode('/', $this->trading_pair_normalized)[1])
+            ->first();
 
         return [
             'tx_hash' => $this->tx_hash,

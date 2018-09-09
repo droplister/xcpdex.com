@@ -74,18 +74,18 @@
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
-                                            <small>BITCORN/XCP</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
+                                            BITCORN/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
-                                            <small>PEPECASH/XCP</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
+                                            PEPECASH/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('markets.show', ['market' => 'CROPS_XCP']) }}">
-                                            <small>CROPS/XCP</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'CROPS_XCP']) }}">
+                                            CROPS/XCP
                                         </a>
                                     </li>
                                 </ul>
@@ -97,24 +97,24 @@
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('orders.index') }}">
-                                            <small>Newest</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('orders.index') }}">
+                                            Newest
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                                            <small>Ending Soon</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
+                                            Ending Soon
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal py-1" href="{{ route('matches.index') }}">
-                                            <small>Filled Orders</small>
+                                        <a class="nav-link font-weight-normal" href="{{ route('matches.index') }}">
+                                            Filled Orders
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-5 mb-1 text-muted">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             <span>Pages</span>       
                         </h6>
                         <ul class="nav flex-column">

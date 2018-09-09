@@ -16,9 +16,9 @@
       <tbody>
         <tr v-for="match in matches">
           <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
-          <td class="text-right">{{ match.quantity }} <a :href="'/market/' + match.market_slug">{{ match.base_asset }}</a></td>
-          <td class="text-right">{{ match.price }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
-          <td class="text-right">{{ match.total }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
+          <td>{{ match.quantity }} <a :href="'/market/' + match.market_slug">{{ match.base_asset }}</a></td>
+          <td>{{ match.price }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
+          <td>{{ match.total }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
           <td><a :href="'https://xcpfox.com/address/' + match.buyer" target="_blank">{{ match.buyer }}</a></td>
           <td><a :href="'https://xcpfox.com/address/' + match.seller" target="_blank">{{ match.seller }}</a></td>
         </tr>

@@ -17,7 +17,7 @@
       <tbody>
         <tr v-for="match in matches">
           <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
-          <td><a :href="'/markets/' + match.market_slug">{{ match.market }}</a></td>
+          <td><a :href="'/market/' + match.market_slug">{{ match.market }}</a></td>
           <td class="text-right">{{ match.price }}</td>
           <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.total }}</td>

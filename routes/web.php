@@ -20,7 +20,6 @@ Route::get('/matches', 'OrderMatchesController@index')->name('matches.index');
 Route::get('/orders', 'OrdersController@index')->name('orders.index');
 Route::get('/blocks', 'BlocksController@index')->name('blocks.index');
 Route::get('/mempool', 'MempoolController@index')->name('mempool.index');
-Route::get('/faq', 'PagesController@faq')->name('pages.faq');
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('pages.disclaimer');
 Route::get('/privacy', 'PagesController@privacy')->name('pages.privacy');
 Route::get('/terms', 'PagesController@terms')->name('pages.terms');

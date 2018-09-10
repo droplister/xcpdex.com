@@ -119,8 +119,8 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.faq') }}">
-                                    <small>F.A.Q.</small>
+                                <a class="nav-link font-weight-normal py-0" href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank">
+                                    <small>Tutorial</small>
                                 </a>
                             </li>
                             <li class="nav-item">

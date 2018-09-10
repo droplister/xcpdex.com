@@ -12,20 +12,11 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function faq(Request $request)
-    {
-        return view('pages.faq');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function disclaimer(Request $request)
     {
         return view('pages.disclaimer');
     }
+    
     /**
      * Display a listing of the resource.
      *

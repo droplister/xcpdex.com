@@ -19,15 +19,16 @@ class BlockListener
     public function handle(BlockWasCreated $event)
     {
         // Useful Switch
-        if(! config('xcp-core.indexing')) return false;
-
-        // Get Markets
-        $markets = Market::get();
-
-        // Update Vol.
-        foreach($markets as $market)
+        if(config('xcp-core.indexing'))
         {
-            UpdateMarketVolumes::dispatch($market, $event->block);
+            // Get Markets
+            $markets = Market::get();
+
+            // Update Vol.
+            foreach($markets as $market)
+            {
+                UpdateMarketVolumes::dispatch($market, $event->block);
+            }
         }
     }
 }

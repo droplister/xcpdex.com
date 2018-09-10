@@ -19,7 +19,7 @@ class BlockListener
     public function handle(BlockWasCreated $event)
     {
         // Useful Switch
-        if(config('xcp-core.indexing')) return false;
+        if(! config('xcp-core.indexing')) return false;
 
         // Get Markets
         $markets = Market::get();

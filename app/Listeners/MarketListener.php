@@ -19,12 +19,14 @@ class MarketListener
     public function handle(OrderWasCreated $event)
     {
         // Base Asset
-        $base = explode('/', $event->order->trading_pair_normalized)[0];
-        $base_asset = Asset::where('asset_name', '=', $base)->orWhere('asset_longname', '=', $base)->first();
+        $base_asset = Asset::where('asset_name', '=', explode('/', $event->order->trading_pair_normalized)[0])
+            ->orWhere('asset_longname', '=', explode('/', $event->order->trading_pair_normalized)[0])
+            ->first();
 
         // Quote Asset
-        $quote = explode('/', $event->order->trading_pair_normalized)[1];
-        $quote_asset = Asset::where('asset_name', '=', $quote)->orWhere('asset_longname', '=', $quote)->first();
+        $quote_asset = Asset::where('asset_name', '=', explode('/', $event->order->trading_pair_normalized)[1])
+            ->orWhere('asset_longname', '=', explode('/', $event->order->trading_pair_normalized)[1])
+            ->first();
 
         // Trading Pair
         Market::firstOrCreate([

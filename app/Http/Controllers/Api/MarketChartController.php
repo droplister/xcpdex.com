@@ -172,7 +172,7 @@ class MarketChartController extends Controller
         $reciprocal = $this->checkForReciprocal($market);
 
         // Flip and/or Format
-        return round(($reciprocal ? 1 / $value : $value), 8)
+        return round(($reciprocal ? 1 / $value : $value), 8);
     }
 
     /**

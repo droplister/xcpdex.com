@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Cache;
 use App\Market;
 use Droplister\XcpCore\App\OrderMatch;
 use App\Http\Resources\OrderMatchResource;
@@ -19,8 +20,12 @@ class MarketOrderMatchesController extends Controller
      */
     public function index(Request $request, Market $market)
     {
+        // Cache Slug
+        $cache_slug = 'api_market_order_matches_' . $market->slug;
+
         // Market's Trade History
-        $order_matches = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
+        $order_matches = Cache::remember($cache_slug, 5, function () use ($market) {
+            return OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
             ->where('forward_asset', '=', $market->xcp_core_quote_asset)
             ->where('status', '=', 'completed')
             ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
@@ -28,6 +33,7 @@ class MarketOrderMatchesController extends Controller
             ->where('status', '=', 'completed')
             ->orderBy('tx1_index', 'desc')
             ->paginate(30);
+        });
 
         return [
             'order_matches' => OrderMatchResource::collection($order_matches),

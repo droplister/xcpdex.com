@@ -18,9 +18,11 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-        // Cached Orders
-        $orders = Cache::remember('api_orders_' . $request->input('status', 'false') . '_' . $request->input('page', 1), 5, function () use ($request) {
+        // Cache Slug
+        $cache_slug = 'api_orders_index_' . str_slug(serialize($request->all()));
 
+        // Get Orders
+        $orders = Cache::remember($cache_slug, 5, function () use ($request) {
             // Block Index
             $block = Block::latest('block_index')->first();
 

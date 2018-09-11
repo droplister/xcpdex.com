@@ -15,13 +15,9 @@ class DepthResource extends Resource
      */
     public function toArray($request)
     {
-        $base_asset = Asset::where('asset_name', '=', explode('/', $this->trading_pair_normalized)[0])
-            ->orWhere('asset_longname', '=', explode('/', $this->trading_pair_normalized)[0])
-            ->first();
-
         return [
             (float) $this->trading_price_normalized,
-            ($base_asset->asset_name === $this->get_asset) ? (float) $this->get_remaining_normalized : (float) $this->give_remaining_normalized,
+            (float) $this->trading_quantity_normalized,
         ];
     }
 }

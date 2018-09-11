@@ -35,8 +35,20 @@ class Market extends Model
      */
     public function getVolumeNormalizedAttribute()
     {
-        return Cache::remember('volume_normalized_' . $this->slug, 1440, function () {
+        return Cache::remember('m_vn_' . $this->slug, 1440, function () {
             return normalizeQuantity($this->volume, $this->quoteAsset->divisible);
+        });
+    }
+
+    /**
+     * Last Price
+     *
+     * @return string
+     */
+    public function getLastPriceAttribute()
+    {
+        return Cache::remember('volume_normalized_' . $this->id, 5, function () {
+            return $this->lastMatch() ? $this->lastMatch()->trading_price_normalized : number_format(0, 8);
         });
     }
 

@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h1 class="mb-3">Order Matches</h1>
   <div class="table-responsive order-matches" infinite-wrapper>
     <table class="table table-striped table-sm">
       <thead class="text-left">

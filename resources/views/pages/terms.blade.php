@@ -4,6 +4,7 @@
 
 @section('content')
 <h1 class="mb-3">Terms of Use</h1>
+<hr />
 <h3>1. Your Acceptance</h3>
 <p>Welcome to the Terms of Service for XCPDEX.com. This is an agreement (&#8220;Agreement&#8221;) between Family Media, LLC, (&#8220;XCPDEX.com&#8221;), the owner and operator of http://XCPDEX.com (the &#8220;Site&#8221; and any &#8220;Services&#8221;) and you (&#8220;you&#8221; or &#8220;your&#8221; or &#8220;user(s)&#8221;), a user of the Site and Service. This Agreement is legally binding and governs your use of our Site and Service.</p>
 <p>Throughout this Agreement, the words &#8220;XCPDEX.com,&#8221; &#8220;us,&#8221; &#8220;we,&#8221; and &#8220;our,&#8221; refer to our company, Family Media, LLC and our Site, http://XCPDEX.com or our Service, XCPDEX.com, as is appropriate in the context of the use of the words.</p>

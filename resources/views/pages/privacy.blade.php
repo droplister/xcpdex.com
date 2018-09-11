@@ -5,6 +5,7 @@
 @section('content')
 
 <h1 class="mb-3">Privacy Policy</h1>
+<hr />
 <p>We at XCPDEX.com know that you care how your information is used, and we appreciate your trust. This notice describes our privacy policy. By visiting us, you are accepting the privacy policy described below.</p>
 
 <h3>What Personal Information Do We Collect?</h3>

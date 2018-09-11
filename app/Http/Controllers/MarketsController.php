@@ -20,7 +20,7 @@ class MarketsController extends Controller
         $markets = Market::selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')
-            ->take(15)
+            ->take(10)
             ->get();
 
         return view('markets.index', compact('markets', 'request'));

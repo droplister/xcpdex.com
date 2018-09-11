@@ -34,5 +34,7 @@ class MarketListener
             'xcp_core_quote_asset' => $quote_asset->asset_name,
             'name' => $event->order->trading_pair_normalized,
         ]);
+
+        \Log::info($base_asset->asset_name . ' ' . $quote_asset->asset_name . ' ' . $event->order->trading_pair_normalized);
     }
 }

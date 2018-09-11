@@ -109,7 +109,7 @@
                                 </ul>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
                             <span class="d-block w-100">
                                 <i class="fa fa-file-o float-right text-secondary" aria-hidden="true"></i>
                                 Page Menu

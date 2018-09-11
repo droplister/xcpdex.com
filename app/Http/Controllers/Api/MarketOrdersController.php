@@ -33,6 +33,8 @@ class MarketOrdersController extends Controller
             return Order::where('get_asset', '=', $market->xcp_core_base_asset)
             ->where('give_asset', '=', $market->xcp_core_quote_asset)
             ->where('expire_index', '>', $block->block_index)
+            ->where('give_remaining', '>', 0)
+            ->where('get_remaining', '>', 0)
             ->where('status', '=', 'open')
             ->get()
             ->sortByDesc('trading_price_normalized');
@@ -46,6 +48,8 @@ class MarketOrdersController extends Controller
             return Order::where('give_asset', '=', $market->xcp_core_base_asset)
             ->where('get_asset', '=', $market->xcp_core_quote_asset)
             ->where('expire_index', '>', $block->block_index)
+            ->where('give_remaining', '>', 0)
+            ->where('get_remaining', '>', 0)
             ->where('status', '=', 'open')
             ->get()
             ->sortBy('trading_price_normalized');

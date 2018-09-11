@@ -109,33 +109,25 @@
                                 </ul>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1">
-                            <span class="d-block w-100">
-                                <i class="fa fa-file-o float-right text-secondary" aria-hidden="true"></i>
-                                Page Menu
-                            </span>       
-                        </h6>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.disclaimer') }}">
-                                    <small>Disclaimer</small>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.privacy') }}">
-                                    <small>Privacy Policy</small>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link font-weight-normal py-0" href="{{ route('pages.terms') }}">
-                                    <small>Terms of Use</small>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </nav>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 pb-5 px-4">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 py-3 px-4">
                     @yield('content')
+                    <footer class="container text-center text-muted">
+                        <hr />
+                        <a href="{{ url('/') }}" class="mr-2">Home</a>
+                        <a href="https://coinmarketcap.com/currencies/counterparty/" class="mr-2" target="_blank">XCP/USD</a>
+                        <a href="https://github.com/droplister/xcpdex.com"  class="mr-2" target="_blank">GitHub</a>
+                        <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" class="mr-2" target="_blank">Tutorial</a>
+                        <a href="https://t.me/xcpdex" target="_blank">Telegram</a>
+                        <small class="d-block">
+                            &copy; 2018
+                            <a href="https://familymediallc.com/" class="text-muted mr-2" target="_blank">Family Media LLC</a>
+                            <a href="{{ route('pages.disclaimer') }}" class="text-muted mr-1">Disclaimer</a>
+                            <a href="{{ route('pages.privacy') }}" class="text-muted mr-1">Privacy</a>
+                            <a href="{{ route('pages.terms') }}" class="text-muted">Terms</a>
+                        </small>
+                    </footer>
                 </main>
             </div>
         </div>

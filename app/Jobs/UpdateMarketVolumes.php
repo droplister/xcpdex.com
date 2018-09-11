@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Cache;
 use App\Market;
 use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\OrderMatch;
@@ -59,25 +60,15 @@ class UpdateMarketVolumes implements ShouldQueue
             ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(1))
             ->sum('backward_quantity');
 
-        $buys_yesterday = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_base_asset)
-            ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
-            ->where('status', '=', 'completed')
-            ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(2))
-            ->where('confirmed_at', '<', $this->block->confirmed_at->subDays(1))
-            ->sum('forward_quantity');
-
-        $sells_yesterday = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
-            ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
-            ->where('status', '=', 'completed')
-            ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(2))
-            ->where('confirmed_at', '<', $this->block->confirmed_at->subDays(1))
-            ->sum('backward_quantity');
-
+        // Volume
         $t_volume = $buys_today + $sells_today;
-        $y_volume = $buys_yesterday + $sells_yesterday;
 
+        // Update
         $this->market->update([
             'volume' => $t_volume,
         ]);
+
+        // Forget
+        Cache::forget('volume_normalized_' . $this->slug);
     }
 }

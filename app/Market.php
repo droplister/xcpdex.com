@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Cache;
 use Droplister\XcpCore\App\Asset;
 use Droplister\XcpCore\App\Order;
 use Droplister\XcpCore\App\OrderMatch;
@@ -34,7 +35,9 @@ class Market extends Model
      */
     public function getVolumeNormalizedAttribute()
     {
-        return normalizeQuantity($this->volume, $this->quoteAsset->divisible);
+        return Cache::remember('volume_normalized_' . $this->slug, 1440, function () {
+            return normalizeQuantity($this->volume, $this->quoteAsset->divisible);
+        });
     }
 
     /**

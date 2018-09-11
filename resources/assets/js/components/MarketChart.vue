@@ -79,33 +79,36 @@ export default {
   methods: {
     $_chart_update() {
       axios.get('/api/markets/' + this.market + '/chart').then(response => {
-        this.results = response.data.history.length
-        this.chartOptions.series.push({
-          yAxis: 0,
-          type: 'candlestick',
-          name: this.market.replace('_', '/'),
-          data: response.data.history,
-          dataGrouping: {
-            units: [
-              [
-                'day', // unit name
-                [1] // allowed multiples
-              ], [
-                'week',
-                [1]
-              ], [
-                'month',
-                [1, 2, 3, 4, 6]
+        this.results = response.data.history ? response.data.history.length : 0
+        if(this.results > 0)
+        {
+          this.chartOptions.series.push({
+            yAxis: 0,
+            type: 'candlestick',
+            name: this.market.replace('_', '/'),
+            data: response.data.history,
+            dataGrouping: {
+              units: [
+                [
+                  'day', // unit name
+                  [1] // allowed multiples
+                ], [
+                  'week',
+                  [1]
+                ], [
+                  'month',
+                  [1, 2, 3, 4, 6]
+                ]
               ]
-            ]
-          }
-        })
-        this.chartOptions.series.push({
-          yAxis: 1,
-          type: 'column',
-          name: 'Volume (' + this.base_asset + ')',
-          data: response.data.volumes
-        })
+            }
+          })
+          this.chartOptions.series.push({
+            yAxis: 1,
+            type: 'column',
+            name: 'Volume (' + this.base_asset + ')',
+            data: response.data.volumes
+          })
+        }
       })
     }
   }

@@ -16,7 +16,14 @@ class MarketsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('markets.index', compact('request'));
+        // Markets
+        $markets = Market::selectRaw('COUNT(*) as count, xcp_core_quote_asset')
+            ->groupBy('xcp_core_quote_asset')
+            ->orderBy('count', 'desc')
+            ->take(15)
+            ->get();
+
+        return view('markets.index', compact('markets', 'request'));
     }
 
     /**

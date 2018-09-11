@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h1 class="mb-3">Markets</h1>
   <div class="table-responsive asset-markets" infinite-wrapper>
     <table class="table table-striped table-sm">
       <thead class="text-left">

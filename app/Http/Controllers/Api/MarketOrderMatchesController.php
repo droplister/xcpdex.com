@@ -21,7 +21,7 @@ class MarketOrderMatchesController extends Controller
     public function index(Request $request, Market $market)
     {
         // Cache Slug
-        $cache_slug = 'api_market_order_matches_' . $market->slug;
+        $cache_slug = 'api_market_order_matches_' . $market->slug . '_' . str_slug(serialize($request->all()));
 
         // Market's Trade History
         $order_matches = Cache::remember($cache_slug, 5, function () use ($market) {

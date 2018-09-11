@@ -18,13 +18,16 @@ class MarketSearchController extends Controller
      */
     public function index(Request $request)
     {
+        // Validation
         $request->validate([
             'q' => 'required',
         ]);
 
-        $query = strtolower($request->q);
+        // Cache Slug
+        $cache_slug = 'api_search_' . str_slug(serialize($request->all()));
 
-        $markets = Cache::remember('api_search_' . $query, 360, function () use ($request) {
+        // Get Markets
+        $markets = Cache::remember($cache_slug, 360, function () use ($request) {
             return Market::where('xcp_core_base_asset', 'like', $request->q . '%')
                 ->orWhere('xcp_core_quote_asset', 'like', $request->q . '%')
                 ->orWhere('name', 'like', $request->q . '%')

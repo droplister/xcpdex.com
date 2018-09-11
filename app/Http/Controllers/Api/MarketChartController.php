@@ -183,7 +183,7 @@ class MarketChartController extends Controller
      * @param  mixed $midline
      * @return float
      */
-    private function normalizeValue(Market $market, $volume, $midline)
+    private function normalizeVolume(Market $market, $volume, $midline)
     {
         // Reciprocal? (Y/N)
         $reciprocal = $this->checkForReciprocal($market);

@@ -15,26 +15,18 @@ class OrderMatchResource extends Resource
      */
     public function toArray($request)
     {
-        $base_asset = Asset::where('asset_name', '=', explode('/', $this->trading_pair_normalized)[0])
-            ->orWhere('asset_longname', '=', explode('/', $this->trading_pair_normalized)[0])
-            ->first();
-
-        $quote_asset = Asset::where('asset_name', '=', explode('/', $this->trading_pair_normalized)[1])
-            ->orWhere('asset_longname', '=', explode('/', $this->trading_pair_normalized)[1])
-            ->first();
-
         return [
             'tx_hash' => $this->tx1_hash,
-            'base_asset' => $base_asset->display_name,
-            'quote_asset' => $quote_asset->display_name,
+            'base_asset' => $this->base_asset,
+            'quote_asset' => $this->quote_asset,
+            'date' => $this->confirmed_at->toDateTimeString(),
             'market' => $this->trading_pair_normalized,
             'market_slug' => str_replace('/', '_', $this->trading_pair_normalized),
-            'date' => $this->confirmed_at->toDateTimeString(),
-            'buyer' => ($base_asset->asset_name === $this->backward_asset) ? $this->tx0_address : $this->tx1_address,
-            'seller' => ($base_asset->asset_name === $this->backward_asset) ? $this->tx1_address : $this->tx0_address,
+            'buyer' => $this->trading_buyer_normalized,
+            'seller' => $this->trading_seller_normalized,
             'price' => $this->trading_price_normalized,
-            'quantity' => ($base_asset->asset_name === $this->backward_asset) ? $this->backward_quantity_normalized : $this->forward_quantity_normalized,
-            'total' => ($base_asset->asset_name === $this->backward_asset) ? $this->forward_quantity_normalized : $this->backward_quantity_normalized,
+            'quantity' => $this->trading_quantity_normalized,
+            'total' => $this->trading_total_normalized,
         ];
     }
 }

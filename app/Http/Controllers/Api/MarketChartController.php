@@ -62,11 +62,11 @@ class MarketChartController extends Controller
                 $reciprocal = $asset_pair[0] === $market->xcp_core_quote_asset;
 
                 // Data OHLC
-                $open = $reciprocal ? round(1 / $row['open'], 8) : $row['open'];
-                $high = $reciprocal ? round(1 / $row['high'], 8) : $row['high'];
-                $low = $reciprocal ? round(1 / $row['low'], 8) : $row['low'];
-                $close = $reciprocal ? round(1 / $row['close'], 8) : $row['close'];
-                $volume = $reciprocal ? round($row['vol'] / round(1 / $row['midline'], 8), 8) : $row['vol'];
+                $open = $reciprocal ? number_format(round(1 / $row['open'], 8) : $row['open'], 8);
+                $high = $reciprocal ? number_format(round(1 / $row['high'], 8) : $row['high'], 8);
+                $low = $reciprocal ? number_format(round(1 / $row['low'], 8) : $row['low'], 8);
+                $close = $reciprocal ? number_format(round(1 / $row['close'], 8) : $row['close'], 8);
+                $volume = $reciprocal ? number_format(round($row['vol'] / round(1 / $row['midline'], 8), 8) : $row['vol'], 8);
 
                 // + History
                 $history[] = [$row['interval_time'], $open, $high, $low, $close];
@@ -103,7 +103,7 @@ class MarketChartController extends Controller
             if(Carbon::now()->timestamp * 1000 - $last['interval_time'] > 3600000)
             {
                 // Data OHLC
-                $close = $reciprocal ? round(1 / $last['close'], 8) : $last['close'];
+                $close = $reciprocal ? number_format(round(1 / $last['close'], 8) : $last['close'], 8);
 
                 // Timestamp
                 $timestamp = $last['interval_time'] + 3600000;

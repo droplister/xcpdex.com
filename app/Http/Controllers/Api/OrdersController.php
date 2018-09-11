@@ -28,13 +28,17 @@ class OrdersController extends Controller
             if($request->input('status', 'false') === 'ending-soon')
             {
                 return Order::where('expire_index', '>', $block->block_index)
-                ->where('status', '=', 'open')
-                ->orderBy('expire_index', 'asc')
-                ->paginate(30);
+                    ->where('give_remaining', '>', 0)
+                    ->where('get_remaining', '>', 0)
+                    ->where('status', '=', 'open')
+                    ->orderBy('expire_index', 'asc')
+                    ->paginate(30);
             }
 
             // Open Orders (Newest)
             return Order::where('expire_index', '>', $block->block_index)
+                ->where('give_remaining', '>', 0)
+                ->where('get_remaining', '>', 0)
                 ->where('status', '=', 'open')
                 ->orderBy('tx_index', 'desc')
                 ->paginate(30);

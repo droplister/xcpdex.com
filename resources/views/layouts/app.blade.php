@@ -67,19 +67,19 @@
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link pb-1" href="{{ route('markets.index') }}">
+                            <li class="nav-item mt-2">
+                                <a class="nav-link" href="{{ route('markets.index') }}">
                                     <i class="fa fa-server float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     DEX Markets
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal pb-1" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
+                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
                                             BITCORN/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal pb-1" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
+                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
                                             PEPECASH/XCP
                                         </a>
                                     </li>
@@ -90,14 +90,14 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link pb-1" href="{{ route('orders.index') }}">
+                            <li class="nav-ite mt-2">
+                                <a class="nav-link" href="{{ route('orders.index') }}">
                                     <i class="fa fa-gavel float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Open Orders
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link font-weight-normal pb-1" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
+                                        <a class="nav-link font-weight-normal" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
                                             Ending Soon
                                         </a>
                                     </li>
@@ -111,7 +111,7 @@
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             <span class="d-block w-100">
-                                <i class="fa fa-file float-right text-secondary" aria-hidden="true"></i>
+                                <i class="fa fa-file-o float-right text-secondary" aria-hidden="true"></i>
                                 Page Menu
                             </span>       
                         </h6>

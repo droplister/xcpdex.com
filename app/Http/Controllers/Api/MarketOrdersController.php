@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Cache;
 use App\Market;
 use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;

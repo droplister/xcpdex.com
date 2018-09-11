@@ -27,7 +27,7 @@ class OrdersController extends Controller
             $block = Block::latest('block_index')->first();
 
             // Open Orders (Oldest)
-            if($request->input('status', 'false') === 'ending-soon')
+            if($request->input('status') === 'ending-soon')
             {
                 return Order::where('expire_index', '>', $block->block_index)
                     ->where('give_remaining', '>', 0)

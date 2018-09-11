@@ -55,18 +55,12 @@ class MarketChartController extends Controller
             // Formatting
             foreach($data as $key => $row)
             {
-                // Counterblock Logic
-                $asset_pair = $this->getAssetPairFromAssets($market->xcp_core_base_asset, $market->xcp_core_quote_asset);
-
-                // Reciprocal? (Y/N)
-                $reciprocal = $asset_pair[0] === $market->xcp_core_quote_asset;
-
                 // Data OHLC
-                $open = number_format($reciprocal ? round(1 / $row['open'], 8) : $row['open'], 8);
-                $high = number_format($reciprocal ? round(1 / $row['high'], 8) : $row['high'], 8);
-                $low = number_format($reciprocal ? round(1 / $row['low'], 8) : $row['low'], 8);
-                $close = number_format($reciprocal ? round(1 / $row['close'], 8) : $row['close'], 8);
-                $volume = number_format($reciprocal ? round($row['vol'] / round(1 / $row['midline'], 8), 8) : $row['vol'], 8);
+                $open = $this->normalizeValue($market, $row['open']);
+                $high = $this->normalizeValue($market, $row['high']);
+                $low = $this->normalizeValue($market, $row['low']);
+                $close = $this->normalizeValue($market, $row['close']);
+                $volume = $this->normalizeVolume($market, $row['vol'], $row['midline']);
 
                 // + History
                 $history[] = [$row['interval_time'], $open, $high, $low, $close];
@@ -103,7 +97,7 @@ class MarketChartController extends Controller
             if(Carbon::now()->timestamp * 1000 - $last['interval_time'] > 3600000)
             {
                 // Data OHLC
-                $close = number_format($reciprocal ? round(1 / $last['close'], 8) : $last['close'], 8);
+\                $close = $this->normalizeValue($market, $last['close']);
 
                 // Timestamp
                 $timestamp = $last['interval_time'] + 3600000;
@@ -163,5 +157,53 @@ class MarketChartController extends Controller
         }
 
         return $asset1 < $asset2 ? [$asset1, $asset2] : [$asset2, $asset1];
+    }
+
+    /**
+     * Normalize Value
+     *
+     * @param  \App\Market  $market
+     * @param  mixed $value
+     * @return float
+     */
+    private function normalizeValue(Market $market, $value)
+    {
+        // Reciprocal? (Y/N)
+        $reciprocal = $this->checkForReciprocal($market);
+
+        // Flip and/or Format
+        return round(($reciprocal ? 1 / $value : $value), 8)
+    }
+
+    /**
+     * Normalize Volume
+     *
+     * @param  \App\Market  $market
+     * @param  mixed $volume
+     * @param  mixed $midline
+     * @return float
+     */
+    private function normalizeValue(Market $market, $volume, $midline)
+    {
+        // Reciprocal? (Y/N)
+        $reciprocal = $this->checkForReciprocal($market);
+
+        // Flip and/or Format
+        return round(($reciprocal ? $volume / (1 / $midline) : $volume), 8);
+    }
+
+    /**
+     * Reciprocal Check
+     * 
+     * @param  \App\Market  $market
+     * @return boolean
+     */
+    private function checkForReciprocal(Market $market)
+    {
+        // Counterblock Logic
+        $asset_pair = $this->getAssetPairFromAssets($market->xcp_core_base_asset, $market->xcp_core_quote_asset);
+
+        // Reciprocal? (Y/N)
+        return $asset_pair[0] === $market->xcp_core_quote_asset;
     }
 }

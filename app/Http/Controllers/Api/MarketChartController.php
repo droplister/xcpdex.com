@@ -97,7 +97,7 @@ class MarketChartController extends Controller
             if(Carbon::now()->timestamp * 1000 - $last['interval_time'] > 3600000)
             {
                 // Data OHLC
-\                $close = $this->normalizeValue($market, $last['close']);
+                $close = $this->normalizeValue($market, $last['close']);
 
                 // Timestamp
                 $timestamp = $last['interval_time'] + 3600000;

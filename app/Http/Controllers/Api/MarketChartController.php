@@ -172,7 +172,7 @@ class MarketChartController extends Controller
         $reciprocal = $this->checkForReciprocal($market);
 
         // Flip and/or Format
-        return (float) number_format(($reciprocal ? 1 / $value : $value), 8);
+        return (float) number_format(($reciprocal ? 1 / $value : $value), 8, '.', '');
     }
 
     /**
@@ -189,7 +189,7 @@ class MarketChartController extends Controller
         $reciprocal = $this->checkForReciprocal($market);
 
         // Flip and/or Format
-        return (float) number_format(($reciprocal ? $volume / (1 / $midline) : $volume), 8);
+        return (float) number_format(($reciprocal ? $volume / (1 / $midline) : $volume), 8, '.', '');
     }
 
     /**

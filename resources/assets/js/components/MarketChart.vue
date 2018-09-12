@@ -53,7 +53,7 @@ export default {
           height: '20%'
         }],
         rangeSelector: {
-            selected: 2
+            selected: 1
         },
         plotOptions: {
           line: {

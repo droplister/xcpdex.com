@@ -3,11 +3,14 @@
 @section('title', 'Mempool')
 
 @section('content')
-    <h1 class="mb-3">Blockchain</h1>
+    <h1 class="mb-3">
+        <small><i class="fa fa-chain text-secondary" aria-hidden="true"></i></small>
+        Blockchain
+    </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="{{ route('blocks.index') }}">
-                Blocks
+                New Blocks
             </a>
         </li>
         <li class="nav-item">

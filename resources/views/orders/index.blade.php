@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
-@section('title', $request->has('status') ? 'Ending Soon' : 'Open Orders')
+@section('title', 'DEX Orders')
 
 @section('content')
-    <h1 class="mb-3">{{ $request->has('status') ? 'Ending Soon' : 'Open Orders' }}</h1>
+    <h1 class="mb-3">
+        <small><i class="fa fa-book text-secondary" aria-hidden="true"></i></small>
+        DEX Orders
+    </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link{{ ! $request->has('status') ? ' active' : '' }}" href="{{ route('orders.index') }}">

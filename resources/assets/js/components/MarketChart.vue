@@ -40,12 +40,14 @@ export default {
           title: {
             text: 'Price (' + this.quote_asset + ')'
           },
+          min: 0,
           height: '75%',
           opposite: true,
         },{
           title: {
             text: 'Volume'
           },
+          min: 0,
           top: '80%',
           height: '20%',
           offset: 0,

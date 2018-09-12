@@ -22,7 +22,7 @@ class BlocksController extends Controller
 
         // Get Blocks
         $blocks = Cache::remember($cache_slug, 5, function () use ($request) {
-            return Block::withCount('cancels', 'orders', 'orderMatches')
+            return Block::withCount('cancels', 'expirations', 'orders', 'orderMatches')
                 ->orderBy('block_index', 'desc')
                 ->paginate(30);
         });

@@ -19,6 +19,7 @@ Route::get('/market/{market}', 'MarketsController@show')->name('markets.show');
 Route::get('/matches', 'OrderMatchesController@index')->name('matches.index');
 Route::get('/orders', 'OrdersController@index')->name('orders.index');
 Route::get('/blocks', 'BlocksController@index')->name('blocks.index');
+Route::get('/block/{block}', 'BlocksController@show')->name('blocks.show');
 Route::get('/mempool', 'MempoolController@index')->name('mempool.index');
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('pages.disclaimer');
 Route::get('/privacy', 'PagesController@privacy')->name('pages.privacy');

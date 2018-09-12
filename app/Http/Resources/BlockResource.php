@@ -18,6 +18,7 @@ class BlockResource extends Resource
             'block_index' => $this->block_index,
             'orders_count' => $this->orders_count,
             'cancels_count' => $this->cancels_count,
+            'expirations_count' => $this->expirations_count,
             'order_matches_count' => $this->order_matches_count,
             'date' => $this->confirmed_at->toDateTimeString(),
         ];

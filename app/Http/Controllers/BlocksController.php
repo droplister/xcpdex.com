@@ -16,4 +16,16 @@ class BlocksController extends Controller
     {
         return view('blocks.index');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  integer  $block
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $block)
+    {
+        return redirect(route('blocks.index'));
+    }
 }

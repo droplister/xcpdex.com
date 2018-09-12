@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Droplister\XcpCore\App\Asset;
 use Illuminate\Http\Request;
 
 class AssetsController extends Controller
@@ -15,7 +14,7 @@ class AssetsController extends Controller
      */
     public function index(Request $request)
     {
-        return view('assets.index');
+        return redirect(route('markets.index'));
     }
 
     /**
@@ -27,8 +26,6 @@ class AssetsController extends Controller
      */
     public function show(Request $request, $asset)
     {
-        $asset = Asset::where('asset_name')->orWhere('asset_longname')->firstOrFail();
-
-        return view('assets.show', compact('asset'));
+        return redirect(route('markets.index'));
     }
 }

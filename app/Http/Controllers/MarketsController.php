@@ -12,9 +12,10 @@ class MarketsController extends Controller
      * Display a listing of the resource.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  string  $quote_asset
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $quote_asset='XCP')
     {
         // Markets
         $markets = Market::selectRaw('COUNT(*) as count, xcp_core_quote_asset')
@@ -23,7 +24,7 @@ class MarketsController extends Controller
             ->take(10)
             ->get();
 
-        return view('markets.index', compact('markets', 'request'));
+        return view('markets.index', compact('markets', 'quote_asset'));
     }
 
     /**

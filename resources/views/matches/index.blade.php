@@ -12,12 +12,12 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                Ending Soon
+                Ending
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('matches.index') }}">
-                Filled Orders
+                Filled
             </a>
         </li>
     </ul>

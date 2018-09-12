@@ -72,25 +72,25 @@
                                     <i class="fa fa-server float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     Markets
                                 </a>
-                                <ul class="nav flex-column">
+                                <ul class="nav flex-column" style="font-size: 80%;">
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'FLDC_XCP']) }}">
-                                            <small>FLDC/XCP</small>
+                                            FLDC/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
-                                            <small>BITCORN/XCP</small>
+                                            BITCORN/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
-                                            <small>PEPECASH/XCP</small>
+                                            PEPECASH/XCP
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'CROPS_XCP']) }}">
-                                            <small>CROPS/XCP</small>
+                                            CROPS/XCP
                                         </a>
                                     </li>
                                 </ul>
@@ -116,12 +116,17 @@
                             <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('blocks.index') }}">
                                     <i class="fa fa-chain float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    Blocks
+                                    Blockchain
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
+                                        <a class="nav-link font-weight-normal" href="{{ route('blocks.index') }}">
+                                            Blocks
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('mempool.index') }}">
-                                            Mempoool
+                                            Mempool
                                         </a>
                                     </li>
                                 </ul>

@@ -7,8 +7,8 @@
           <th>Block #</th>
           <th>Orders</th>
           <th>Order Matches</th>
-          <th>Expirations</th>
           <th>Cancellations</th>
+          <th>Expirations</th>
           <th>Date</th>
         </tr>
       </thead>
@@ -17,8 +17,8 @@
           <td><a :href="'https://xcpfox.com/block/' + block.block_index" target="_blank">{{ block.block_index }}</a></td>
           <td>{{ block.orders_count }}</td>
           <td>{{ block.order_matches_count }}</td>
-          <td>{{ block.expirations_count }}</td>
           <td>{{ block.cancels_count }}</td>
+          <td>{{ block.expirations_count }}</td>
           <td>{{ block.date }}</td>
         </tr>
         <tr v-if="blocks && blocks.length === 0">

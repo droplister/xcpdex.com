@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="table-responsive order-matches" infinite-wrapper>
+  <div class="table-responsive asset-markets" infinite-wrapper>
     <table class="table table-striped table-sm">
       <thead class="text-left">
         <tr>

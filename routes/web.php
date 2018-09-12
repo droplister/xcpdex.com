@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/assets', 'AssetsController@index')->name('assets.index');
 Route::get('/asset/{asset}', 'AssetsController@show')->name('assets.show');
-Route::get('/markets', 'MarketsController@index')->name('markets.index');
+Route::get('/markets/{quote_asset?}', 'MarketsController@index')->name('markets.index');
 Route::get('/market/{market}', 'MarketsController@show')->name('markets.show');
 Route::get('/matches', 'OrderMatchesController@index')->name('matches.index');
 Route::get('/orders', 'OrdersController@index')->name('orders.index');

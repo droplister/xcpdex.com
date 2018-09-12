@@ -40,11 +40,6 @@ export default {
           title: {
             text: 'Price (' + this.quote_asset + ')'
           },
-          labels: {
-            formatter: function () {
-              return '$' + this.value
-            }
-          },
           height: '75%',
           opposite: true,
         },{

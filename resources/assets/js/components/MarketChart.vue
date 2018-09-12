@@ -42,16 +42,19 @@ export default {
           },
           min: 0,
           height: '75%',
-          opposite: true,
+          opposite: true
         },{
           title: {
             text: 'Volume'
           },
           min: 0,
-          top: '80%',
-          height: '20%',
           offset: 0,
+          top: '80%',
+          height: '20%'
         }],
+        rangeSelector: {
+            selected: 2
+        },
         plotOptions: {
           line: {
             animation: false

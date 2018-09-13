@@ -40,12 +40,12 @@
                 <div class="card mb-4">
                     <div class="card-header font-weight-bold">
                         <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                            {{ $featured->market->name }}
+                            {{ $featured->market->baseAsset->display_name }}
                         </a>
                     </div>
                     <div class="card-body">
-                        <h4>{{ $featured->market->last_price }} {{ $featured->market->trading_pair_quote_asset }}</h4>
-                        <p class="card-text">Last Trade: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
+                        <h4>{{ $featured->market->last_price }} {{ $featured->market->quoteAsset->display_name }}</h4>
+                        <p class="card-text">Last Traded: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
                     </div>
                 </div>
             </div>

@@ -5,9 +5,7 @@
 @section('content')
     <h1 class="mb-3">Counterparty DEX</h1>
     <hr />
-    <p>
-        <span class="d-none d-md-inline-block">The Counterparty DEX is a decentralized exchange that allows anyone, anywhere to trade Counterparty assets on the Bitcoin blockchain.</span> XCPDEX.com is a blockchain explorer dedicated to publishing Counterparty DEX data, but XCPDEX.com is not in and of itself an exchange.
-    </p>
+    <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive" />
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
@@ -29,9 +27,6 @@
                     </div>
                 </div>
             </div>
-            @if($loop->iteration === 2)
-                @break
-            @endif
         @endforeach
     </div>
     <div class="row justify-content-center mb-2">
@@ -165,8 +160,22 @@
             </div>
         </div>
     </div>
-    <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
-        <i class="fa fa-telegram"></i> Join us on Telegram
-    </a>
+    <div class="row justify-content-center mb-2">
+        <div class="col-12">
+            <h2 class="mt-3 mb-3">How to Trade</h2>
+            <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Our website, XCPDEX.com, is a blockchain explorer dedicated to publishing data about how these assets trade, but XCPDEX.com itself is not an exchange. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Confused? Join us on Telegram and ask a question. We've also written a brief tutorial on how to use Counterwallet software to access the DEX.</p>
+            <br />
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+                <i class="fa fa-telegram"></i> Join us on Telegram
+            </a>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+                <i class="fa fa-medium"></i> Read This Tutorial
+            </a>
+        </div>
+    </div>
     @include('home.modals.how-to')
 @endsection

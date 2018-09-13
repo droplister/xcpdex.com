@@ -14,12 +14,12 @@
       </thead>
       <tbody>
         <tr v-for="order in orders">
-          <td><a :href="'https://xcpfox.com/tx/' + order.tx_hash" target="_blank">{{ order.date }}</a></td>
+          <td><a :href="'/market/' + order.market_slug">{{ order.date }}</a></td>
           <td :class="order.type === 'Buy' ? 'text-success' : 'text-danger'">{{ order.type }}</td>
           <td>{{ order.quantity }} <a :href="'/market/' + order.market_slug">{{ order.base_asset }}</a></td>
           <td>{{ order.price }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
           <td>{{ order.total }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
-          <td><a :href="'https://xcpfox.com/address/' + order.source" target="_blank">{{ order.source }}</a></td>
+          <td><a :href="'/market/' + order.market_slug">{{ order.source }}</a></td>
         </tr>
         <tr v-if="orders && orders.length === 0">
           <td class="text-center" colspan="6">No orders.</td>

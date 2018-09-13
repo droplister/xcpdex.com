@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\UpdateMarketsCommand::class,
     ];
 
     /**
@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         {
             $schedule->command('update:index')->everyMinute();
             $schedule->command('update:mempool')->everyMinute();
+            $schedule->command('update:markets')->daily();
         }
     }
 

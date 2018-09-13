@@ -22,12 +22,16 @@ class BlockListener
         // Useful Switch
         if(config('xcp-core.indexing'))
         {
-            // Get Markets
-            $markets = Market::get();
+            // Get Orders
+            $orders = $event->block->orders;
 
-            // Update Vol.
-            foreach($markets as $market)
+            // Update Markets
+            foreach($orders as $order)
             {
+                // Get Market
+                $market = Market::where('name', '=', $order->trading_pair_normalized)->first();
+
+                // Update Job
                 UpdateMarketVolumes::dispatch($market, $event->block);
             }
 

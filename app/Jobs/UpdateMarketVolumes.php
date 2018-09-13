@@ -48,16 +48,19 @@ class UpdateMarketVolumes implements ShouldQueue
      */
     public function handle()
     {
+        $start_date = $this->block->confirmed_at->subDays(1)->toDateTimeString();
+        $end_date = $this->block->confirmed_at->toDateTimeString();
+
         $buys_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_base_asset)
             ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
+            ->whereBetween('confirmed_at', [$start_date, $end_date])
             ->where('status', '=', 'completed')
-            ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(1))
             ->sum('forward_quantity');
 
         $sells_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
+            ->whereBetween('confirmed_at', [$start_date, $end_date])
             ->where('status', '=', 'completed')
-            ->where('confirmed_at', '>', $this->block->confirmed_at->subDays(1))
             ->sum('backward_quantity');
 
         // Volume

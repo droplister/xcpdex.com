@@ -61,9 +61,6 @@ export default{
         credits: {
           enabled: false
         },
-        exporting: {
-          width: 800
-        },
         responsive: {
           rules: [{
             condition: {

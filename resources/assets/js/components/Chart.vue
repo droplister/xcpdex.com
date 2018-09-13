@@ -54,6 +54,9 @@ export default {
             text: this.label
           },
         },
+        navigator: {
+          enabled: true
+        },
         tooltip: {
           shared: true
         },

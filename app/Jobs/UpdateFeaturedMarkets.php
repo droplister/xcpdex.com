@@ -46,7 +46,7 @@ class UpdateFeaturedMarkets implements ShouldQueue
         foreach($sends as $send)
         {
             // Market to Feature
-            $name = hex2bin($send->memo);
+            $name = str_replace('"', '', hex2bin($send->memo));
 
             // Flexible Inputs
             $market = Market::where('name', '=', $name)

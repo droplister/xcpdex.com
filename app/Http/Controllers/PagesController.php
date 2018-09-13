@@ -46,6 +46,6 @@ class PagesController extends Controller
         // Features
         $features = Feature::highestBids()->with('market')->get();
 
-        return view('pages.terms', compact('features');
+        return view('pages.terms', compact('features'));
     }
 }

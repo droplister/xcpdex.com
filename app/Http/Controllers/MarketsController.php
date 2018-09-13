@@ -19,7 +19,8 @@ class MarketsController extends Controller
     public function index(Request $request, $quote_asset='XCP')
     {
         // Markets
-        $markets = Market::where('volume', '>', 0)
+        $markets = Market::with('quote_asset')
+            ->where('volume', '>', 0)
             ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')

@@ -14,24 +14,24 @@
             <br />
         </div>
         <div class="col-12 col-md-6">
-            <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+            <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-outline-primary mb-4">
                 <i class="fa fa-telegram"></i> Join us on Telegram
             </a>
         </div>
         <div class="col-12 col-md-6">
-            <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+            <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank" class="btn btn-lg btn-block btn-outline-primary mb-4">
                 <i class="fa fa-medium"></i> Read This Tutorial
             </a>
         </div>
     </div>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
-            <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
+            <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-outline-primary mt-3 float-right">
                 Get Featured
             </a>
             <h2 class="mt-3 mb-3">
                 Featured
-                <small><i class="fa fa-info-circle text-secondary" data-toggle="tooltip" data-placement="top" title="Not an endorsement"></i></small>
+                <small><i class="fa fa-info-circle text-secondary" title="Not an endorsement"></i></small>
             </h2>
         </div>
         @foreach($features as $featured)
@@ -52,7 +52,7 @@
     </div>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
-            <a href="https://coinmarketcap.com/currencies/counterparty/#markets" class="btn btn-sm btn-primary mt-3 float-right" target="_blank">
+            <a href="https://coinmarketcap.com/currencies/counterparty/#markets" class="btn btn-sm btn-outline-primary mt-3 float-right" target="_blank">
                 Where to Buy
             </a>
             <h2 class="mt-3 mb-3">XCP Price</h2>
@@ -69,7 +69,7 @@
     </div>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
-            <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
+            <a href="{{ route('orders.index') }}" class="btn btn-sm btn-outline-primary mt-3 float-right">
                 <i aria-hidden="true" class="fa fa-book"></i>
                 All Orders
             </a>
@@ -125,9 +125,4 @@
         </div>
     </div>
     @include('home.modals.how-to')
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
 @endsection

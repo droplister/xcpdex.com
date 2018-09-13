@@ -19,7 +19,7 @@ class MarketResource extends Resource
             'slug' => $this->slug,
             'market_cap' => number_format($this->baseAsset->supply_normalized * $this->lastMatch()->trading_price_normalized),
             'volume' => $this->volume_normalized,
-            'supply' => $this->baseAsset->supply_normalized,
+            'supply' => number_format($this->baseAsset->supply_normalized),
             'base_asset' => $this->baseAsset->display_name,
             'quote_asset' => $this->quoteAsset->display_name,
             'price' => $this->last_price,

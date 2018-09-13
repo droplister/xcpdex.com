@@ -17,7 +17,7 @@
           <td class="text-right">{{ market.market_cap }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.price }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.volume }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
-          <td class="text-right">{{ market.supply }} <a :href="'/market/' + market.slug">{{ market.base_asset }}</a></td>
+          <td class="text-right">{{ market.supply }}</td>
         </tr>
         <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="5">No markets.</td>

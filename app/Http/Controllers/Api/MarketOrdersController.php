@@ -23,7 +23,7 @@ class MarketOrdersController extends Controller
     public function index(Request $request, Market $market)
     {
         // Block Index
-        $block_index = Cache::get('block_index');
+        $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;
 
         // Cache Slug
         $cache_slug = 'api_market_orders_index_' . $block_index . '_' . $market->slug;

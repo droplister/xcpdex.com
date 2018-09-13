@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Cache;
 use App\Market;
+use Droplister\XcpCore\App\Block;
 use App\Http\Resources\MarketResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,7 @@ class MarketsController extends Controller
     public function index(Request $request)
     {
         // Block Index
-        $block_index = Cache::get('block_index');
+        $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;
 
         // Cache Slug
         $cache_slug = 'api_markets_index_' . $block_index . '_' . str_slug(serialize($request->all()));

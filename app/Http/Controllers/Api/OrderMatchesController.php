@@ -20,7 +20,7 @@ class OrderMatchesController extends Controller
     public function index(Request $request)
     {
         // Block Index
-        $block_index = Cache::get('block_index');
+        $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;
 
         // Cache Slug
         $cache_slug = 'api_order_matches_index_' . $block_index . '_' . str_slug(serialize($request->all()));

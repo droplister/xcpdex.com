@@ -39,9 +39,11 @@
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-header font-weight-bold">
+                        @if(isset(json_decode($featured->market->baseAsset->meta, true)['image']))
                         <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                            <img src="{{ $featured->market->baseAsset->meta['image'] }}" style="vertical-align:top;height:22px;" class="mr-1" />
+                            <img src="{{ json_decode($featured->market->baseAsset->meta, true)['image'] }}" style="vertical-align:top;height:22px;" class="mr-1" />
                         </a>
+                        @endif
                         <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
                             {{ $featured->market->baseAsset->display_name }}
                         </a>

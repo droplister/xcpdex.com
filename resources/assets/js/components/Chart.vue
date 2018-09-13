@@ -54,6 +54,11 @@ export default {
             text: this.label
           },
         },
+        plotOptions: {
+          line: {
+            animation: false
+          }
+        },
         navigator: {
           enabled: true
         },

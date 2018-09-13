@@ -35,6 +35,9 @@ export default {
         title: {
           text: ''
         },
+        navigator: {
+          enabled: true
+        },
         tooltip: {
           shared: true
         },

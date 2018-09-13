@@ -60,6 +60,9 @@ export default {
             animation: false
           }
         },
+        navigator: {
+          enabled: true
+        },
         tooltip: {
           shared: true
         },
@@ -106,7 +109,21 @@ export default {
             yAxis: 1,
             type: 'column',
             name: 'Volume (' + this.base_asset + ')',
-            data: response.data.volumes
+            data: response.data.volumes,
+            dataGrouping: {
+              units: [
+                [
+                  'day', // unit name
+                  [1] // allowed multiples
+                ], [
+                  'week',
+                  [1]
+                ], [
+                  'month',
+                  [1, 2, 3, 4, 6]
+                ]
+              ]
+            }
           })
         }
       })

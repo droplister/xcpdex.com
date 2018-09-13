@@ -16,7 +16,7 @@
         </div>
         <div class="col-12 col-md-6">
             <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-outline-primary mb-4">
-                <i class="fa fa-telegram"></i> Join us on Telegram
+                <i class="fa fa-telegram"></i> Join Our Telegram
             </a>
         </div>
         <div class="col-12 col-md-6">

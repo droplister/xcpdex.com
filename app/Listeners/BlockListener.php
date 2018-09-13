@@ -23,7 +23,7 @@ class BlockListener
         if(config('xcp-core.indexing'))
         {
             // Get Orders
-            $orders = $event->block->orders;
+            $orders = $event->block->orders->merge($event->block->expirations);
 
             // Update Markets
             foreach($orders as $order)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Cache;
 use Droplister\XcpCore\App\Asset;
 use Illuminate\Http\Resources\Json\Resource;
 
@@ -27,6 +28,7 @@ class OrderResource extends Resource
             'price' => $this->trading_price_normalized,
             'quantity' => $this->trading_quantity_normalized,
             'total' => $this->trading_total_normalized,
+            'blocks_left' => Cache::get('block_index') ? $this->expire_index - Cache::get('block_index') : $this->expire_index,
         ];
     }
 }

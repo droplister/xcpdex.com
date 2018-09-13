@@ -4,7 +4,7 @@
     <table class="table table-striped table-sm">
       <thead class="text-left">
         <tr>
-          <th>Date</th>
+          <th>Blocks Left</th>
           <th>Action</th>
           <th>Quantity</th>
           <th>Price</th>
@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr v-for="order in orders">
-          <td><a :href="'/market/' + order.market_slug">{{ order.date }}</a></td>
+          <td>{{ order.blocks_left }}</td>
           <td :class="order.type === 'Buy' ? 'text-success' : 'text-danger'">{{ order.type }}</td>
           <td>{{ order.quantity }} <a :href="'/market/' + order.market_slug">{{ order.base_asset }}</a></td>
           <td>{{ order.price }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>

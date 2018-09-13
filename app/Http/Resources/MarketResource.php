@@ -22,6 +22,7 @@ class MarketResource extends Resource
             'supply' => number_format($this->baseAsset->supply_normalized),
             'base_asset' => $this->baseAsset->display_name,
             'quote_asset' => $this->quoteAsset->display_name,
+            'open_orders_count' => $this->open_orders_count,
             'price' => $this->last_price,
         ];
     }

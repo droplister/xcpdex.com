@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
                     Price BTC
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
                     Market Cap
@@ -137,7 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
                     Last 30 Days
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
                     Last 365 Days

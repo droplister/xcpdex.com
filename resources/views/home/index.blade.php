@@ -8,10 +8,9 @@
     </h1>
     <hr />
     <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-1 float-right">
-        <i aria-hidden="true" class="fa fa-gavel"></i>
-        Get Featured
+        Sponsorship
     </a>
-    <h2 class="mt-3 mb-3">Featured</h2>
+    <h2 class="mt-3 mb-3">Featured <span class="d-none d-md-inline-block">Markets</span></h2>
     <div class="row justify-content-center">
         @foreach($features as $featured)
         <div class="col-md-6">

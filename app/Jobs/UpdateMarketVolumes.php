@@ -69,6 +69,6 @@ class UpdateMarketVolumes implements ShouldQueue
         ]);
 
         // Forget
-        Cache::forget('volume_normalized_' . $this->slug);
+        Cache::forget('volume_normalized_' . $this->market->id);
     }
 }

@@ -5,20 +5,22 @@
       <thead class="text-left">
         <tr>
           <th>Ticker</th>
+          <th>Market Cap</th>
           <th>Price</th>
-          <th>Volume</th>
-          <th>Change</th>
+          <th>Volume <small>24h</small></th>
+          <th>Supply</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="market in markets">
           <td><a :href="'/market/' + market.slug">{{ market.base_asset }}</a></td>
-          <td class="text-right">{{ market.price }}</td>
-          <td class="text-right">{{ market.volume }}</td>
-          <td class="text-right">{{ market.change }}</td>
+          <td class="text-right">{{ market.market_cap }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
+          <td class="text-right">{{ market.price }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
+          <td class="text-right">{{ market.volume }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
+          <td class="text-right">{{ market.supply }} <a :href="'/market/' + market.slug">{{ market.base_asset }}</a></td>
         </tr>
         <tr v-if="matches && matches.length === 0">
-          <td class="text-center" colspan="4">No markets.</td>
+          <td class="text-center" colspan="5">No markets.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

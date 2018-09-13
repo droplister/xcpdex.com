@@ -17,8 +17,8 @@ class OrderResource extends Resource
     {
         return [
             'tx_hash' => $this->tx_hash,
-            'base_asset' => $this->trading_base_asset,
-            'quote_asset' => $this->trading_quote_asset,
+            'base_asset' => $this->trading_pair_base_asset,
+            'quote_asset' => $this->trading_pair_quote_asset,
             'date' => $this->confirmed_at->toDateTimeString(),
             'market' => $this->trading_pair_normalized,
             'market_slug' => str_replace('/', '_', $this->trading_pair_normalized),

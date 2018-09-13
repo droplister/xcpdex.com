@@ -2,7 +2,7 @@
     <table class="table table-sm table-bordered text-center">
         <tbody>
             <tr>
-                <td class="font-weight-bold d-none d-md-inline-block">
+                <td class="font-weight-bold d-none d-md-block border-right-0 border-bottom-0">
                     <span class="d-block font-weight-normal">
                         {{ $market->baseAsset->display_name }}
                         <a href="https://xcpfox.com/asset/{{ $market->baseAsset->display_name }}" target="_blank">
@@ -24,7 +24,7 @@
                             {{ $market->quoteAsset->display_name }}
                         </small>
                     </span>
-                    {{ $last_match ? $last_match->trading_price_normalized : '----------' }}
+                    {{ $last_match ? number_format($last_match->trading_price_normalized, 8) : '----------' }}
                 </td>
             </tr>
             <tr class="bg-light">

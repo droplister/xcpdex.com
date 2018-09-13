@@ -8,8 +8,8 @@
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
-          <th>Blocks Left</th>
           <th>Source</th>
+          <th>Blocks Left</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +18,8 @@
           <td>{{ order.quantity }} <a :href="'/market/' + order.market_slug">{{ order.base_asset }}</a></td>
           <td>{{ order.price }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
           <td>{{ order.total }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
-          <td>{{ order.blocks_left }}</td>
           <td><a :href="'/market/' + order.market_slug">{{ order.source }}</a></td>
+          <td>{{ order.blocks_left }}</td>
         </tr>
         <tr v-if="orders && orders.length === 0">
           <td class="text-center" colspan="6">No orders.</td>

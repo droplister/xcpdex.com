@@ -5,13 +5,34 @@
 @section('content')
     <h1 class="mb-3">Counterparty DEX</h1>
     <hr />
-    <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive" />
+    <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive" width="100%" />
+    <hr />
+    <div class="row justify-content-center mb-2">
+        <div class="col-12">
+            <h2 class="mt-3 mb-3">How to Trade</h2>
+            <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Our website, XCPDEX.com, is a blockchain explorer dedicated to publishing data about how these assets trade, but XCPDEX.com itself is not an exchange. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Confused? Join us on Telegram and ask a question. We've also written a brief tutorial on how to use Counterwallet software to access the DEX.</p>
+            <br />
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+                <i class="fa fa-telegram"></i> Join us on Telegram
+            </a>
+        </div>
+        <div class="col-12 col-md-6">
+            <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+                <i class="fa fa-medium"></i> Read This Tutorial
+            </a>
+        </div>
+    </div>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
                 Get Featured
             </a>
-            <h2 class="mt-3 mb-3">Featured</h2>
+            <h2 class="mt-3 mb-3">
+                Featured
+                <small><i class="fa fa-info-circle text-secondary" data-toggle="tooltip" data-placement="top" title="Not an endorsement"></i></small>
+            </h2>
         </div>
         @foreach($features as $featured)
             <div class="col-md-6">
@@ -103,79 +124,10 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center mb-2">
-        <div class="col-12">
-            <a href="{{ route('matches.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
-                <i aria-hidden="true" class="fa fa-book"></i>
-                All Trades
-            </a>
-            <h2 class="mt-3 mb-3">Trade History</h2>
-            <div class="card mb-4">
-                <div class="card-header">
-                    Counterparty DEX Chart
-                </div>
-                <chart title="DEX Trades (All-Time)" label="Total" cumulative="true"
-                    source="{{ route('api.orderMatches.chart') }}">
-                </chart>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    Last 24 Hours
-                </div>
-                <div class="card-body">
-                    <h3>{{ number_format($trade_counts['recent']) }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    Last 30 Days
-                </div>
-                <div class="card-body">
-                    <h3>{{ number_format($trade_counts['thirty']) }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    Last 365 Days
-                </div>
-                <div class="card-body">
-                    <h3>{{ number_format($trade_counts['annual']) }}</h3>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    All-Time
-                </div>
-                <div class="card-body">
-                    <h3>{{ number_format($trade_counts['all']) }}</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center mb-2">
-        <div class="col-12">
-            <h2 class="mt-3 mb-3">How to Trade</h2>
-            <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Our website, XCPDEX.com, is a blockchain explorer dedicated to publishing data about how these assets trade, but XCPDEX.com itself is not an exchange. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Confused? Join us on Telegram and ask a question. We've also written a brief tutorial on how to use Counterwallet software to access the DEX.</p>
-            <br />
-        </div>
-        <div class="col-12 col-md-6">
-            <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
-                <i class="fa fa-telegram"></i> Join us on Telegram
-            </a>
-        </div>
-        <div class="col-12 col-md-6">
-            <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
-                <i class="fa fa-medium"></i> Read This Tutorial
-            </a>
-        </div>
-    </div>
     @include('home.modals.how-to')
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 @endsection

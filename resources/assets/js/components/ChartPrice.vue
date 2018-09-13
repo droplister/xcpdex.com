@@ -66,9 +66,6 @@ export default{
             animation: false
           }
         },
-        navigator: {
-          enabled: true
-        },
         tooltip: {
           shared: true
         },

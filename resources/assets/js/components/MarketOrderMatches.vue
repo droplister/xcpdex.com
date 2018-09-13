@@ -5,7 +5,7 @@
       <thead class="text-left">
         <tr>
           <th>Date</th>
-          <th>Action</th>
+          <th>Side</th>
           <th>Price</th>
           <th>Quantity</th>
           <th>Total</th>

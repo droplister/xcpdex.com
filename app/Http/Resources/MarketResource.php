@@ -22,8 +22,11 @@ class MarketResource extends Resource
             'supply' => number_format($this->baseAsset->supply_normalized),
             'base_asset' => $this->baseAsset->display_name,
             'quote_asset' => $this->quoteAsset->display_name,
-            'open_orders_count' => $this->open_orders_count,
             'price' => $this->last_price,
+            'last_trade_date' => $this->last_trade_date,
+            'open_orders_count' => $this->open_orders_count,
+            'orders_count' => $this->orders_count,
+            'order_matches_count' => $this->order_matches_count,
         ];
     }
 }

@@ -5,21 +5,27 @@
       <thead class="text-left">
         <tr>
           <th>Ticker</th>
-          <th>Open Orders</th>
+          <th>Market Cap</th>
           <th>Price</th>
           <th>Volume <small>30d</small></th>
-          <th>Market Cap</th>
           <th>Supply</th>
+          <th>Open Orders</th>
+          <th>Orders</th>
+          <th>Matches</th>
+          <th>Last Trade</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="market in markets">
           <td><a :href="'/market/' + market.slug">{{ market.base_asset }}</a></td>
-          <td class="text-right"><a :href="'/market/' + market.slug">{{ market.open_orders_count }}</a></td>
+          <td class="text-right">{{ market.market_cap }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.price }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.volume }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
-          <td class="text-right">{{ market.market_cap }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.supply }}</td>
+          <td class="text-right">{{ market.open_orders_count }}</td>
+          <td class="text-right">{{ market.orders_count }}</td>
+          <td class="text-right">{{ market.order_matches_count }}</td>
+          <td class="text-right">{{ market.last_trade_date }}</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

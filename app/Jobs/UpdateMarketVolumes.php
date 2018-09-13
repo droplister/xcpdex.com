@@ -71,6 +71,12 @@ class UpdateMarketVolumes implements ShouldQueue
         $m_volume = $buys_today + $sells_today;
 
         // Orders
+        $t_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('give_asset', '=', $this->market->xcp_core_base_asset)
+            ->orWhere('get_asset', '=', $this->market->xcp_core_base_asset)
+            ->where('give_asset', '=', $this->market->xcp_core_quote_asset)
+            ->count();
+
         $c_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('give_asset', '=', $this->market->xcp_core_base_asset)
             ->where('status', '=', 'open')
@@ -79,10 +85,19 @@ class UpdateMarketVolumes implements ShouldQueue
             ->where('status', '=', 'open')
             ->count();
 
+        // Order Matches
+        $t_order_matches_count = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
+            ->orWhere('backward_asset', '=', $this->market->xcp_core_base_asset)
+            ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
+            ->count();
+
         // Update
         $this->market->update([
             'volume' => $m_volume,
+            'orders_count' => $t_orders_count,
             'open_orders_count' => $c_open_orders_count,
+            'order_matches_count' => $t_order_matches_count,
         ]);
 
         // Forget

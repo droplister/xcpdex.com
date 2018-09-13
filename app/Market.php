@@ -25,7 +25,9 @@ class Market extends Model
         'name',
         'slug',
         'volume',
+        'orders_count',
         'open_orders_count',
+        'order_matches_count',
     ];
 
     /**
@@ -47,8 +49,20 @@ class Market extends Model
      */
     public function getLastPriceAttribute()
     {
-        return Cache::remember('volume_normalized_' . $this->id, 5, function () {
+        return Cache::remember('m_lp_' . $this->slug, 60, function () {
             return $this->lastMatch() ? $this->lastMatch()->trading_price_normalized : number_format(0, 8);
+        });
+    }
+
+    /**
+     * Last Trade Date
+     *
+     * @return string
+     */
+    public function getLastTradeDateAttribute()
+    {
+        return Cache::remember('m_ltd_' . $this->slug, 60, function () {
+            return $this->lastMatch() ? $this->lastMatch()->confirmed_at->toDateTimeString() : '----';
         });
     }
 

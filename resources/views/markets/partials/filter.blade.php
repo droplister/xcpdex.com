@@ -1,4 +1,9 @@
 <ul class="nav nav-tabs d-none d-md-flex">
+    <li class="nav-item">
+        <a class="nav-link{{ 'XCP' === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
+            XCP
+        </a>
+    </li>
     @foreach($markets as $market)
     <li class="nav-item">
         <a class="nav-link{{ $market->quoteAsset->display_name === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => $market->quoteAsset->display_name]) }}">
@@ -18,6 +23,9 @@
             Markets
         </a>
         <div class="dropdown-menu">
+        <a class="dropdown-item{{ 'XCP' === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
+            XCP
+        </a>
         @foreach($markets as $market)
             <a class="dropdown-item{{ $market->quoteAsset->display_name === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => $market->quoteAsset->display_name]) }}">
                 {{ $market->quoteAsset->display_name }}

@@ -17,6 +17,7 @@ class MempoolController extends Controller
      */
     public function index(Request $request)
     {
+        // No Caching
         $transactions = Mempool::where('command', '=', 'insert')
             ->whereIn('category', ['orders', 'cancels'])
             ->whereDoesntHave('transaction')

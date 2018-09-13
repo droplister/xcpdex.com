@@ -19,39 +19,42 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
+        // Current Block Index
+        $block = Block::latest('block_index')->first();
+
         // Cache Slug
-        $cache_slug = 'api_orders_index_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_orders_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
 
         // Get Orders
-        $orders = Cache::remember($cache_slug, 10, function () use ($request) {
-            // Block Index
-            $block = Block::latest('block_index')->first();
-
-            // Open Orders (Oldest)
+        return Cache::remember($cache_slug, 60, function () use ($block, $request) {
+            // Check Status
             if($request->input('status') === 'ending-soon')
             {
-                return Order::where('expire_index', '>', $block->block_index)
+                // Open Orders (Oldest)
+                $orders = Order::where('expire_index', '>', $block->block_index)
                     ->where('give_remaining', '>', 0)
                     ->where('get_remaining', '>', 0)
                     ->where('status', '=', 'open')
                     ->orderBy('expire_index', 'asc')
                     ->paginate(30);
             }
+            else
+            {
+                // Open Orders (Newest)
+                $orders = Order::where('expire_index', '>', $block->block_index)
+                    ->where('give_remaining', '>', 0)
+                    ->where('get_remaining', '>', 0)
+                    ->where('status', '=', 'open')
+                    ->orderBy('tx_index', 'desc')
+                    ->paginate(30);
+            }
 
-            // Open Orders (Newest)
-            return Order::where('expire_index', '>', $block->block_index)
-                ->where('give_remaining', '>', 0)
-                ->where('get_remaining', '>', 0)
-                ->where('status', '=', 'open')
-                ->orderBy('tx_index', 'desc')
-                ->paginate(30);
+            return [
+                'orders' => OrderResource::collection($orders),
+                'last_page' => ceil($orders->total() / 30),
+                'current_page' => (int) $request->input('page', 1),
+            ];
         });
-
-        return [
-            'orders' => OrderResource::collection($orders),
-            'last_page' => ceil($orders->total() / 30),
-            'current_page' => (int) $request->input('page', 1),
-        ];
     }
 
     /**

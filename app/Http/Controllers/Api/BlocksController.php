@@ -17,20 +17,24 @@ class BlocksController extends Controller
      */
     public function index(Request $request)
     {
+        // Current Block Index
+        $block = Block::latest('block_index')->first();
+
         // Cache Slug
-        $cache_slug = 'api_blocks_index_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_blocks_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
 
         // Get Blocks
-        $blocks = Cache::remember($cache_slug, 10, function () use ($request) {
-            return Block::withCount('cancels', 'expirations', 'orders', 'orderMatches')
+        return Cache::remember($cache_slug, 60, function () use ($request) {
+            // The Blocks
+            $blocks = Block::withCount('cancels', 'expirations', 'orders', 'orderMatches')
                 ->orderBy('block_index', 'desc')
                 ->paginate(30);
-        });
 
-        return [
-            'blocks' => BlockResource::collection($blocks),
-            'last_page' => ceil($blocks->total() / 30),
-            'current_page' => (int) $request->input('page', 1),
-        ];
+            return [
+                'blocks' => BlockResource::collection($blocks),
+                'last_page' => ceil($blocks->total() / 30),
+                'current_page' => (int) $request->input('page', 1),
+            ];
+        });
     }
 }

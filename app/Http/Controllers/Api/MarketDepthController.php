@@ -25,11 +25,12 @@ class MarketDepthController extends Controller
         $block = Block::latest('block_index')->first();
 
         // Cache Slug
-        $cache_slug = 'api_market_depth_buys_' . $block->block_index . '_' . $market->slug;
+        $cache_slug = 'api_market_depth_' . $block->block_index . '_' . $market->slug;
 
-        // Market's Buy Orders
-        $buy_orders = Cache::remember($cache_slug, 10, function () use ($block, $market) {
-            return Order::where('get_asset', '=', $market->xcp_core_base_asset)
+        // Market Depth
+        return Cache::remember($cache_slug, 60, function () use ($block, $market) {
+            // Market's Buy Orders
+            $buy_orders = Order::where('get_asset', '=', $market->xcp_core_base_asset)
                 ->where('give_asset', '=', $market->xcp_core_quote_asset)
                 ->where('expire_index', '>', $block->block_index)
                 ->where('give_remaining', '>', 0)
@@ -37,14 +38,9 @@ class MarketDepthController extends Controller
                 ->where('status', '=', 'open')
                 ->get()
                 ->sortByDesc('trading_price_normalized');
-        });
 
-        // Cache Slug
-        $cache_slug = 'api_market_depth_sells_' . $block->block_index . '_' . $market->slug;
-
-        // Market's Sell Orders
-        $sell_orders = Cache::remember($cache_slug, 10, function () use ($block, $market) {
-            return Order::where('give_asset', '=', $market->xcp_core_base_asset)
+            // Market's Sell Orders
+            $sell_orders = Order::where('give_asset', '=', $market->xcp_core_base_asset)
                 ->where('get_asset', '=', $market->xcp_core_quote_asset)
                 ->where('expire_index', '>', $block->block_index)
                 ->where('give_remaining', '>', 0)
@@ -52,11 +48,11 @@ class MarketDepthController extends Controller
                 ->where('status', '=', 'open')
                 ->get()
                 ->sortBy('trading_price_normalized');
-        });
 
-        return [
-            'buy_orders' => DepthResource::collection($buy_orders),
-            'sell_orders' => DepthResource::collection($sell_orders),
-        ];
+            return [
+                'buy_orders' => DepthResource::collection($buy_orders),
+                'sell_orders' => DepthResource::collection($sell_orders),
+            ];
+        });
     }
 }

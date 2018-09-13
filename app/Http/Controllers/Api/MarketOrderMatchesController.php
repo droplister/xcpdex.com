@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Cache;
 use App\Market;
+use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\OrderMatch;
 use App\Http\Resources\OrderMatchResource;
 use Illuminate\Http\Request;
@@ -20,12 +21,15 @@ class MarketOrderMatchesController extends Controller
      */
     public function index(Request $request, Market $market)
     {
+        // Current Block Index
+        $block = Block::latest('block_index')->first();
+
         // Cache Slug
-        $cache_slug = 'api_market_order_matches_' . $market->slug . '_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_market_order_matches_' . $block->block_index . '_' . $market->slug . '_' . str_slug(serialize($request->all()));
 
         // Market's Trade History
-        $order_matches = Cache::remember($cache_slug, 10, function () use ($market) {
-            return OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
+        return Cache::remember($cache_slug, 60, function () use ($market) {
+            $order_matches = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
                 ->where('forward_asset', '=', $market->xcp_core_quote_asset)
                 ->where('status', '=', 'completed')
                 ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
@@ -33,12 +37,12 @@ class MarketOrderMatchesController extends Controller
                 ->where('status', '=', 'completed')
                 ->orderBy('tx1_index', 'desc')
                 ->paginate(30);
-        });
 
-        return [
-            'order_matches' => OrderMatchResource::collection($order_matches),
-            'last_page' => ceil($order_matches->total() / 30),
-            'current_page' => (int) $request->input('page', 1),
-        ];
+            return [
+                'order_matches' => OrderMatchResource::collection($order_matches),
+                'last_page' => ceil($order_matches->total() / 30),
+                'current_page' => (int) $request->input('page', 1),
+            ];
+        });
     }
 }

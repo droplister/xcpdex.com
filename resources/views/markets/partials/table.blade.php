@@ -2,7 +2,7 @@
     <table class="table table-sm table-bordered text-center">
         <tbody>
             <tr>
-                <td class="font-weight-bold">
+                <td class="font-weight-bold d-none d-md-inline-block">
                     <span class="d-block font-weight-normal">
                         {{ $market->baseAsset->display_name }}
                         <a href="https://xcpfox.com/asset/{{ $market->baseAsset->display_name }}" target="_blank">
@@ -12,11 +12,18 @@
                     {{ number_format($market->baseAsset->supply_normalized) }}
                 </td>
                 <td class="font-weight-bold">
-                    <span class="d-block font-weight-normal">Last Trade</span>
+                    <span class="d-block font-weight-normal">
+                        Last Trade
+                    </span>
                     {{ $last_match ? $last_match->confirmed_at->toDateString() : '----------' }}
                 </td>
                 <td class="font-weight-bold">
-                    <span class="d-block font-weight-normal">Last Price <small>{{ $market->quoteAsset->display_name }}</small></span>
+                    <span class="d-block font-weight-normal">
+                        Last Price
+                        <small class="d-none d-md-inline-block">
+                            {{ $market->quoteAsset->display_name }}
+                        </small>
+                    </span>
                     {{ $last_match ? $last_match->trading_price_normalized : '----------' }}
                 </td>
             </tr>

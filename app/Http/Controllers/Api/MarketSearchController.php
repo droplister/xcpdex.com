@@ -19,22 +19,22 @@ class MarketSearchController extends Controller
     public function index(Request $request)
     {
         // Validation
-        $request->validate([
-            'q' => 'required',
-        ]);
+        $request->validate(['q' => 'required']);
 
         // Cache Slug
         $cache_slug = 'api_search_' . str_slug(serialize($request->all()));
 
         // Get Markets
-        $markets = Cache::remember($cache_slug, 360, function () use ($request) {
-            return Market::where('xcp_core_base_asset', 'like', $request->q . '%')
+        return Cache::remember($cache_slug, 1440, function () use ($request) {
+            // Top 10
+            $markets = Market::where('xcp_core_base_asset', 'like', $request->q . '%')
                 ->orWhere('xcp_core_quote_asset', 'like', $request->q . '%')
                 ->orWhere('name', 'like', $request->q . '%')
+                ->orderBy('volume', 'desc')
                 ->take(10)
                 ->get();
-        });
 
-        return MarketResource::collection($markets);
+            return MarketResource::collection($markets);
+        });
     }
 }

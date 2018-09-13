@@ -19,16 +19,23 @@ class OrderMatchesController extends Controller
      */
     public function index(Request $request)
     {
-        // Cached Matches
-        $order_matches = Cache::remember('api_order_matches_' . $request->input('page', 1), 10, function () use ($request) {
-            return OrderMatch::orderBy('tx1_index', 'desc')->paginate(30);
-        });
+        // Current Block Index
+        $block = Block::latest('block_index')->first();
 
-        return [
-            'order_matches' => OrderMatchResource::collection($order_matches),
-            'last_page' => ceil($order_matches->total() / 30),
-            'current_page' => (int) $request->input('page', 1),
-        ];
+        // Cache Slug
+        $cache_slug = 'api_order_matches_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
+
+        // Get Matches
+        return Cache::remember($cache_slug, 60, function () use ($request) {
+            // Latest First
+            $order_matches = OrderMatch::orderBy('tx1_index', 'desc')->paginate(30);
+
+            return [
+                'order_matches' => OrderMatchResource::collection($order_matches),
+                'last_page' => ceil($order_matches->total() / 30),
+                'current_page' => (int) $request->input('page', 1),
+            ];
+        });
     }
 
     /**

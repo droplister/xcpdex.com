@@ -31,13 +31,13 @@ class MarketOrdersController extends Controller
         // Market's Buy Orders
         $buy_orders = Cache::remember($cache_slug, 5, function () use ($block, $market) {
             return Order::where('get_asset', '=', $market->xcp_core_base_asset)
-            ->where('give_asset', '=', $market->xcp_core_quote_asset)
-            ->where('expire_index', '>', $block->block_index)
-            ->where('give_remaining', '>', 0)
-            ->where('get_remaining', '>', 0)
-            ->where('status', '=', 'open')
-            ->get()
-            ->sortByDesc('trading_price_normalized');
+                ->where('give_asset', '=', $market->xcp_core_quote_asset)
+                ->where('expire_index', '>', $block->block_index)
+                ->where('give_remaining', '>', 0)
+                ->where('get_remaining', '>', 0)
+                ->where('status', '=', 'open')
+                ->get()
+                ->sortByDesc('trading_price_normalized');
         });
 
         // Cache Slug
@@ -46,13 +46,13 @@ class MarketOrdersController extends Controller
         // Market's Sell Orders
         $sell_orders = Cache::remember($cache_slug, 5, function () use ($block, $market) {
             return Order::where('give_asset', '=', $market->xcp_core_base_asset)
-            ->where('get_asset', '=', $market->xcp_core_quote_asset)
-            ->where('expire_index', '>', $block->block_index)
-            ->where('give_remaining', '>', 0)
-            ->where('get_remaining', '>', 0)
-            ->where('status', '=', 'open')
-            ->get()
-            ->sortBy('trading_price_normalized');
+                ->where('get_asset', '=', $market->xcp_core_quote_asset)
+                ->where('expire_index', '>', $block->block_index)
+                ->where('give_remaining', '>', 0)
+                ->where('get_remaining', '>', 0)
+                ->where('status', '=', 'open')
+                ->get()
+                ->sortBy('trading_price_normalized');
         });
 
         return [

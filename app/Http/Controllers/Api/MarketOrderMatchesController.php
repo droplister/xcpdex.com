@@ -26,13 +26,13 @@ class MarketOrderMatchesController extends Controller
         // Market's Trade History
         $order_matches = Cache::remember($cache_slug, 5, function () use ($market) {
             return OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
-            ->where('forward_asset', '=', $market->xcp_core_quote_asset)
-            ->where('status', '=', 'completed')
-            ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
-            ->where('forward_asset', '=', $market->xcp_core_base_asset)
-            ->where('status', '=', 'completed')
-            ->orderBy('tx1_index', 'desc')
-            ->paginate(30);
+                ->where('forward_asset', '=', $market->xcp_core_quote_asset)
+                ->where('status', '=', 'completed')
+                ->orWhere('backward_asset', '=', $market->xcp_core_quote_asset)
+                ->where('forward_asset', '=', $market->xcp_core_base_asset)
+                ->where('status', '=', 'completed')
+                ->orderBy('tx1_index', 'desc')
+                ->paginate(30);
         });
 
         return [

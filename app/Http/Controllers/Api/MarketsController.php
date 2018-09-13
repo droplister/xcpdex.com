@@ -30,8 +30,9 @@ class MarketsController extends Controller
             // Get Markets
             $markets = Market::with('baseAsset', 'quoteAsset')
                 ->where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
-                ->where('volume', '>', 0)
+                ->where('open_orders_count', '>', 0)
                 ->orderBy('volume', 'desc')
+                ->orderBy('open_orders_count', 'desc')
                 ->paginate(30);
 
             return [

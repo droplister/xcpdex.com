@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Cache;
 use App\Market;
 use Droplister\XcpCore\App\Block;
+use Droplister\XcpCore\App\Order;
 use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -48,15 +49,18 @@ class UpdateMarketVolumes implements ShouldQueue
      */
     public function handle()
     {
+        // Dates
         $start_date = $this->block->confirmed_at->subDays(1)->toDateTimeString();
         $end_date = $this->block->confirmed_at->toDateTimeString();
 
+        // Buys
         $buys_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_base_asset)
             ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
             ->whereBetween('confirmed_at', [$start_date, $end_date])
             ->where('status', '=', 'completed')
             ->sum('forward_quantity');
 
+        // Sells
         $sells_today = OrderMatch::where('backward_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('forward_asset', '=', $this->market->xcp_core_base_asset)
             ->whereBetween('confirmed_at', [$start_date, $end_date])
@@ -66,9 +70,21 @@ class UpdateMarketVolumes implements ShouldQueue
         // Volume
         $t_volume = $buys_today + $sells_today;
 
+        // Orders
+        $t_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('give_asset', '=', $this->market->xcp_core_base_asset)
+            ->whereBetween('confirmed_at', [$start_date, $end_date])
+            ->where('status', '=', 'open')
+            ->orWhere('get_asset', '=', $this->market->xcp_core_base_asset)
+            ->where('give_asset', '=', $this->market->xcp_core_quote_asset)
+            ->whereBetween('confirmed_at', [$start_date, $end_date])
+            ->where('status', '=', 'open')
+            ->count();
+
         // Update
         $this->market->update([
             'volume' => $t_volume,
+            'open_orders_count' => $t_open_orders_count,
         ]);
 
         // Forget

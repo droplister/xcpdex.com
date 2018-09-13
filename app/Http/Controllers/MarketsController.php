@@ -20,7 +20,7 @@ class MarketsController extends Controller
     {
         // Markets
         $markets = Market::with('quoteAsset')
-            ->where('volume', '>', 0)
+            ->where('open_orders_count', '>', 0)
             ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')

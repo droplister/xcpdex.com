@@ -25,7 +25,7 @@ class Market extends Model
         'name',
         'slug',
         'volume',
-        'change',
+        'open_orders_count',
     ];
 
     /**

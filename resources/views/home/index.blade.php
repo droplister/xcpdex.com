@@ -7,7 +7,7 @@
         Counterparty DEX
     </h1>
     <hr />
-    <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere to trade Counterparty assets on top of the Bitcoin blockchain. XCPDEX.com is a blockchain explorer dedicated to publishing Counterparty DEX data, like trading volume and prices, but it is not itself an exchange. Join us on Telegram!</p>
+    <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere to trade Counterparty assets on top of the Bitcoin blockchain. XCPDEX.com is a blockchain explorer dedicated to publishing Counterparty DEX data, like trading volume and prices, but it is not itself an exchange.</p>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
@@ -162,5 +162,8 @@
             </div>
         </div>
     </div>
+    <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
+        Join us on Telegram
+    </a>
     @include('home.modals.how-to')
 @endsection

@@ -118,7 +118,7 @@
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 py-3 px-4">
                     @yield('content')
-                    <footer class="container text-center text-muted">
+                    <footer class="text-center text-muted">
                         <hr />
                         <a href="{{ url('/') }}" class="mr-2">Home</a>
                         <a href="https://coinmarketcap.com/currencies/counterparty/" class="mr-2" target="_blank">XCP/USD</a>

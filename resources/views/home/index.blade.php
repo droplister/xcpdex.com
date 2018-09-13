@@ -16,19 +16,22 @@
             <h2 class="mt-3 mb-3">Featured</h2>
         </div>
         @foreach($features as $featured)
-        <div class="col-md-6">
-            <div class="card mb-4">
-                <div class="card-header font-weight-bold">
-                    <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                        {{ $featured->market->name }}
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h4>{{ $featured->market->last_price }} {{ $featured->market->trading_pair_quote_asset }}</h4>
-                    <p class="card-text">Last Trade: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header font-weight-bold">
+                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
+                            {{ $featured->market->name }}
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4>{{ $featured->market->last_price }} {{ $featured->market->trading_pair_quote_asset }}</h4>
+                        <p class="card-text">Last Trade: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            @if($loop->iteration === 2)
+                @break
+            @endif
         @endforeach
     </div>
     <div class="row justify-content-center mb-2">

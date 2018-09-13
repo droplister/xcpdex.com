@@ -50,6 +50,9 @@
                     </div>
                 </div>
             </div>
+            @if($loop->iteration === 2)
+                @break
+            @endif
         @endforeach
     </div>
     <div class="row justify-content-center mb-2">

@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <p>We have a special address that we monitor: <br /> <b><a href="https://xchain.io/address/{{ config('xcpdex.feature_address') }}" target="_blank">{{ config('xcpdex.feature_address') }}</a></b></p>
                 <p>Anyone can send XCP to this address and enter the name of the market they want featured in the memo field. For example, "PEPECASH/XCP".</p>
-                <p>- The four (4) highest bids get their market featured on the homepage.</p>
+                <p>- The two (2) highest bids get their market featured on the homepage.</p>
                 <p>- The four (4) highest bids appear sitewide in the XCPDEX.com sidebar.</p>
                 <p>- Each market will remain featured until or unless they get outbid.</p>
                 <p>The current high bids are as follows:</p>

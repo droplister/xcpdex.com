@@ -20,7 +20,7 @@ class OrderMatchesController extends Controller
     public function index(Request $request)
     {
         // Cached Matches
-        $order_matches = Cache::remember('api_order_matches_' . $request->input('page', 1), 5, function () use ($request) {
+        $order_matches = Cache::remember('api_order_matches_' . $request->input('page', 1), 10, function () use ($request) {
             return OrderMatch::orderBy('tx1_index', 'desc')->paginate(30);
         });
 

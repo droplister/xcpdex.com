@@ -22,8 +22,8 @@ class MarketsController extends Controller
         $cache_slug = 'api_markets_index_' . str_slug(serialize($request->all()));
 
         // DEX Markets
-        $markets = Cache::remember($cache_slug, 5, function () use ($request) {
-            return Market::with('baseAsset')
+        $markets = Cache::remember($cache_slug, 60, function () use ($request) {
+            return Market::with('baseAsset')->where('volume', '>', 0)
                 ->where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
                 ->orderBy('volume', 'desc')
                 ->paginate(30);

@@ -28,7 +28,7 @@ class MarketDepthController extends Controller
         $cache_slug = 'api_market_depth_buys_' . $block->block_index . '_' . $market->slug;
 
         // Market's Buy Orders
-        $buy_orders = Cache::remember($cache_slug, 5, function () use ($block, $market) {
+        $buy_orders = Cache::remember($cache_slug, 10, function () use ($block, $market) {
             return Order::where('get_asset', '=', $market->xcp_core_base_asset)
                 ->where('give_asset', '=', $market->xcp_core_quote_asset)
                 ->where('expire_index', '>', $block->block_index)
@@ -43,7 +43,7 @@ class MarketDepthController extends Controller
         $cache_slug = 'api_market_depth_sells_' . $block->block_index . '_' . $market->slug;
 
         // Market's Sell Orders
-        $sell_orders = Cache::remember($cache_slug, 5, function () use ($block, $market) {
+        $sell_orders = Cache::remember($cache_slug, 10, function () use ($block, $market) {
             return Order::where('give_asset', '=', $market->xcp_core_base_asset)
                 ->where('get_asset', '=', $market->xcp_core_quote_asset)
                 ->where('expire_index', '>', $block->block_index)

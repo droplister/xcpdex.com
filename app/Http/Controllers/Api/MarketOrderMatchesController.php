@@ -24,7 +24,7 @@ class MarketOrderMatchesController extends Controller
         $cache_slug = 'api_market_order_matches_' . $market->slug . '_' . str_slug(serialize($request->all()));
 
         // Market's Trade History
-        $order_matches = Cache::remember($cache_slug, 5, function () use ($market) {
+        $order_matches = Cache::remember($cache_slug, 10, function () use ($market) {
             return OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
                 ->where('forward_asset', '=', $market->xcp_core_quote_asset)
                 ->where('status', '=', 'completed')

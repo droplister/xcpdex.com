@@ -21,7 +21,7 @@ class BlocksController extends Controller
         $cache_slug = 'api_blocks_index_' . str_slug(serialize($request->all()));
 
         // Get Blocks
-        $blocks = Cache::remember($cache_slug, 5, function () use ($request) {
+        $blocks = Cache::remember($cache_slug, 10, function () use ($request) {
             return Block::withCount('cancels', 'expirations', 'orders', 'orderMatches')
                 ->orderBy('block_index', 'desc')
                 ->paginate(30);

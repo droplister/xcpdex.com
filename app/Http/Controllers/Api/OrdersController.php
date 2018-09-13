@@ -23,7 +23,7 @@ class OrdersController extends Controller
         $cache_slug = 'api_orders_index_' . str_slug(serialize($request->all()));
 
         // Get Orders
-        $orders = Cache::remember($cache_slug, 5, function () use ($request) {
+        $orders = Cache::remember($cache_slug, 10, function () use ($request) {
             // Block Index
             $block = Block::latest('block_index')->first();
 

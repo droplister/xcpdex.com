@@ -27,13 +27,12 @@
           <td class="text-right">{{ market.order_matches_count }}</td>
           <td class="text-right">{{ market.last_trade_date }}</td>
         </tr>
+        <tr v-if="matches && matches.length === 0">
+          <td class="text-center" colspan="5">No markets.</td>
+        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results">
-            <tr v-if="matches && matches.length === 0">
-              <td class="text-center" colspan="5">No markets.</td>
-            </tr>
-          </span>
+          <span slot="no-results"></span>
         </infinite-loading>
       </tbody>
     </table>

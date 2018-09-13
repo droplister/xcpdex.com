@@ -21,13 +21,12 @@
           <td>{{ block.expirations_count }}</td>
           <td>{{ block.date }}</td>
         </tr>
+        <tr v-if="blocks && blocks.length === 0">
+          <td class="text-center" colspan="5">No blocks.</td>
+        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results">
-            <tr v-if="blocks && blocks.length === 0">
-              <td class="text-center" colspan="5">No blocks.</td>
-            </tr>
-          </span>
+          <span slot="no-results"></span>
         </infinite-loading>
       </tbody>
     </table>

@@ -23,13 +23,12 @@
           <td><a :href="'https://xcpfox.com/address/' + match.buyer" target="_blank">{{ match.buyer }}</a></td>
           <td><a :href="'https://xcpfox.com/address/' + match.seller" target="_blank">{{ match.seller }}</a></td>
         </tr>
+        <tr v-if="matches && matches.length === 0">
+          <td class="text-center" colspan="7">No order matches.</td>
+        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results">
-            <tr v-if="matches && matches.length === 0">
-              <td class="text-center" colspan="7">No order matches.</td>
-            </tr>
-          </span>
+          <span slot="no-results"></span>
         </infinite-loading>
       </tbody>
     </table>

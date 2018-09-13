@@ -20,7 +20,7 @@
           <td><a :href="'https://xcpfox.com/address/' + order.source" target="_blank">{{ order.source }}</a></td>
         </tr>
         <tr v-if="orders && orders.length === 0">
-          <td class="text-center" colspan="5">No {{ side }} orders found.</td>
+          <td class="text-center" colspan="5">No {{ side }} orders.</td>
         </tr>
       </tbody>
     </table>

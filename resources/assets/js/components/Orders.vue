@@ -20,7 +20,7 @@
           <td><a :href="'https://xcpfox.com/address/' + order.source" target="_blank">{{ order.source }}</a></td>
         </tr>
         <tr v-if="orders && orders.length === 0">
-          <td class="text-center" colspan="5">No order found.</td>
+          <td class="text-center" colspan="5">No orders.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

@@ -22,7 +22,7 @@
           <td>{{ block.date }}</td>
         </tr>
         <tr v-if="blocks && blocks.length === 0">
-          <td class="text-center" colspan="5">No blocks found.</td>
+          <td class="text-center" colspan="5">No blocks.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

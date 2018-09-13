@@ -18,7 +18,7 @@
           <td class="text-right">{{ market.change }}</td>
         </tr>
         <tr v-if="matches && matches.length === 0">
-          <td class="text-center" colspan="4">No markets found.</td>
+          <td class="text-center" colspan="4">No markets.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

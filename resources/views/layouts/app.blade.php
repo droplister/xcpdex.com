@@ -120,7 +120,7 @@
                         </ul>
                     </div>
                 </nav>
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 py-3 px-4">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-3">
                     @yield('content')
                     <footer class="text-center text-muted">
                         <hr />

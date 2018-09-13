@@ -24,6 +24,10 @@ class MempoolController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(30);
 
-        return MempoolResource::collection($transactions);
+        return [
+            'mempool' => MempoolResource::collection($transactions),
+            'last_page' => ceil($transactions->total() / 30),
+            'current_page' => (int) $request->input('page', 1),
+        ];
     }
 }

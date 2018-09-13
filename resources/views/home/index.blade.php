@@ -58,9 +58,51 @@
                 Where to Buy
             </a>
             <h2 class="mt-3 mb-3">XCP Price</h2>
+        </div>
+        <div class="col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
-                    USD Price Data
+                    Price USD
+                </div>
+                <div class="card-body">
+                    <h3>${{ $price_data['price_usd'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Price BTC
+                </div>
+                <div class="card-body">
+                    <h3>${{ $price_data['price_btc'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Market Cap
+                </div>
+                <div class="card-body">
+                    <h3>${{ $price_data['market_cap'] }}</h
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Volume 24h
+                </div>
+                <div class="card-body">
+                    <h3>${{ $price_data['volume'] }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    CoinCap.io API Data
                 </div>
                 <chart-price title="Counterparty (XCP) Price"
                     subtitle="Most DEX markets trade against XCP"
@@ -76,14 +118,6 @@
                 All Orders
             </a>
             <h2 class="mt-3 mb-3">Order History</h2>
-            <div class="card mb-4">
-                <div class="card-header">
-                    Counterparty DEX Chart
-                </div>
-                <chart title="DEX Orders (All-Time)" label="Total" cumulative="true"
-                    source="{{ route('api.orders.chart') }}">
-                </chart>
-            </div>
         </div>
         <div class="col-6 col-md-3">
             <div class="card mb-4">
@@ -123,6 +157,16 @@
                 <div class="card-body">
                     <h3>{{ number_format($order_counts['all']) }}</h3>
                 </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Counterparty DEX Chart
+                </div>
+                <chart title="DEX Orders (All-Time)" label="Total" cumulative="true"
+                    source="{{ route('api.orders.chart') }}">
+                </chart>
             </div>
         </div>
     </div>

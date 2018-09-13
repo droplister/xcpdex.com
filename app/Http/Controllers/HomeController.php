@@ -19,6 +19,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        // Price Data
+        $price_data = $this->getPriceData();
+
         // Get Dates
         $dates = $this->getDates();
 
@@ -27,16 +30,11 @@ class HomeController extends Controller
             return $this->getOrderCounts($dates);
         });
 
-        // Trades #
-        $trade_counts = Cache::remember('trade_counts_' . str_slug(serialize($dates)), 60, function () use ($dates) {
-            return $this->getTradeCounts($dates);
-        });
-
         // Features
         $features = Feature::highestBids()->with('market')->get();
 
         // Index View
-        return view('home.index', compact('order_counts', 'trade_counts', 'features'));
+        return view('home.index', compact('price_data', 'order_counts', 'features'));
     }
 
     /**
@@ -87,23 +85,22 @@ class HomeController extends Controller
     }
 
     /**
-     * Get Order Counts
+     * Get Price Data
      * 
-     * @param  array  $dates
      * @return array
      */
-    private function getTradeCounts($dates)
+    private function getPriceData()
     {
-        $trades_count = OrderMatch::count();
-        $r_trades_count = OrderMatch::whereBetween('confirmed_at', [$dates['start_dates']['recent'], $dates['end_date']])->count();
-        $t_trades_count = OrderMatch::whereBetween('confirmed_at', [$dates['start_dates']['thirty'], $dates['end_date']])->count();
-        $a_trades_count = OrderMatch::whereBetween('confirmed_at', [$dates['start_dates']['annual'], $dates['end_date']])->count();
+        return Cache::remember('api_price_data', 10, function () {
+            $data_xcp = json_decode(file_get_contents('http://coincap.io/history/XCP', true));
+            $data_btc = json_decode(file_get_contents('https://coincap.io/history/BTC', true));
 
-        return [
-            'all' => $trades_count,
-            'recent' => $r_trades_count,
-            'thirty' => $t_trades_count,
-            'annual' => $a_trades_count,
-        ];
+            return [
+                'price_btc' => number_format(last($data_xcp->price)[1] / last($data_btc->price)[1], 8),
+                'price_usd' => '$' . number_format(last($data_xcp->price)[1], 2),
+                'volume' => '$' . number_format(last($data_xcp->volume)[1]),
+                'market_cap' => '$' . number_format(last($data_xcp->market_cap)[1]),
+            ];
+        });
     }
 }

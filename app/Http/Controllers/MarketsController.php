@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Market;
+use App\Feature;
 use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,11 @@ class MarketsController extends Controller
             ->take(10)
             ->get();
 
-        return view('markets.index', compact('markets', 'quote_asset'));
+        // Features
+        $features = Feature::highestBids()->with('market')->get();
+
+        // Index View
+        return view('markets.index', compact('markets', 'quote_asset', 'features'));
     }
 
     /**
@@ -47,6 +52,9 @@ class MarketsController extends Controller
             ->orderBy('tx1_index', 'desc')
             ->first();
 
-        return view('markets.show', compact('market', 'last_match'));
+        // Features
+        $features = Feature::highestBids()->with('market')->get();
+
+        return view('markets.show', compact('market', 'last_match', 'features'));
     }
 }

@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Jobs;
+
+use App\Market;
+use App\Feature;
+use Droplister\XcpCore\App\Send;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+
+class UpdateFeaturedMarkets implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * Block Index
+     *
+     * @var integer
+     */
+    protected $block_index;
+
+    /**
+     * Create a new job instance.
+     *
+     * @param  \App\Cause  $cause
+     * @return void
+     */
+    public function __construct($block_index)
+    {
+        $this->block_index = $block_index;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        // API Data
+        $sends = $this->getSends();
+
+        foreach($sends as $send)
+        {
+            // Market to Feature
+            $name = hex2bin($send->memo);
+
+            // Flexible Inputs
+            $market = Market::where('name', '=', $name)
+                ->orWhere('slug', '=', $name)
+                ->first();
+
+            // Market Must Exist
+            if($market)
+            {
+                Feature::firstOrCreate([
+                    'xcp_core_tx_index' => $send->tx_index,
+                ],[
+                    'market_id' => $market->id,
+                    'address' => $send->source,
+                    'bid' => $send->quantity,
+                ]);
+            }
+        }    
+    }
+
+    /**
+     * Counterparty API
+     * https://counterparty.io/docs/api/#get_table
+     *
+     * @return mixed
+     */
+    private function getSends()
+    {
+        return Send::where('asset', '=', 'XCP')
+            ->where('destination', '=', config('xcpdex.feature_address'))
+            ->where('status', '=', 'valid')
+            ->where('block_index', '<=', $this->block_index - 2)
+            ->get();
+    }
+}

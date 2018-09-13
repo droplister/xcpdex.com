@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Market;
+use App\Jobs\UpdateFeaturedMarkets;
 use App\Jobs\UpdateMarketVolumes;
 use Droplister\XcpCore\App\Events\BlockWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
@@ -30,5 +31,7 @@ class BlockListener
                 UpdateMarketVolumes::dispatch($market, $event->block);
             }
         }
+
+        UpdateFeaturedMarkets::dispatch($event->block->block_index);
     }
 }

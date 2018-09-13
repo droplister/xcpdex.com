@@ -73,26 +73,13 @@
                                     Markets
                                 </a>
                                 <ul class="nav flex-column" style="font-size: 80%;">
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'FLDC_XCP']) }}">
-                                            FLDC/XCP
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'BITCORN_XCP']) }}">
-                                            BITCORN/XCP
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'PEPECASH_XCP']) }}">
-                                            PEPECASH/XCP
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => 'CROPS_XCP']) }}">
-                                            CROPS/XCP
-                                        </a>
-                                    </li>
+                                    @foreach($features as $featured)
+                                        <li class="nav-item">
+                                            <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
+                                                {{ $featured->market->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="nav-item mt-2">

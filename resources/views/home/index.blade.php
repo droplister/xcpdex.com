@@ -7,7 +7,23 @@
         Counterparty DEX
     </h1>
     <hr />
-    <h2>Last 24 Hours</h2>
+    <div class="row justify-content-center">
+        @foreach($features as $featured)
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    {{ $featured->market->trading_pair_base_asset }}
+                </div>
+                <div class="card-body">
+                    <h3>{{ $featured->market->last_price }} {{ $featured->market->trading_pair_quote_asset }}</h3>
+                    <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
+                        {{ $featured->market->name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">

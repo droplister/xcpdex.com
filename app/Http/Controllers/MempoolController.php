@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feature;
 use Illuminate\Http\Request;
 
 class MempoolController extends Controller
@@ -14,6 +15,10 @@ class MempoolController extends Controller
      */
     public function index(Request $request)
     {
-        return view('mempool.index');
+        // Features
+        $features = Feature::highestBids()->with('market')->get();
+
+        // Index View
+        return view('mempool.index', compact('features'));
     }
 }

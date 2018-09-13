@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Feature;
 use Illuminate\Http\Request;
 
 class OrderMatchesController extends Controller
@@ -14,6 +15,10 @@ class OrderMatchesController extends Controller
      */
     public function index(Request $request)
     {
-        return view('matches.index');
+        // Features
+        $features = Feature::highestBids()->with('market')->get();
+
+        // Index View
+        return view('matches.index', compact('features'));
     }
 }

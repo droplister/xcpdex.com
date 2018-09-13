@@ -5,6 +5,7 @@
       <thead class="text-left">
         <tr>
           <th>Date</th>
+          <th>Action</th>
           <th>Price</th>
           <th>Quantity</th>
           <th>Total</th>
@@ -15,6 +16,7 @@
       <tbody>
         <tr v-for="match in matches">
           <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
+          <td :class="match.type === 'Buy' ? 'text-success' : 'text-danger'">{{ match.type }}</td>
           <td class="text-right">{{ match.price }}</td>
           <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.total }}</td>

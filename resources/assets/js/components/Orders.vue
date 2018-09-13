@@ -5,6 +5,7 @@
       <thead class="text-left">
         <tr>
           <th>Date</th>
+          <th>Action</th>
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
@@ -14,6 +15,7 @@
       <tbody>
         <tr v-for="order in orders">
           <td><a :href="'https://xcpfox.com/tx/' + order.tx_hash" target="_blank">{{ order.date }}</a></td>
+          <td :class="order.type === 'Buy' ? 'text-success' : 'text-danger'">{{ order.type }}</td>
           <td>{{ order.quantity }} <a :href="'/market/' + order.market_slug">{{ order.base_asset }}</a></td>
           <td>{{ order.price }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
           <td>{{ order.total }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>

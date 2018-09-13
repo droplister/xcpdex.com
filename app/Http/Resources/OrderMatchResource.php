@@ -17,6 +17,7 @@ class OrderMatchResource extends Resource
     {
         return [
             'tx_hash' => $this->tx1_hash,
+            'type' => $this->trading_type,
             'base_asset' => $this->trading_pair_base_asset,
             'quote_asset' => $this->trading_pair_quote_asset,
             'date' => $this->confirmed_at->toDateTimeString(),

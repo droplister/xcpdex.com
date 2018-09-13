@@ -14,8 +14,8 @@ class AddMoreCountsToMarketsTable extends Migration
     public function up()
     {
         Schema::table('markets', function (Blueprint $table) {
-            $table->unsignedBigInteger('orders_count')->after('open_orders')->index()->default(0);
-            $table->unsignedBigInteger('order_matches_count')->after('open_orders')->index()->default(0);
+            $table->unsignedBigInteger('orders_count')->after('open_orders_count')->index()->default(0);
+            $table->unsignedBigInteger('order_matches_count')->after('open_orders_count')->index()->default(0);
         });
     }
 

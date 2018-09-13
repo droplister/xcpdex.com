@@ -138,13 +138,13 @@
         </div>
     </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112477384-3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ config('xcpdex.google_ua') }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-112477384-3');
+  gtag('config', '{{ config('xcpdex.google_ua') }}');
 </script>
 </body>
 </html>

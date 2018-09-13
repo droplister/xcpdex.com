@@ -65,7 +65,7 @@
                     Price USD
                 </div>
                 <div class="card-body">
-                    <h3>${{ $price_data['price_usd'] }}</h3>
+                    <h3>{{ $price_data['price_usd'] }}</h3>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                     Price BTC
                 </div>
                 <div class="card-body">
-                    <h3>${{ $price_data['price_btc'] }}</h3>
+                    <h3>{{ $price_data['price_btc'] }}</h3>
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                     Market Cap
                 </div>
                 <div class="card-body">
-                    <h3>${{ $price_data['market_cap'] }}</h
+                    <h3>{{ $price_data['market_cap'] }}</h3>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                     Volume 24h
                 </div>
                 <div class="card-body">
-                    <h3>${{ $price_data['volume'] }}</h3>
+                    <h3>{{ $price_data['volume'] }}</h3>
                 </div>
             </div>
         </div>

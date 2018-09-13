@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Droplister\XcpCore\App\Block;
+use Droplister\XcpCore\App\Order;
+use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +17,20 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('home.index');
+        // Last Block
+        $block = Block::latest('block_index')->first();
+
+        // Last 24h
+        $start_date = $block->confirmed_at->subHours(24)->toDateTimeString();
+        $end_date = $block->confirmed_at->toDateTimeString();
+
+        // Orders #
+        $orders_count = Order::whereBetween('confirmed_at', [$start_date, $end_date])->count();
+
+        // Trades #
+        $trades_count = OrderMatch::whereBetween('confirmed_at', [$start_date, $end_date])->count();
+
+        // Index View
+        return view('home.index', compact('orders_count', 'trades_count'));
     }
 }

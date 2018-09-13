@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Cache;
 use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\OrderMatch;
+use App\Http\Resources\CountResource;
 use App\Http\Resources\OrderMatchResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

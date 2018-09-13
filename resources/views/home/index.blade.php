@@ -7,6 +7,9 @@
         Counterparty DEX
     </h1>
     <hr />
+    <chart-price title="Counterparty (XCP) Price"
+        source="https://coincap.io/history/XCP">
+    </chart-price>
     <div class="row justify-content-center">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">

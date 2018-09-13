@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('auto-suggest', require('./components/AutoSuggest.vue'));
 Vue.component('chart', require('./components/Chart.vue'));
+Vue.component('chart-price', require('./components/ChartPrice.vue'));
 Vue.component('blocks', require('./components/Blocks.vue'));
 Vue.component('orders', require('./components/Orders.vue'));
 Vue.component('order-matches', require('./components/OrderMatches.vue'));

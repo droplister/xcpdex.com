@@ -30,8 +30,9 @@ class BlockListener
             {
                 UpdateMarketVolumes::dispatch($market, $event->block);
             }
-        }
 
-        UpdateFeaturedMarkets::dispatch($event->block->block_index);
+            // Save Stats
+            UpdateFeaturedMarkets::dispatch($event->block->block_index);
+        }
     }
 }

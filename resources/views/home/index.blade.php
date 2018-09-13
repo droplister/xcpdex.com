@@ -6,7 +6,7 @@
     <h1 class="mb-3">Counterparty DEX</h1>
     <hr />
     <p>
-        <span class="d-none d-md-inline-block">The Counterparty DEX is a decentralized exchange that allows anyone, anywhere to trade Counterparty assets on the Bitcoin blockchain.</span> XCPDEX.com is a blockchain explorer dedicated to publishing Counterparty DEX data, like trading volume and prices, but it is not itself an exchange.
+        <span class="d-none d-md-inline-block">The Counterparty DEX is a decentralized exchange that allows anyone, anywhere to trade Counterparty assets on the Bitcoin blockchain.</span> XCPDEX.com is a blockchain explorer dedicated to publishing Counterparty DEX data, like trade volumes and prices, but XCPDEX.com itself is NOT an exchange.
     </p>
     <div class="row justify-content-center mb-2">
         <div class="col-12">

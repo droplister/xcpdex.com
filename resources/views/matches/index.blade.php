@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Orders')
+@section('title', 'Filled Orders')
 
 @section('content')
     <h1 class="mb-3">
         <small><i class="fa fa-book text-secondary" aria-hidden="true"></i></small>
-        Orders
+        Filled Orders
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">

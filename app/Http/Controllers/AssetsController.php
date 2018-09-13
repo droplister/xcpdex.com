@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Market;
 use Illuminate\Http\Request;
 
 class AssetsController extends Controller
@@ -26,6 +27,12 @@ class AssetsController extends Controller
      */
     public function show(Request $request, $asset)
     {
-        return redirect(route('markets.index'));
+        // Get Market
+        $market = Market::where('xcp_core_base_asset', '=', $asset)
+            ->orWhere('name', 'like', $asset . '%')
+            ->orderBy('volume', 'desc')
+            ->first();
+
+        return $market ? redirect(route('markets.show', ['market' => $market->slug])) : redirect(route('markets.index'));
     }
 }

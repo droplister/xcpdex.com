@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Counterparty DEX</h1>
-    <p class="lead">The Decentralized Exchange on Bitcoin</p>
+    <p class="lead">Decentralized Exchange on Bitcoin</p>
     <hr />
     <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive" width="100%" />
     <hr />

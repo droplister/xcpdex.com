@@ -25,6 +25,7 @@ class MarketsController extends Controller
             ->where('volume', '>', 0)
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')
+            ->orderBy('name')
             ->take(10)
             ->get();
 

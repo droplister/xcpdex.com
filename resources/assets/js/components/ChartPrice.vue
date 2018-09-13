@@ -115,7 +115,7 @@ export default{
           yAxis: 0,
           zIndex: 1,
           color: '#009e73',
-          data: data.price.slice(300)
+          data: data.price.slice(-300)
         })
         self.chartOptions.series.push({
           type: 'line',
@@ -123,14 +123,14 @@ export default{
           yAxis: 1,
           zIndex: 0,
           color: '#7cb5ec',
-          data: data.market_cap.slice(300)
+          data: data.market_cap.slice(-300)
         })
         self.chartOptions.series.push({
           type: 'column',
           name: 'Volume',
           yAxis: 2,
           color: '#777777',
-          data: data.volume.slice(300)
+          data: data.volume.slice(-300)
         })
       })
     }

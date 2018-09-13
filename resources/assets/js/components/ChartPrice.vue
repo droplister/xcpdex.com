@@ -118,21 +118,7 @@ export default{
           yAxis: 0,
           zIndex: 1,
           color: '#009e73',
-          data: data.price,
-          dataGrouping: {
-            units: [
-              [
-                'day', // unit name
-                [1] // allowed multiples
-              ], [
-                'week',
-                [1]
-              ], [
-                'month',
-                [1, 2, 3, 4, 6]
-              ]
-            ]
-          }
+          data: data.price
         })
         self.chartOptions.series.push({
           type: 'line',
@@ -140,42 +126,14 @@ export default{
           yAxis: 1,
           zIndex: 0,
           color: '#7cb5ec',
-          data: data.market_cap,
-          dataGrouping: {
-            units: [
-              [
-                'day', // unit name
-                [1] // allowed multiples
-              ], [
-                'week',
-                [1]
-              ], [
-                'month',
-                [1, 2, 3, 4, 6]
-              ]
-            ]
-          }
+          data: data.market_cap
         })
         self.chartOptions.series.push({
           type: 'column',
           name: 'Volume',
           yAxis: 2,
           color: '#777777',
-          data: data.volume,
-          dataGrouping: {
-            units: [
-              [
-                'day', // unit name
-                [1] // allowed multiples
-              ], [
-                'week',
-                [1]
-              ], [
-                'month',
-                [1, 2, 3, 4, 6]
-              ]
-            ]
-          }
+          data: data.volume
         })
       })
     }

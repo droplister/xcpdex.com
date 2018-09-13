@@ -29,4 +29,22 @@ class OrderMatchesController extends Controller
             'current_page' => (int) $request->input('page', 1),
         ];
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chart(Request $request)
+    {
+        return Cache::remember('api_order_matches_chart', 1440, function() {
+            $results = OrderMatch::selectRaw('YEAR(confirmed_at) as year, MONTH(confirmed_at) as month, COUNT(*) as count')
+                ->groupBy('month', 'year')
+                ->orderBy('year')
+                ->orderBy('month')
+                ->get();
+
+            return CountResource::collection($results);
+        });
+    }
 }

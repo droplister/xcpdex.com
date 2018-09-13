@@ -7,11 +7,13 @@
         Counterparty DEX
     </h1>
     <hr />
-    <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-1 float-right">
-        Sponsorship
-    </a>
-    <h2 class="mt-3 mb-3">Featured <span class="d-none d-md-inline-block">Markets</span></h2>
     <div class="row justify-content-center">
+        <div class="col-12">
+            <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
+                Sponsorship
+            </a>
+            <h2 class="mt-3 mb-3">Featured <span class="d-none d-md-inline-block">Markets</span></h2>
+        </div>
         @foreach($features as $featured)
         <div class="col-md-6">
             <div class="card mb-4">
@@ -28,12 +30,22 @@
         </div>
         @endforeach
     </div>
-    <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary mt-1 float-right">
-        <i aria-hidden="true" class="fa fa-book"></i>
-        All Orders
-    </a>
-    <h2 class="mt-3 mb-3">Orders</h2>
     <div class="row justify-content-center">
+        <div class="col-12">
+            <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
+                <i aria-hidden="true" class="fa fa-book"></i>
+                All Orders
+            </a>
+            <h2 class="mt-3 mb-3">Order History</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Counterparty DEX Chart
+                </div>
+                <chart title="DEX Orders (All-Time)" label="Total" cumulative="true"
+                    source="{{ route('api.orders.chart') }}">
+                </chart>
+            </div>
+        </div>
         <div class="col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
@@ -75,12 +87,22 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('matches.index') }}" class="btn btn-sm btn-primary mt-1 float-right">
-        <i aria-hidden="true" class="fa fa-book"></i>
-        All Trades
-    </a>
-    <h2 class="mt-3 mb-3">Trades</h2>
     <div class="row justify-content-center">
+        <div class="col-12">
+            <a href="{{ route('matches.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
+                <i aria-hidden="true" class="fa fa-book"></i>
+                All Trades
+            </a>
+            <h2 class="mt-3 mb-3">Trade History</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Counterparty DEX Chart
+                </div>
+                <chart title="DEX Trades (All-Time)" label="Total" cumulative="true"
+                    source="{{ route('api.orderMatches.chart') }}">
+                </chart>
+            </div>
+        </div>
         <div class="col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">

@@ -14,7 +14,9 @@ use Illuminate\Http\Request;
 */
 Route::get('/blocks', 'Api\BlocksController@index')->name('api.blocks');
 Route::get('/orders', 'Api\OrdersController@index')->name('api.orders');
+Route::get('/orders/chart', 'Api\OrdersController@chart')->name('api.orders.chart');
 Route::get('/order-matches', 'Api\OrderMatchesController@index')->name('api.orderMatches');
+Route::get('/order-matches/chart', 'Api\OrderMatchesController@chart')->name('api.orderMatches.chart');
 Route::get('/markets', 'Api\MarketsController@index')->name('api.markets');
 Route::get('/markets/search', 'Api\MarketSearchController@index')->name('api.market.search');
 Route::get('/markets/{market}/chart', 'Api\MarketChartController@index')->name('api.market.chart');

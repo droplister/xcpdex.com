@@ -50,7 +50,7 @@ class UpdateMarketVolumes implements ShouldQueue
     public function handle()
     {
         // Dates
-        $start_date = $this->block->confirmed_at->subHours(24)->toDateTimeString();
+        $start_date = $this->block->confirmed_at->subDays(30)->toDateTimeString();
         $end_date = $this->block->confirmed_at->toDateTimeString();
 
         // Buys
@@ -68,10 +68,10 @@ class UpdateMarketVolumes implements ShouldQueue
             ->sum('backward_quantity');
 
         // Volume
-        $t_volume = $buys_today + $sells_today;
+        $m_volume = $buys_today + $sells_today;
 
         // Orders
-        $t_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
+        $c_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('give_asset', '=', $this->market->xcp_core_base_asset)
             ->where('status', '=', 'open')
             ->orWhere('get_asset', '=', $this->market->xcp_core_base_asset)
@@ -81,8 +81,8 @@ class UpdateMarketVolumes implements ShouldQueue
 
         // Update
         $this->market->update([
-            'volume' => $t_volume,
-            'open_orders_count' => $t_open_orders_count,
+            'volume' => $m_volume,
+            'open_orders_count' => $c_open_orders_count,
         ]);
 
         // Forget

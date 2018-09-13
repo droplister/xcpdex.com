@@ -21,14 +21,14 @@ class MarketOrderMatchesController extends Controller
      */
     public function index(Request $request, Market $market)
     {
-        // Current Block Index
-        $block = Block::latest('block_index')->first();
+        // Block Index
+        $block_index = Cache::get('block_index');
 
         // Cache Slug
-        $cache_slug = 'api_market_order_matches_' . $block->block_index . '_' . $market->slug . '_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_market_order_matches_' . $block_index . '_' . $market->slug . '_' . str_slug(serialize($request->all()));
 
         // Market's Trade History
-        return Cache::remember($cache_slug, 60, function () use ($market) {
+        return Cache::remember($cache_slug, 1440, function () use ($market) {
             $order_matches = OrderMatch::where('backward_asset', '=', $market->xcp_core_base_asset)
                 ->where('forward_asset', '=', $market->xcp_core_quote_asset)
                 ->where('status', '=', 'completed')

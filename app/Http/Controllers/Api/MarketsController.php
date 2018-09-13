@@ -18,14 +18,14 @@ class MarketsController extends Controller
      */
     public function index(Request $request)
     {
-        // Current Block Index
-        $block = Block::latest('block_index')->first();
+        // Block Index
+        $block_index = Cache::get('block_index');
 
         // Cache Slug
-        $cache_slug = 'api_markets_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_markets_index_' . $block_index . '_' . str_slug(serialize($request->all()));
 
         // DEX Markets
-        return Cache::remember($cache_slug, 60, function () use ($request) {
+        return Cache::remember($cache_slug, 1440, function () use ($request) {
             // Get Markets
             $markets = Market::with('baseAsset', 'quoteAsset')
                 ->where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))

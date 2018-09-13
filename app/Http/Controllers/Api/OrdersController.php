@@ -19,19 +19,19 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-        // Current Block Index
-        $block = Block::latest('block_index')->first();
+        // Block Index
+        $block_index = Cache::get('block_index');
 
         // Cache Slug
-        $cache_slug = 'api_orders_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_orders_index_' . $block_index . '_' . str_slug(serialize($request->all()));
 
         // Get Orders
-        return Cache::remember($cache_slug, 60, function () use ($block, $request) {
+        return Cache::remember($cache_slug, 60, function () use ($block_index, $request) {
             // Check Status
             if($request->input('status') === 'ending-soon')
             {
                 // Open Orders (Oldest)
-                $orders = Order::where('expire_index', '>', $block->block_index)
+                $orders = Order::where('expire_index', '>', $block_index)
                     ->where('give_remaining', '>', 0)
                     ->where('get_remaining', '>', 0)
                     ->where('status', '=', 'open')
@@ -41,7 +41,7 @@ class OrdersController extends Controller
             else
             {
                 // Open Orders (Newest)
-                $orders = Order::where('expire_index', '>', $block->block_index)
+                $orders = Order::where('expire_index', '>', $block_index)
                     ->where('give_remaining', '>', 0)
                     ->where('get_remaining', '>', 0)
                     ->where('status', '=', 'open')

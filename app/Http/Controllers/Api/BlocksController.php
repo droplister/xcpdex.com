@@ -17,14 +17,14 @@ class BlocksController extends Controller
      */
     public function index(Request $request)
     {
-        // Current Block Index
-        $block = Block::latest('block_index')->first();
+        // Block Index
+        $block_index = Cache::get('block_index');
 
         // Cache Slug
-        $cache_slug = 'api_blocks_index_' . $block->block_index . '_' . str_slug(serialize($request->all()));
+        $cache_slug = 'api_blocks_index_' . $block_index . '_' . str_slug(serialize($request->all()));
 
         // Get Blocks
-        return Cache::remember($cache_slug, 60, function () use ($request) {
+        return Cache::remember($cache_slug, 1440, function () use ($request) {
             // The Blocks
             $blocks = Block::withCount('cancels', 'expirations', 'orders', 'orderMatches')
                 ->orderBy('block_index', 'desc')

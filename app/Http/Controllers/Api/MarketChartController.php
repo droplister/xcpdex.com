@@ -39,10 +39,17 @@ class MarketChartController extends Controller
     public function index(Request $request, Market $market)
     {
         // Cache Slug
-        $cache_slug = 'chart_' . $market->slug;
+        if($market->lastMatch())
+        {
+            $cache_slug = 'chart_' . $market->slug . '_' . str_slug($market->lastMatch()->confirmed_at);
+        }
+        else
+        {
+            $cache_slug = 'chart_' . $market->slug;
+        }
 
         // Market Charts
-        return Cache::remember($cache_slug, 60, function () use ($market) {
+        return Cache::remember($cache_slug, 1440, function () use ($market) {
             // Get History
             $data = $this->getMarketHistory($market);
 

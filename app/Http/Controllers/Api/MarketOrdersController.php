@@ -22,18 +22,18 @@ class MarketOrdersController extends Controller
      */
     public function index(Request $request, Market $market)
     {
-        // Current Block Index
-        $block = Block::latest('block_index')->first();
+        // Block Index
+        $block_index = Cache::get('block_index');
 
         // Cache Slug
-        $cache_slug = 'api_market_orders_index_' . $block->block_index . '_' . $market->slug;
+        $cache_slug = 'api_market_orders_index_' . $block_index . '_' . $market->slug;
 
         // Market Orders
-        return Cache::remember($cache_slug, 60, function () use ($block, $market) {
+        return Cache::remember($cache_slug, 1440, function () use ($block_index, $market) {
             // Buy Orders
             $buy_orders =  Order::where('get_asset', '=', $market->xcp_core_base_asset)
                 ->where('give_asset', '=', $market->xcp_core_quote_asset)
-                ->where('expire_index', '>', $block->block_index)
+                ->where('expire_index', '>', $block_index)
                 ->where('give_remaining', '>', 0)
                 ->where('get_remaining', '>', 0)
                 ->where('status', '=', 'open')

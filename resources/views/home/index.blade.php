@@ -44,6 +44,7 @@
                         </a>
                     </div>
                     <div class="card-body">
+                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}" class="btn btn-sm btn-outline-primary mt-3 float-right">View <span class="d-none d-md-inline">Market</span></a>
                         <h4>{{ $featured->market->last_price }} {{ $featured->market->quoteAsset->display_name }}</h4>
                         <p class="card-text">Last Traded: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
                     </div>

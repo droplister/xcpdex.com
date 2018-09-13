@@ -74,11 +74,9 @@ class UpdateMarketVolumes implements ShouldQueue
         $t_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
             ->where('give_asset', '=', $this->market->xcp_core_base_asset)
             ->whereBetween('confirmed_at', [$start_date, $end_date])
-            ->where('status', '=', 'open')
             ->orWhere('get_asset', '=', $this->market->xcp_core_base_asset)
             ->where('give_asset', '=', $this->market->xcp_core_quote_asset)
             ->whereBetween('confirmed_at', [$start_date, $end_date])
-            ->where('status', '=', 'open')
             ->count();
 
         // Update

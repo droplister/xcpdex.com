@@ -18,6 +18,7 @@
                     USD Price Data
                 </div>
                 <chart-price title="Counterparty (XCP) Price"
+                    subtitle="Most DEX markets trade against XCP"
                     source="https://coincap.io/history/XCP">
                 </chart-price>
             </div>

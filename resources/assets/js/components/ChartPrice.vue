@@ -8,7 +8,7 @@
 import {Chart} from 'highcharts-vue'
 
 export default{
-  props: ['source', 'title'],
+  props: ['source', 'title', 'subtitle'],
   components: {
     highcharts: Chart
   },
@@ -27,6 +27,9 @@ export default{
         },
         title: {
           text: this.title
+        },
+        subtitle: {
+          text: this.subtitle
         },
         xAxis: {
           type: 'datetime'

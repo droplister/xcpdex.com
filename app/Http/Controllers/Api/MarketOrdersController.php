@@ -43,7 +43,7 @@ class MarketOrdersController extends Controller
             // Sell Orders
             $sell_orders = Order::where('give_asset', '=', $market->xcp_core_base_asset)
                 ->where('get_asset', '=', $market->xcp_core_quote_asset)
-                ->where('expire_index', '>', $block->block_index)
+                ->where('expire_index', '>', $block_index)
                 ->where('give_remaining', '>', 0)
                 ->where('get_remaining', '>', 0)
                 ->where('status', '=', 'open')

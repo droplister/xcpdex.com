@@ -7,10 +7,23 @@
         Counterparty DEX
     </h1>
     <hr />
-    <chart-price title="Counterparty (XCP) Price"
-        source="https://coincap.io/history/XCP">
-    </chart-price>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-2">
+        <div class="col-12">
+            <a href="https://coinmarketcap.com/currencies/counterparty/#markets" class="btn btn-sm btn-primary mt-3 float-right" target="_blank">
+                Where to Buy
+            </a>
+            <h2 class="mt-3 mb-3">XCP Price</h2>
+            <div class="card mb-4">
+                <div class="card-header">
+                    USD Price Data
+                </div>
+                <chart-price title="Counterparty (XCP) Price"
+                    source="https://coincap.io/history/XCP">
+                </chart-price>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-primary mt-3 float-right">
                 Sponsorship
@@ -33,7 +46,7 @@
         </div>
         @endforeach
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="{{ route('orders.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
                 <i aria-hidden="true" class="fa fa-book"></i>
@@ -90,7 +103,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="{{ route('matches.index') }}" class="btn btn-sm btn-primary mt-3 float-right">
                 <i aria-hidden="true" class="fa fa-book"></i>

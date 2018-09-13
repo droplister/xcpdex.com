@@ -167,7 +167,7 @@
         </div>
     </div>
     <a href="https://t.me/xcpdex" target="_blank" class="btn btn-lg btn-block btn-primary mb-4">
-        Join us on Telegram
+        <i class="fa fa-telegram"></i> Join us on Telegram
     </a>
     @include('home.modals.how-to')
 @endsection

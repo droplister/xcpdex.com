@@ -21,12 +21,13 @@
           <td><a :href="'/market/' + order.market_slug">{{ order.source }}</a></td>
           <td>{{ order.blocks_left }}</td>
         </tr>
-        <tr v-if="orders && orders.length === 0">
-          <td class="text-center" colspan="6">No orders.</td>
-        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results"></span>
+          <span slot="no-results">
+            <tr v-if="orders && orders.length === 0">
+              <td class="text-center" colspan="6">No orders.</td>
+            </tr>
+          </span>
         </infinite-loading>
       </tbody>
     </table>

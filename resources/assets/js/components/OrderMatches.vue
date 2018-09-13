@@ -23,12 +23,13 @@
           <td><a :href="'/market/' + match.market_slug">{{ match.buyer }}</a></td>
           <td><a :href="'/market/' + match.market_slug">{{ match.seller }}</a></td>
         </tr>
-        <tr v-if="matches && matches.length === 0">
-          <td class="text-center" colspan="7">No order matches.</td>
-        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results"></span>
+          <span slot="no-results">
+            <tr v-if="matches && matches.length === 0">
+              <td class="text-center" colspan="7">No order matches.</td>
+            </tr>
+          </span>
         </infinite-loading>
       </tbody>
     </table>

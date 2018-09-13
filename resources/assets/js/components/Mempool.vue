@@ -15,12 +15,13 @@
           <td>{{ tx.data.source }}</td>
           <td>{{ tx.data }}</td>
         </tr>
-        <tr v-if="mempool && mempool.length === 0">
-          <td class="text-center" colspan="3">No unconfirmed TXs.</td>
-        </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>
-          <span slot="no-results"></span>
+          <span slot="no-results">
+            <tr v-if="mempool && mempool.length === 0">
+              <td class="text-center" colspan="3">No unconfirmed TXs.</td>
+            </tr>
+          </span>
         </infinite-loading>
       </tbody>
     </table>

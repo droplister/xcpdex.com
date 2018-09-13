@@ -16,7 +16,7 @@
           <td>{{ tx.data }}</td>
         </tr>
         <tr v-if="mempool && mempool.length === 0">
-          <td class="text-center" colspan="3">No txs.</td>
+          <td class="text-center" colspan="3">No txs in mempool.</td>
         </tr>
         <infinite-loading force-use-infinite-wrapper="true" @infinite="infiniteHandler">
           <span slot="no-more"></span>

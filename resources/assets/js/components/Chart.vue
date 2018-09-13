@@ -28,7 +28,7 @@ export default {
           text: 'Source: XCPDEX.com'
         },
         xAxis: {
-          type: 'category'
+          type: 'datetime'
         },
         yAxis: [{
             title: {

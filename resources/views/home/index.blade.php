@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Counterparty DEX')
+@section('title', __('Counterparty DEX'))
 @section('description', 'The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain.')
 
 @section('content')
-    <h1>Counterparty DEX</h1>
+    <h1>{{ __('Counterparty DEX') }}</h1>
     <p class="lead"><span class="d-none d-md-inline">The</span> Decentralized Exchange on Bitcoin</p>
     <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive my-2" width="100%" />
     <div class="row justify-content-center mb-2">
@@ -119,7 +119,7 @@
         <div class="col-12">
             <a href="{{ route('orders.index') }}" class="btn btn-sm btn-outline-primary mt-3 float-right">
                 <i aria-hidden="true" class="fa fa-book"></i>
-                All Orders
+                {{ __('All Orders') }}
             </a>
             <h2 class="mt-3 mb-3">Order History</h2>
         </div>

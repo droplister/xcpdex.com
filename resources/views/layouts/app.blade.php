@@ -50,17 +50,17 @@
                 <ul class="nav nav-pills d-md-none">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('markets.index') }}">
-                            Markets
+                            {{ __('Markets') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('orders.index') }}">
-                            Orders
+                            {{ __('Orders') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('matches.index') }}">
-                            Matches
+                            {{ __('Matches') }}
                         </a>
                     </li>
                 </ul>
@@ -74,7 +74,7 @@
                             <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('markets.index') }}">
                                     <i class="fa fa-server float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    Markets
+                                    {{ __('Markets') }}
                                 </a>
                                 <ul class="nav flex-column" style="font-size: 80%;">
                                     @foreach($features as $featured)
@@ -89,7 +89,7 @@
                             <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
                                     <i class="fa fa-book float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    Orders
+                                    {{ __('Orders') }}
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
@@ -99,7 +99,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('matches.index') }}">
-                                            Filled Orders
+                                            {{ __('Filled Orders') }}
                                         </a>
                                     </li>
                                 </ul>
@@ -107,12 +107,12 @@
                             <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('blocks.index') }}">
                                     <i class="fa fa-chain float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    Blocks
+                                    {{ __('Blocks') }}
                                 </a>
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('mempool.index') }}">
-                                            Mempool
+                                            {{ __('Mempool') }}
                                         </a>
                                     </li>
                                 </ul>

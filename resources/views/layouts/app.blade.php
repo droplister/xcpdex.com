@@ -76,7 +76,7 @@
                                     <i class="fa fa-server float-right mt-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Markets') }}
                                 </a>
-                                <ul class="nav flex-column" style="font-size: 80%;">
+                                <ul class="nav flex-column">
                                     @foreach($features as $featured)
                                         <li class="nav-item">
                                             <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">

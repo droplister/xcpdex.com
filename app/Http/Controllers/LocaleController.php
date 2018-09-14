@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App;
 use Illuminate\Http\Request;
 
 class LocaleController extends Controller
@@ -16,7 +15,7 @@ class LocaleController extends Controller
      */
     public function show(Request $request, $locale)
     {
-        App::setLocale($locale);
+        session()->put('locale', $locale);
 
         return redirect(url('/'));
     }

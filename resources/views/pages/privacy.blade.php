@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('title', 'Privacy Policy')
+@section('description', 'We at XCPDEX.com know that you care how your information is used, and we appreciate your trust. This notice describes our privacy policy.')
 
 @section('content')
     <h1 class="mb-3">Privacy Policy</h1>
-    <hr />
     <p>We at XCPDEX.com know that you care how your information is used, and we appreciate your trust. This notice describes our privacy policy. By visiting us, you are accepting the privacy policy described below.</p>
     <h3>What Personal Information Do We Collect?</h3>
     <p><strong>Information You Provide.</strong> We receive and store information you enter. For example, when you search for something, or leave a comment, or when you supply information such as your address, phone number or e-mail address. You can choose not to provide certain information, but then you might not be able to take advantage of some of our features. We use the information that you provide for such purposes as responding to your requests, customizing your experience, improving our Web site, and communicating with you.</p>

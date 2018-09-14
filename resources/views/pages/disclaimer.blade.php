@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('title', 'Disclaimer')
+@section('description', 'XCPDEX.com is a privately owned and operated website. And not "the" Counterparty DEX. The same way that Blockchain.info explores the blockchain for Bitcoin transactions.')
 
 @section('content')
     <h1 class="mb-3">Disclaimer</h1>
-    <hr />
     <h3>Not  Exchange</h3>
     <p>XCPDEX.com is a privately owned and operated website. And not "the" Counterparty DEX. The same way that Blockchain.info explores the blockchain for Bitcoin transactions. XCPDEX.com explores the blockchain for Counterparty transactions. And we display it in the same way websites like Yahoo Finance would. No trading occurs on our servers.</p>
     <h3>No Investment Advice</h3>

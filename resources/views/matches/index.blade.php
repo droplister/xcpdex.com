@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Filled Orders')
+@section('description', 'Counterparty DEX Order Matches.')
 
 @section('content')
     <h1 class="mb-3">

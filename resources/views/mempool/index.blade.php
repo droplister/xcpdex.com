@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Mempool')
+@section('description', 'Counterparty TXs in the Bitcoin mempool.')
 
 @section('content')
     <h1 class="mb-3">

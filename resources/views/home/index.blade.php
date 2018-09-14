@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('title', 'Counterparty DEX')
+@section('description', 'The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain.')
 
 @section('content')
     <h1>Counterparty DEX</h1>
-    <p class="lead">Decentralized Exchange on Bitcoin</p>
-    <hr />
-    <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive" width="100%" />
-    <hr />
+    <p class="lead"><span class="d-none d-md-inline">The</span> Decentralized Exchange on Bitcoin</p>
+    <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive my-2" width="100%" />
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <h2 class="mt-3 mb-3">How to Trade</h2>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $request->has('status') ? 'Ending Soon' : 'Orders')
+@section('description', 'Counterparty DEX Orders.')
 
 @section('content')
     <h1 class="mb-3">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $market->name)
+@section('description', $market->name . ' Price Chart, Order Book &amp; Match History.')
 
 @section('content')
     <div class="row">

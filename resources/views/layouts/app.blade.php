@@ -122,8 +122,7 @@
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-3">
                     @yield('content')
-                    <footer class="text-center text-muted">
-                        <hr />
+                    <footer class="text-center text-muted pt-3 pb-2">
                         <a href="{{ url('/') }}" class="mr-2">Home</a>
                         <a href="https://coinmarketcap.com/currencies/counterparty/" class="mr-2" target="_blank">XCP/USD</a>
                         <a href="https://github.com/droplister/xcpdex.com"  class="mr-2" target="_blank">GitHub</a>

@@ -1,5 +1,6 @@
 {
     "Counterparty DEX": "分散型取引所",
+    "Decentralized Exchange on Bitcoin": "\"Counterparty DEX\"",
     "Blocks": "ブロック",
     "Mempool": "の未確認取引",
     "Markets": "市場",
@@ -7,7 +8,20 @@
     "All Orders": "注文",
     "Buy Orders": "買い注文",
     "Sell Orders": "注文を売る",
+    "Filled": "完成した",
     "Filled Orders": "完了した取引",
     "Matches": "トレード",
-    "All Matches": "トレード"
+    "All Matches": "トレード",
+    "Ending": "閉鎖",
+    "Ending Soon": "閉鎖",
+    "Featured": "スポンサー",
+    "Get Featured": "スポンサーになる",
+    "How to Trade": "の仕方",
+    "View": "ビュー",
+    "Price": "価格",
+    "Price BTC": "価格BTC",
+    "Price USD": "価格USD",
+    "XCP Price": "為替レート",
+    "Market Cap": "時価総額",
+    "Volume 24h": "24時間ボリュ",
 }

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', $request->has('status') ? 'Ending Soon' : __('Orders'))
+@section('title', $request->has('status') ? __('Ending Soon') : __('Orders'))
 @section('description', 'Counterparty DEX Orders.')
 
 @section('content')
     <h1 class="mb-3">
         <small><i class="fa fa-book text-secondary" aria-hidden="true"></i></small>
-        {{ $request->has('status') ? 'Ending Soon' : __('Orders') }}
+        {{ $request->has('status') ? __('Ending Soon') : __('Orders') }}
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -16,12 +16,12 @@
         </li>
         <li class="nav-item">
             <a class="nav-link{{ $request->has('status') ? ' active' : '' }}" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                Ending
+                {{ __('Ending') }}
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('matches.index') }}">
-                Filled
+                {{ __('Filled') }}
             </a>
         </li>
     </ul>

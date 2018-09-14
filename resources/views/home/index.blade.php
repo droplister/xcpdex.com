@@ -5,11 +5,11 @@
 
 @section('content')
     <h1>{{ __('Counterparty DEX') }}</h1>
-    <p class="lead"><span class="d-none d-md-inline">The</span> Decentralized Exchange on Bitcoin</p>
+    <p class="lead">{{ __('Decentralized Exchange on Bitcoin') }}</p>
     <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive my-2" width="100%" />
     <div class="row justify-content-center mb-2">
         <div class="col-12">
-            <h2 class="mt-3 mb-3">How to Trade</h2>
+            <h2 class="mt-3 mb-3">{{ __('How to Trade') }}</h2>
             <p>The Counterparty DEX is a decentralized exchange that allows anyone, anywhere in the world to trade tokenized assets on the Bitcoin blockchain. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Our website, XCPDEX.com, is a blockchain explorer dedicated to publishing data about how these assets trade, but XCPDEX.com itself is not an exchange. <br class="d-block d-md-none" /> <br class="d-block d-md-none" /> Confused? Join us on Telegram and ask a question. We've also written a brief tutorial on how to use Counterwallet software to access the DEX.</p>
             <br />
         </div>
@@ -27,10 +27,10 @@
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-outline-primary mt-3 float-right">
-                Get Featured
+                {{ __('Get Featured') }}
             </a>
             <h2 class="mt-3 mb-3">
-                Featured
+                {{ __('Featured') }}
                 <small><i class="fa fa-info-circle text-secondary" title="Not an endorsement"></i></small>
             </h2>
         </div>
@@ -48,7 +48,7 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}" class="btn btn-sm btn-outline-success mt-3 float-right">View <span class="d-none d-md-inline">Market</span></a>
+                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}" class="btn btn-sm btn-outline-success mt-3 float-right">{{ __('View') }}</a>
                         <h4>{{ $featured->market->last_price }} {{ $featured->market->quoteAsset->display_name }}</h4>
                         <p class="card-text">Last Traded: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
                     </div>
@@ -61,12 +61,12 @@
             <a href="https://coinmarketcap.com/currencies/counterparty/#markets" class="btn btn-sm btn-outline-primary mt-3 float-right" target="_blank">
                 Where to Buy
             </a>
-            <h2 class="mt-3 mb-3">XCP Price</h2>
+            <h2 class="mt-3 mb-3">{{ __('XCP Price') }}</h2>
         </div>
         <div class="col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
-                    Price USD
+                    {{ __('Price USD') }}
                 </div>
                 <div class="card-body">
                     <h3>{{ $price_data['price_usd'] }}</h3>
@@ -76,7 +76,7 @@
         <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
-                    Price BTC
+                    {{ __('Price BTC') }}
                 </div>
                 <div class="card-body">
                     <h3>{{ $price_data['price_btc'] }}</h3>
@@ -86,7 +86,7 @@
         <div class="d-none d-sm-inline-block col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
-                    Market Cap
+                    {{ __('Market Cap') }}
                 </div>
                 <div class="card-body">
                     <h3>{{ $price_data['market_cap'] }}</h3>
@@ -96,7 +96,7 @@
         <div class="col-6 col-md-3">
             <div class="card mb-4">
                 <div class="card-header">
-                    Volume 24h
+                    {{ __('Volume 24h') }}
                 </div>
                 <div class="card-body">
                     <h3>{{ $price_data['volume'] }}</h3>

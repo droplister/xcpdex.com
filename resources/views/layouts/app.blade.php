@@ -94,7 +94,7 @@
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link font-weight-normal" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                                            Ending Soon
+                                            {{ __('Ending Soon') }}
                                         </a>
                                     </li>
                                     <li class="nav-item">

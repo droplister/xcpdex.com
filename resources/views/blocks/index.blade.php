@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Blocks')')
+@section('title', __('Blocks'))
 @section('description', 'Bitcoin blocks containing Counterparty DEX activity.')
 
 @section('content')

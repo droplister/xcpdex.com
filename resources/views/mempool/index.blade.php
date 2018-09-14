@@ -6,12 +6,12 @@
 @section('content')
     <h1 class="mb-3">
         <small><i class="fa fa-chain-broken text-secondary" aria-hidden="true"></i></small>
-        {{ ('Mempool') }}
+        {{ __('Mempool') }}
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="{{ route('blocks.index') }}">
-                Blocks
+                {{ __('Blocks') }}
             </a>
         </li>
         <li class="nav-item">

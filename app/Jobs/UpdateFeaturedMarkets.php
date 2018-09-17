@@ -91,13 +91,13 @@ class UpdateFeaturedMarkets implements ShouldQueue
         // Simplest
         $market = $this->getMarketByName($name);
 
-        // Flexible
-        if(! $market)
-        {
-            // Trading Pair
-            $name = explode('/', $name);
-            $name = "{$name[1]}/{$name[0]}";
+        // Trading Pair
+        $name = explode('/', $name);
 
+        // Flexible
+        if(! $market && count($name) === 2)
+        {
+            $name = "{$name[1]}/{$name[0]}";
             $market = $this->getMarketByName($name);
         }
 

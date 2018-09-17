@@ -13,18 +13,18 @@
                 </td>
                 <td class="font-weight-bold">
                     <span class="d-block font-weight-normal">
-                        Last Trade
-                    </span>
-                    {{ $last_match ? $last_match->confirmed_at->toDateString() : '----------' }}
-                </td>
-                <td class="font-weight-bold">
-                    <span class="d-block font-weight-normal">
                         Last Price
                         <small class="d-none d-md-inline-block">
                             {{ $market->quoteAsset->display_name }}
                         </small>
                     </span>
                     {{ $last_match ? number_format($last_match->trading_price_normalized, 8) : '----------' }}
+                </td>
+                <td class="font-weight-bold">
+                    <span class="d-block font-weight-normal">
+                        Last Trade
+                    </span>
+                    {{ $last_match ? $last_match->confirmed_at->toDateString() : '----------' }}
                 </td>
             </tr>
             <tr class="bg-light">

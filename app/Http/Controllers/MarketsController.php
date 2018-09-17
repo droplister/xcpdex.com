@@ -51,6 +51,7 @@ class MarketsController extends Controller
         // Features
         $features = Feature::highestBids()->with('market')->get();
 
+        // Show View
         return view('markets.show', compact('market', 'last_match', 'features'));
     }
 }

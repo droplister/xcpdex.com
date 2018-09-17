@@ -45,16 +45,14 @@ class UpdateFeaturedMarkets implements ShouldQueue
 
         foreach($sends as $send)
         {
-            // Market to Feature
+            // Featured Market
             $name = str_replace('"', '', hex2bin($send->memo));
 
             // Flexible Inputs
-            $market = Market::where('name', '=', $name)
-                ->orWhere('slug', '=', $name)
-                ->first();
+            $market = $this->getMarket($name);
 
-            // Market Must Exist
-            if($market)
+            // Simplest Check
+            if($market !== null)
             {
                 Feature::firstOrCreate([
                     'xcp_core_tx_index' => $send->tx_index,
@@ -80,5 +78,42 @@ class UpdateFeaturedMarkets implements ShouldQueue
             ->where('status', '=', 'valid')
             ->where('block_index', '<=', $this->block_index - 2)
             ->get();
+    }
+
+    /**
+     * Get Market
+     *
+     * @param  string  $name
+     * @return \App\Market
+     */
+    private function getMarket($name)
+    {
+        // Simplest
+        $market = $this->getMarketByName($name);
+
+        // Flexible
+        if(! $market)
+        {
+            // Trading Pair
+            $name = explode('/', $name);
+            $name = "{$name[1]}/{$name[0]}";
+
+            $market = $this->getMarketByName($name);
+        }
+
+        return $market;
+    }
+
+    /**
+     * Get Market by Name
+     *
+     * @param  string  $name
+     * @return \App\Market
+     */
+    private function getMarketByName($name)
+    {
+        return Market::where('name', '=', $name)
+            ->orWhere('slug', '=', $name)
+            ->first();
     }
 }

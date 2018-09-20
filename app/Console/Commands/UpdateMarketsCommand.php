@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Block;
 use App\Market;
+use Droplister\XcpCore\App\Block;
 use App\Jobs\UpdateMarketVolumes;
 use Illuminate\Console\Command;
 

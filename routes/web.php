@@ -11,7 +11,6 @@
 |
 */
 
-Auth::routes();
 Route::get('/', 'HomeController@index')->name('home.index');
 Route::get('/locale/{locale}', 'LocaleController@show')->name('locale.show');
 Route::get('/assets', 'AssetsController@index')->name('assets.index');

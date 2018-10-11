@@ -19,6 +19,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        // Price Data
+        $price_data = $this->getPriceData();
+
         // Get Dates
         $dates = $this->getDates();
 
@@ -31,7 +34,7 @@ class HomeController extends Controller
         $features = Feature::highestBids()->with('market')->get();
 
         // Index View
-        return view('home.index', compact('order_counts', 'features'));
+        return view('home.index', compact('price_data', 'order_counts', 'features'));
     }
 
     /**
@@ -79,5 +82,24 @@ class HomeController extends Controller
             'thirty' => $t_orders_count,
             'annual' => $a_orders_count,
         ];
+    }
+
+    /**
+     * Get Price Data
+     * 
+     * @return array
+     */
+    private function getPriceData()
+    {
+        return Cache::remember('api_price_data', 10, function () {
+            $data_xcp = json_decode(file_get_contents('http://coincap.io/history/XCP', true));
+            $data_btc = json_decode(file_get_contents('https://coincap.io/history/BTC', true));
+            return [
+                'price_btc' => number_format(last($data_xcp->price)[1] / last($data_btc->price)[1], 8),
+                'price_usd' => '$' . number_format(last($data_xcp->price)[1], 2),
+                'volume' => '$' . number_format(last($data_xcp->volume)[1]),
+                'market_cap' => '$' . number_format(last($data_xcp->market_cap)[1]),
+            ];
+        });
     }
 }

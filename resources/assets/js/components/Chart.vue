@@ -6,6 +6,7 @@
 
 <script>
 import {Chart} from 'highcharts-vue'
+
 export default {
   props: ['title', 'label', 'source', 'cumulative'],
   components: {

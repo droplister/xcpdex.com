@@ -20,7 +20,8 @@
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.0",
         "laravel/horizon": "^4.0",
-        "morrislaptop/laravel-queue-clear": "~1.0"
+        "morrislaptop/laravel-queue-clear": "~1.0",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use Cache;
 use Droplister\XcpCore\App\Asset;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class OrderResource extends Resource
+class OrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

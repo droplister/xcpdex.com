@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use Droplister\XcpCore\App\Asset;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class DepthResource extends Resource
+class DepthResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

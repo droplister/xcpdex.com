@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use Carbon\Carbon;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class MempoolResource extends Resource
+class MempoolResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

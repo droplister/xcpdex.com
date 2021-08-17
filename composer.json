@@ -17,7 +17,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "laravel/horizon": "^2.0",
+        "laravel/horizon": "^3.0",
         "morrislaptop/laravel-queue-clear": "~1.0"
     },
     "require-dev": {

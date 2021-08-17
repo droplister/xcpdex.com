@@ -92,13 +92,11 @@ class HomeController extends Controller
     private function getPriceData()
     {
         return Cache::remember('api_price_data', 10, function () {
-            $data_xcp = json_decode(file_get_contents('http://coincap.io/history/XCP', true));
-            $data_btc = json_decode(file_get_contents('https://coincap.io/history/BTC', true));
             return [
-                'price_btc' => number_format(last($data_xcp->price)[1] / last($data_btc->price)[1], 8),
-                'price_usd' => '$' . number_format(last($data_xcp->price)[1], 2),
-                'volume' => '$' . number_format(last($data_xcp->volume)[1]),
-                'market_cap' => '$' . number_format(last($data_xcp->market_cap)[1]),
+                'price_btc' => number_format(1,1),
+                'price_usd' => '$' . number_format(1,1),
+                'volume' => '$' . number_format(1,1),
+                'market_cap' => '$' . number_format(1,1),
             ];
         });
     }

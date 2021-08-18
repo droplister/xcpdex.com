@@ -14,7 +14,6 @@
         "php": "^7.2.5",
         "cviebrock/eloquent-sluggable": "^7.0",
         "droplister/xcp-core": "dev-feature/add-dispeners",
-        "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.4",
@@ -24,6 +23,7 @@
         "predis/predis": "^1.1"
     },
     "require-dev": {
+        "facade/ignition": "^2.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",

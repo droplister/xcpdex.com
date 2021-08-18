@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $last_match ? $market->name . ' &ndash; ' . number_format($last_match->trading_price_normalized, 8) . ' ' . $market->quoteAsset->display_name : $market->name)
+@section('title', $last_match ? $market->name . ' – ' . number_format($last_match->trading_price_normalized, 8) . ' ' . $market->quoteAsset->display_name : $market->name)
 @section('description', $market->name . ' Price Chart, Order Book &amp; Match History.')
 
 @section('content')

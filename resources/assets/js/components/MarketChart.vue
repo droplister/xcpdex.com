@@ -52,6 +52,9 @@ export default {
           top: '80%',
           height: '20%'
         }],
+        rangeSelector: {
+            selected: 1
+        },
         plotOptions: {
           line: {
             animation: false

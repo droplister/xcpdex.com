@@ -4,6 +4,12 @@
 @section('description', $market->name . ' Price Chart, Order Book &amp; Match History.')
 
 @section('content')
+    @if($last_match && $last_match->confirmed_at->diffInDays(Carbon\Carbon::now()) > 365)
+        <div class="alert alert-warning">
+            <i class="fa fa-exclamation-circle mr-1"></i>
+             The last order in this market was created {{ $last_match->confirmed_at->toDateString() }}.
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-6">
             @include('markets.partials.title')

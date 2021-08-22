@@ -47,7 +47,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
+                        <a class="nav-link px-2 mr-2" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
                             PEPECASH <span style="font-weight: 400">${{ $price_data['pepecash']['price'] }}</span> <i class="fa fa-caret-{{ $price_data['pepecash']['change'] > 0 ? 'up text-success' : 'down text-danger' }} ml-1"></i> <small>{{ $price_data['pepecash']['change'] }}%</small>
                         </a>
                     </li>

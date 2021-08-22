@@ -15,4 +15,9 @@ return [
      * Analytics URL
      */
     'analytics_url' => env('GOOGLE_ANALYTICS_URL', 'https://datastudio.google.com/open/1qWt729AjiCfRYIky_2sQb7S-YpePFApp'),
+
+    /**
+     * CoinMarketCap
+     */
+    'coinmarketcap' => env('COINMARKETCAP_API_KEY'),
 ];

@@ -15,7 +15,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $price_data = Cache::remember('nav_pricesfd22s', 30, function () {
+        $price_data = Cache::remember('nav_prices', 30, function () {
             $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
                 $response1 = $cmc->cryptocurrency()->quotesLatest(['id' => 1, 'convert' => 'USD']);

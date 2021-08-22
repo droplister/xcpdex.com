@@ -29,7 +29,7 @@ class MarketsController extends Controller
             ->get();
 
         // Index View
-        return view('markets.index', compact('markets', 'quote_asset'));
+        return view('markets.index', compact('request', 'markets', 'quote_asset'));
     }
 
     /**

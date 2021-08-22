@@ -37,17 +37,17 @@
             <div class="col-md-5 col-lg-7">
                 <ul class="nav nav-pills float-right">
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">
+                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
                             BTC <span style="font-weight: 400">${{ $price_data['btc']['price'] }}</span> <i class="fa fa-caret-{{ $price_data['btc']['change'] > 0 ? 'up text-success' : 'down text-danger' }}"></i> <small>{{ $price_data['btc']['change'] }}%</small>
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/counterparty/" target="_blank">
+                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
                             XCP <span style="font-weight: 400">${{ $price_data['xcp']['price'] }}</span> <i class="fa fa-caret-{{ $price_data['xcp']['change'] > 0 ? 'up text-success' : 'down text-danger' }}"></i> <small>{{ $price_data['xcp']['change'] }}%</small>
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/pepe-cash/" target="_blank">
+                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
                             PEPECASH <span style="font-weight: 400">${{ $price_data['pepecash']['price'] }}</span> <i class="fa fa-caret-{{ $price_data['pepecash']['change'] > 0 ? 'up text-success' : 'down text-danger' }}"></i> <small>{{ $price_data['pepecash']['change'] }}%</small>
                         </a>
                     </li>

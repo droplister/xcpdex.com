@@ -16,23 +16,30 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts.app', function ($view) {
-	        $data = Cache::remember('nav_prices', 30, function () {
-	            $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
+            $price_data = Cache::remember('nav_prices', 30, function () {
+                $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
-	            $response1 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'BTC']);
-	            $response2 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'XCP']);
-	            $response3 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'PEPECASH']);
+                    $response1 = $cmc->cryptocurrency()->quotesLatest(['id' => 1, 'convert' => 'USD']);
+                    $response2 = $cmc->cryptocurrency()->quotesLatest(['id' => 132, 'convert' => 'USD']);
+                    $response3 = $cmc->cryptocurrency()->quotesLatest(['id' => 1405, 'convert' => 'USD']);
 
-	            return [
-	            	'btc_price' => number_format($response1->data->quote->USD->price, 2),
-	            	'xcp_price' => number_format($response2->data->quote->USD->price, 2),
-	            	'ppc_price' => number_format($response3->data->quote->USD->price, 3),
-	            ];
-	        });
+                return [
+                    'btc' => [
+                            'price' => number_format($response1->data->{1}->quote->USD->price, 2),
+                            'change' => number_format($response1->data->{1}->quote->USD->percent_change_24h, 0),
+                        ],
+                    'xcp' => [
+                            'price' => number_format($response2->data->{132}->quote->USD->price, 2),
+                            'change' => number_format($response2->data->{132}->quote->USD->percent_change_24h, 0),
+                        ],
+                    'pepecash' => [
+                            'price' => number_format($response3->data->{1405}->quote->USD->price, 2),
+                            'change' => number_format($response3->data->{1405}->quote->USD->percent_change_24h, 0),
+                        ],
+                ];
+            });
 
-            $view->with('btc_price', $data['btc_price']);
-            $view->with('xcp_price', $data['xcp_price']);
-            $view->with('ppc_price', $data['ppc_price']);
+            $view->with('price_data', $price_data);
         });
     }
 

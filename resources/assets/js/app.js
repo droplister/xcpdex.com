@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('address-balance', require('./components/AddressBalance.vue'));
 Vue.component('auto-suggest', require('./components/AutoSuggest.vue'));
 Vue.component('chart', require('./components/Chart.vue'));
 Vue.component('chart-price', require('./components/ChartPrice.vue'));

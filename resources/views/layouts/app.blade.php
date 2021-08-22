@@ -105,13 +105,13 @@
                             </a>
                         </h6>
                         <ul class="nav flex-column">
-                            <li class="nav-item mt-2">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
                                     <i class="fa fa-edit mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Orders') }}
                                 </a>
                             </li>
-                            <li class="nav-item mt-2">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('matches.index') }}">
                                     <i class="fa fa-retweet mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Trades') }}
@@ -133,7 +133,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('mempool.index') }}">
-                                    <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
+                                    <i class="fa fa-clock-o mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Mempool') }}
                                 </a>
                             </li>

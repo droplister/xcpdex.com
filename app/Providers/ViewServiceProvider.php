@@ -15,8 +15,6 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
-
         View::composer('app', function ($view) {
 	        $data = Cache::remember('nav_prices', 30, function () {
 	            $cmc = new CoinMarketCap\Api(config('xcpdex.coinmarketcap'));

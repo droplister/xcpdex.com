@@ -21,15 +21,18 @@ class ViewServiceProvider extends ServiceProvider
 
 	            $response1 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'BTC']);
 	            $response2 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'XCP']);
+	            $response3 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'PEPECASH']);
 
 	            return [
 	            	'btc_price' => number_format($response1->data->quote->USD->price, 2),
 	            	'xcp_price' => number_format($response2->data->quote->USD->price, 2),
+	            	'ppc_price' => number_format($response3->data->quote->USD->price, 3),
 	            ];
 	        });
 
             $view->with('btc_price', $data['btc_price']);
             $view->with('xcp_price', $data['xcp_price']);
+            $view->with('ppc_price', $data['ppc_price']);
         });
     }
 

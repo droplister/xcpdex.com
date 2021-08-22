@@ -37,13 +37,18 @@
             <div class="col-md-5 col-lg-7">
                 <ul class="nav nav-pills float-right">
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="#" target="_blank">
+                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">
                             BTC = ${{ $btc_price }}
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="#" target="_blank">
+                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/counterparty/" target="_blank">
                             XCP = ${{ $xcp_price }}
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-md-inline-block">
+                        <a class="nav-link px-2" href="https://coinmarketcap.com/currencies/pepe-cash/" target="_blank">
+                            PEPECASH = ${{ $ppc_price }}
                         </a>
                     </li>
                     <li class="nav-item">

@@ -17,4 +17,16 @@ class OrderMatchesController extends Controller
         // Index View
         return view('matches.index');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function redirect()
+    {
+        // Index View
+        return redirect(route('matches.index'));
+    }
 }

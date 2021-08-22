@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Market;
-use Droplister\XcpCore\App\OrderMatch;
+use Droplister\XcpCore\App\Asset;
 use Illuminate\Http\Request;
 
 class MarketsController extends Controller
@@ -17,19 +17,8 @@ class MarketsController extends Controller
      */
     public function index(Request $request, $quote_asset='XCP')
     {
-        // Markets
-        $markets = Market::with('quoteAsset')
-            ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
-            ->where('xcp_core_quote_asset', '!=', 'XCP')
-            ->where('volume', '>', 0)
-            ->groupBy('xcp_core_quote_asset')
-            ->orderBy('count', 'desc')
-            ->orderBy('xcp_core_quote_asset')
-            ->take(10)
-            ->get();
-
         // Index View
-        return view('markets.index', compact('request', 'markets', 'quote_asset'));
+        return view('markets.index', compact('request', 'quote_asset'));
     }
 
     /**

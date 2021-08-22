@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1><img src="/images/{{ $quote_asset }}.png" style="height: 2rem; margin-top: -0.4rem;" alt="{{ $quote_asset }}" class="mr-1" /> {{ $quote_asset }}</h1>
-                <p class="lead">Open orders for {{ $quote_asset }} on the Counterparty Dex.</p>
+                <p class="lead">Buy and Sell {{ $quote_asset }} on the Counterparty Dex.</p>
             </div>
             <div class="col-md-6">
             </div>

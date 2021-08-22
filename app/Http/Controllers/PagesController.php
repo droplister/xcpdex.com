@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Cache;
+use Droplister\XcpCore\App\Block;
+use Droplister\XcpCore\App\Order;
+use Droplister\XcpCore\App\OrderMatch;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller

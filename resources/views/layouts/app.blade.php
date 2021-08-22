@@ -70,52 +70,72 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
+                            <span>Top Markets</span>
+                            <a href="{{ route('markets.index') }}">
+                                <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right"></i>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'XCP']) }}">
+                                    XCP
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'BTC']) }}">
+                                    BTC
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'PEPECASH']) }}">
+                                    PEPECASH
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'BITCORN']) }}">
+                                    BITCORN
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
+                            <span>Order Book</span>
+                            <a href="{{ route('orders.index') }}">
+                                <i aria-hidden="true" class="fa fa-book text-secondary float-right"></i>
+                            </a>
+                        </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item mt-2">
-                                <a class="nav-link" href="{{ route('markets.index') }}">
-                                    <i class="fa fa-server float-right mt-1 text-secondary" aria-hidden="true"></i>
-                                    {{ __('Markets') }}
-                                </a>
-                                <ul class="nav flex-column">
-                                    @foreach($features as $featured)
-                                        <li class="nav-item">
-                                            <a class="nav-link font-weight-normal" href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                                                {{ $featured->market->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li class="nav-item mt-2">
                                 <a class="nav-link" href="{{ route('orders.index') }}">
-                                    <i class="fa fa-book float-right mt-1 text-secondary" aria-hidden="true"></i>
+                                    <i class="fa fa-edit mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Orders') }}
                                 </a>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                                            {{ __('Ending Soon') }}
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('matches.index') }}">
-                                            {{ __('Filled Orders') }}
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li class="nav-item mt-2">
+                                <a class="nav-link" href="{{ route('matches.index') }}">
+                                    <i class="fa fa-retweet mr-1 text-secondary" aria-hidden="true"></i>
+                                    {{ __('Trades') }}
+                                </a>
+                            </li>
+                        </ul>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
+                            <span>Blockchain</span>
+                            <a href="{{ route('blocks.index') }}">
+                                <i aria-hidden="true" class="fa fa-chain text-secondary float-right"></i>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('blocks.index') }}">
-                                    <i class="fa fa-chain float-right mt-1 text-secondary" aria-hidden="true"></i>
+                                    <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Blocks') }}
                                 </a>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link font-weight-normal" href="{{ route('mempool.index') }}">
-                                            {{ __('Mempool') }}
-                                        </a>
-                                    </li>
-                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('mempool.index') }}">
+                                    <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
+                                    {{ __('Mempool') }}
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Feature;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -15,10 +14,7 @@ class PagesController extends Controller
      */
     public function disclaimer(Request $request)
     {
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
-        return view('pages.disclaimer', compact('features'));
+        return view('pages.disclaimer');
     }
     
     /**
@@ -29,10 +25,7 @@ class PagesController extends Controller
      */
     public function privacy(Request $request)
     {
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
-        return view('pages.privacy', compact('features'));
+        return view('pages.privacy');
     }
 
     /**
@@ -43,9 +36,6 @@ class PagesController extends Controller
      */
     public function terms(Request $request)
     {
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
-        return view('pages.terms', compact('features'));
+        return view('pages.terms');
     }
 }

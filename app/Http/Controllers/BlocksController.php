@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Feature;
 use Illuminate\Http\Request;
 
 class BlocksController extends Controller
@@ -15,11 +14,8 @@ class BlocksController extends Controller
      */
     public function index(Request $request)
     {
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
         // Index View
-        return view('blocks.index', compact('features'));
+        return view('blocks.index');
     }
 
     /**

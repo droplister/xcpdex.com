@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Feature;
 use Droplister\XcpCore\App\Address;
 use Illuminate\Http\Request;
 
@@ -19,9 +18,6 @@ class AddressesController extends Controller
     {
         $address = Address::whereAddress($address)->firstOrFail();
 
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
         // Address First Active
         $first_trade = $address->orders()->orderBy('tx_index', 'asc')->first();
 
@@ -32,6 +28,6 @@ class AddressesController extends Controller
         $total_trades = $address->orders()->count();
 
         // Show View
-        return view('addresses.show', compact('request', 'address', 'features', 'first_trade', 'last_trade', 'total_trades'));
+        return view('addresses.show', compact('request', 'address', 'first_trade', 'last_trade', 'total_trades'));
     }
 }

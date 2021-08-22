@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Cache;
-use App\Feature;
 use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;
 use Droplister\XcpCore\App\OrderMatch;
@@ -30,11 +29,8 @@ class HomeController extends Controller
             return $this->getOrderCounts($dates);
         });
 
-        // Features
-        $features = Feature::highestBids()->with('market')->get();
-
         // Index View
-        return view('home.index', compact('price_data', 'order_counts', 'features'));
+        return view('home.index', compact('price_data', 'order_counts'));
     }
 
     /**

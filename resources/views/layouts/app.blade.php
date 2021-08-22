@@ -71,82 +71,82 @@
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
                         <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
-                            <a class="d-flex justify-content-between text-muted" href="{{ route('home.index') }}">
+                            <a class="d-flex justify-content-between text-muted text-decoration-none" href="{{ route('home.index') }}">
                                 <span>Top Markets</span>
                                 <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'markets.index' && $quote_asset === 'XCP' ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
                                     XCP
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'markets.index' && $quote_asset === 'BTC' ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
                                     BTC
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'markets.index' && $quote_asset === 'PEPECASH' ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
                                     PEPECASH
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'BITCORN']) }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'markets.index' && $quote_asset === 'BITCORN' ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'BITCORN']) }}">
                                     BITCORN
                                 </a>
                             </li>
                         </ul>
                         <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
-                            <a class="d-flex justify-content-between text-muted" href="{{ route('orders.index') }}">
+                            <a class="d-flex justify-content-between text-muted text-decoration-none" href="{{ route('orders.index') }}">
                                 <span>Order Book</span>
                                 <i aria-hidden="true" class="fa fa-book text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('orders.index') }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'orders.index' ? ' active' : '' }}" href="{{ route('orders.index') }}">
                                     <i class="fa fa-edit mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Orders') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('matches.index') }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'matches.index' ? ' active' : '' }}" href="{{ route('matches.index') }}">
                                     <i class="fa fa-retweet mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Trades') }}
                                 </a>
                             </li>
                         </ul>
                         <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
-                            <a class="d-flex justify-content-between text-muted" href="{{ route('blocks.index') }}">
+                            <a class="d-flex justify-content-between text-muted text-decoration-none" href="{{ route('blocks.index') }}">
                                 <span>Blockchain</span>
                                 <i aria-hidden="true" class="fa fa-chain text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('blocks.index') }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'blocks.index' ? ' active' : '' }}" href="{{ route('blocks.index') }}">
                                     <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Blocks') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('mempool.index') }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'mempool.index' ? ' active' : '' }}" href="{{ route('mempool.index') }}">
                                     <i class="fa fa-clock-o mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Mempool') }}
                                 </a>
                             </li>
                         </ul>
                          <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
-                            <a class="d-flex justify-content-between text-muted" href="{{ route('pages.stats') }}">
+                            <a class="d-flex justify-content-between text-muted text-decoration-none" href="{{ route('pages.stats') }}">
                                 <span>Usage Data</span>
                                 <i aria-hidden="true" class="fa fa-calculator text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('pages.stats') }}">
+                                <a class="nav-link{{ Route::currentRouteName() === 'pages.stats' ? ' active' : '' }}" href="{{ route('pages.stats') }}">
                                     <i class="fa fa-area-chart mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Statistics') }}
                                 </a>

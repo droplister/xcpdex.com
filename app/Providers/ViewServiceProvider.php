@@ -15,16 +15,16 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('app', function ($view) {
+        View::composer('layouts.app', function ($view) {
 	        $data = Cache::remember('nav_prices', 30, function () {
-	            $cmc = new CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
+	            $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
 	            $response1 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'BTC']);
 	            $response2 = $cmc->tools()->priceConversion(['amount' => 1, 'symbol' => 'XCP']);
 
 	            return [
-	            	'btc_price' => $response1->data->quote->USD->price,
-	            	'xcp_price' => $response2->data->quote->USD->price,
+	            	'btc_price' => number_format($response1->data->quote->USD->price, 2),
+	            	'xcp_price' => number_format($response2->data->quote->USD->price, 2),
 	            ];
 	        });
 

@@ -38,12 +38,12 @@
                 <ul class="nav nav-pills float-right">
                     <li class="nav-item d-none d-md-inline-block">
                         <a class="nav-link px-2" href="#" target="_blank">
-                            BTC = {{ $btc_price }}
+                            BTC = ${{ $btc_price }}
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
                         <a class="nav-link px-2" href="#" target="_blank">
-                            XCP = {{ $xcp_price }}
+                            XCP = ${{ $xcp_price }}
                         </a>
                     </li>
                     <li class="nav-item">

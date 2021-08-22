@@ -35,7 +35,7 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function privacy(Request $request)
+    public function stats(Request $request)
     {
         // Get Dates
         $dates = $this->getDates();

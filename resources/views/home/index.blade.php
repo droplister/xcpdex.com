@@ -26,38 +26,6 @@
     </div>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
-            <a href="#" role="button" data-toggle="modal" data-target="#howToModal" class="btn btn-sm btn-outline-primary mt-3 float-right">
-                {{ __('Get Featured') }}
-            </a>
-            <h2 class="mt-3 mb-3">
-                {{ __('Featured') }}
-                <small><i class="fa fa-info-circle text-secondary" title="Not an endorsement"></i></small>
-            </h2>
-        </div>
-        @foreach($features as $featured)
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-header font-weight-bold">
-                        @if(isset(json_decode($featured->market->baseAsset->meta, true)['image']))
-                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                            <img src="{{ json_decode($featured->market->baseAsset->meta, true)['image'] }}" style="vertical-align:top;height:22px;" class="mr-1" />
-                        </a>
-                        @endif
-                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}">
-                            {{ $featured->market->baseAsset->display_name }}
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}" class="btn btn-sm btn-outline-success mt-3 float-right">{{ __('View') }}</a>
-                        <h4>{{ $featured->market->last_price }} {{ $featured->market->quoteAsset->display_name }}</h4>
-                        <p class="card-text">Last Traded: {{ $featured->market->lastMatch() ? $featured->market->lastMatch()->confirmed_at->diffForHumans() : 'N/A' }}</p>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <div class="row justify-content-center mb-2">
-        <div class="col-12">
             <a href="https://coinmarketcap.com/currencies/counterparty/#markets" class="btn btn-sm btn-outline-primary mt-3 float-right" target="_blank">
                 Where to Buy
             </a>

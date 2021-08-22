@@ -5,7 +5,7 @@
 
 @section('content')
     <h1 class="mb-3">
-        <small><i class="fa fa-chain-broken text-secondary" aria-hidden="true"></i></small>
+        <small><i class="fa fa-clock-o text-secondary" aria-hidden="true"></i></small>
         {{ __('Mempool') }}
     </h1>
     <ul class="nav nav-tabs">

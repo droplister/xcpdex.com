@@ -12,7 +12,7 @@
     @else
         <div class="row">
             <div class="col-md-6">
-                <h1>{{ $quote_asset }}</h1>
+                <h1><img src="{{ json_decode($market->baseAsset->meta, true)['image'] }}" style="vertical-align:top;height:22px;" class="mr-1" /> {{ $quote_asset }}</h1>
                 <p class="lead">Open orders for {{ $quote_asset }} on the Counterparty Dex.</p>
             </div>
             <div class="col-md-6">

@@ -19,13 +19,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{ $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show', ['address' => $address->address, 'status' => 'ending-soon']) }}">
-                {{ __('Ending') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="{{ route('addresses.show', ['address' => $address->address]) }}">
-                {{ __('Filled') }}
+                {{ __('Trades') }}
             </a>
         </li>
     </ul>

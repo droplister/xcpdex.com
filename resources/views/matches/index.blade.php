@@ -5,8 +5,8 @@
 
 @section('content')
     <h1 class="mb-3">
-        <small><i class="fa fa-book text-secondary" aria-hidden="true"></i></small>
-        {{ __('Filled Orders') }}
+        <small><i class="fa fa-retweet text-secondary" aria-hidden="true"></i></small>
+        {{ __('Trades') }}
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -15,13 +15,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                Ending
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link active" href="{{ route('matches.index') }}">
-                Filled
+                Trades
             </a>
         </li>
     </ul>

@@ -3,14 +3,17 @@
 @section('title', 'Statistics')
 
 @section('content')
-    <h1 class="mb-3">Statistics</h1>
+    <h1 class="mb-3">
+        <small><i class="fa fa-area-chart text-secondary" aria-hidden="true"></i></small>
+        Statistics
+    </h1>
     <div class="row justify-content-center mb-2">
         <div class="col-12">
             <a href="{{ route('orders.index') }}" class="btn btn-sm btn-outline-primary mt-3 float-right">
                 <i aria-hidden="true" class="fa fa-book"></i>
-                {{ __('All Orders') }}
+                {{ __('New Orders') }}
             </a>
-            <h2 class="mt-3 mb-3">Order History</h2>
+            <h2 class="mt-3 mb-3">Orders Placed</h2>
         </div>
         <div class="col-6 col-md-3">
             <div class="card mb-4">

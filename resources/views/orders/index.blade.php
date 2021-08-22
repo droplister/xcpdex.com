@@ -5,8 +5,11 @@
 
 @section('content')
     <h1 class="mb-3">
-        <small><i class="fa fa-book text-secondary" aria-hidden="true"></i></small>
-        {{ $request->has('status') ? __('Ending Soon') : __('Orders') }}
+        <small><i class="fa fa-edit text-secondary" aria-hidden="true"></i></small>
+        {{ __('Orders') }}
+        @if($request->has('status'))
+            <small class="lead">{{ __('Ending Soon') }}</small>
+        @endif
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -15,13 +18,8 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{ $request->has('status') ? ' active' : '' }}" href="{{ route('orders.index', ['status' => 'ending-soon']) }}">
-                {{ __('Ending') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="{{ route('matches.index') }}">
-                {{ __('Filled') }}
+                {{ __('Trades') }}
             </a>
         </li>
     </ul>

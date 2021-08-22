@@ -36,6 +36,16 @@
             </div>
             <div class="col-md-5 col-lg-7">
                 <ul class="nav nav-pills float-right">
+                    <li class="nav-item d-none d-md-inline-block">
+                        <a class="nav-link px-2" href="#" target="_blank">
+                            BTC = $49,236.08
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-md-inline-block">
+                        <a class="nav-link px-2" href="#" target="_blank">
+                            XCP = $7.11
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link px-2" href="https://t.me/xcpdex" target="_blank">
                             <i class="fa fa-telegram fa-lg text-primary"></i>
@@ -60,7 +70,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('matches.index') }}">
-                            {{ __('Matches') }}
+                            {{ __('Trades') }}
                         </a>
                     </li>
                 </ul>

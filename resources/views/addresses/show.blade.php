@@ -14,17 +14,17 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link{{ ! $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show') }}">
+            <a class="nav-link{{ ! $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show', ['address' => $address->address]) }}">
                 {{ __('Orders') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link{{ $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show', ['status' => 'ending-soon']) }}">
+            <a class="nav-link{{ $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show', ['address' => $address->address, 'status' => 'ending-soon']) }}">
                 {{ __('Ending') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('addresses.show') }}">
+            <a class="nav-link" href="{{ route('addresses.show', ['address' => $address->address]) }}">
                 {{ __('Filled') }}
             </a>
         </li>

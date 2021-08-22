@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/', 'MarketsController@index')->name('home.index');
 Route::get('/locale/{locale}', 'LocaleController@show')->name('locale.show');
 Route::get('/address/{address}', 'AddressesController@show')->name('addresses.show');
 Route::get('/assets', 'AssetsController@index')->name('assets.index');

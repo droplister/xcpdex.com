@@ -72,9 +72,7 @@
                     <div class="sidebar-sticky">
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Top Markets</span>
-                            <a href="{{ route('markets.index') }}">
-                                <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right" style="color: #999"></i>
-                            </a>
+                            <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right" style="color: #999"></i>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -100,9 +98,7 @@
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Order Book</span>
-                            <a href="{{ route('orders.index') }}">
-                                <i aria-hidden="true" class="fa fa-book text-secondary float-right" style="color: #999"></i>
-                            </a>
+                            <i aria-hidden="true" class="fa fa-book text-secondary float-right" style="color: #999"></i>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -120,9 +116,7 @@
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Blockchain</span>
-                            <a href="{{ route('blocks.index') }}">
-                                <i aria-hidden="true" class="fa fa-chain text-secondary float-right" style="color: #999"></i>
-                            </a>
+                            <i aria-hidden="true" class="fa fa-chain text-secondary float-right" style="color: #999"></i>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -140,14 +134,12 @@
                         </ul>
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Usage Data</span>
-                            <a href="{{ route('blocks.index') }}">
-                                <i aria-hidden="true" class="fa fa-calculator text-secondary float-right" style="color: #999"></i>
-                            </a>
+                            <i aria-hidden="true" class="fa fa-calculator text-secondary float-right" style="color: #999"></i>
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('pages.stats') }}">
-                                    <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
+                                    <i class="fa fa-area-chart mr-1 text-secondary" aria-hidden="true"></i>
                                     {{ __('Statistics') }}
                                 </a>
                             </li>

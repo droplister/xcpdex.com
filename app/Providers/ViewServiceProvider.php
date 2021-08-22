@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
@@ -43,5 +44,5 @@ class ViewServiceProvider extends ServiceProvider
     {
         //
     }
-}
+
 }

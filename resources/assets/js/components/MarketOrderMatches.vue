@@ -15,13 +15,13 @@
       </thead>
       <tbody>
         <tr v-for="match in matches">
-          <td><a :href="'https://xcpfox.com/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
+          <td><a :href="'https://xcpdex.com/tx/' + match.tx_hash">{{ match.date }}</a></td>
           <td :class="match.type === 'Buy' ? 'text-success' : 'text-danger'">{{ match.type }}</td>
           <td class="text-right">{{ match.price }}</td>
           <td class="text-right">{{ match.quantity }}</td>
           <td class="text-right">{{ match.total }}</td>
-          <td><a :href="'https://xcpfox.com/address/' + match.buyer" target="_blank">{{ match.buyer }}</a></td>
-          <td><a :href="'https://xcpfox.com/address/' + match.seller" target="_blank">{{ match.seller }}</a></td>
+          <td><a :href="'https://xcpdex.com/address/' + match.buyer">{{ match.buyer }}</a></td>
+          <td><a :href="'https://xcpdex.com/address/' + match.seller">{{ match.seller }}</a></td>
         </tr>
         <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="7">No order matches.</td>

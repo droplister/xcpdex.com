@@ -78,22 +78,22 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'XCP']) }}">
+                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
                                     XCP
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'BTC']) }}">
+                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
                                     BTC
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'PEPECASH']) }}">
+                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'PEPECASH']) }}">
                                     PEPECASH
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('markets.show', ['market' => 'BITCORN']) }}">
+                                <a class="nav-link" href="{{ route('markets.index', ['quote_asset' => 'BITCORN']) }}">
                                     BITCORN
                                 </a>
                             </li>

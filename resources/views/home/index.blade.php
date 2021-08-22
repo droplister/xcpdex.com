@@ -142,5 +142,4 @@
             </div>
         </div>
     </div>
-    @include('home.modals.how-to')
 @endsection

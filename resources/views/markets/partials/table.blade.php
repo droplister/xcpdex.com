@@ -33,7 +33,7 @@
                         Market Cap: <strong>{{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized) }} <small>{{ $market->quoteAsset->display_name }}</small></strong>
                         @if(isset($price_data[$market->quoteAsset->display_name]))
                             <small>/</small>
-                            <strong>${{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name]) }} <small>USD</small></strong>
+                            <strong>${{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name]['price']) }} <small>USD</small></strong>
                         @endif
                     @else
                         Market Cap: <strong>---------- <small>{{ $market->quoteAsset->display_name }}</small></strong>

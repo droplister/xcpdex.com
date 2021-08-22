@@ -70,8 +70,8 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
-                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2 text-muted">
-                            <a class="d-flex justify-content-between" href="{{ route('home.index') }}">
+                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
+                            <a class="d-flex justify-content-between text-muted" href="{{ route('home.index') }}">
                                 <span>Top Markets</span>
                                 <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right" style="color: #999"></i>
                             </a>
@@ -98,8 +98,8 @@
                                 </a>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2 text-muted">
-                            <a class="d-flex justify-content-between" href="{{ route('orders.index') }}">
+                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
+                            <a class="d-flex justify-content-between text-muted" href="{{ route('orders.index') }}">
                                 <span>Order Book</span>
                                 <i aria-hidden="true" class="fa fa-book text-secondary float-right" style="color: #999"></i>
                             </a>
@@ -118,8 +118,8 @@
                                 </a>
                             </li>
                         </ul>
-                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2 text-muted">
-                            <a class="d-flex justify-content-between" href="{{ route('blocks.index') }}">
+                        <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
+                            <a class="d-flex justify-content-between text-muted" href="{{ route('blocks.index') }}">
                                 <span>Blockchain</span>
                                 <i aria-hidden="true" class="fa fa-chain text-secondary float-right" style="color: #999"></i>
                             </a>
@@ -138,8 +138,8 @@
                                 </a>
                             </li>
                         </ul>
-                         <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2 text-muted">
-                            <a class="d-flex justify-content-between" href="{{ route('home.index') }}">
+                         <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-2">
+                            <a class="d-flex justify-content-between text-muted" href="{{ route('pages.stats') }}">
                                 <span>Usage Data</span>
                                 <i aria-hidden="true" class="fa fa-calculator text-secondary float-right" style="color: #999"></i>
                             </a>

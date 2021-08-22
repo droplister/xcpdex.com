@@ -25,5 +25,6 @@ Route::get('/block/{block}', 'BlocksController@show')->name('blocks.show');
 Route::get('/mempool', 'MempoolController@index')->name('mempool.index');
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('pages.disclaimer');
 Route::get('/privacy', 'PagesController@privacy')->name('pages.privacy');
+Route::get('/stats', 'PagesController@stats')->name('pages.stats');
 Route::get('/terms', 'PagesController@terms')->name('pages.terms');
 Route::get('/{asset}', 'AssetsController@show');

@@ -138,6 +138,20 @@
                                 </a>
                             </li>
                         </ul>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
+                            <span>Usage Data</span>
+                            <a href="{{ route('blocks.index') }}">
+                                <i aria-hidden="true" class="fa fa-calculator text-secondary float-right" style="color: #999"></i>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('pages.stats') }}">
+                                    <i class="fa fa-cube mr-1 text-secondary" aria-hidden="true"></i>
+                                    {{ __('Statistics') }}
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-3">

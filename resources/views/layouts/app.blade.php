@@ -73,7 +73,7 @@
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Top Markets</span>
                             <a href="{{ route('markets.index') }}">
-                                <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right"></i>
+                                <i aria-hidden="true" class="fa fa-bar-chart text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
@@ -101,7 +101,7 @@
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Order Book</span>
                             <a href="{{ route('orders.index') }}">
-                                <i aria-hidden="true" class="fa fa-book text-secondary float-right"></i>
+                                <i aria-hidden="true" class="fa fa-book text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">
@@ -121,7 +121,7 @@
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-2 text-muted">
                             <span>Blockchain</span>
                             <a href="{{ route('blocks.index') }}">
-                                <i aria-hidden="true" class="fa fa-chain text-secondary float-right"></i>
+                                <i aria-hidden="true" class="fa fa-chain text-secondary float-right" style="color: #999"></i>
                             </a>
                         </h6>
                         <ul class="nav flex-column">

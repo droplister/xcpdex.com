@@ -11,7 +11,7 @@
                     </span>
                     {{ number_format($market->baseAsset->supply_normalized) }}
                 </td>
-                <td class="font-weight-bold" title="{{ isset($price_data[$market->quoteAsset->display_name]) && $last_match ? number_format($last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name], 2) . ' USD' : '' }}">
+                <td class="font-weight-bold" title="{{ isset($price_data[$market->quoteAsset->display_name]) && $last_match ? number_format($last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name]['price'], 2) . ' USD' : '' }}">
                     <span class="d-block font-weight-normal">
                         Last Price
                         <small class="d-none d-md-inline-block">

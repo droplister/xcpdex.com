@@ -4,7 +4,7 @@
             <tr>
                 <td class="font-weight-bold d-none d-md-block border-right-0 border-bottom-0">
                     <span class="d-block font-weight-normal">
-                        {{ $market->baseAsset->display_name }}
+                        Issuance
                         <a href="https://xcpfox.com/asset/{{ $market->baseAsset->display_name }}" target="_blank">
                             <i class="fa fa-info-circle"></i>
                         </a>

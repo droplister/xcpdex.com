@@ -11,7 +11,7 @@
                     </span>
                     {{ number_format($market->baseAsset->supply_normalized) }}
                 </td>
-                <td class="font-weight-bold">
+                <td class="font-weight-bold" title="{{ isset($price_data[$market->quoteAsset->display_name]) && $last_match ? number_format($last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name], 2) . ' USD' : '' }}">
                     <span class="d-block font-weight-normal">
                         Last Price
                         <small class="d-none d-md-inline-block">
@@ -31,6 +31,10 @@
                 <td colspan="3">
                     @if($last_match)
                         Market Cap: <strong>{{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized) }} <small>{{ $market->quoteAsset->display_name }}</small></strong>
+                        @if(isset($price_data[$market->quoteAsset->display_name]))
+                            <small>/</small>
+                            <strong>${{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name]) }} <small>USD</small></strong>
+                        @endif
                     @else
                         Market Cap: <strong>---------- <small>{{ $market->quoteAsset->display_name }}</small></strong>
                     @endif

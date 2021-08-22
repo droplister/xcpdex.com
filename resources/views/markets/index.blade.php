@@ -8,7 +8,6 @@
         <h1>{{ __('Counterparty DEX') }}</h1>
         <p class="lead">{{ __('The Decentralized Exchange on Bitcoin') }}</p>
         <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive my-2" width="100%" />
-        @include('markets.partials.filter')
     @else
         <div class="row">
             <div class="col-md-6">
@@ -19,5 +18,6 @@
             </div>
         </div>
     @endif
+    @include('markets.partials.filter')
     <markets quote_asset="{{ $quote_asset }}"></markets>
 @endsection

@@ -4,31 +4,31 @@
             <tr>
                 <td class="font-weight-bold d-none d-md-block border-right-0 border-bottom-0">
                     <span class="d-block font-weight-normal">
-                        Total Trades
+                        Total Orders
                     </span>
-                    {{ number_format($total_trades) }}
+                    {{ number_format($total_orders) }}
                 </td>
                 <td class="font-weight-bold">
                     <span class="d-block font-weight-normal">
-                        Last Trade
-                        @if($last_trade)
-	                        <a href="https://xcpfox.com/tx/{{ $last_trade->tx_hash }}">
+                        Last Order
+                        @if($last_order)
+	                        <a href="https://xcpfox.com/tx/{{ $last_order->tx_hash }}">
 	                            <i class="fa fa-info-circle"></i>
 	                        </a>
                         @endif
                     </span>
-                    {{ $last_trade ? $last_trade->confirmed_at->toDateString() : '----------' }}
+                    {{ $last_order ? $last_order->confirmed_at->toDateString() : '----------' }}
                 </td>
                 <td class="font-weight-bold">
                     <span class="d-block font-weight-normal">
-                        First Trade
-                        @if($first_trade)
-	                        <a href="https://xcpfox.com/tx/{{ $first_trade->tx_hash }}">
+                        First Order
+                        @if($first_order)
+	                        <a href="https://xcpfox.com/tx/{{ $first_order->tx_hash }}">
 	                            <i class="fa fa-info-circle"></i>
 	                        </a>
                         @endif
                     </span>
-                    {{ $first_trade ? $first_trade->confirmed_at->toDateString() : '----------' }}
+                    {{ $first_order ? $first_order->confirmed_at->toDateString() : '----------' }}
                 </td>
             </tr>
             <tr class="bg-light">

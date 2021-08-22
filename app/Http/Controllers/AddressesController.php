@@ -18,16 +18,16 @@ class AddressesController extends Controller
     {
         $address = Address::whereAddress($address)->firstOrFail();
 
-        // Address First Active
-        $first_trade = $address->orders()->orderBy('tx_index', 'asc')->first();
+        // First Order
+        $first_order = $address->orders()->orderBy('tx_index', 'asc')->first();
 
-        // Address Last Active
-        $last_trade = $address->orders()->orderBy('tx_index', 'desc')->first();
+        // Last Order
+        $last_order = $address->orders()->orderBy('tx_index', 'desc')->first();
 
-        // Address Total Trades
-        $total_trades = $address->orders()->count();
+        // Total Orders
+        $total_orders = $address->orders()->count();
 
         // Show View
-        return view('addresses.show', compact('request', 'address', 'first_trade', 'last_trade', 'total_trades'));
+        return view('addresses.show', compact('request', 'address', 'first_order', 'last_order', 'total_orders'));
     }
 }

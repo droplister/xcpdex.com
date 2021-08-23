@@ -25,10 +25,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card flex-row mt-3 mb-2 box-shadow">
-                <img class="card-img-right flex-auto" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 100px;" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true">
+                <img class="card-img-right flex-auto" alt="Thumbnail [200x250]" style="width: 100px;" src="https://xchain.io/img/cards/{{ $market->baseAsset->display_name }}.jpg" data-holder-rendered="true">
                 <div class="card-body d-flex flex-column align-items-start">
                     <a href="#">Rare Pepe</a>
-                    <h4 class="card-title">PEPEMINING <small class="lead">Series 1</small></h4>
+                    <h4 class="card-title">{{ $market->baseAsset->display_name }} <small class="lead">Series 1</small></h4>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>

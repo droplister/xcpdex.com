@@ -18,7 +18,7 @@
     <meta name="description" content="@yield('description')">
 
     <!-- Scripts -->
-    <script src="https://xcpdex.com/js/app.js" defer></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">

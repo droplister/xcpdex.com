@@ -26,11 +26,17 @@ class MarketsController extends Controller
         $cache_slug = 'api_markets_index_' . $block_index . '_' . str_slug(serialize($request->all()));
 
         // DEX Markets
-        return Cache::remember($cache_slug, 1440, function () use ($request) {
+        return Cache::remember($cache_slug, 30, function () use ($request) {
+            if (in_array($request->sort_by, ['last_price', 'market_cap', 'volume'])) {
+                $order_by = $request->sort_by;
+            } else {
+                $order_by = 'volume';
+            }
+
             // Get Markets
             $markets = Market::where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
                 ->where('volume', '>', 0)
-                ->orderBy('volume', 'desc')
+                ->orderBy($order_by, 'desc')
                 ->paginate(30);
 
             return [

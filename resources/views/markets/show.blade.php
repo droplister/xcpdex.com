@@ -22,6 +22,7 @@
         base_asset="{{ $market->baseAsset->display_name }}"
         quote_asset="{{ $market->quoteAsset->display_name }}">
     </market-chart>
+<!--
     <div class="row">
         <div class="col-md-12">
             <div class="card flex-row mt-3 mb-2 box-shadow">
@@ -39,6 +40,7 @@
             </div>
         </div>
     </div>
+-->
     <div class="row">
         <div class="col-md-6">
             <h2 class="mt-3 mb-3">{{ __('Buy Orders') }}</h2>

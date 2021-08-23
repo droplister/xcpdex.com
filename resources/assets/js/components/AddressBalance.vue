@@ -1,7 +1,7 @@
 <template>
 <span>
   <small class="lead d-none d-sm-inline">
-    {{ balance }} BTC <span style="font-size: 70%">({{ utxos }} utxos)</span>
+    {{ balance }} BTC <span style="font-size: 70%">({{ utxos }})</span>
   </small>
 </span>
 </template>
@@ -12,13 +12,13 @@ export default {
   data () {
     return {
       balance: '0.00000000',
-      utxos: 0,
+      utxos: 'loading...',
     }
   },
   mounted: function() {
     axios.get('http://blockstream.info/api/address/' + this.address).then(response => {
       this.balance = (response.data.chain_stats.funded_txo_sum - response.data.chain_stats.spent_txo_sum / 100000000).toFixed(8)
-      this.utxos = response.data.chain_stats.funded_txo_count - response.data.chain_stats.spent_txo_count
+      this.utxos = (response.data.chain_stats.funded_txo_count - response.data.chain_stats.spent_txo_count) + ' utxos'
     })
   }
 }

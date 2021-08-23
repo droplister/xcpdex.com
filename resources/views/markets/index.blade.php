@@ -24,5 +24,5 @@
         </div>
     @endif
     @include('markets.partials.filter')
-    <markets quote_asset="{{ $quote_asset }}"></markets>
+    <markets quote_asset="{{ $quote_asset }}" sort_by="{{ $request->input('sort_by', 'volume') }}"></markets>
 @endsection

@@ -5,9 +5,9 @@
       <thead class="text-left">
         <tr>
           <th>Ticker</th>
-          <th>Market Cap</th>
-          <th>Last Price</th>
-          <th>Volume <small>90d</small></th>
+          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=market_cap'">Market Cap</a></th>
+          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=last_price'">Last Price</a></th>
+          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=volume'">Volume</a> <small>90d</small></th>
           <th>Issuance</th>
           <th>Open Orders</th>
           <th>Total Orders</th>
@@ -44,7 +44,7 @@
 import InfiniteLoading from 'vue-infinite-loading'
 
 export default {
-  props: ['quote_asset'],
+  props: ['quote_asset', 'sort_by'],
   components: {
     InfiniteLoading
   },
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/markets?quote_asset=' + this.quote_asset + '&page=' + this.page).then(response => {
+      axios.get('/api/markets?quote_asset=' + this.quote_asset + '&sort_by=' this.sort_by + '&page=' + this.page).then(response => {
         if (response.data.markets.length) {
           this.page = response.data.current_page + 1
           this.markets = this.markets.concat(response.data.markets)

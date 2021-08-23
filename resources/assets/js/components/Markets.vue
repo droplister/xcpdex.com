@@ -8,10 +8,10 @@
           <th><a :href="'/markets/' + this.quote_asset + '?sort_by=market_cap'" class="text-dark">Market Cap</a></th>
           <th>Last Price</th>
           <th><a :href="'/markets/' + this.quote_asset + '?sort_by=volume'" class="text-dark">Volume</a> <small>90d</small></th>
-          <th>Issuance</th>
-          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=open_orders_count'" class="text-dark">Open Orders</a></th>
-          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=orders_count'" class="text-dark">Total Orders</a></th>
-          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=order_matches_count'" class="text-dark">Total Trades</a></th>
+          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=base_asset_supply'" class="text-dark">Issuance</a></th>
+          <thclass="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=open_orders_count'" class="text-dark">Open Orders</a></th>
+          <thclass="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=orders_count'" class="text-dark">Total Orders</a></th>
+          <thclass="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=order_matches_count'" class="text-dark">Total Trades</a></th>
           <th>Last Trade</th>
         </tr>
       </thead>
@@ -21,11 +21,11 @@
           <td class="text-right">{{ market.market_cap }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.price }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
           <td class="text-right">{{ market.volume }} <a :href="'/market/' + market.slug">{{ market.quote_asset }}</a></td>
-          <td class="text-right">{{ market.supply }}</td>
-          <td class="text-right">{{ market.open_orders_count }}</td>
-          <td class="text-right">{{ market.orders_count }}</td>
-          <td class="text-right">{{ market.order_matches_count }}</td>
-          <td class="text-right">{{ market.last_trade_date }}</td>
+          <td class="text-center">{{ market.supply }}</td>
+          <td class="text-center">{{ market.open_orders_count }}</td>
+          <td class="text-center">{{ market.orders_count }}</td>
+          <td class="text-center">{{ market.order_matches_count }}</td>
+          <td>{{ market.last_trade_date }}</td>
         </tr>
         <tr v-if="markets && markets.length === 0">
           <td class="text-center" colspan="9">No markets.</td>

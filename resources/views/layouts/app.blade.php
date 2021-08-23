@@ -183,7 +183,7 @@
                         <a href="https://github.com/droplister/xcpdex.com"  class="mr-2" target="_blank">GitHub</a>
                         <a href="https://plausible.io/xcpdex.com" target="_blank">Analytics</a>
                         <small class="d-block">
-                            <a href="https://21e14.com/" class="text-muted mr-1" target="_blank">21 x 10^14</a>
+                            <a href="https://21e14.com/" class="text-muted mr-1" target="_blank">21e14.com</a>
                             <a href="{{ route('pages.disclaimer') }}" class="text-muted mr-1">Disclaimer</a>
                             <a href="{{ route('pages.privacy') }}" class="text-muted mr-1">Privacy</a>
                             <a href="{{ route('pages.terms') }}" class="text-muted">Terms</a>

@@ -15,13 +15,31 @@
     @if($last_match && $last_match->confirmed_at->diffInDays(Carbon\Carbon::now()) > 365)
         <div class="alert alert-warning">
             <i aria-hidden="true" class="fa fa-exclamation-circle mr-1"></i>
-            <strong>No Recent Activity:</strong> The last order was {{ $last_match->confirmed_at->toDateString() }}.
+            <strong class="d-none d-md-inline-block">No Recent Activity:</strong> The last order was created {{ $last_match->confirmed_at->toDateString() }}.
         </div>
     @endif
     <market-chart market="{{ $market->slug }}"
         base_asset="{{ $market->baseAsset->display_name }}"
         quote_asset="{{ $market->quoteAsset->display_name }}">
     </market-chart>
+    <div class="row">
+            <div class="col-md-12">
+              <div class="card flex-md-row mt-3 mb-2 box-shadow">
+                
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 110px;/* height: 169px; */" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true"><div class="card-body d-flex flex-column align-items-start">
+                  <h4 class="card-title">PEPEMINING <small class="lead">Series 1</small></h4>
+<p class="card-text">Did you know this was a Rare Pepe?</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>
+                      
+                    </div>
+                    <small class="text-muted">Issued: Sept 2016</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
     <div class="row">
         <div class="col-md-6">
             <h2 class="mt-3 mb-3">{{ __('Buy Orders') }}</h2>

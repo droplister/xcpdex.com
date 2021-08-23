@@ -104,7 +104,7 @@ class UpdateMarketVolumes implements ShouldQueue
             'base_asset_supply' => $this->market->baseAsset->supply_normalized,
             'last_price' => $last_match ? $last_match->trading_price_normalized : number_format(0, 8),
             'last_trade_date' => $last_match ? $last_match->confirmed_at->toDateTimeString() : '----',
-            'market_cap' => $last_match ? number_format($this->market->baseAsset->supply_normalized * $last_match->trading_price_normalized) : 0,
+            'market_cap' => $last_match ? round($this->market->baseAsset->supply_normalized * $last_match->trading_price_normalized) : 0,
         ]);
 
         // Forget

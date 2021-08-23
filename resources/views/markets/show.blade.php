@@ -23,21 +23,22 @@
         quote_asset="{{ $market->quoteAsset->display_name }}">
     </market-chart>
     <div class="row">
-            <div class="col-md-12">
-              <div class="card flex-row mt-3 mb-2 box-shadow">
-                <img class="card-img-right flex-auto" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 70px;" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true"><div class="card-body d-flex flex-column align-items-start">
-                  <a href="#">Rare Pepe</a>
-                  <h4 class="card-title">PEPEMINING <small class="lead">Series 1</small></h4>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>
+        <div class="col-md-12">
+            <div class="card flex-row mt-3 mb-2 box-shadow">
+                <img class="card-img-right flex-auto" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 100px;" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <a href="#">Rare Pepe</a>
+                    <h4 class="card-title">PEPEMINING <small class="lead">Series 1</small></h4>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>
+                        </div>
+                        <small class="text-muted">Mint: Sept 2016</small>
                     </div>
-                    <small class="text-muted">Mint: Sept 2016</small>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <h2 class="mt-3 mb-3">{{ __('Buy Orders') }}</h2>

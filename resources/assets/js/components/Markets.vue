@@ -5,9 +5,9 @@
       <thead class="text-left">
         <tr>
           <th>Ticker</th>
-          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=market_cap'">Market Cap</a></th>
-          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=last_price'">Last Price</a></th>
-          <th><a :href="'/markets/' + market.quote_asset + '?sort_by=volume'">Volume</a> <small>90d</small></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=market_cap'">Market Cap</a></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=last_price'">Last Price</a></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=volume'">Volume</a> <small>90d</small></th>
           <th>Issuance</th>
           <th>Open Orders</th>
           <th>Total Orders</th>

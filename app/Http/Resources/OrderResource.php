@@ -25,6 +25,7 @@ class OrderResource extends JsonResource
             'market' => $this->trading_pair_normalized,
             'market_slug' => str_replace('/', '_', $this->trading_pair_normalized),
             'source' => $this->source,
+            'status' => $this->status,
             'price' => $this->trading_price_normalized,
             'quantity' => $this->trading_quantity_normalized,
             'total' => $this->trading_total_normalized,

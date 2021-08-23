@@ -18,11 +18,6 @@
                 {{ __('Orders') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('addresses.show', ['address' => $address->address]) }}">
-                {{ __('Trades') }}
-            </a>
-        </li>
     </ul>
-    <orders status="{{ $request->input('status', 'false') }}"></orders>
+    <address-orders address="{{ $address->address }}"></address-orders>
 @endsection

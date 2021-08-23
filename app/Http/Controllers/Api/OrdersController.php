@@ -62,6 +62,34 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function address(Request $request, $address)
+    {
+        // Block Index
+        $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;
+
+        // Cache Slug
+        $cache_slug = 'api_orders_' . $address . '_' . $block_index . '_' . str_slug(serialize($request->all()));
+
+        // Get Orders
+        return Cache::remember($cache_slug, 60, function () use ($block_index, $request, $address) {
+            // Open Orders (Newest)
+            $orders = Order::where('source', $address)
+                ->orderBy('tx_index', 'desc')
+                ->paginate(30);
+
+            return [
+                'orders' => OrderResource::collection($orders),
+                'last_page' => ceil($orders->total() / 30),
+                'current_page' => (int) $request->input('page', 1),
+            ];
+        });
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function chart(Request $request)
     {
         return Cache::remember('api_orders_chart', 1440, function() {

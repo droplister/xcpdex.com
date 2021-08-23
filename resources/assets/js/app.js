@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('address-balance', require('./components/AddressBalance.vue'));
+Vue.component('address-orders', require('./components/AddressOrders.vue'));
 Vue.component('auto-suggest', require('./components/AutoSuggest.vue'));
 Vue.component('chart', require('./components/Chart.vue'));
 Vue.component('chart-price', require('./components/ChartPrice.vue'));

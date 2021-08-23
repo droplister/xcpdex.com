@@ -15,7 +15,7 @@
       </thead>
       <tbody>
         <tr v-for="match in matches">
-          <td><a :href="'https://xcpdex.com/tx/' + match.tx_hash">{{ match.date }}</a></td>
+          <td><a :href="'https://xchain.io/tx/' + match.tx_hash" target="_blank">{{ match.date }}</a></td>
           <td :class="match.type === 'Buy' ? 'text-success' : 'text-danger'">{{ match.type }}</td>
           <td class="text-right">{{ match.price }}</td>
           <td class="text-right">{{ match.quantity }}</td>

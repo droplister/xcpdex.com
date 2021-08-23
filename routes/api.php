@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 Route::get('/mempool', 'Api\MempoolController@index')->name('api.mempool');
 Route::get('/blocks', 'Api\BlocksController@index')->name('api.blocks');
 Route::get('/orders', 'Api\OrdersController@index')->name('api.orders');
+Route::get('/orders/{address}', 'Api\OrdersController@address')->name('api.orders.address');
 Route::get('/orders/chart', 'Api\OrdersController@chart')->name('api.orders.chart');
 Route::get('/order-matches', 'Api\OrderMatchesController@index')->name('api.orderMatches');
 Route::get('/order-matches/chart', 'Api\OrderMatchesController@chart')->name('api.orderMatches.chart');

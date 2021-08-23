@@ -111,11 +111,11 @@ class Market extends Model
     public function scopeWithLastTrade($query)
     {
         $query->addSelect(['last_trade_id' => OrderMatch::select('id')
-            ->whereColumn('backward_asset', 'order_matches.xcp_core_base_asset')
-            ->whereColumn('forward_asset', 'order_matches.xcp_core_quote_asset')
+            ->whereColumn('backward_asset', 'markets.xcp_core_base_asset')
+            ->whereColumn('forward_asset', 'markets.xcp_core_quote_asset')
             ->whereColumn('status', 'completed')
-            ->orWhereColumn('backward_asset', 'order_matches.xcp_core_quote_asset')
-            ->whereColumn('forward_asset', 'order_matches.xcp_core_base_asset')
+            ->orWhereColumn('backward_asset', 'markets.xcp_core_quote_asset')
+            ->whereColumn('forward_asset', 'markets.xcp_core_base_asset')
             ->whereColumn('status', '=', 'completed')
             ->orderBy('tx1_index', 'desc')
             ->take(1),

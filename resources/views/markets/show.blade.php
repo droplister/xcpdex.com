@@ -24,17 +24,15 @@
     </market-chart>
     <div class="row">
             <div class="col-md-12">
-              <div class="card flex-md-row mt-3 mb-2 box-shadow">
-                
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 110px;/* height: 169px; */" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true"><div class="card-body d-flex flex-column align-items-start">
+              <div class="card flex-row mt-3 mb-2 box-shadow">
+                <img class="card-img-right flex-auto" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 70px;" src="http://rarepepedirectory.com/wp-content/uploads/2017/08/RAIJINPEPE.png" data-holder-rendered="true"><div class="card-body d-flex flex-column align-items-start">
+                  <a href="#">Rare Pepe</a>
                   <h4 class="card-title">PEPEMINING <small class="lead">Series 1</small></h4>
-<p class="card-text">Did you know this was a Rare Pepe?</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>
-                      
                     </div>
-                    <small class="text-muted">Issued: Sept 2016</small>
+                    <small class="text-muted">Mint: Sept 2016</small>
                   </div>
                 </div>
               </div>

@@ -19,7 +19,7 @@
           <td>{{ order.price }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
           <td>{{ order.total }} <a :href="'/market/' + order.market_slug">{{ order.quote_asset }}</a></td>
           <td>{{ order.blocks_left }}</td>
-          <td><a :href="'/market/' + order.market_slug">{{ order.source }}</a></td>
+          <td><a :href="'/address/' + order.source">{{ order.source }}</a></td>
         </tr>
         <tr v-if="orders && orders.length === 0">
           <td class="text-center" colspan="6">No orders.</td>

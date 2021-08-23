@@ -20,8 +20,8 @@
           <td>{{ match.quantity }} <a :href="'/market/' + match.market_slug">{{ match.base_asset }}</a></td>
           <td>{{ match.price }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
           <td>{{ match.total }} <a :href="'/market/' + match.market_slug">{{ match.quote_asset }}</a></td>
-          <td><a :href="'/market/' + match.market_slug">{{ match.buyer }}</a></td>
-          <td><a :href="'/market/' + match.market_slug">{{ match.seller }}</a></td>
+          <td><a :href="'/address/' + match.buyer">{{ match.buyer }}</a></td>
+          <td><a :href="'/address/' + match.seller">{{ match.seller }}</a></td>
         </tr>
         <tr v-if="matches && matches.length === 0">
           <td class="text-center" colspan="7">No order matches.</td>

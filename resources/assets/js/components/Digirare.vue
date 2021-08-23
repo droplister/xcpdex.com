@@ -42,12 +42,12 @@ export default {
     axios.get('http://digirare.com/api/widget/' + this.asset).then(response => {
       this.show = true
       this.card = response.data.name
-      this.card_url: 'https://digirare.com/cards/' + response.data.name
-      this.card_img_url: 'http://digirare.com' + response.data.image
-      this.collection: response.data.collections[0].name
-      this.collection_url: 'https://digirare.com/browse?collection=' + response.data.collections[0].slug
-      this.meta: response.data.collections[0].slug === 'rare-pepe' ? response.data.meta.series : ''
-      this.date: response.data.date
+      this.card_url = 'https://digirare.com/cards/' + response.data.name
+      this.card_img_url = 'http://digirare.com' + response.data.image
+      this.collection = response.data.collections[0].name
+      this.collection_url = 'https://digirare.com/browse?collection=' + response.data.collections[0].slug
+      this.meta = response.data.collections[0].slug === 'rare-pepe' ? response.data.meta.series : ''
+      this.date = response.data.date
     }).catch(err => {
       this.show = false
     });

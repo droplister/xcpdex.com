@@ -11,6 +11,27 @@
 |
 */
 
+// Create an Order
+
+Route::get('create', [
+    'as'   => 'order',
+    'uses' => 'OrderController@getOrder',
+    'middleware' => 'doNotCacheResponse'
+]);
+
+Route::post('create', [
+    'as'   => 'order::create',
+    'uses' => 'OrderController@postOrder',
+]);
+
+Route::get('create/raw-tx', [
+    'as'   => 'order::result',
+    'uses' => 'OrderController@getResult',
+    'middleware' => 'doNotCacheResponse'
+]);
+
+// The Route List
+
 Route::get('/', 'MarketsController@index')->name('home.index');
 Route::get('/locale/{locale}', 'LocaleController@show')->name('locale.show');
 Route::get('/address/{address}', 'AddressesController@show')->name('addresses.show');
@@ -29,22 +50,3 @@ Route::get('/privacy', 'PagesController@privacy')->name('pages.privacy');
 Route::get('/stats', 'PagesController@stats')->name('pages.stats');
 Route::get('/terms', 'PagesController@terms')->name('pages.terms');
 Route::get('/{asset}', 'AssetsController@show');
-
-// Create an Order
-
-Route::get('order', [
-    'as'   => 'order',
-    'uses' => 'OrderController@getOrder',
-    'middleware' => 'doNotCacheResponse'
-]);
-
-Route::post('order', [
-    'as'   => 'order::create',
-    'uses' => 'OrderController@postOrder',
-]);
-
-Route::get('order/raw-tx', [
-    'as'   => 'order::result',
-    'uses' => 'OrderController@getResult',
-    'middleware' => 'doNotCacheResponse'
-]);

@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="https://xcpdex.com/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 </head>
 <body>
     <div id="app">

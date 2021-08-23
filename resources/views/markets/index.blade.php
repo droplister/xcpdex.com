@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $request->path() === '/' ? 'Counterparty DEX' : 'Buy and Sell ' . $quote_asset)
+@section('title', $request->path() === '/' ? 'Counterparty DEX' : $quote_asset . ' Markets')
 @section('description', 'Explore the Counterparty DEX.')
 
 @section('content')

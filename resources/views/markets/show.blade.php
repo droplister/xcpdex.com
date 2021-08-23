@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $last_match ? $market->baseAsset->display_name . ' @ ' . str_replace('.00000000', '', number_format($last_match->trading_price_normalized, 8)) . ' ' . $market->quoteAsset->display_name : $market->name . ' Exchange')
+@section('title', $last_match ? $market->base_asset_display_name . ' @ ' . str_replace('.00000000', '', number_format($last_match->trading_price_normalized, 8)) . ' ' . $market->quote_asset_display_name : $market->name . ' Exchange')
 @section('description', $market->name . ' Price Chart, Order Book &amp; Match History.')
 
 @section('content')
@@ -19,28 +19,10 @@
         </div>
     @endif
     <market-chart market="{{ $market->slug }}"
-        base_asset="{{ $market->baseAsset->display_name }}"
-        quote_asset="{{ $market->quoteAsset->display_name }}">
+        base_asset="{{ $market->base_asset_display_name }}"
+        quote_asset="{{ $market->quote_asset_display_name }}">
     </market-chart>
-<!--
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card flex-row mt-3 mb-2 box-shadow">
-                <img class="card-img-right flex-auto" alt="Thumbnail [200x250]" style="width: 100px;" src="https://xchain.io/img/cards/{{ $market->baseAsset->display_name }}.jpg" data-holder-rendered="true">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <a href="#">Rare Pepe</a>
-                    <h4 class="card-title">{{ $market->baseAsset->display_name }} <small class="lead">Series 1</small></h4>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary mr-3"><i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i> DIGIRARE</button>
-                        </div>
-                        <small class="text-muted">Mint: Sept 2016</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
--->
+    <digirare asset="{{ $market->baseAsset->asset_name }}"></digirare>
     <div class="row">
         <div class="col-md-6">
             <h2 class="mt-3 mb-3">{{ __('Buy Orders') }}</h2>

@@ -20,6 +20,7 @@ Vue.component('address-orders', require('./components/AddressOrders.vue'));
 Vue.component('auto-suggest', require('./components/AutoSuggest.vue'));
 Vue.component('chart', require('./components/Chart.vue'));
 Vue.component('chart-price', require('./components/ChartPrice.vue'));
+Vue.component('digirare', require('./components/Digirare.vue'));
 Vue.component('mempool', require('./components/Mempool.vue'));
 Vue.component('blocks', require('./components/Blocks.vue'));
 Vue.component('orders', require('./components/Orders.vue'));

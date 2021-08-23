@@ -103,25 +103,6 @@ class Market extends Model
             ->first();
     }
 
-    public function lastTrade()
-    {
-        return $this->belongsTo(OrderMatch::class);
-    }
-
-    public function scopeWithLastTrade($query)
-    {
-        $query->addSelect(['last_trade_id' => OrderMatch::select('id')
-            ->whereColumn('backward_asset', 'order_matches.xcp_core_base_asset')
-            ->whereColumn('forward_asset', 'order_matches.xcp_core_quote_asset')
-            ->whereColumn('status', 'completed')
-            ->orWhereColumn('backward_asset', 'order_matches.xcp_core_quote_asset')
-            ->whereColumn('forward_asset', 'order_matches.xcp_core_base_asset')
-            ->whereColumn('status', '=', 'completed')
-            ->orderBy('tx1_index', 'desc')
-            ->take(1),
-        ])->with('lastTrade');
-    }
-
     /**
      * Get the route key for the model.
      *

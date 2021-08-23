@@ -28,7 +28,7 @@ class MarketsController extends Controller
         // DEX Markets
         return Cache::remember($cache_slug, 1440, function () use ($request) {
             // Get Markets
-            $markets = Market::withLastTrade()->with('baseAsset', 'quoteAsset')
+            $markets = Market::with('baseAsset', 'quoteAsset')
                 ->where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
                 ->where('volume', '>', 0)
                 ->orderBy('volume', 'desc')

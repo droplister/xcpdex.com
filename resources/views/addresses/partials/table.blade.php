@@ -12,7 +12,7 @@
                     <span class="d-block font-weight-normal">
                         Last Order
                         @if($last_order)
-	                        <a href="/tx/{{ $last_order->tx_hash }}">
+	                        <a href="https://xchain.io/tx/{{ $last_order->tx_hash }}" target="_blank">
 	                            <i class="fa fa-info-circle"></i>
 	                        </a>
                         @endif
@@ -23,7 +23,7 @@
                     <span class="d-block font-weight-normal">
                         First Order
                         @if($first_order)
-	                        <a href="/tx/{{ $first_order->tx_hash }}">
+	                        <a href="https://xchain.io/tx/{{ $first_order->tx_hash }}" target="_blank">
 	                            <i class="fa fa-info-circle"></i>
 	                        </a>
                         @endif

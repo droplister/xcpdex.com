@@ -12,6 +12,10 @@
             @include('addresses.partials.table')
         </div>
     </div>
+    <div class="alert alert-warning">
+        <i aria-hidden="true" class="fa fa-exclamation-circle mr-1"></i>
+        <strong class="d-none d-md-inline-block">Work in Progress:</strong> This is a new feature, so it may have bugs.
+    </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link{{ ! $request->has('status') ? ' active' : '' }}" href="{{ route('addresses.show', ['address' => $address->address]) }}">

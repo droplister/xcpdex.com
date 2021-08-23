@@ -7,7 +7,7 @@
           <th>Ticker</th>
           <th>Market Cap</th>
           <th>Price</th>
-          <th>Volume <small>30d</small></th>
+          <th>Volume <small>90d</small></th>
           <th>Supply</th>
           <th>Open Orders</th>
           <th>Orders</th>

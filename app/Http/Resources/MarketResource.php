@@ -17,7 +17,7 @@ class MarketResource extends JsonResource
         return [
             'name' => $this->name,
             'slug' => $this->slug,
-            'market_cap' => $this->market_cap,
+            'market_cap' => number_format($this->market_cap),
             'volume' => number_format($this->volume_normalized),
             'supply' => number_format($this->base_asset_supply),
             'base_asset' => $this->base_asset_display_name,

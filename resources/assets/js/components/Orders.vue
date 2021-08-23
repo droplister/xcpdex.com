@@ -8,7 +8,7 @@
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
-          <th>Blocks Left</th>
+          <th><a :href="'/orders?status=ending-soon'" class="text-dark">Blocks Left</a></th>
           <th>Source</th>
         </tr>
       </thead>

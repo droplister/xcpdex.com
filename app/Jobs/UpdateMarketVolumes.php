@@ -92,16 +92,19 @@ class UpdateMarketVolumes implements ShouldQueue
             ->where('forward_asset', '=', $this->market->xcp_core_quote_asset)
             ->count();
 
+        // Last Match
+        $last_match = $this->market->lastMatch();
+
         // Update
         $this->market->update([
             'volume' => $m_volume,
             'orders_count' => $t_orders_count,
             'open_orders_count' => $c_open_orders_count,
             'order_matches_count' => $t_order_matches_count,
-            'base_asset_supply' => $this->baseAsset->supply_normalized,
-            'last_price' => $this->lastMatch() ? $this->lastMatch()->trading_price_normalized : number_format(0, 8),
-            'last_trade_date' => $this->lastMatch() ? $this->lastMatch()->confirmed_at->toDateTimeString() : '----',
-            'market_cap' => $this->lastMatch() ? number_format($this->baseAsset->supply_normalized * $this->lastMatch()->trading_price_normalized) : 0,
+            'base_asset_supply' => $this->market->baseAsset->supply_normalized,
+            'last_price' => $last_match ? $last_match->trading_price_normalized : number_format(0, 8),
+            'last_trade_date' => $last_match ? $last_match->confirmed_at->toDateTimeString() : '----',
+            'market_cap' => $last_match ? number_format($this->market->baseAsset->supply_normalized * $last_match->trading_price_normalized) : 0,
         ]);
 
         // Forget

@@ -15,6 +15,44 @@
                 <p class="lead">Buy and Sell {{ $quote_asset }} on the Counterparty Dex.</p>
             </div>
             <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered text-center">
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-bold d-none d-md-block border-right-0 border-bottom-0">
+                                    <span class="d-block font-weight-normal">
+                                        Total Orders
+                                    </span>
+                                    {{ number_format($market->orders_count) }}
+                                </td>
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Volume
+                                        <small class="d-none d-md-inline-block">
+                                            BITCORN
+                                        </small>
+                                    </span>
+                                    39,000
+                                </td>
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Last Trade
+                                    </span>
+                                    2020-06-05
+                                </td>
+                            </tr>
+                            <tr class="bg-light">
+                                <td colspan="3" title="{{ isset($price_data[$market->quoteAsset->display_name]) && $last_match ? '$' . number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized * $price_data[$market->quoteAsset->display_name]['price']) . ' USD' : '' }}">
+                                    @if($last_match)
+                                        Market Cap: <strong>{{ number_format($market->baseAsset->supply_normalized * $last_match->trading_price_normalized) }} <small>{{ $market->quoteAsset->display_name }}</small></strong>
+                                    @else
+                                        Market Cap: <strong>---------- <small>{{ $market->quoteAsset->display_name }}</small></strong>
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     @endif

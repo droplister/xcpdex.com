@@ -23,22 +23,19 @@
                                     <span class="d-block font-weight-normal">
                                         Total Orders
                                     </span>
-                                    {{ number_format($market->orders_count) }}
+                                    {{ number_format($markets->sum('orders_count')) }}
                                 </td>
                                 <td class="font-weight-bold">
                                     <span class="d-block font-weight-normal">
-                                        Volume
-                                        <small class="d-none d-md-inline-block">
-                                            BITCORN
-                                        </small>
+                                        Total Trades
                                     </span>
-                                    39,000
+                                    {{ number_format($markets->sum('order_matches_count')) }}
                                 </td>
                                 <td class="font-weight-bold">
                                     <span class="d-block font-weight-normal">
-                                        Last Trade
+                                        Volume <small>90d</small>
                                     </span>
-                                    2020-06-05
+                                    {{ number_format($markets->sum('volume')) }} {{ $quote_asset }}
                                 </td>
                             </tr>
                             <tr class="bg-light">

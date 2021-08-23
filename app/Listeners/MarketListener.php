@@ -33,6 +33,10 @@ class MarketListener
             'xcp_core_base_asset' => $base_asset->asset_name,
             'xcp_core_quote_asset' => $quote_asset->asset_name,
             'name' => $event->order->trading_pair_normalized,
+        ], [
+            'base_asset_supply' => $base_asset->supply_normalized,
+            'base_asset_display_name' => $base_asset->display_name,
+            'quote_asset_display_name' => $quote_asset->display_name,
         ]);
     }
 }

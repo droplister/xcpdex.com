@@ -19,6 +19,12 @@ class CreateMarketsTable extends Migration
             $table->string('xcp_core_quote_asset')->index();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('last_price')->default('0.00000000');
+            $table->string('last_trade_date')->default('----');
+            $table->string('base_asset_supply')->default('0.00000000');
+            $table->string('base_asset_display_name');
+            $table->string('quote_asset_display_name');
+            $table->unsignedBigInteger('market_cap')->index()->default(0);
             $table->unsignedBigInteger('volume')->index()->default(0);
             $table->unsignedBigInteger('orders_count')->index()->default(0);
             $table->unsignedBigInteger('open_orders_count')->index()->default(0);

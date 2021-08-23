@@ -24,7 +24,13 @@ class Market extends Model
         'xcp_core_quote_asset',
         'name',
         'slug',
+        'last_price',
+        'last_trade_date',
+        'base_asset_supply',
+        'base_asset_display_name',
+        'quote_asset_display_name',
         'volume',
+        'market_cap',
         'orders_count',
         'open_orders_count',
         'order_matches_count',
@@ -39,30 +45,6 @@ class Market extends Model
     {
         return Cache::remember('m_vn_' . $this->slug, 1440, function () {
             return normalizeQuantity($this->volume, $this->quoteAsset->divisible);
-        });
-    }
-
-    /**
-     * Last Price
-     *
-     * @return string
-     */
-    public function getLastPriceAttribute()
-    {
-        return Cache::remember('m_lp_' . $this->slug, 60, function () {
-            return $this->lastMatch() ? $this->lastMatch()->trading_price_normalized : number_format(0, 8);
-        });
-    }
-
-    /**
-     * Last Trade Date
-     *
-     * @return string
-     */
-    public function getLastTradeDateAttribute()
-    {
-        return Cache::remember('m_ltd_' . $this->slug, 60, function () {
-            return $this->lastMatch() ? $this->lastMatch()->confirmed_at->toDateTimeString() : '----';
         });
     }
 

@@ -178,14 +178,13 @@
                     @yield('content')
                     <footer class="text-center text-muted pt-3 pb-2">
                         <a href="{{ url('/') }}" class="mr-2">Home</a>
-                        <a href="https://coinmarketcap.com/currencies/counterparty/" class="mr-2" target="_blank">XCP/USD</a>
-                        <a href="https://github.com/droplister/xcpdex.com"  class="mr-2" target="_blank">GitHub</a>
+                        <a href="https://21e14.com/" class="mr-2" target="_blank">About Us</a>
                         <a href="https://medium.com/@droplister/counterparty-dex-tutorial-b38dcab102e5" class="mr-2" target="_blank">Tutorial</a>
-                        <a href="https://t.me/xcpdex" target="_blank">Telegram</a>
+                        <a href="https://github.com/droplister/xcpdex.com"  class="mr-2" target="_blank">GitHub</a>
+                        <a href="https://plausible.io/xcpdex.com" target="_blank">Analytics</a>
                         <small class="d-block">
                             &copy; 2018
-                            <a href="https://familymediallc.com/" class="text-muted mr-1" target="_blank">Family Media</a>
-                            <a href="{{ config('xcpdex.analytics_url') }}" class="text-muted mr-1" target="_blank">Analytics</a>
+                            <a href="https://21e14.com/" class="text-muted mr-1" target="_blank">21 x 10^14</a>
                             <a href="{{ route('pages.disclaimer') }}" class="text-muted mr-1">Disclaimer</a>
                             <a href="{{ route('pages.privacy') }}" class="text-muted mr-1">Privacy</a>
                             <a href="{{ route('pages.terms') }}" class="text-muted">Terms</a>

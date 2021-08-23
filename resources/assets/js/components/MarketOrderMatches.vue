@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/markets/' + this.market + '/order-matches?page=' + this.page).then(response => {
+      axios.get('https://xcpdex.com/api/markets/' + this.market + '/order-matches?page=' + this.page).then(response => {
         if (response.data.order_matches.length) {
           this.page = response.data.current_page + 1
           this.matches = this.matches.concat(response.data.order_matches)

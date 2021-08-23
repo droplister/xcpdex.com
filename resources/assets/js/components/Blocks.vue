@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/blocks?page=' + this.page).then(response => {
+      axios.get('https://xcpdex.com/api/blocks?page=' + this.page).then(response => {
         if (response.data.blocks.length) {
           this.page = response.data.current_page + 1
           this.blocks = this.blocks.concat(response.data.blocks)

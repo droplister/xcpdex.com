@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     $_chart_update() {
-      axios.get('/api/markets/' + this.market + '/chart').then(response => {
+      axios.get('https://xcpdex.com/api/markets/' + this.market + '/chart').then(response => {
         this.results = response.data.history ? response.data.history.length : 0
         if(this.results > 0)
         {

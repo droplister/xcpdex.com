@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/mempool?page=' + this.page).then(response => {
+      axios.get('https://xcpdex.com/api/mempool?page=' + this.page).then(response => {
         if (response.data.mempool.length) {
           this.page = response.data.current_page + 1
           this.mempool = this.mempool.concat(response.data.mempool)

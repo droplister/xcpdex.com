@@ -25,7 +25,7 @@ export default {
   methods: {
     goToUrl (obj) {
       this.apiResults = obj
-      return window.location.href = '/market/' + this.apiResults.selectedObject.slug
+      return window.location.href = 'https://xcpdex.com/market/' + this.apiResults.selectedObject.slug
     }
   }
 }

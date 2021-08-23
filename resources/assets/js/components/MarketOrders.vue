@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted: function() {
-    axios.get('/api/markets/' + this.market + '/orders').then(response => {
+    axios.get('https://xcpdex.com/api/markets/' + this.market + '/orders').then(response => {
       this.orders = this.side === 'buy' ? response.data.buy_orders : response.data.sell_orders
       this.baseAsset = response.data.base_asset.display_name
       this.quoteAsset = response.data.quote_asset.display_name

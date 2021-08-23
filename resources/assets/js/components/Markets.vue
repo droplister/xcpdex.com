@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/markets?quote_asset=' + this.quote_asset + '&sort_by=' + this.sort_by + '&page=' + this.page).then(response => {
+      axios.get('https://xcpdex.com/api/markets?quote_asset=' + this.quote_asset + '&sort_by=' + this.sort_by + '&page=' + this.page).then(response => {
         if (response.data.markets.length) {
           this.page = response.data.current_page + 1
           this.markets = this.markets.concat(response.data.markets)

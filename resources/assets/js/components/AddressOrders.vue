@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     infiniteHandler($state) {
-      axios.get('/api/orders/' + this.address + '?page=' + this.page).then(response => {
+      axios.get('https://xcpdex.com/api/orders/' + this.address + '?page=' + this.page).then(response => {
         if (response.data.orders.length) {
           this.page = response.data.current_page + 1
           this.orders = this.orders.concat(response.data.orders)

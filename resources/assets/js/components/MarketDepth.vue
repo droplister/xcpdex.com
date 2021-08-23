@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     $_depth_chart_update() {
-      axios.get('/api/markets/' + this.market + '/depth').then(response => {
+      axios.get('https://xcpdex.com/api/markets/' + this.market + '/depth').then(response => {
         this.results = response.data.buy_orders.length + response.data.sell_orders.length
         this.chartOptions.series.push({
           name: 'Buys',

@@ -27,7 +27,7 @@ class MarketsController extends Controller
 
         // DEX Markets
         return Cache::remember($cache_slug, 30, function () use ($request) {
-            if (in_array($request->sort_by, ['last_price', 'market_cap', 'volume'])) {
+            if (in_array($request->sort_by, ['orders_count', 'open_orders_count', 'order_matches_count', 'market_cap', 'volume'])) {
                 $order_by = $request->sort_by;
             } else {
                 $order_by = 'volume';

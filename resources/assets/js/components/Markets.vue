@@ -9,9 +9,9 @@
           <th>Last Price</th>
           <th><a :href="'/markets/' + this.quote_asset + '?sort_by=volume'" class="text-dark">Volume</a> <small>90d</small></th>
           <th>Issuance</th>
-          <th>Open Orders</th>
-          <th>Total Orders</th>
-          <th>Total Trades</th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=open_orders_count'" class="text-dark">Open Orders</a></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=orders_count'" class="text-dark">Total Orders</a></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=order_matches_count'" class="text-dark">Total Trades</a></th>
           <th>Last Trade</th>
         </tr>
       </thead>

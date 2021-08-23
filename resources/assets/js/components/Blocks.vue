@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr v-for="block in blocks">
-          <td><a :href="'https://xcpfox.com/block/' + block.block_index" target="_blank">{{ block.block_index }}</a></td>
+          <td><a :href="'https://xchain.io/block/' + block.block_index" target="_blank">{{ block.block_index }}</a></td>
           <td>{{ block.orders_count }}</td>
           <td>{{ block.order_matches_count }}</td>
           <td>{{ block.cancels_count }}</td>

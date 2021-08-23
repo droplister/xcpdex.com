@@ -37,13 +37,13 @@
             <div class="col-md-5 col-lg-7">
                 <ul class="nav nav-pills float-right">
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
+                        <a class="nav-link px-2 mr-2" href="{{ route('markets.index', ['quote_asset' => 'BTC']) }}">
                             BTC <span style="font-weight: 400">${{ $price_data['BTC']['price'] }}</span>
                             <small><i class="fa fa-caret-{{ $price_data['BTC']['change'] < 0 ? 'down text-danger' : 'up text-success' }} ml-1"></i> {{ $price_data['BTC']['change'] }}%</small>
                         </a>
                     </li>
                     <li class="nav-item d-none d-md-inline-block">
-                        <a class="nav-link px-2" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
+                        <a class="nav-link px-2 mr-2" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
                             XCP <span style="font-weight: 400">${{ $price_data['XCP']['price'] }}</span>
                             <small><i class="fa fa-caret-{{ $price_data['XCP']['change'] < 0 ? 'down text-danger' : 'up text-success' }} ml-1"></i> {{ $price_data['XCP']['change'] }}%</small>
                         </a>

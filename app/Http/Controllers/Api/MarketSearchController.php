@@ -30,7 +30,8 @@ class MarketSearchController extends Controller
         // Get Markets
         return Cache::remember($cache_slug, 1440, function () use ($query) {
             // Top 10
-            $markets = Market::where('xcp_core_base_asset', 'like', $query . '%')
+            $markets = Market::withLastTrade()
+                ->where('xcp_core_base_asset', 'like', $query . '%')
                 ->orWhere('xcp_core_quote_asset', 'like', $query . '%')
                 ->orWhere('name', 'like', $query . '%')
                 ->orderBy('volume', 'desc')

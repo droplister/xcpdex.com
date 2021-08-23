@@ -11,41 +11,15 @@
     @else
         <div class="row">
             <div class="col-md-6">
-                <h1><img src="/images/{{ $quote_asset }}.png" style="height: 2rem; margin-top: -0.4rem;" alt="{{ $quote_asset }}" class="mr-1" /> {{ $quote_asset }}</h1>
+                <h1>
+                    @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN', 'BITCRYSTALS']))
+                        <img src="/images/{{ $quote_asset }}.png" style="height: 2rem; margin-top: -0.4rem;" alt="{{ $quote_asset }}" class="mr-1" />
+                    @endif
+                    {{ $quote_asset }}
+                </h1>
                 <p class="lead">Buy and Sell {{ $quote_asset }} on the Counterparty Dex.</p>
             </div>
             <div class="col-md-6">
-                <div class="table-responsive">
-                    <table class="table table-sm table-bordered text-center">
-                        <tbody>
-                            <tr>
-                                <td class="font-weight-bold d-none d-md-block border-right-0 border-bottom-0">
-                                    <span class="d-block font-weight-normal">
-                                        Total Orders
-                                    </span>
-                                    {{ number_format($markets->sum('orders_count')) }}
-                                </td>
-                                <td class="font-weight-bold">
-                                    <span class="d-block font-weight-normal">
-                                        Total Trades
-                                    </span>
-                                    {{ number_format($markets->sum('order_matches_count')) }}
-                                </td>
-                                <td class="font-weight-bold">
-                                    <span class="d-block font-weight-normal">
-                                        Volume <small>90d</small>
-                                    </span>
-                                    {{ number_format($markets->sum('volume')) }} {{ $quote_asset }}
-                                </td>
-                            </tr>
-                            <tr class="bg-light">
-                                <td colspan="3">
- 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     @endif

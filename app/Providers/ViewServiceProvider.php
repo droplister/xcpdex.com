@@ -17,7 +17,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $price_data = Cache::remember('usd_prices', 1440, function () {
+        $price_data = Cache::remember('usd_prices', 60, function () {
             $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
             $response1 = $cmc->cryptocurrency()->quotesLatest(['id' => 1, 'convert' => 'USD']);
@@ -35,15 +35,15 @@ class ViewServiceProvider extends ServiceProvider
             return [
                 'BTC' => [
                     'price' => number_format($response1->data->{1}->quote->USD->price, 2),
-                    'change' => number_format($response1->data->{1}->quote->USD->percent_change_24h, 0),
+                    'change' => number_format($response1->data->{1}->quote->USD->percent_change_1h, 0),
                 ],
                 'XCP' => [
                     'price' => number_format($response2->data->{132}->quote->USD->price, 2),
-                    'change' => number_format($response2->data->{132}->quote->USD->percent_change_24h, 0),
+                    'change' => number_format($response2->data->{132}->quote->USD->percent_change_1h, 0),
                 ],
                 'PEPECASH' => [
                     'price' => number_format($response3->data->{1405}->quote->USD->price, 2),
-                    'change' => number_format($response3->data->{1405}->quote->USD->percent_change_24h, 0),
+                    'change' => number_format($response3->data->{1405}->quote->USD->percent_change_1h, 0),
                 ],
                 'BITCORN' => [
                     'price' => number_format($bitcorn_price, 4),

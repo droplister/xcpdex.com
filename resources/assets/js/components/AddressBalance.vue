@@ -16,7 +16,7 @@ export default {
     }
   },
   mounted: function() {
-    axios.get('http://blockstream.info/api/address/' + this.address).then(response => {
+    axios.get('https://blockstream.info/api/address/' + this.address).then(response => {
       this.balance = (response.data.chain_stats.funded_txo_sum - response.data.chain_stats.spent_txo_sum / 100000000).toFixed(8)
       this.utxos = (response.data.chain_stats.funded_txo_count - response.data.chain_stats.spent_txo_count) + ' utxos'
     })

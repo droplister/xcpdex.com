@@ -24,8 +24,3 @@ $text-color: #636b6f;
 // Inputs
 $input-border-color: lighten($text-color, 40%);
 $input-placeholder-color: lighten($text-color, 30%);
-
-// Tables
-@table-head-bg: rgb(0 0 0 / 5%);
-@table-accent-bg: #f8f9fa;
-@table-striped-order: even;

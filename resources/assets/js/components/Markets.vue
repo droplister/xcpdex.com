@@ -6,12 +6,12 @@
         <tr>
           <th>Ticker</th>
           <th>Market Cap</th>
-          <th>Price</th>
+          <th>Last Price</th>
           <th>Volume <small>90d</small></th>
-          <th>Supply</th>
+          <th>Issuance</th>
           <th>Open Orders</th>
-          <th>Orders</th>
-          <th>Matches</th>
+          <th>Total Orders</th>
+          <th>Total Trades</th>
           <th>Last Trade</th>
         </tr>
       </thead>

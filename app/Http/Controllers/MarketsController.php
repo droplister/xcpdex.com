@@ -23,7 +23,7 @@ class MarketsController extends Controller
             return Market::with('quoteAsset')
             ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->where('xcp_core_quote_asset', '!=', 'XCP')
-            ->where('open_orders_count', '>', 0)
+            ->where('volume', '>', 0)
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')
             ->orderBy('xcp_core_quote_asset')
@@ -33,7 +33,7 @@ class MarketsController extends Controller
 
         // Market Data
         $data = Cache::remember('market_index_' . $quote_asset, 1440, function () use ($quote_asset) {
-            $query = Market::where('xcp_core_quote_asset', $quote_asset)->where('open_orders_count', '>', 0);
+            $query = Market::where('xcp_core_quote_asset', $quote_asset)->where('volume', '>', 0);
 
             return [
                 'trading_pairs' => $query->count(),

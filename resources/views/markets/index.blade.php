@@ -41,14 +41,16 @@
                                     </span>
                                     {{ number_format($data['open_orders']) }}
                                 </td>
-                                @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
-                                    <td class="font-weight-bold">
-                                        <span class="d-block font-weight-normal">
-                                            Volume <small>90d</small>
-                                        </span>
-                                        ${{ number_format(normalizeQuantity($data['volume_90d'], $market->quoteAsset->divisible) * $price_data[$quote_asset]) }}
-                                    </td>
-                                @endif
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Volume <small>90d</small>
+                                    </span>
+                                    @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
+                                        ${{ number_format(normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * $price_data[$quote_asset]) }}
+                                    @else
+                                        {{ number_format(normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN')) }}
+                                    @endif
+                                </td>
                             </tr>
                         </tbody>
                     </table>

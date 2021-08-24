@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Cache;
+use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Asset;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,6 +17,9 @@ class OrderResource extends JsonResource
      */
     public function toArray($request, $block_index)
     {
+        // Block Index
+        $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;
+
         return [
             'tx_hash' => $this->tx_hash,
             'type' => $this->trading_type,

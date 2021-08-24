@@ -24,7 +24,7 @@
                     <table class="table table-sm table-bordered text-center">
                         <tbody>
                             <tr class="bg-light">
-                                <td colspan="{{ in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ? '3' : '2' }}">
+                                <td colspan="3">
                                     Market Data
                                 </td>
                             </tr>
@@ -46,7 +46,7 @@
                                         <span class="d-block font-weight-normal">
                                             Volume <small>90d</small>
                                         </span>
-                                        ${{ number_format($data['volume_90d'] * $price_data[$quote_asset]) }}
+                                        ${{ number_format((float) $data['volume_90d'] * (float) $price_data[$quote_asset]) }}
                                     </td>
                                 @endif
                             </tr>

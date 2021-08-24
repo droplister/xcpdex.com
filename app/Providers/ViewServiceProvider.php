@@ -52,7 +52,7 @@ class ViewServiceProvider extends ServiceProvider
         });
 
 
-        View::composer(['layouts.app', 'markets.partials.table'], function ($view) use ($price_data) {
+        View::composer(['layouts.app', 'markets.index', 'markets.partials.table'], function ($view) use ($price_data) {
             $view->with('price_data', $price_data);
         });
     }

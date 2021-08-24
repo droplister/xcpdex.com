@@ -15,7 +15,7 @@ class OrderResource extends JsonResource
      * @param  \Illuminate\Http\Request
      * @return array
      */
-    public function toArray($request, $block_index)
+    public function toArray($request)
     {
         // Block Index
         $block_index = Cache::get('block_index') ? Cache::get('block_index') : Block::latest('block_index')->first()->block_index;

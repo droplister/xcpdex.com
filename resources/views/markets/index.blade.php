@@ -46,7 +46,7 @@
                                         <span class="d-block font-weight-normal">
                                             Volume <small>90d</small>
                                         </span>
-                                        <span title="{{ normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') }} {{ $quote_asset }}">${{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * (float) $price_data[$quote_asset]) }}</span>
+                                        <span title="{{ normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') }} {{ $quote_asset }}">${{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * (float) $price_data[$quote_asset]['price']) }}</span>
                                     </td>
                                 @endif
                             </tr>

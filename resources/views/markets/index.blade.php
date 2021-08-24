@@ -46,9 +46,9 @@
                                         Volume <small>90d</small>
                                     </span>
                                     @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
-                                        ${{ number_format(normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * $price_data[$quote_asset]) }}
+                                        ${{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * float) $price_data[$quote_asset]) }}
                                     @else
-                                        {{ number_format(normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN')) }}
+                                        {{ number_format(float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN')) }}
                                     @endif
                                 </td>
                             </tr>

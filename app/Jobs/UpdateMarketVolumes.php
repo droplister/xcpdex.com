@@ -77,11 +77,13 @@ class UpdateMarketVolumes implements ShouldQueue
             ->where('give_asset', '=', $this->market->xcp_core_quote_asset)
             ->count();
 
-        $c_open_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
-            ->where('give_asset', '=', $this->market->xcp_core_base_asset)
-            ->where('status', '=', 'open')
-            ->orWhere('get_asset', '=', $this->market->xcp_core_base_asset)
+        $get_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_base_asset)
             ->where('give_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('status', '=', 'open')
+            ->count();
+
+        $give_orders_count = Order::where('get_asset', '=', $this->market->xcp_core_quote_asset)
+            ->where('give_asset', '=', $this->market->xcp_core_base_asset)
             ->where('status', '=', 'open')
             ->count();
 
@@ -99,7 +101,9 @@ class UpdateMarketVolumes implements ShouldQueue
         $this->market->update([
             'volume' => $m_volume,
             'orders_count' => $t_orders_count,
-            'open_orders_count' => $c_open_orders_count,
+            'get_orders_count' => $get_orders_count,
+            'give_orders_count' => $give_orders_count,
+            'open_orders_count' => $get_orders_count + $give_orders_count,
             'order_matches_count' => $t_order_matches_count,
             'base_asset_supply' => $this->market->baseAsset->supply_normalized,
             'last_price' => $last_match ? $last_match->trading_price_normalized : number_format(0, 8),

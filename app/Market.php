@@ -32,6 +32,8 @@ class Market extends Model
         'volume',
         'market_cap',
         'orders_count',
+        'get_orders_count',
+        'give_orders_count',
         'open_orders_count',
         'order_matches_count',
     ];

@@ -24,6 +24,8 @@ class MarketResource extends JsonResource
             'quote_asset' => $this->quote_asset_display_name,
             'price' => number_format($this->last_price, 8),
             'last_trade_date' => $this->last_trade_date,
+            'get_orders_count' => number_format($this->get_orders_count),
+            'give_orders_count' => number_format($this->give_orders_count),
             'open_orders_count' => number_format($this->open_orders_count),
             'orders_count' => number_format($this->orders_count),
             'order_matches_count' => number_format($this->order_matches_count),

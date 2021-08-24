@@ -14,7 +14,7 @@ class OrderResource extends JsonResource
      * @param  \Illuminate\Http\Request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request, $block_index)
     {
         return [
             'tx_hash' => $this->tx_hash,
@@ -29,7 +29,7 @@ class OrderResource extends JsonResource
             'price' => $this->trading_price_normalized,
             'quantity' => $this->trading_quantity_normalized,
             'total' => $this->trading_total_normalized,
-            'blocks_left' => Cache::get('block_index') ? $this->expire_index - Cache::get('block_index') : $this->expire_index,
+            'blocks_left' => $this->expire_index - $block_index,
         ];
     }
 }

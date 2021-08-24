@@ -50,7 +50,7 @@ class OrdersController extends Controller
             }
 
             return [
-                'orders' => OrderResource::collection($orders),
+                'orders' => OrderResource::collection($orders, $block_index),
                 'last_page' => ceil($orders->total() / 30),
                 'current_page' => (int) $request->input('page', 1),
             ];

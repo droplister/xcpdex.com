@@ -24,7 +24,7 @@
                     <table class="table table-sm table-bordered text-center">
                         <tbody>
                             <tr class="bg-light">
-                                <td colspan="3">
+                                <td colspan="3" class="font-weight-bold">
                                     Market Data
                                 </td>
                             </tr>
@@ -41,14 +41,16 @@
                                     </span>
                                     {{ number_format($data['open_orders']) }}
                                 </td>
-                                @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
-                                    <td class="font-weight-bold">
-                                        <span class="d-block font-weight-normal">
-                                            Volume <small>90d</small>
-                                        </span>
-                                        ${{ number_format((float) $data['volume_90d'] * (float) $price_data[$quote_asset]) }}
-                                    </td>
-                                @endif
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Volume <small>90d</small>
+                                    </span>
+                                    @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
+                                        ${{ number_format($data['volume_90d'] * $price_data[$quote_asset]) }}
+                                    @else
+                                        {{ number_format($data['volume_90d']) }}
+                                    @endif
+                                </td>
                             </tr>
                         </tbody>
                     </table>

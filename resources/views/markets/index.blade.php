@@ -25,7 +25,7 @@
                         <tbody>
                             <tr class="bg-light">
                                 <td colspan="{{ in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ? '3' : '2' }}">
-                                    Market Info
+                                    Market Data
                                 </td>
                             </tr>
                             <tr>

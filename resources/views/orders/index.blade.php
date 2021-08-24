@@ -13,7 +13,7 @@
     </h1>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('orders.index') }}">
+            <a class="nav-link active" href="{{ route('orders.index') }}">
                 {{ __('Orders') }}
             </a>
         </li>

@@ -40,7 +40,8 @@ class MarketsController extends Controller
 
             return [
                 'trading_pairs' => $query->count(),
-                'open_orders' => $query->sum('open_orders_count'),
+                'get_orders' => $query->sum('get_orders_count'),
+                'give_orders' => $query->sum('give_orders_count'),
                 'volume_90d' => $query->sum('volume'),
             ];
         });

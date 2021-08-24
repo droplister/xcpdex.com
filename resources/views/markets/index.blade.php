@@ -39,7 +39,7 @@
                                     <span class="d-block font-weight-normal">
                                         Open Orders
                                     </span>
-                                    {{ number_format($data['open_orders']) }}
+                                    {{ number_format($data['get_orders']) }} / {{ number_format($data['give_orders']) }}
                                 </td>
                                 @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
                                     <td class="font-weight-bold">

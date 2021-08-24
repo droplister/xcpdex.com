@@ -25,11 +25,20 @@ class MarketsController extends Controller
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')
             ->orderBy('xcp_core_quote_asset')
-            ->take(10)
+            ->take(5)
             ->get();
 
+        // Market Info
+        $query = Market::where('xcp_core_quote_asset', $quote_asset);
+
+        $data = [
+            'trading_pairs' => $query->count(),
+            'open_orders' => $query->sum('open_orders'),
+            'volume_90d' => $query->sum('volume'),
+        ];
+
         // Index View
-        return view('markets.index', compact('request', 'markets', 'quote_asset'));
+        return view('markets.index', compact('request', 'markets', 'data' 'quote_asset'));
     }
 
     /**

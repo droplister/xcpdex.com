@@ -20,6 +20,39 @@
                 <p class="lead">Buy and Sell <span class="d-none d-md-inline-block">{{ $quote_asset }}</span> on the Counterparty DEX.</p>
             </div>
             <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered text-center">
+                        <tbody>
+                            <tr class="bg-light">
+                                <td colspan="{{ in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ? '3' : '2' }}">
+                                    Market Info
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Trading Pairs
+                                    </span>
+                                    {{ number_format($data['trading_pairs']) }}
+                                </td>
+                                <td class="font-weight-bold">
+                                    <span class="d-block font-weight-normal">
+                                        Open Orders
+                                    </span>
+                                    {{ number_format($data['open_orders']) }}
+                                </td>
+                                @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
+                                    <td class="font-weight-bold">
+                                        <span class="d-block font-weight-normal">
+                                            Volume <small>90d</small>
+                                        </span>
+                                        ${{ number_format($data['volume_90d'] * $price_data[$quote_asset]) }}
+                                    </td>
+                                @endif
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     @endif

@@ -1,12 +1,12 @@
 <ul class="nav nav-tabs d-none d-md-flex">
-    <li class="nav-item">
+    <li class="nav-item" style="order: {{ 'XCP' === $quote_asset ? '1' : '2' }}">
         <a class="nav-link{{ 'XCP' === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => 'XCP']) }}">
             XCP
         </a>
     </li>
     @foreach($markets as $market)
         @if($market->count > 2)
-            <li class="nav-item">
+            <li class="nav-item" style="order: {{ $market->quoteAsset->display_name === $quote_asset ? '1' : '2' }}">
                 <a class="nav-link{{ $market->quoteAsset->display_name === $quote_asset ? ' active' : '' }}" href="{{ route('markets.index', ['quote_asset' => $market->quoteAsset->display_name]) }}">
                     {{ $market->quoteAsset->display_name }}
                 </a>

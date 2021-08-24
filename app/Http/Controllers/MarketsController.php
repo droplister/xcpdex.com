@@ -33,7 +33,7 @@ class MarketsController extends Controller
 
         // Market Data
         $data = Cache::remember('market_index_' . $quote_asset, 1440, function () use ($quote_asset) {
-            $query = Market::where('xcp_core_quote_asset', $quote_asset);
+            $query = Market::where('xcp_core_quote_asset', $quote_asset)->where('open_orders_count', '>', 0);
 
             return [
                 'trading_pairs' => $query->count(),

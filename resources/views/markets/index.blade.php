@@ -17,7 +17,7 @@
                     @endif
                     {{ $quote_asset }}
                 </h1>
-                <p class="lead">Buy and Sell {{ $quote_asset }} on the Counterparty Dex.</p>
+                <p class="lead">Buy and Sell <span class="d-none d-md-block-inline-block">{{ $quote_asset }}</span> on the Counterparty Dex.</p>
             </div>
             <div class="col-md-6">
             </div>

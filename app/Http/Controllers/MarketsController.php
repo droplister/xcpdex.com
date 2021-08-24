@@ -33,12 +33,12 @@ class MarketsController extends Controller
 
         $data = [
             'trading_pairs' => $query->count(),
-            'open_orders' => $query->sum('open_orders'),
+            'open_orders' => $query->sum('open_orders_count'),
             'volume_90d' => $query->sum('volume'),
         ];
 
         // Index View
-        return view('markets.index', compact('request', 'markets', 'data' 'quote_asset'));
+        return view('markets.index', compact('request', 'markets', 'data', 'quote_asset'));
     }
 
     /**

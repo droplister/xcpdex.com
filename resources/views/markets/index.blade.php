@@ -24,7 +24,7 @@
                     <table class="table table-sm table-bordered text-center">
                         <tbody>
                             <tr class="bg-light">
-                                <td colspan="3" class="font-weight-bold">
+                                <td colspan="{{ in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ? '3' : '2' }}" class="font-weight-bold">
                                     Market Data
                                 </td>
                             </tr>
@@ -41,16 +41,14 @@
                                     </span>
                                     {{ number_format($data['open_orders']) }}
                                 </td>
-                                <td class="font-weight-bold">
-                                    <span class="d-block font-weight-normal">
-                                        Volume <small>90d</small>
-                                    </span>
-                                    @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
-                                        ${{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * (float) $price_data[$quote_asset]) }}
-                                    @else
-                                        {{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN')) }}
-                                    @endif
-                                </td>
+                                @if(in_array($quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']))
+                                    <td class="font-weight-bold">
+                                        <span class="d-block font-weight-normal">
+                                            Volume <small>90d</small>
+                                        </span>
+                                        <span title="{{ normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') }} {{ $quote_asset }}">${{ number_format((float) normalizeQuantity($data['volume_90d'], $quote_asset !== 'BITCORN') * (float) $price_data[$quote_asset]) }}</span>
+                                    </td>
+                                @endif
                             </tr>
                         </tbody>
                     </table>

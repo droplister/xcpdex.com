@@ -56,6 +56,12 @@
             </div>
         </div>
     @endif
+    @if($quote_asset === 'BTC')
+        <div class="alert alert-warning">
+            <i aria-hidden="true" class="fa fa-exclamation-circle mr-1"></i>
+            <strong class="d-none d-md-inline-block">Please note:</strong> Trading BTC takes <a href="https://counterpartytalk.org/t/what-is-btc-pay-and-how-does-it-work/1179" class="text-dark">extra steps</a>.
+        </div>
+    @endif
     @include('markets.partials.filter')
     <markets quote_asset="{{ $quote_asset }}" sort_by="{{ $request->input('sort_by', 'volume') }}"></markets>
 @endsection

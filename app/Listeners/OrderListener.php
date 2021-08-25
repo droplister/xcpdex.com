@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Cache;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;

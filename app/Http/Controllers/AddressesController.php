@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Curl\Curl;
 use Droplister\XcpCore\App\Address;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,25 @@ class AddressesController extends Controller
     {
         $address = Address::whereAddress($address)->firstOrFail();
 
+        // BTC Balance
+        $curl = new Curl();
+        $curl->setUserAgent('XCPDEX.com');
+        $curl->get('https://blockstream.info/api/address/' . $address->address);
+
+        if ($curl->error) {
+            $data = [
+                'balance' => '0.00000000',
+                'txs' => 'API Failed',
+            ];
+        } else {
+            $response = json_decode($curl->response);
+
+            $data = [
+                'balance' => fromSatoshi($response->chain_stats->funded_txo_sum - $response->chain_stats->spent_txo_sum),
+                'txs' => $response->chain_stats->tx_count,
+            ];
+        }
+
         // First Order
         $first_order = $address->orders()->orderBy('tx_index', 'asc')->first();
 
@@ -28,6 +48,6 @@ class AddressesController extends Controller
         $total_orders = $address->orders()->count();
 
         // Show View
-        return view('addresses.show', compact('request', 'address', 'first_order', 'last_order', 'total_orders'));
+        return view('addresses.show', compact('request', 'address', 'data', 'first_order', 'last_order', 'total_orders'));
     }
 }

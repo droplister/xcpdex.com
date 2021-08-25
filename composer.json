@@ -12,10 +12,10 @@
     ],
     "require": {
         "php": "^7.2.5",
+        "curl/curl": "^2.0",
         "cviebrock/eloquent-sluggable": "^7.0",
         "droplister/xcp-core": "dev-feature/add-dispeners",
         "fideloper/proxy": "^4.0",
-        "fruitcake/laravel-cors": "^2.0",
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.4",
         "laravel/horizon": "^4.0",

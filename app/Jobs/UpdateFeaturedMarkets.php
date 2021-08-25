@@ -52,7 +52,7 @@ class UpdateFeaturedMarkets implements ShouldQueue
             $market = $this->getMarket($name);
 
             // Simplest Check
-            if($market !== null)
+            if($market !== null && ! $this->banned($send->source))
             {
                 Feature::firstOrCreate([
                     'xcp_core_tx_index' => $send->tx_index,
@@ -115,5 +115,18 @@ class UpdateFeaturedMarkets implements ShouldQueue
         return Market::where('name', '=', $name)
             ->orWhere('slug', '=', $name)
             ->first();
+    }
+
+    /**
+     * Ban Bidder Address
+     *
+     * @param  string  $address
+     * @return boolean
+     */
+    private function banned($address)
+    {
+        return in_array($address, [
+            '1LegitZpuAerkiWnaWVpTrazCULcUuJoUW',
+        ]);
     }
 }

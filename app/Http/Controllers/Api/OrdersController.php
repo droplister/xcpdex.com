@@ -7,6 +7,7 @@ use Droplister\XcpCore\App\Block;
 use Droplister\XcpCore\App\Order;
 use App\Http\Resources\CountResource;
 use App\Http\Resources\OrderResource;
+use App\Http\Resources\AddressOrderResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -78,7 +79,7 @@ class OrdersController extends Controller
                 ->paginate(30);
 
             return [
-                'orders' => OrderResource::collection($orders),
+                'orders' => AddressOrderResource::collection($orders),
                 'last_page' => ceil($orders->total() / 30),
                 'current_page' => (int) $request->input('page', 1),
             ];

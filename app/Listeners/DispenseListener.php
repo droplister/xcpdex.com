@@ -63,18 +63,12 @@ class DispenseListener
 	        });
 
 
-        	$usd_value = number_format($event->dispense->dispenser->trading_price_normalized * $event->dispense->dispense_quantity_normalized * (float) $price_data['BTC']['price'], 2);
-        	Log::info($usd_value);
-        	Log::info(gettype($usd_value));
-        	Log::info($event->dispense->dispenser->trading_price_normalized);
-        	Log::info(gettype($event->dispense->dispenser->trading_price_normalized));
-        	Log::info($event->dispense->dispense_quantity_normalized);
-        	Log::info(gettype($event->dispense->dispense_quantity_normalized));
-        	Log::info($price_data['BTC']['price']);
-        	Log::info(gettype($price_data['BTC']['price']));
-        	if($usd_value > 1) {
-        		$usd_value = number_format($usd_value);
-		        $message = "*Disp* {$event->dispense->dispense_quantity_normalized} {$event->dispense->giveAssetModel->display_name}\n@ {$event->dispense->dispenser->trading_price_normalized} BTC\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->dispense->tx_hash})";
+        	$usd_value = str_replace(',', '', $event->dispense->dispenser->trading_price_normalized) * $event->dispense->dispense_quantity_normalized * str_replace(',', '', $price_data['BTC']['price']);
+
+        	if($usd_value > 10) {
+        		$usd_value = number_format($usd_value, 2);
+                $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', ,$event->dispense->dispense_quantity_normalized);
+		        $message = "*Dsp* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n @   {$event->dispense->dispenser->trading_price_normalized} BTC\n--\nTotal: {$usd_value} USD  [view](https://xchain.io/tx/{$event->dispense->tx_hash})";
 
 		        SendTelegramMessage::dispatch($message);
         	}

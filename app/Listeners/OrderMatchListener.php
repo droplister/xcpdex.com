@@ -63,7 +63,7 @@ class OrderMatchListener
 
         	$usd_value = $event->order_match->trading_total_normalized * str_replace(',', '', $price_data[$event->order_match->trading_pair_quote_asset]['price']);
 
-        	if($usd_value > 1000) {
+        	if($usd_value > 3000) {
         		$usd_value = number_format($usd_value);
         		if(in_array($event->order_match->forwardAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) && $event->order_match->backward_quantity < 100000000 || in_array($event->order_match->backwardAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) && $event->order_match->forward_quantity < 100000000) {
                      $amount_traded = str_replace('.00000000', '', $event->order_match->trading_quantity_normalized);

@@ -20,23 +20,26 @@ class AddressesController extends Controller
         $address = Address::whereAddress($address)->firstOrFail();
 
         // BTC Balance
-        $curl = new Curl();
-        $curl->setUserAgent('XCPDEX.com');
-        $curl->get('https://blockstream.info/api/address/' . $address->address);
+        $data = Cache::remember($cache_slug, 1, function () use ($address) {
 
-        if ($curl->error) {
-            $data = [
-                'balance' => '0.00000000',
-                'txs' => 'API Failed',
-            ];
-        } else {
-            $response = json_decode($curl->response);
+            $curl = new Curl();
+            $curl->setUserAgent('XCPDEX.com');
+            $curl->get('https://blockstream.info/api/address/' . $address->address);
 
-            $data = [
-                'balance' => fromSatoshi($response->chain_stats->funded_txo_sum - $response->chain_stats->spent_txo_sum),
-                'txs' => $response->chain_stats->tx_count,
-            ];
-        }
+            if ($curl->error) {
+                return [
+                    'balance' => '0.00000000',
+                    'txs' => 'API Failed',
+                ];
+            } else {
+                $response = json_decode($curl->response);
+
+                return $data = [
+                    'balance' => fromSatoshi($response->chain_stats->funded_txo_sum - $response->chain_stats->spent_txo_sum),
+                    'txs' => $response->chain_stats->tx_count . ' txs',
+                ];
+            }
+        });
 
         // First Order
         $first_order = $address->orders()->orderBy('tx_index', 'asc')->first();

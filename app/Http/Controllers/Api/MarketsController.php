@@ -38,13 +38,15 @@ class MarketsController extends Controller
             ])) {
                 $order_by = $request->sort_by;
             } else {
-                $order_by = 'volume';
+                $order_by = 'market_cap';
             }
 
             // Get Markets
             $markets = Market::where('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
+                ->where('moderated', false)
                 ->where('volume', '>', 0)
                 ->orWhere('xcp_core_quote_asset', '=', $request->input('quote_asset', 'XCP'))
+                ->where('moderated', false)
                 ->where('open_orders_count', '>', 0)
                 ->orderBy($order_by, 'desc')
                 ->paginate(30);

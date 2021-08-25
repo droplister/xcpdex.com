@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Cache;
 use Curl\Curl;
 use Droplister\XcpCore\App\Address;
 use Illuminate\Http\Request;

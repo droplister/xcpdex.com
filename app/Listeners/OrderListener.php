@@ -58,11 +58,9 @@ class OrderListener
 	        });
 
             // Get Matches
-            $backwards = $event->block->orderMatches->whereIn('backward_asset', ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])->get();
-
-            $forwards = $event->block->orderMatches->whereIn('forward_asset', ['XCP', 'PEPECASH', 'PEPECASH', 'BITCORN'])->get();
-
-            $matches = $backwards->merge($forwards);
+            $matches = $event->block->orderMatches()->whereIn('backward_asset', ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])->
+                ->whereIn('forward_asset', ['XCP', 'PEPECASH', 'PEPECASH', 'BITCORN'])
+                ->get();
 
             // Announce it
             foreach($matches as $match)

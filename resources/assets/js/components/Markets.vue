@@ -56,7 +56,7 @@ export default {
     inputStyles(sortBy) {
       if (this.sort_by === sortBy) {
         return {
-          text-decoration: 'underline'
+          'text-decoration': 'underline'
         }
       } else {
         return {};

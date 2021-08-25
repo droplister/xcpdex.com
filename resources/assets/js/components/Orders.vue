@@ -52,7 +52,7 @@ export default {
     inputStyles(theStatus) {
       if (this.status === theStatus) {
         return {
-          text-decoration: 'underline'
+          'text-decoration': 'underline'
         }
       } else {
         return {};

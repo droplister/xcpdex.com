@@ -63,7 +63,7 @@ class OrderMatchListener
 	        });
 
 
-        	$usd_value = $event->orderMatch->trading_total_normalized * $price_data[$event->orderMatch->trading_pair_quote_asset];
+        	$usd_value = number_format((float) $event->orderMatch->trading_total_normalized * (float) $price_data[$event->orderMatch->trading_pair_quote_asset], 2);
         	Log::info($usd_value);
         	if($usd_value > 1) {
         		$usd_value = number_format($usd_value);

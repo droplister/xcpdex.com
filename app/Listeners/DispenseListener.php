@@ -68,8 +68,8 @@ class DispenseListener
         	Log::info(gettype($usd_value));
         	Log::info($event->dispense->dispenser->trading_price_normalized);
         	Log::info(gettype($event->dispense->dispenser->trading_price_normalized));
-        	Log::info($event->dispense->dispenser->dispense_quantity_normalized);
-        	Log::info(gettype($event->dispense->dispenser->dispense_quantity_normalized));
+        	Log::info($event->dispense->dispense_quantity_normalized);
+        	Log::info(gettype($event->dispense->dispense_quantity_normalized));
         	Log::info($price_data['BTC']['price']);
         	Log::info(gettype($price_data['BTC']['price']));
         	if($usd_value > 1) {

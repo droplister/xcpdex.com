@@ -6,7 +6,7 @@ use Cache;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
-use Droplister\XcpCore\App\Events\DispenseWasCreated;
+use Droplister\XcpCore\App\Events\BlockWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -15,10 +15,10 @@ class DispenseListener
     /**
      * Handle the event.
      *
-     * @param  \Droplister\XcpCore\App\Events\DispenseWasCreated  $event
+     * @param  \Droplister\XcpCore\App\Events\BlockWasCreated  $event
      * @return void
      */
-    public function handle(DispenseWasCreated $event)
+    public function handle(BlockWasCreated $event)
     {
         // Useful Switch
         if(config('xcp-core.indexing'))

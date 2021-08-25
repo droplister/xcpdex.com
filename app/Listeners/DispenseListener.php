@@ -63,9 +63,9 @@ class DispenseListener
 	        });
 
 
-        	$usd_value = str_replace(',', '', $event->dispense->dispenser->trading_price_normalized) * $event->dispense->dispense_quantity_normalized * str_replace(',', '', $price_data['BTC']['price']);
+        	$usd_value = str_replace(',', '', $event->dispense->dispenser->trading_price_normalized) * ($event->dispense->dispense_quantity / $event->dispense->dispenser->give_quantity) * str_replace(',', '', $price_data['BTC']['price']);
 
-        	if($usd_value > 10) {
+        	if($usd_value > 1000) {
         		$usd_value = number_format($usd_value, 2);
                 $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', $event->dispense->dispense_quantity_normalized);
 		        $message = "*Dsp* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n @   {$event->dispense->dispenser->trading_price_normalized} BTC\n--\nTotal: {$usd_value} USD  [view](https://xchain.io/tx/{$event->dispense->tx_hash})";

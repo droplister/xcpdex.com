@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Log;
 use Cache;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
@@ -64,6 +65,7 @@ class DispenseListener
             foreach($dispenses as $dispense)
             {
             	$usd_value = $dispense->dispenser->trading_price_normalized * $dispense->dispense_quantity_normalized * $price_data['BTC'];
+            	Log::info($usd_value);
             	if($usd_value > 1) {
             		$usd_value = number_format($usd_value);
 			        $message = "**Disp** {$dispense->dispense_quantity_normalized} {$dispense->giveAssetModel->display_name}\n@ {$dispense->dispenser->trading_price_normalized} BTC\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$dispense->tx_hash})";

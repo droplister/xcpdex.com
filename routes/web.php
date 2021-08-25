@@ -34,7 +34,7 @@ Route::get('create/raw-tx', [
 
 Route::get('/', 'MarketsController@index')->name('home.index');
 Route::get('/locale/{locale}', 'LocaleController@show')->name('locale.show');
-Route::get('/address/{address}', 'AddressesController@show')->name('addresses.show')->middleware('cors');
+Route::get('/address/{address}', 'AddressesController@show')->name('addresses.show');
 Route::get('/assets', 'AssetsController@index')->name('assets.index');
 Route::get('/asset/{asset}', 'AssetsController@show')->name('assets.show');
 Route::get('/markets/{quote_asset?}', 'MarketsController@index')->name('markets.index');

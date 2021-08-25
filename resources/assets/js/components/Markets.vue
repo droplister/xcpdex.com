@@ -5,12 +5,12 @@
       <thead class="text-left">
         <tr>
           <th>Ticker</th>
-          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=market_cap'" class="text-dark">Market Cap</a></th>
+          <th><a :href="'/markets/' + this.quote_asset + '?sort_by=market_cap'" class="text-dark" :style="inputStyles('market_cap')">Market Cap</a></th>
           <th>Last Price</th>
           <th><a :href="'/markets/' + this.quote_asset + '?sort_by=volume'" class="text-dark">Volume</a> <small>90d</small></th>
-          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=get_orders_count'" class="text-dark">Buy Orders</a></th>
-          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=give_orders_count'" class="text-dark">Sell Orders</a></th>
-          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=order_matches_count'" class="text-dark">Total Trades</a></th>
+          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=get_orders_count'" class="text-dark" :style="inputStyles('get_orders_count')>Buy Orders</a></th>
+          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=give_orders_count'" class="text-dark" :style="inputStyles('give_orders_count')>Sell Orders</a></th>
+          <th class="text-center"><a :href="'/markets/' + this.quote_asset + '?sort_by=order_matches_count'" class="text-dark" :style="inputStyles('order_matches_count')>Total Trades</a></th>
           <th>Last Trade</th>
         </tr>
       </thead>
@@ -50,6 +50,17 @@ export default {
     return {
       markets: [],
       page: 1
+    }
+  },
+  computed: {
+    inputStyles(sortBy) {
+      if (this.sort_by === sortBy) {
+        return {
+          text-decoration: 'underline'
+        }
+      } else {
+        return {};
+      }
     }
   },
   methods: {

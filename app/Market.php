@@ -36,6 +36,7 @@ class Market extends Model
         'give_orders_count',
         'open_orders_count',
         'order_matches_count',
+        'moderated',
     ];
 
     /**

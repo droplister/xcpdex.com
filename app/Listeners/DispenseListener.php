@@ -7,7 +7,7 @@ use Cache;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
-use Droplister\XcpCore\App\Events\BlockWasCreated;
+use Droplister\XcpCore\App\Events\DispenseWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -16,10 +16,10 @@ class DispenseListener
     /**
      * Handle the event.
      *
-     * @param  \Droplister\XcpCore\App\Events\BlockWasCreated  $event
+     * @param  \Droplister\XcpCore\App\Events\DispenseWasCreated  $event
      * @return void
      */
-    public function handle(BlockWasCreated $event)
+    public function handle(DispenseWasCreated $event)
     {
     	Log::info('DL');
 
@@ -62,22 +62,15 @@ class DispenseListener
 	            ];
 	        });
 
-            // Get Dispenses
-            $dispenses = $event->block->dispenses()->with('dispenser', 'giveAssetModel')->get();
-    	Log::info('GD');
 
-            // Announce it
-            foreach($dispenses as $dispense)
-            {
-            	$usd_value = $dispense->dispenser->trading_price_normalized * $dispense->dispense_quantity_normalized * $price_data['BTC'];
-            	Log::info($usd_value);
-            	if($usd_value > 1) {
-            		$usd_value = number_format($usd_value);
-			        $message = "**Disp** {$dispense->dispense_quantity_normalized} {$dispense->giveAssetModel->display_name}\n@ {$dispense->dispenser->trading_price_normalized} BTC\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$dispense->tx_hash})";
+        	$usd_value = $event->dispense->dispenser->trading_price_normalized * $event->dispense->dispense_quantity_normalized * $price_data['BTC'];
+        	Log::info($usd_value);
+        	if($usd_value > 1) {
+        		$usd_value = number_format($usd_value);
+		        $message = "**Disp** {$event->dispense->dispense_quantity_normalized} {$event->dispense->giveAssetModel->display_name}\n@ {$event->dispense->dispenser->trading_price_normalized} BTC\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->dispense->tx_hash})";
 
-			        SendTelegramMessage::dispatch($message);
-            	}
-            }
+		        SendTelegramMessage::dispatch($message);
+        	}
         }
     }
 }

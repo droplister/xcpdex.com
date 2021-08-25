@@ -7,19 +7,19 @@ use Cache;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
-use Droplister\XcpCore\App\Events\BlockWasCreated;
+use Droplister\XcpCore\App\Events\OrderMatchWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OrderListener
+class OrderMatchListener
 {
     /**
      * Handle the event.
      *
-     * @param  \Droplister\XcpCore\App\Events\BlockWasCreated  $event
+     * @param  \Droplister\XcpCore\App\Events\OrderMatchWasCreated  $event
      * @return void
      */
-    public function handle(BlockWasCreated $event)
+    public function handle(OrderMatchWasCreated $event)
     {
     	    	Log::info('OL');
 
@@ -62,25 +62,15 @@ class OrderListener
 	            ];
 	        });
 
-            // Get Matches
-            $matches = $event->block->orderMatches()->whereIn('backward_asset', ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])
-                ->whereIn('forward_asset', ['XCP', 'PEPECASH', 'PEPECASH', 'BITCORN'])
-                ->get();
 
-    	Log::info('GM');
+        	$usd_value = $event->match->trading_total_normalized * $price_data[$event->match->trading_pair_quote_asset];
+        	Log::info($usd_value);
+        	if($usd_value > 1) {
+        		$usd_value = number_format($usd_value);
+		        $message = "**{$event->match->trading_type}** {$event->match->trading_quantity_normalized} {$event->match->trading_pair_base_asset}\n@ {$event->match->trading_price_normalized} {$event->match->trading_pair_quote_asset}\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->match->tx1_index})";
 
-            // Announce it
-            foreach($matches as $match)
-            {
-            	$usd_value = $match->trading_total_normalized * $price_data[$match->trading_pair_quote_asset];
-            	Log::info($usd_value);
-            	if($usd_value > 1) {
-            		$usd_value = number_format($usd_value);
-			        $message = "**{$match->trading_type}** {$match->trading_quantity_normalized} {$match->trading_pair_base_asset}\n@ {$match->trading_price_normalized} {$match->trading_pair_quote_asset}\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$match->tx1_index})";
-
-			        SendTelegramMessage::dispatch($message);
-            	}
-            }
+		        SendTelegramMessage::dispatch($message);
+        	}
         }
     }
 }

@@ -23,6 +23,7 @@ class MarketsController extends Controller
             return Market::with('quoteAsset')
             ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->where('xcp_core_quote_asset', '!=', 'XCP')
+            ->where('xcp_core_quote_asset', '!=', 'BTC')
             ->where('volume', '>', 0)
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')

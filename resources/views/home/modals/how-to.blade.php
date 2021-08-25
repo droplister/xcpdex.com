@@ -8,13 +8,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Wondering why {{ $featured->market->name }} is pinned?</p>
+                <p><b>Wondering why {{ $featured->market->name }} is pinned?</b></p>
                 <p>Pins are shown as a result of an ongoing auction that allows the highest bidder to feature a market of their choosing.</p>
                 <p><b>How it works:</b></p>
                 <p>This website monitors: <b><a href="https://xchain.io/address/{{ config('xcpdex.feature_address') }}" target="_blank">{{ config('xcpdex.feature_address') }}</a></b></p>
-                <p>1) Send an amount of XCP that's higher than the current high bid.</p>
-                <p>2) Include the market to pin as a memo, ex: "PEPECASH/XCP".</p>
-                <p>3) That market will be pinned on popular pages until outbid.</p>
+                <p>1) Send an amount of XCP that's higher than the current high bid.<br />
+                   2) Include the market to pin as a memo, ex: "PEPECASH/XCP".<br />
+                   3) That market will remain pinned until you are outbid.</p>
                 <p><b>Bidding history:</b></p>
                 <p>
                 @foreach($features as $feature)

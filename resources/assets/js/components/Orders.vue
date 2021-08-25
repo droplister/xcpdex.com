@@ -8,7 +8,7 @@
           <th>Quantity</th>
           <th>Price</th>
           <th>Total</th>
-          <th><a :href="'/orders?status=ending-soon'" class="text-dark" :style="inputStyles('ending-soon')>Blocks Left</a></th>
+          <th><a :href="'/orders?status=ending-soon'" class="text-dark">Blocks Left</a></th>
           <th>Source</th>
         </tr>
       </thead>
@@ -46,17 +46,6 @@ export default {
     return {
       orders: [],
       page: 1
-    }
-  },
-  computed: {
-    inputStyles(theStatus) {
-      if (this.status === theStatus) {
-        return {
-          'text-decoration': 'underline'
-        }
-      } else {
-        return {};
-      }
     }
   },
   methods: {

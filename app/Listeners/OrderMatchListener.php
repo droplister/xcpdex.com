@@ -63,13 +63,13 @@ class OrderMatchListener
 	        });
 
 
-        	$usd_value = number_format($event->order_match->trading_total_normalized * $price_data[$event->order_match->trading_pair_quote_asset], 2);
+        	$usd_value = number_format($event->order_match->trading_total_normalized * $price_data[$event->order_match->trading_pair_quote_asset]['price'], 2);
         	Log::info($usd_value);
         	Log::info(gettype($usd_value));
         	Log::info($event->order_match->trading_total_normalized);
         	Log::info(gettype($event->order_match->trading_total_normalized));
         	Log::info($price_data[$event->order_match->trading_pair_quote_asset]);
-        	Log::info(gettype($price_data[$event->order_match->trading_pair_quote_asset]));
+        	Log::info(gettype($price_data[$event->order_match->trading_pair_quote_asset]['price']));
         	if($usd_value > 1) {
         		$usd_value = number_format($usd_value);
 		        $message = "*{$event->order_match->trading_type}* {$event->order_match->trading_quantity_normalized} {$event->order_match->trading_pair_base_asset}\n@ {$event->order_match->trading_price_normalized} {$event->order_match->trading_pair_quote_asset}\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->order_match->tx1_index})";

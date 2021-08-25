@@ -8,6 +8,10 @@
         <h1>{{ __('Counterparty DEX') }}</h1>
         <p class="lead">{{ __('The Decentralized Exchange on Bitcoin') }}</p>
         <img src="{{ asset('images/how-it-works.png') }}" alt="XCP DEX" class="img-responsive my-2" width="100%" />
+        <div class="alert alert-warning">
+            <i aria-hidden="true" class="fa fa-exclamation-circle mr-1"></i>
+            <strong class="d-none d-md-inline-block">Read-Only:</strong> This site is like Yahoo Finance for XCP.
+        </div>
     @else
         <div class="row">
             <div class="col-md-6">

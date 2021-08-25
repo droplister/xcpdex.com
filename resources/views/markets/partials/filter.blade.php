@@ -13,7 +13,7 @@
             </li>
         @endif
     @endforeach
-    @if(!in_array($quote_asset, $markets->pluck('xcp_core_quote_asset')->toArray()))
+    @if($quote_asset !== 'XCP' && ! in_array($quote_asset, $markets->pluck('xcp_core_quote_asset')->toArray()))
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('markets.index', ['quote_asset' => $quote_asset]) }}">
                 {{ $quote_asset }}
@@ -42,7 +42,7 @@
                 </a>
             @endif
         @endforeach
-        @if(!in_array($quote_asset, $markets->pluck('xcp_core_quote_asset')->toArray()))
+        @if($quote_asset !== 'XCP' && ! in_array($quote_asset, $markets->pluck('xcp_core_quote_asset')->toArray()))
             <a class="dropdown-item active" href="{{ route('markets.index', ['quote_asset' => $quote_asset]) }}">
                 {{ $quote_asset }}
             </a>

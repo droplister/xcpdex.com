@@ -21,9 +21,13 @@ class OrderListener
      */
     public function handle(BlockWasCreated $event)
     {
+    	    	Log::info('OL');
+
         // Useful Switch
         if(config('xcp-core.indexing'))
         {
+        	    	Log::info('PD');
+
 	        $price_data = Cache::remember('usd_prices', 1440, function () {
 	            $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
@@ -62,6 +66,8 @@ class OrderListener
             $matches = $event->block->orderMatches()->whereIn('backward_asset', ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])
                 ->whereIn('forward_asset', ['XCP', 'PEPECASH', 'PEPECASH', 'BITCORN'])
                 ->get();
+
+    	Log::info('GM');
 
             // Announce it
             foreach($matches as $match)

@@ -21,9 +21,13 @@ class DispenseListener
      */
     public function handle(BlockWasCreated $event)
     {
+    	Log::info('DL');
+
         // Useful Switch
         if(config('xcp-core.indexing'))
         {
+        	    	Log::info('PD');
+
 	        $price_data = Cache::remember('usd_prices', 1440, function () {
 	            $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));
 
@@ -60,6 +64,7 @@ class DispenseListener
 
             // Get Dispenses
             $dispenses = $event->block->dispenses()->with('dispenser', 'giveAssetModel')->get();
+    	Log::info('GD');
 
             // Announce it
             foreach($dispenses as $dispense)

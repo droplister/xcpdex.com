@@ -15,7 +15,7 @@
     @if($last_match && $last_match->confirmed_at->diffInDays(Carbon\Carbon::now()) > 365)
         <div class="alert alert-warning">
             <i aria-hidden="true" class="fa fa-exclamation-circle mr-1"></i>
-            <strong class="d-none d-md-inline-block">No Recent Activity:</strong> The last order was created {{ $last_match->confirmed_at->toDateString() }}.
+            <strong class="d-none d-md-inline-block">No Recent Activity:</strong> Last order was created {{ $last_match->confirmed_at->toDateString() }}.
         </div>
     @endif
     <market-chart market="{{ $market->slug }}"

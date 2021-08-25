@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         {
             $schedule->command('update:index')->everyMinute();
             $schedule->command('update:mempool')->everyMinute();
-            $schedule->command('update:markets')->hourly();
+            $schedule->command('update:markets')->daily();
         }
     }
 

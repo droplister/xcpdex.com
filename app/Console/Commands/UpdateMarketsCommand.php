@@ -54,7 +54,7 @@ class UpdateMarketsCommand extends Command
         $block = Block::latest('block_index')->first();
 
         // Get Markets
-        $markets = Market::where('volume', '>', 0)->orWhere('open_orders_count', '>', 0)->get();
+        $markets = Market::get();
 
         // Update Markets
         foreach($markets as $market)

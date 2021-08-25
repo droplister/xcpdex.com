@@ -13,6 +13,13 @@
             </li>
         @endif
     @endforeach
+    @if(!in_array($quote_asset, $markets->pluck('quote_asset_display_name')->toArray()))
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ route('markets.index', ['quote_asset' => $quote_asset]) }}">
+                {{ $quote_asset }}
+            </a>
+        </li>
+    @endif
 </ul>
 <ul class="nav nav-tabs d-md-none">
     <li class="nav-item">
@@ -35,6 +42,11 @@
                 </a>
             @endif
         @endforeach
+        @if(!in_array($quote_asset, $markets->pluck('quote_asset_display_name')->toArray()))
+            <a class="dropdown-item active" href="{{ route('markets.index', ['quote_asset' => $quote_asset]) }}">
+                {{ $quote_asset }}
+            </a>
+        @endif
         </div>
     </li>
 </ul>

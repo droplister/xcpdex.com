@@ -63,11 +63,11 @@ class OrderMatchListener
 	        });
 
 
-        	$usd_value = $event->trading_total_normalized * $price_data[$event->trading_pair_quote_asset];
+        	$usd_value = $event->orderMatch->trading_total_normalized * $price_data[$event->orderMatch->trading_pair_quote_asset];
         	Log::info($usd_value);
         	if($usd_value > 1) {
         		$usd_value = number_format($usd_value);
-		        $message = "**{$event->trading_type}** {$event->trading_quantity_normalized} {$event->trading_pair_base_asset}\n@ {$event->trading_price_normalized} {$event->trading_pair_quote_asset}\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->tx1_index})";
+		        $message = "**{$event->orderMatch->trading_type}** {$event->orderMatch->trading_quantity_normalized} {$event->orderMatch->trading_pair_base_asset}\n@ {$event->orderMatch->trading_price_normalized} {$event->orderMatch->trading_pair_quote_asset}\n~ {$usd_value} USD [view tx](https://xchain.io/tx/{$event->orderMatch->tx1_index})";
 
 		        SendTelegramMessage::dispatch($message);
         	}

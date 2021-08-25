@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Cache;
+use App\Feature;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
 use Illuminate\Support\Facades\View;
@@ -51,9 +52,12 @@ class ViewServiceProvider extends ServiceProvider
             ];
         });
 
-
         View::composer(['layouts.app', 'markets.index', 'markets.partials.table'], function ($view) use ($price_data) {
             $view->with('price_data', $price_data);
+        });
+
+        View::composer('home.modals.how-to', function ($view) {
+            $view->with('features', Feature::highestBids()->get());
         });
     }
 

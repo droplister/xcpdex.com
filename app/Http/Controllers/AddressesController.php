@@ -21,7 +21,7 @@ class AddressesController extends Controller
         $address = Address::whereAddress($address)->firstOrFail();
 
         // BTC Balance
-        $data = Cache::remember($cache_slug, 1, function () use ($address) {
+        $data = Cache::remember($address->address . '_balance', 1, function () use ($address) {
 
             $curl = new Curl();
             $curl->setUserAgent('XCPDEX.com');

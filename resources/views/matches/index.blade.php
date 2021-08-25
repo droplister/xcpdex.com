@@ -6,7 +6,7 @@
 @section('content')
     <div class="alert alert-success">
         <i aria-hidden="true" class="fa fa-thumb-tack mr-1"></i><b>Pinned:</b>
-        <a href="{{ route('markets.show', ['slug' => $featured->market->slug]) }}" class="font-weight-bold">{{ $featured->market->base_asset_display_name }}</a>
+        <a href="{{ route('markets.show', ['market' => $featured->market->slug]) }}" class="font-weight-bold">{{ $featured->market->base_asset_display_name }}</a>
         @if($featured->market->lastMatch())
             <span class="text-muted">@ {{ $featured->market->lastMatch()->trading_price_normalized }} {{ $featured->market->quote_asset_display_name }}</span>
         @endif

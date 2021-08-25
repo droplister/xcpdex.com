@@ -63,7 +63,7 @@ class DispenseListener
 	        });
 
 
-        	$usd_value = $event->dispense->dispenser->trading_price_normalized * $event->dispense->dispense_quantity_normalized * $price_data['BTC'];
+        	$usd_value = $event->dispense->dispenser->trading_price_normalized * $event->dispense->dispense_quantity_normalized * $price_data['BTC']['price'];
         	Log::info($usd_value);
         	if($usd_value > 1) {
         		$usd_value = number_format($usd_value);

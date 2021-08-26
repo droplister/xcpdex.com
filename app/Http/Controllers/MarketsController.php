@@ -25,6 +25,7 @@ class MarketsController extends Controller
             ->where('xcp_core_quote_asset', '!=', 'XCP')
             ->where('xcp_core_quote_asset', '!=', 'BTC')
             ->where('volume', '>', 0)
+            ->where('moderated', false)
             ->groupBy('xcp_core_quote_asset')
             ->orderBy('count', 'desc')
             ->orderBy('xcp_core_quote_asset')

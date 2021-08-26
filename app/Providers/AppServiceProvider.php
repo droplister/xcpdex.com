@@ -15,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(UrlGenerator $url)
     {
         $url->forceScheme('https');
+
+        \Horizon::auth(function ($request) {
+            return true;
+        });
     }
 
     /**

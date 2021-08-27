@@ -53,8 +53,25 @@ class UpdateMarketsCommand extends Command
         // Get Block
         $block = Block::latest('block_index')->first();
 
+        // Markets
+        $markets = Cache::remember('market_index', 1440, function () {
+            return Market::with('quoteAsset')
+            ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
+            ->where('xcp_core_quote_asset', '!=', 'XCP')
+            ->where('xcp_core_quote_asset', '!=', 'BTC')
+            ->where('volume', '>', 0)
+            ->where('moderated', false)
+            ->groupBy('xcp_core_quote_asset')
+            ->orderBy('count', 'desc')
+            ->orderBy('xcp_core_quote_asset')
+            ->take(5)
+            ->get();
+        });
+
         // Get Markets
-        $markets = Market::get();
+        $markets = Market::whereIn('xcp_core_quote_asset', ['XCP', 'BTC'])
+            ->orWhereIn('xcp_core_quote_asset', $markets->pluck('xcp_core_quote_asset')->toArray())
+            ->get();
 
         // Update Markets
         foreach($markets as $market)

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Cache;
 use App\Market;
 use Droplister\XcpCore\App\Block;
 use App\Jobs\UpdateMarketVolumes;
@@ -54,7 +55,7 @@ class UpdateMarketsCommand extends Command
         $block = Block::latest('block_index')->first();
 
         // Markets
-        $markets = Cache::remember('market_index', 1440, function () {
+        $markets_index = Cache::remember('market_index', 1440, function () {
             return Market::with('quoteAsset')
             ->selectRaw('COUNT(*) as count, xcp_core_quote_asset')
             ->where('xcp_core_quote_asset', '!=', 'XCP')
@@ -70,7 +71,7 @@ class UpdateMarketsCommand extends Command
 
         // Get Markets
         $markets = Market::whereIn('xcp_core_quote_asset', ['XCP', 'BTC'])
-            ->orWhereIn('xcp_core_quote_asset', $markets->pluck('xcp_core_quote_asset')->toArray())
+            ->orWhereIn('xcp_core_quote_asset', $markets_index->pluck('xcp_core_quote_asset')->toArray())
             ->get();
 
         // Update Markets

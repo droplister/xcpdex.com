@@ -11,7 +11,7 @@ use Droplister\XcpCore\App\Events\OrderWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class OrderMatchListener
+class OrderListener
 {
     /**
      * Handle the event.

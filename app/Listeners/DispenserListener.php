@@ -59,9 +59,9 @@ class DispenserListener
 	        });
 
 
-        	$usd_value = str_replace(',', '', $event->dispenser->trading_price_normalized) * ($event->dispense_quantity / $event->dispenser->give_quantity) * str_replace(',', '', $price_data['BTC']['price']);
+        	$usd_value = str_replace(',', '', $event->dispenser->trading_price_normalized) * ($event->dispenser->escrow_quantity / $event->dispenser->give_quantity) * str_replace(',', '', $price_data['BTC']['price']);
     		$usd_value = number_format($usd_value);
-            $give_amount = $event->dispenser->giveAssetModel->divisible ? $event->dispenser->escrow_quantity_normalized : str_replace('.00000000', '', $event->dispenser->escrow_quantity_normalized);
+            $give_amount = $event->dispenser->giveAssetModel->divisible ? $event->dispenser->dispense_quantity   : str_replace('.00000000', '', $event->dispenser->escrow_quantity_normalized);
 	        $message = "*Sell* {$give_amount} [{$event->dispenser->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispenser->giveAssetModel->display_name})\n   @ {$event->dispenser->trading_price_normalized} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispenser->tx_hash})";
 
 	        SendTelegramMessage::dispatch($message, config('private_channel_id'));

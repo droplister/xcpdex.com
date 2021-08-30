@@ -156,7 +156,7 @@ class MarketChartController extends Controller
      */
     private function getAssetPairFromAssets($asset1, $asset2)
     {
-        foreach(['BTC', 'XBTC', 'XCP'] as $quote_asset)
+        foreach(['BTC', 'XBTC', 'XCP', 'PEPECASH', 'BITCRYSTALS', 'FLDC', 'RUSTBITS', 'SCOTCOIN', 'DATABITS', 'BITCORN', 'MAFIACASH'] as $quote_asset)
         {
             if($asset1 == $quote_asset || $asset2 == $quote_asset)
             {

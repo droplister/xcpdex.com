@@ -26,7 +26,7 @@ class OrderListener
         // Useful Switch
         if(config('xcp-core.indexing'))
         {
-            if (! in_array($event->order_match->trading_pair_quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
+            if (! in_array($event->order->trading_pair_quote_asset, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
 
 	        $price_data = Cache::remember('usd_prices', 1440, function () {
 	            $cmc = new \CoinMarketCap\Api(config('xcpdex.coinmarketcap'));

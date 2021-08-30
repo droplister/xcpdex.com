@@ -15,4 +15,9 @@ return [
      * Telegram ID
      */
     'channel_id' => env('TELEGRAM_CHANNEL_ID'),
+
+    /**
+     * Telegram ID
+     */
+    'private_channel_id' => env('TELEGRAM_CHANNEL_ID_PRIVATE'),
 ];

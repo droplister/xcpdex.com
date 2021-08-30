@@ -19,7 +19,11 @@ class EventServiceProvider extends ServiceProvider
         'Droplister\XcpCore\App\Events\DispenseWasCreated' => [
             'App\Listeners\DispenseListener',
         ],
+        'Droplister\XcpCore\App\Events\DispenserWasCreated' => [
+            'App\Listeners\DispenserListener',
+        ],
         'Droplister\XcpCore\App\Events\OrderWasCreated' => [
+            'App\Listeners\OrderListener',
             'App\Listeners\MarketListener',
         ],
         'Droplister\XcpCore\App\Events\OrderMatchWasCreated' => [

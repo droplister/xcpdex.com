@@ -68,7 +68,7 @@ class OrderListener
     		$amount_traded = str_replace('.00000000', '', $event->order->trading_quantity_normalized);
 	        $message = "*{$event->order->trading_type}* {$amount_traded} [{$event->order->trading_pair_base_asset}](https://xchain.io/asset/{$event->order->trading_pair_base_asset})\n   @ {$event->order->trading_price_normalized} {$event->order->trading_pair_quote_asset}\n--\nTotal: {$usd_value} USD  [order](https://xchain.io/tx/{$event->order->tx_index})";
 
-	        SendTelegramMessage::dispatch($message, config('private_channel_id'));
+	        SendTelegramMessage::dispatch($message, config('xcpdex.private_channel_id'));
         }
     }
 }

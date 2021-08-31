@@ -21,6 +21,12 @@ class DispenserListener
      */
     public function handle(DispenserWasCreated $event)
     {
+    	if (in_array($event->dispenser->giveAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
+
+    	if ($event->dispenser->giveAssetModel->divisible && $event->dispenser->giveAssetModel->issuance > 30000000000) return;
+
+    	if (! $event->dispenser->giveAssetModel->divisible && $event->dispenser->giveAssetModel->issuance > 300) return;
+
         // Useful Switch
         if(config('xcp-core.indexing'))
         {

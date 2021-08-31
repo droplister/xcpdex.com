@@ -70,7 +70,7 @@ class DispenserListener
             $give_amount = $event->dispenser->giveAssetModel->divisible ? $event->dispenser->escrow_quantity_normalized : str_replace('.00000000', '', $event->dispenser->escrow_quantity_normalized);
 	        $message = "*Sell* {$give_amount} [{$event->dispenser->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispenser->giveAssetModel->display_name})\n   @ {$event->dispenser->trading_price_normalized} BTC\n--\nPrice: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispenser->tx_hash})";
 
-	        SendTelegramMessage::dispatch($message, config('xcpdex.private_channel_id'));
+	        SendTelegramMessage::dispatch($message, config('xcpdex.private_channel_id'), $event->dispenser->giveAssetModel->display_name);
         }
     }
 }

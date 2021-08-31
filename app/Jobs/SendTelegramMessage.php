@@ -30,14 +30,22 @@ class SendTelegramMessage implements ShouldQueue
     protected $message;
 
     /**
+     * Asset
+     *
+     * @var string
+     */
+    protected $card;
+
+    /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($message, $chat_id=null)
+    public function __construct($message, $chat_id=null, $card=null)
     {
         $this->chat_id = $chat_id;
         $this->message = $message;
+        $this->card = $card;
     }
 
     /**
@@ -48,7 +56,16 @@ class SendTelegramMessage implements ShouldQueue
     public function handle()
     {
         try {
-            $this->sendMessage();
+            if($this->card) {
+                $photo = $this->getPhotoUrl();
+                if($photo) {
+                    $this->sendPhoto($photo);
+                } else {
+                    $this->sendMessage();
+                }
+            } else {
+                $this->sendMessage();
+            }
         } catch (Exception $e) {
             Log::error($e->getMessage());
         }
@@ -63,5 +80,34 @@ class SendTelegramMessage implements ShouldQueue
             'disable_notification' => true,
             'disable_web_page_preview' => true,
         ]);
+    }
+
+    private function sendPhoto($photo)
+    {
+        return Telegram::sendPhoto([
+            'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
+            'photo' => $photo,
+            'caption' => $this->message,
+            'parse_mode' => 'Markdown',
+            'disable_notification' => true,
+            'disable_web_page_preview' => true,
+        ]);
+    }
+
+    private function getPhotoUrl()
+    {
+        foreach(['jpg', 'png', 'jpeg', 'gif'] as $ext) {
+            $url = "https://xchain.io/img/cards/{$this->card}.{$ext}";
+              
+            $array = @get_headers($url);
+
+            $string = $array[0];
+              
+            if(strpos($string, '200')) {
+                return $url;
+            }
+        }
+
+        return null;
     }
 }

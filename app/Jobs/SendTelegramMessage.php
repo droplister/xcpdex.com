@@ -58,7 +58,9 @@ class SendTelegramMessage implements ShouldQueue
         try {
             if($this->card) {
                 $photo = $this->getPhotoUrl();
-                if($photo) {
+                if($photo && substr($photo, -3) === 'gif') {
+                    $this->sendDocument($photo);
+                } elseif($photo) {
                     $this->sendPhoto($photo);
                 } else {
                     $this->sendMessage();
@@ -76,6 +78,18 @@ class SendTelegramMessage implements ShouldQueue
         return Telegram::sendMessage([
             'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
             'text' => $this->message,
+            'parse_mode' => 'Markdown',
+            'disable_notification' => true,
+            'disable_web_page_preview' => true,
+        ]);
+    }
+
+    private function sendDocument($photo)
+    {
+        return Telegram::sendDocument([
+            'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
+            'document' => $photo,
+            'caption' => $this->message,
             'parse_mode' => 'Markdown',
             'disable_notification' => true,
             'disable_web_page_preview' => true,

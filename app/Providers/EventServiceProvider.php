@@ -22,7 +22,7 @@ class EventServiceProvider extends ServiceProvider
         'Droplister\XcpCore\App\Events\DispenserWasCreated' => [
             'App\Listeners\DispenserListener',
         ],
-        'Droplister\XcpCore\App\Events\OpenSeaWasCreated' => [
+        'App\Events\OpenSeaWasCreated' => [
             'App\Listeners\OpenSeaListener',
         ],
         'Droplister\XcpCore\App\Events\OrderWasCreated' => [

@@ -13,9 +13,9 @@ class OpenSea extends Model
      *
      * @var array
      */
-    // protected $dispatchesEvents = [
-    //     'created' => OpenSeaWasCreated::class,
-    // ];
+    protected $dispatchesEvents = [
+        'created' => OpenSeaWasCreated::class,
+    ];
 
     /**
      * The attributes that are mass assignable.

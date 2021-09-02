@@ -57,7 +57,7 @@ class UpdateOpenSeaCommand extends Command
 
         if($this->option('full')) {
 
-            for ($i = 890; $i < 10000; $i += 200) {
+            for ($i = 1190; $i < 10000; $i += 200) {
 
                 // Latest Trades
                 $response = $client->events()->all([
@@ -159,7 +159,6 @@ class UpdateOpenSeaCommand extends Command
             }
         }
     }
-
 
     /**
      * To Decimal (divide)

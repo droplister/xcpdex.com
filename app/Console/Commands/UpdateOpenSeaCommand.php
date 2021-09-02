@@ -57,7 +57,7 @@ class UpdateOpenSeaCommand extends Command
 
         if($this->option('full')) {
 
-            for ($i = 1490; $i < 10000; $i += 200) {
+            for ($i = 1790; $i < 10000; $i += 200) {
 
                 // Latest Trades
                 $response = $client->events()->all([
@@ -69,7 +69,7 @@ class UpdateOpenSeaCommand extends Command
 
                 $this->recordEvents($response['asset_events']);
 
-                sleep(5);
+                sleep(60);
             }
 
         } else {

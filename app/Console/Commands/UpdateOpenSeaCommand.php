@@ -57,7 +57,7 @@ class UpdateOpenSeaCommand extends Command
 
         if($this->option('full')) {
 
-            for ($i = 2090; $i < 10000; $i += 200) {
+            for ($i = 2288; $i < 10000; $i += 200) {
 
                 // Latest Trades
                 $response = $client->events()->all([

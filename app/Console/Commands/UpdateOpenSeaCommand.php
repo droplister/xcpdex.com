@@ -102,9 +102,9 @@ class UpdateOpenSeaCommand extends Command
                    $vault->addresses[0]->coin === 'BTC' &&
                    Send::whereAsset($asset_name)->whereDestination($vault->addresses[0]->address)->exists())
                 {
-                    $trade_price_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'] / $vault->values[0]->balance, $event['payment_token']['decimals']) * 100, 2);
+                    $trade_price_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'] / $vault->values[0]->balance, $event['payment_token']['decimals']) * 100, 0);
 
-                    $trade_volume_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'], $event['payment_token']['decimals']) * 100, 2);
+                    $trade_volume_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'], $event['payment_token']['decimals']) * 100, 0);
 
                     OpenSea::firstOrCreate([
                         'tx_hash' => $event['transaction']['transaction_hash'],
@@ -140,6 +140,6 @@ class UpdateOpenSeaCommand extends Command
      */
     private function toDecimal($integer, $decimals)
     {
-        return bcdiv((int)(string)$integer, 100000000, $decimals);
+        return bcdiv((int)(string)$integer, pow(10, $decimals), $decimals);
     }
 }

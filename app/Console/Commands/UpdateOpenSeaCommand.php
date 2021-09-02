@@ -69,6 +69,9 @@ class UpdateOpenSeaCommand extends Command
             // Skip Existing
             if (OpenSea::whereTxHash($event['transaction']['transaction_hash'])->exists()) continue;
 
+            // Skip Bundles
+            if ($event['asset'] === null) continue;
+
             // Test for Name
             $partial_test_1 = explode(' ', $event['asset']['name'])[0];
             $partial_test_2 = explode('.', str_replace('https://xchain.io/img/cards/', '', $event['asset']['image_original_url']))[0];

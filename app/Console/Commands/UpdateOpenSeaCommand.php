@@ -6,6 +6,7 @@ use Cache;
 use Curl\Curl;
 use App\OpenSea;
 use OwenVoke\OpenSea\Client;
+use Droplister\XcpCore\App\Send;
 use Droplister\XcpCore\App\Asset;
 use Illuminate\Console\Command;
 

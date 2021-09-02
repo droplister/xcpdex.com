@@ -21,7 +21,7 @@ class OpenSeaListener
      */
     public function handle(OpenSeaWasCreated $event)
     {
-    	if($event->open_sea->total_volume_usd > 3000) {
+    	if($event->open_sea->total_volume_usd > 300000) {
     		$usd_value = number_format($event->open_sea->total_volume_usd / 100, 2);
 
     		$sold_for = rtrim(rtrim($this->toDecimal($event->open_sea->total_volume_payment_token / $event->open_sea->quantity, $event->open_sea->payment_token_decimals), '0'), '.');

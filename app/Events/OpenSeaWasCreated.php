@@ -1,6 +1,6 @@
 <?php
 
-namespace Droplister\XcpCore\App\Events;
+namespace App\Events;
 
 use App\OpenSea;
 use Illuminate\Broadcasting\Channel;

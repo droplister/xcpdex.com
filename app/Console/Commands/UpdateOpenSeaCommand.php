@@ -73,8 +73,8 @@ class UpdateOpenSeaCommand extends Command
             $partial_test_2 = explode('.', str_replace('https://xchain.io/img/cards/', '', $event['asset']['image_original_url']))[0];
 
             // Do Name Match
-            if($asset = Asset::whereAssetName($partial_test_1)->orWhereAssetLongname($partial_test_1)->exists() ||
-               $asset = Asset::whereAssetName($partial_test_2)->orWhereAssetLongname($partial_test_2)->exists())
+            if($asset = Asset::whereAssetName($partial_test_1)->orWhere('asset_longname', $partial_test_1)->exists() ||
+               $asset = Asset::whereAssetName($partial_test_2)->orWhere('asset_longname', $partial_test_2)->exists())
             {
                 $asset_name = $asset->asset_name;
             }

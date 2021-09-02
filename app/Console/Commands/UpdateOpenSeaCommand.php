@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Log;
 use Cache;
 use Curl\Curl;
 use App\OpenSea;
@@ -56,7 +57,7 @@ class UpdateOpenSeaCommand extends Command
 
         if($this->option('full')) {
 
-            for ($i = 0; $i < 10000; $i += 200) {
+            for ($i = 500; $i < 10000; $i += 200) {
 
                 // Latest Trades
                 $response = $client->events()->all([

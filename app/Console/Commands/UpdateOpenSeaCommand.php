@@ -26,7 +26,7 @@ class UpdateOpenSeaCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'update:opensea';
+    protected $signature = 'update:opensea {--full}';
 
     /**
      * The console command description.
@@ -54,15 +54,39 @@ class UpdateOpenSeaCommand extends Command
     {
         $client = new Client();
 
-        // Latest Trades
-		$response = $client->events()->all([
-		    'asset_contract_address' => '0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab',
-		    'event_type' => 'successful',
-		    'limit' => 200,
-		]);
+        if($this->option('full')) {
 
+            for ($i = 0; $i < 10000; $i += 200){
+                // Latest Trades
+                $response = $client->events()->all([
+                    'asset_contract_address' => '0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab',
+                    'event_type' => 'successful',
+                    'limit' => 200,
+                    'offset' => $i,
+                ]);
+
+                $this->recordEvents($response['asset_events']);
+
+                sleep(5);
+            }
+
+        } else {
+
+            // Latest Trades
+            $response = $client->events()->all([
+                'asset_contract_address' => '0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab',
+                'event_type' => 'successful',
+                'limit' => 200,
+            ]);
+
+            $this->recordEvents($response['asset_events']);
+        }
+    }
+
+    private function recordEvents($events)
+    {
         // Parse for XCP
-        foreach($response['asset_events'] as $event)
+        foreach($events as $event)
         {
             $asset_name = null;
 

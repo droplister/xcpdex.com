@@ -2,10 +2,21 @@
 
 namespace App;
 
+use App\Events\OpenSeaWasCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class OpenSea extends Model
 {
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    // protected $dispatchesEvents = [
+    //     'created' => OpenSeaWasCreated::class,
+    // ];
+
     /**
      * The attributes that are mass assignable.
      *

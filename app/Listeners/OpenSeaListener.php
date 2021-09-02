@@ -16,7 +16,7 @@ class OpenSeaListener
     /**
      * Handle the event.
      *
-     * @param  \Droplister\XcpCore\App\Events\OpenSeaWasCreated  $event
+     * @param  \App\Events\OpenSeaWasCreated  $event
      * @return void
      */
     public function handle(OpenSeaWasCreated $event)
@@ -28,7 +28,7 @@ class OpenSeaListener
 
 	        $message = "*xOS* {$event->open_sea->quantity} [{$event->open_sea->asset}](https://xchain.io/asset/{$event->open_sea->asset})\n   @ {$sold_for} {$event->open_sea->payment_token}\n--\nTotal: {$usd_value} USD  [view]({$event->open_sea->permalink})";
 
-	        SendTelegramMessage::dispatch($message, config('xcpdex.channel_id'), $event->open_sea->asset);
+	        SendTelegramMessage::dispatch($message, config('xcpdex.private_channel_id'), $event->open_sea->asset);
     	}
     }
 

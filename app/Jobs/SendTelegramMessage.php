@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Log;
 use Telegram;
 use Exception;
+use Telegram\Bot\FileUpload\InputFile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -88,7 +89,7 @@ class SendTelegramMessage implements ShouldQueue
     {
         return Telegram::sendDocument([
             'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
-            'document' => $photo,
+            'document' => InputFile::create($photo, $this->card . last(explode('.', $photo))),
             'caption' => $this->message,
             'parse_mode' => 'Markdown',
             'disable_notification' => true,
@@ -100,7 +101,7 @@ class SendTelegramMessage implements ShouldQueue
     {
         return Telegram::sendPhoto([
             'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
-            'photo' => $photo,
+            'photo' => InputFile::create($photo, $this->card . last(explode('.', $photo))),
             'caption' => $this->message,
             'parse_mode' => 'Markdown',
             'disable_notification' => true,

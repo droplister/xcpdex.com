@@ -119,7 +119,7 @@ class UpdateOpenSeaCommand extends Command
                         'seller_name' => $event['seller']['user']['username'],
                         'seller_address' => $event['seller']['address'],
                         'winner_name' => $event['winner_account']['user']['username'],
-                        'winner__address' => $event['winner_account']['address'],
+                        'winner_address' => $event['winner_account']['address'],
                         'payment_token' => $event['payment_token']['symbol'],
                         'payment_token_decimals' => $event['payment_token']['decimals'], 
                         'payment_token_eth_price' => $event['payment_token']['eth_price'],

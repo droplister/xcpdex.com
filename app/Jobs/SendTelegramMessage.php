@@ -89,7 +89,7 @@ class SendTelegramMessage implements ShouldQueue
     {
         return Telegram::sendDocument([
             'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
-            'document' => InputFile::create($photo, $this->card . last(explode('.', $photo))),
+            'document' => InputFile::create($photo, $this->card . '.' . last(explode('.', $photo))),
             'caption' => $this->message,
             'parse_mode' => 'Markdown',
             'disable_notification' => true,
@@ -101,7 +101,7 @@ class SendTelegramMessage implements ShouldQueue
     {
         return Telegram::sendPhoto([
             'chat_id' => $this->chat_id === null ? config('xcpdex.channel_id') : $this->chat_id,
-            'photo' => InputFile::create($photo, $this->card . last(explode('.', $photo))),
+            'photo' => InputFile::create($photo, $this->card . '.' . last(explode('.', $photo))),
             'caption' => $this->message,
             'parse_mode' => 'Markdown',
             'disable_notification' => true,

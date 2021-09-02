@@ -23,9 +23,9 @@ class CreateOpenSeasTable extends Migration
             $table->unsignedBigInteger('trade_price_usd')->index();
             $table->unsignedBigInteger('total_volume_usd');
             $table->unsignedBigInteger('total_volume_payment_token');
-            $table->string('seller_name');
+            $table->string('seller_name')->nullable();
             $table->string('seller_address');
-            $table->string('winner_name');
+            $table->string('winner_name')->nullable();
             $table->string('winner_address');
             $table->string('payment_token');
             $table->unsignedInteger('payment_token_decimals');

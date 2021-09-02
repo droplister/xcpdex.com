@@ -56,7 +56,8 @@ class UpdateOpenSeaCommand extends Command
 
         if($this->option('full')) {
 
-            for ($i = 0; $i < 10000; $i += 200){
+            for ($i = 0; $i < 10000; $i += 200) {
+
                 // Latest Trades
                 $response = $client->events()->all([
                     'asset_contract_address' => '0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab',
@@ -145,7 +146,7 @@ class UpdateOpenSeaCommand extends Command
                         'total_volume_payment_token' => (int) $event['total_price'],
                         'seller_name' => $event['seller']['user'] === null ? $event['seller']['address'] : $event['seller']['user']['username'],
                         'seller_address' => $event['seller']['address'],
-                        'winner_name' => $event['winner_account']['user'] === null ? $event['winner_account']['address'] : $event['winner_account']['user']['username'],
+                        'winner_name' => $event['winner_account']['user'] === null || $event['winner_account']['user']['username'] === null ? $event['winner_account']['address'] : $event['winner_account']['user']['username'],
                         'winner_address' => $event['winner_account']['address'],
                         'payment_token' => $event['payment_token']['symbol'],
                         'payment_token_decimals' => $event['payment_token']['decimals'], 

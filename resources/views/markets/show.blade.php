@@ -28,11 +28,11 @@
                 <div class="card flex-row mt-3 mb-2 box-shadow">
                     <img class="card-img-right flex-auto" alt="{{ $card['name'] }}" style="width: 100px;" src="{{ $card['img_url'] }}">
                     <div class="card-body d-flex flex-column align-items-start">
-                        <a href="{{ $card['collection_url'] }}">{{{ $card['collection'] }}</a>
+                        <a href="{{ $card['collection_url'] }}" target="_blank">{{ $card['collection'] }}</a>
                         <h4 class="card-title">{{ $card['name'] }} <small class="lead">{{ $card['meta'] }}</small></h4>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="{{ $card['url'] }}" type="button" class="btn btn-sm btn-outline-secondary mr-3">
+                                <a href="{{ $card['url'] }}" type="button" class="btn btn-sm btn-outline-secondary mr-3" target="_blank">
                                   <i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i>
                                   DIGIRARE
                                 </a>

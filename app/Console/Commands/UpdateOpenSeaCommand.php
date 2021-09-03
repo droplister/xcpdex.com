@@ -116,6 +116,8 @@ class UpdateOpenSeaCommand extends Command
 
                     $trade_volume_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'], $event['payment_token']['decimals']) * 100, 0);
 
+                    $trade_price_payment_token = rtrim(rtrim($this->toDecimal($event['total_price'] / $vault->values[0]->balance, $event['payment_token']['decimals']), '0'), '.');
+
                     OpenSea::firstOrCreate([
                         'tx_hash' => $event['transaction']['transaction_hash'],
                     ], [
@@ -125,13 +127,12 @@ class UpdateOpenSeaCommand extends Command
                         'quantity' => $vault->values[0]->balance,
                         'trade_price_usd' => $trade_price_usd,
                         'total_volume_usd' => $trade_volume_usd,
-                        'total_volume_payment_token' => (int) $event['total_price'],
+                        'trade_price_payment_token' => $trade_price_payment_token,
                         'seller_name' => $event['seller']['user'] === null ? $event['seller']['address'] : $event['seller']['user']['username'],
                         'seller_address' => $event['seller']['address'],
                         'winner_name' => $event['winner_account']['user'] === null || $event['winner_account']['user']['username'] === null ? $event['winner_account']['address'] : $event['winner_account']['user']['username'],
                         'winner_address' => $event['winner_account']['address'],
                         'payment_token' => $event['payment_token']['symbol'],
-                        'payment_token_decimals' => $event['payment_token']['decimals'], 
                         'payment_token_eth_price' => $event['payment_token']['eth_price'],
                         'payment_token_usd_price' => $event['payment_token']['usd_price'],
                         'confirmed_at' => $event['transaction']['timestamp'],

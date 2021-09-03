@@ -22,7 +22,28 @@
         base_asset="{{ $market->base_asset_display_name }}"
         quote_asset="{{ $market->quote_asset_display_name }}">
     </market-chart>
-    <digirare asset="{{ $market->baseAsset->asset_name }}"></digirare>
+    @if($card)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card flex-row mt-3 mb-2 box-shadow">
+                    <img class="card-img-right flex-auto" alt="{{ $card['name'] }}" style="width: 100px;" src="{{ $card['img_url'] }}">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <a href="{{ $card['collection_url'] }}">{{{ $card['collection'] }}</a>
+                        <h4 class="card-title">{{ $card['name'] }} <small class="lead">{{ $card['meta'] }}</small></h4>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{{ $card['url'] }}" type="button" class="btn btn-sm btn-outline-secondary mr-3">
+                                  <i aria-hidden="true" class="fa fa-diamond text-highlight" style="color:#00ff21!important"></i>
+                                  DIGIRARE
+                                </a>
+                            </div>
+                            <small class="text-muted">{{ $card['date'] }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-6">
             <h2 class="mt-3 mb-3">{{ __('Buy Orders') }}</h2>

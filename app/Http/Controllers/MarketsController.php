@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Cache;
+use Curl\Curl;
 use App\Market;
 use Droplister\XcpCore\App\Asset;
 use Illuminate\Http\Request;
@@ -64,7 +65,31 @@ class MarketsController extends Controller
         // Market's Last Match
         $last_match = $market->lastMatch();
 
+        // Digirare Card Asset
+        $card = Cache::remember($market->base_asset_display_name . 'card', 1440, function () use ($market) {
+
+            $curl = new Curl();
+            $curl->setUserAgent('XCPDEX.com');
+            $curl->get('https://digirare.com/api/widget/' . $market->baseAsset->asset_name);
+
+            if ($curl->error) {
+                return null;
+            } else {
+                $response = json_decode($curl->response);
+
+                return [
+                    'name' => $response->data->name,
+                    'url' => 'https://digirare.com/cards/' . $response->data->name,
+                    'img_url' => 'https://digirare.com' . $response->data->image,
+                    'collection' => $response->data->collections[0]->name,
+                    'collection_url' = 'https://digirare.com/browse?collection=' . $response->data->collections[0]->slug,
+                    'meta' => $response->data->collections[0]->slug === 'rare-pepe' ? $response->data->meta->series : '',
+                    'date' => $response->data->date,
+                ];
+            }
+        });
+
         // Show View
-        return view('markets.show', compact('market', 'last_match'));
+        return view('markets.show', compact('market', 'last_match', 'card'));
     }
 }

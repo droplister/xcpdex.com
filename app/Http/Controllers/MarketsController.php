@@ -83,7 +83,7 @@ class MarketsController extends Controller
                     'img_url' => 'https://digirare.com' . $response->data->image,
                     'collection' => $response->data->collections[0]->name,
                     'collection_url' => 'https://digirare.com/browse?collection=' . $response->data->collections[0]->slug,
-                    'meta' => $response->data->collections[0]->slug === 'rare-pepe' ? 'Series ' . $response->data->meta->series : '',
+                    'meta' => $response->data->collections[0]->slug === 'rare-pepe' && isset($response->data->meta->series) ? 'Series ' . $response->data->meta->series : '',
                     'date' => $response->data->date,
                 ];
             }

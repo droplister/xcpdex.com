@@ -43,7 +43,7 @@ class DispenserSniperListener
 
         // Confirm Rare
         if($this->isRare($event)) {
-            if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'PEPEANON') {
+            if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'YELLPEPE') {
                 if($event->dispenser->satoshirate < 10000000) {
                     SnipeDispenser::dispatchNow($event->dispenser);
                     $message = "*Sniping* {$event->dispenser->asset} [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";

@@ -42,7 +42,7 @@ class DispenserSniperListener
 
         // Confirm Rare
         if($this->isRare($event)) {
-            if($this->knownCheap($event) || $this->maybeCheap($event)) {
+            if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'PEPEANON') {
                 if($event->dispenser->satoshirate < 10000000) {
                     SnipeDispenser::dispatchNow($event->dispenser);
                 }

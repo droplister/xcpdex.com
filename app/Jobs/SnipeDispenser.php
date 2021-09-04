@@ -121,7 +121,9 @@ class SnipeDispenser implements ShouldQueue
                 array_push($transactionOutputs, $transactionOutput);
             }
 
-            $priv = PrivateKeyFactory::fromWif($privateKey);
+            $factory = new PrivateKeyFactory();
+            $priv = $factory->fromWif($privateKey);
+
             $signer = new Signer($tx, Bitcoin::getEcAdapter());
 
             foreach ($transactionOutputs as $idx => $transactionOutput) {

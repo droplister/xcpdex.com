@@ -5,7 +5,7 @@ namespace App\Jobs;
 use JsonRPC\Client;
 use BitWasp\Bitcoin\Bitcoin;
 use BitWasp\Bitcoin\Script\ScriptFactory;
-use BitWasp\Bitcoin\Key\Factory\PrivateKeyFactory;
+use BitWasp\Bitcoin\Key\PrivateKeyFactory;
 use BitWasp\Bitcoin\Transaction\TransactionFactory;
 use BitWasp\Bitcoin\Transaction\Factory\Signer;
 use BitWasp\Bitcoin\Transaction\TransactionOutput;
@@ -121,14 +121,11 @@ class SnipeDispenser implements ShouldQueue
                 array_push($transactionOutputs, $transactionOutput);
             }
 
-            $factory = new PrivateKeyFactory();
-            $priv = $factory->fromWif($privateKey);
-
+            $priv = PrivateKeyFactory::fromWif($privateKey);
             $signer = new Signer($tx, Bitcoin::getEcAdapter());
 
             foreach ($transactionOutputs as $idx => $transactionOutput) {
-                $input = $signer->input($idx, $transactionOutput);
-                $input->sign($priv);
+                $signer->sign($idx, $priv, $transactionOutput);
             }
 
             $signed = $signer->get();

@@ -5,7 +5,7 @@ namespace App\Jobs;
 use JsonRPC\Client;
 use BitWasp\Bitcoin\Bitcoin;
 use BitWasp\Bitcoin\Script\ScriptFactory;
-use BitWasp\Bitcoin\Key\PrivateKeyFactory;
+use BitWasp\Bitcoin\Key\Factory\PrivateKeyFactory
 use BitWasp\Bitcoin\Transaction\TransactionFactory;
 use BitWasp\Bitcoin\Transaction\Factory\Signer;
 use BitWasp\Bitcoin\Transaction\TransactionOutput;

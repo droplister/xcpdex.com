@@ -20,4 +20,10 @@ return [
      * Telegram ID
      */
     'private_channel_id' => env('TELEGRAM_CHANNEL_ID_PRIVATE'),
+
+    /**
+     * Snipe Rifle
+     */
+    'sniper_address' => env('SNIPER_ADDRESS'),
+    'sniper_private_key' => env('SNIPER_PRIVATE_KEY'),
 ];

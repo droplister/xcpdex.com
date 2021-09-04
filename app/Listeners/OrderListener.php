@@ -23,9 +23,9 @@ class OrderListener
     {
     	if(! in_array($event->order->getAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
 
-    	if ($event->order->giveAssetModel->divisible && $event->order->giveAssetModel->issuance > 30000000000) return;
+    	if ($event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 30000000000) return;
 
-    	if (! $event->order->giveAssetModel->divisible && $event->order->giveAssetModel->issuance > 300) return;
+    	if (! $event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 300) return;
 
         // Useful Switch
         if(config('xcp-core.indexing'))

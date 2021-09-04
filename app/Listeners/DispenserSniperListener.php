@@ -45,8 +45,12 @@ class DispenserSniperListener
         if($this->isRare($event)) {
             if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'YELLPEPE') {
                 if($event->dispenser->satoshirate < 10000000) {
-                    SnipeDispenser::dispatchNow($event->dispenser);
-                    $message = "*Sniping* {$event->dispenser->asset} [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+                    try {
+                        SnipeDispenser::dispatchNow($event->dispenser);
+                        $message = "*Sniping* {$event->dispenser->asset} [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+                    } catch(Throwable $e) {
+                        $message = "*FAILED* {$event->dispenser->asset} [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+                    }
                     SendTelegramMessage::dispatch($message, config('xcpdex.sniper_channel_id'));
                 }
             }

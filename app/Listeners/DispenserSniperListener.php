@@ -112,7 +112,7 @@ class DispenserSniperListener
         $dispensed = Dispenser::whereAsset($event->dispenser->giveAssetModel->asset_name)->count() > 0;
         $dextraded = OrderMatch::where('forward_asset', $event->dispenser->giveAssetModel->asset_name)->whereDate('confirmed_at', '>', Carbon::now()->subYears(2))->orWhere('backward_asset', $event->dispenser->giveAssetModel->asset_name)->whereDate('confirmed_at', '>', Carbon::now()->subYears(2))->count() > 0;
 
-        if (!$os_traded && !$dispensed && !$dex_traded) {
+        if (!$os_traded && !$dispensed && !$dex_traded && $event->dispenser->satoshirate < 400000) {
             return true;
         }
     }

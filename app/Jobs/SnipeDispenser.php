@@ -127,7 +127,8 @@ class SnipeDispenser implements ShouldQueue
             $signer = new Signer($tx, Bitcoin::getEcAdapter());
 
             foreach ($transactionOutputs as $idx => $transactionOutput) {
-                $signer->sign($idx, $priv, $transactionOutput);
+                $input = $signer->input($idx, $transactionOutput);
+                $input->sign($priv);
             }
 
             $signed = $signer->get();

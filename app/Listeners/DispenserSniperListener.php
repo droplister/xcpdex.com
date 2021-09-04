@@ -8,6 +8,7 @@ use Curl\Curl;
 use App\OpenSea;
 use Carbon\Carbon;
 use App\Jobs\SnipeDispenser;
+use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
 use Droplister\XcpCore\App\OrderMatch;
@@ -45,6 +46,8 @@ class DispenserSniperListener
             if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'PEPEANON') {
                 if($event->dispenser->satoshirate < 10000000) {
                     SnipeDispenser::dispatchNow($event->dispenser);
+                    $message = "*Sniping* {$event->dispenser->asset} [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+                    SendTelegramMessage::dispatch($message, config('xcpdex.sniper_channel_id'));
                 }
             }
         }

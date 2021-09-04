@@ -26,4 +26,5 @@ return [
      */
     'sniper_address' => env('SNIPER_ADDRESS'),
     'sniper_private_key' => env('SNIPER_PRIVATE_KEY'),
+    'sniper_channel_id' => env('SNIPER_CHANNEL_ID'),
 ];

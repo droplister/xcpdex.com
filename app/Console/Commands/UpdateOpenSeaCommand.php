@@ -63,7 +63,9 @@ class UpdateOpenSeaCommand extends Command
             'offset' => $this->option('o'),
         ]);
 
-        $this->recordEvents($response['asset_events']);
+        if(isset($response['asset_events'])) {
+            $this->recordEvents($response['asset_events']);
+        }
     }
 
     private function recordEvents($events)

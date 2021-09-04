@@ -42,7 +42,7 @@ class DispenserSniperListener
         if (! $event->dispenser->giveAssetModel->divisible && $event->dispenser->give_quantity < 1) return;
 
         // Confirm Rare
-        if($this->isRare($event)) {
+        if($this->isRare($event) || $event->dispenser->asset === 'TAPEMEASURE') {
             if($this->knownCheap($event) || $this->maybeCheap($event) || $event->dispenser->asset === 'TAPEMEASURE') {
                 if($event->dispenser->satoshirate < 10000000) {
                     try {

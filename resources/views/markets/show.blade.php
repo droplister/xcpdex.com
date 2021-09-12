@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card flex-row mt-3 mb-2 box-shadow">
-                    <img class="card-img-right flex-auto" alt="{{ $card['name'] }}" style="width: 100px;" src="{{ $card['img_url'] }}">
+                    <img class="card-img-right flex-auto" alt="{{ $card['name'] }}" style="width: 100px;max-height: 140px;" src="{{ $card['img_url'] }}">
                     <div class="card-body d-flex flex-column align-items-start">
                         <a href="{{ $card['collection_url'] }}" target="_blank">{{ $card['collection'] }}</a>
                         <h4 class="card-title">{{ $card['name'] }} <small class="lead">{{ $card['meta'] }}</small></h4>

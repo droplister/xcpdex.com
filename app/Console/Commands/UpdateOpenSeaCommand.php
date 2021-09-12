@@ -153,6 +153,6 @@ class UpdateOpenSeaCommand extends Command
      */
     private function toDecimal($integer, $decimals)
     {
-        return bcdiv((int)(string)$integer, pow(10, $decimals), $decimals);
+        return $integer / pow(10, $decimals);
     }
 }

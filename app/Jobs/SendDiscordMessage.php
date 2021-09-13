@@ -119,6 +119,8 @@ class SendDiscordMessage implements ShouldQueue
 
 		            "title" => $this->card,
 
+		            "url" => "https://digirare.com/cards/{$this->card}",
+
 		            "description" => "Issued: {$issued}{$burned}",
 
 		            // Timestamp of embed must be formatted as ISO8601

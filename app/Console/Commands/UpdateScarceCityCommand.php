@@ -61,6 +61,12 @@ class UpdateScarceCityCommand extends Command
             $sales = json_decode($curl->response);
 
             foreach($sales as $sale) {
+                // Skip Existing
+                if (ScareCity::whereAsset($sale['asset'])->whereTimestamp($sale['timestamp'])->exists()) continue;
+
+                // Validate Asset
+                if (! Asset::whereAssetName($sale['asset'])->exists()) continue;
+
             	$this->recordSale($sale);
             }
         }
@@ -68,15 +74,6 @@ class UpdateScarceCityCommand extends Command
 
     private function recordSale($sale)
     {
-        // Skip Existing
-        if (ScareCity::whereAsset($sale['asset'])->whereTimestamp($sale['timestamp'])->exists()) continue;
-
-        // Validate Asset
-        $asset = Asset::whereAssetName($sale['asset'])->first();
-
-        // Not Likely XCP
-        if(! $asset) continue;
-
         // Save This Sale
         ScarceCity::firstOrCreate([
 	        'asset' => $sale['asset'],

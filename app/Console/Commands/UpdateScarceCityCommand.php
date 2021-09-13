@@ -62,7 +62,7 @@ class UpdateScarceCityCommand extends Command
 
             foreach($sales as $sale) {
                 // Skip Existing
-                if (ScareCity::whereAsset($sale['asset'])->whereTimestamp($sale['timestamp'])->exists()) continue;
+                if (ScarceCity::whereAsset($sale['asset'])->whereTimestamp($sale['timestamp'])->exists()) continue;
 
                 // Validate Asset
                 if (! Asset::whereAssetName($sale['asset'])->exists()) continue;

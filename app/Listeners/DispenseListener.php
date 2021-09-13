@@ -63,11 +63,18 @@ class DispenseListener
 
         	if($usd_value > 3000) {
         		$usd_value = number_format($usd_value);
+        		$btc_value = $this->trimTrailingZeroes($event->dispense->dispenser->trading_price_normalized);
                 $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', $event->dispense->dispense_quantity_normalized);
-		        $message = "*Buy* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n   @ {$event->dispense->dispenser->trading_price_normalized} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+		        $message = "*Buy* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
 
 		        SendTelegramMessage::dispatch($message, config('xcpdex.channel_id'), $event->dispense->giveAssetModel->display_name);
         	}
         }
+    }
+
+    private function trimTrailingZeroes($nbr) {
+        if(strpos($nbr,'.')!==false) $nbr = rtrim($nbr,'0');
+
+        return rtrim($nbr,'.') ?: '0';
     }
 }

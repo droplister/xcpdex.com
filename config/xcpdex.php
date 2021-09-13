@@ -32,4 +32,9 @@ return [
      * Scarce City
      */
     'scarce_city_api' => env('SCARCE_CITY'),
+
+    /**
+     * Discord
+     */
+    'discord_webhook' => env('DISCORD_WEBHOOK'),
 ];

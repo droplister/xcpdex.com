@@ -23,7 +23,7 @@ class ScarceCityListener
     		$usd_value = number_format($event->scarce_city->price_usd / 100, 2);
 	    	$btc_value = $this->trimTrailingZeroes(fromSatoshi($event->scarce_city->price_btc));
 
-	    	$message = "*S.C* 1 [{$event->open_sea->asset}](https://xchain.io/asset/{$event->open_sea->asset})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [view]({$event->scarce_city->permalink})";
+	    	$message = "*S.C* 1 [{$event->scarce_city->asset}](https://xchain.io/asset/{$event->scarce_city->asset})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [view]({$event->scarce_city->permalink})";
 
 		    SendTelegramMessage::dispatch($message, config('xcpdex.channel_id'), $event->scarce_city->asset);
 		}

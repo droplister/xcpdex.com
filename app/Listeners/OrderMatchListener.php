@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use Log;
 use Cache;
+use App\Jobs\SendDiscordMessage;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
@@ -74,7 +75,11 @@ class OrderMatchListener
         		}
 		        $message = "*{$event->order_match->trading_type}* {$amount_traded} [{$event->order_match->trading_pair_base_asset}](https://xchain.io/asset/{$event->order_match->trading_pair_base_asset})\n   @ {$xcp_value} {$event->order_match->trading_pair_quote_asset}\n--\nTotal: {$usd_value} USD  [order](https://xchain.io/tx/{$event->order_match->tx1_index})";
 
+		        $message_2 = "Dex Traded {$amount_traded} x {$event->order_match->trading_pair_base_asset} for {$usd_value} USD";
+
 		        SendTelegramMessage::dispatch($message, config('xcpdex.channel_id'), $event->order_match->trading_pair_base_asset);
+
+		        SendDiscordMessage::dispatch($message_2, $event->order_match->trading_pair_base_asset, $amount_traded, $xcp_value, $event->order_match->tx1_address, $event->order_match->tx1_index);
         	}
         }
     }

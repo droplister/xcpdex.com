@@ -91,7 +91,7 @@ class SendDiscordMessage implements ShouldQueue
     private function sendMessage($photo)
     {
     	$asset = Asset::whereAssetName($this->card)->first();
-    	$supply = $this->trimTrailingZeroes($asset->supply_normalized);
+    	$issued = $this->trimTrailingZeroes($asset->issuance_normalized);
     	$burned = $asset->burned > 0 ? " (" . $this->trimTrailingZeroes($asset->burned_normalized) . " burned)" : "";
 
 		//=======================================================================================================
@@ -111,7 +111,7 @@ class SendDiscordMessage implements ShouldQueue
 		$json_data = json_encode([
 			"username" => "XCP BOT",
 			"avatar_url" => "https://xcpdex.com/images/xcp-bot.png",
-			"content" => "Test 123",
+			"content" => $this->message,
 		    "embeds" => [
 		        [
 		            // Embed Title
@@ -121,7 +121,7 @@ class SendDiscordMessage implements ShouldQueue
 		            "type" => "rich",
 
 		            // Embed Description
-		            "description" => "Supply: {$supply}{$burned}",
+		            "description" => "Issued: {$issued}{$burned}",
 
 		            // URL of title link
 		            "url" => "https://digirare.com/cards/{$this->card}",
@@ -131,12 +131,6 @@ class SendDiscordMessage implements ShouldQueue
 
 		            // Embed left border color in HEX
 		            "color" => hexdec( "3366ff" ),
-
-		            // Author
-		            "author" => [
-		                "name" => "digirare.com",
-		                "url" => "https://digirare.com/?ref=discord"
-		            ],
 
 		            // Footer
 		            "footer" => [

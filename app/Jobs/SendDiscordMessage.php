@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use Log;
 use Exception;
+use Droplister\XcpCore\App\Asset;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -29,14 +30,46 @@ class SendDiscordMessage implements ShouldQueue
     protected $card;
 
     /**
+     * Quantity
+     *
+     * @var string
+     */
+    protected $quantity;
+
+    /**
+     * Price
+     *
+     * @var string
+     */
+    protected $price;
+
+    /**
+     * Destination
+     *
+     * @var string
+     */
+    protected $destination;
+
+    /**
+     * TX Hash
+     *
+     * @var string
+     */
+    protected $tx_hash;
+
+    /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($message, $card)
+    public function __construct($message, $card, $quantity, $price, $destination, $tx_hash)
     {
         $this->message = $message;
         $this->card = $card;
+        $this->price = $price;
+        $this->quantity = $quantity;
+        $this->destination = $destination;
+        $this->tx_hash = $tx_hash;
     }
 
     /**
@@ -57,6 +90,10 @@ class SendDiscordMessage implements ShouldQueue
 
     private function sendMessage($photo)
     {
+    	$asset = Asset::whereAssetName($asset)->first();
+    	$supply = $this->trimTrailingZeroes($asset->supply_normalized);
+    	$burned = $asset->burned > 0 ? " (" . $this->trimTrailingZeroes($asset->burned_normalized) . " burned)" : "";
+
 		//=======================================================================================================
 		// Create new webhook in your Discord channel settings and copy&paste URL
 		// Source: https://gist.github.com/Mo45/cb0813cb8a6ebcd6524f6a36d4f8862c
@@ -78,16 +115,16 @@ class SendDiscordMessage implements ShouldQueue
 		    "embeds" => [
 		        [
 		            // Embed Title
-		            "title" => "PHP - Send message to Discord (embeds) via Webhook",
+		            "title" => $this->card,
 
 		            // Embed Type
 		            "type" => "rich",
 
 		            // Embed Description
-		            "description" => "Description will be here, someday, you can mention users here also by calling userID <@12341234123412341>",
+		            "description" => "Supply: {$supply}{$burned}",
 
 		            // URL of title link
-		            "url" => "https://gist.github.com/Mo45/cb0813cb8a6ebcd6524f6a36d4f8862c",
+		            "url" => "https://digirare.com/cards/{$this->card}",
 
 		            // Timestamp of embed must be formatted as ISO8601
 		            "timestamp" => $timestamp,
@@ -95,40 +132,41 @@ class SendDiscordMessage implements ShouldQueue
 		            // Embed left border color in HEX
 		            "color" => hexdec( "3366ff" ),
 
+		            // Author
+		            "author" => [
+		                "name" => "digirare.com",
+		                "url" => "https://digirare.com/?ref=discord"
+		            ],
+
 		            // Footer
 		            "footer" => [
-		                "text" => "GitHub.com/Mo45",
-		                "icon_url" => "https://ru.gravatar.com/userimage/28503754/1168e2bddca84fec2a63addb348c571d.jpg?size=375"
+		                "text" => "Counterparty",
+		                "icon_url" => "https://pbs.twimg.com/profile_images/1366478613374148613/p-W2kIpA_400x400.png"
 		            ],
 
 		            // Image to send
 		            "image" => [
-		                "url" => "https://ru.gravatar.com/userimage/28503754/1168e2bddca84fec2a63addb348c571d.jpg?size=600"
-		            ],
-
-		            // Thumbnail
-		            //"thumbnail" => [
-		            //    "url" => "https://ru.gravatar.com/userimage/28503754/1168e2bddca84fec2a63addb348c571d.jpg?size=400"
-		            //],
-
-		            // Author
-		            "author" => [
-		                "name" => "krasin.space",
-		                "url" => "https://krasin.space/"
+		                "url" => $photo,
 		            ],
 
 		            // Additional Fields array
 		            "fields" => [
 		                // Field 1
 		                [
-		                    "name" => "Field #1 Name",
-		                    "value" => "Field #1 Value",
+		                    "name" => "Destination",
+		                    "value" => "[{$this->destination}](https://xchain.io/tx/{$this->tx_hash})",
 		                    "inline" => false
 		                ],
 		                // Field 2
 		                [
-		                    "name" => "Field #2 Name",
-		                    "value" => "Field #2 Value",
+		                    "name" => "Price",
+		                    "value" => "{$this->price} BTC",
+		                    "inline" => true
+		                ],
+		                // Field 3
+		                [
+		                    "name" => "Quantity",
+		                    "value" => $this->quantity,
 		                    "inline" => true
 		                ]
 		                // Etc..
@@ -167,5 +205,11 @@ class SendDiscordMessage implements ShouldQueue
         }
 
         return null;
+    }
+
+    private function trimTrailingZeroes($nbr) {
+        if(strpos($nbr,'.')!==false) $nbr = rtrim($nbr,'0');
+
+        return rtrim($nbr,'.') ?: '0';
     }
 }

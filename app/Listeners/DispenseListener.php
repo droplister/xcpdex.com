@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use Log;
 use Cache;
+use App\Jobs\SendDiscordMessage;
 use App\Jobs\SendTelegramMessage;
 use Droplister\XcpCore\App\Dispense;
 use Droplister\XcpCore\App\Dispenser;
@@ -65,9 +66,13 @@ class DispenseListener
         		$usd_value = number_format($usd_value);
         		$btc_value = $this->trimTrailingZeroes($event->dispense->dispenser->trading_price_normalized);
                 $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', $event->dispense->dispense_quantity_normalized);
-		        $message = "*Buy* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
+		        $message_1 = "*Buy* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
 
-		        SendTelegramMessage::dispatch($message, config('xcpdex.channel_id'), $event->dispense->giveAssetModel->display_name);
+		        $message_2 = "{$give_amount} x {$event->dispense->giveAssetModel->display_name} sold for ${$usd_value} USD";
+
+		        SendTelegramMessage::dispatch($message_1, config('xcpdex.channel_id'), $event->dispense->giveAssetModel->display_name);
+
+		        SendDiscordMessage::dispatch($message_2, $event->dispense->giveAssetModel->display_name, $give_amount, $btc_value, $event->dispense->destination, $event->dispense->tx_hash);
         	}
         }
     }

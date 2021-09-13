@@ -91,8 +91,6 @@ class SendDiscordMessage implements ShouldQueue
     private function sendMessage($photo)
     {
     	$asset = Asset::whereAssetName($this->card)->first();
-    	$issued = $this->trimTrailingZeroes($asset->issuance_normalized);
-    	$burned = $asset->burned > 0 ? " (" . $this->trimTrailingZeroes($asset->burned_normalized) . " burned)" : "";
 
 		//=======================================================================================================
 		// Create new webhook in your Discord channel settings and copy&paste URL
@@ -114,17 +112,8 @@ class SendDiscordMessage implements ShouldQueue
 			"content" => $this->message,
 		    "embeds" => [
 		        [
-		            // Embed Title
-		            "title" => $this->card,
-
 		            // Embed Type
 		            "type" => "rich",
-
-		            // Embed Description
-		            "description" => "Issued: {$issued}{$burned}",
-
-		            // URL of title link
-		            "url" => "https://digirare.com/cards/{$this->card}",
 
 		            // Timestamp of embed must be formatted as ISO8601
 		            "timestamp" => $timestamp,
@@ -161,6 +150,18 @@ class SendDiscordMessage implements ShouldQueue
 		                [
 		                    "name" => "Quantity",
 		                    "value" => $this->quantity,
+		                    "inline" => true
+		                ]
+		                // Field 4
+		                [
+		                    "name" => "Supply",
+		                    "value" => $this->trimTrailingZeroes($asset->issuance_normalized),
+		                    "inline" => true
+		                ],
+		                // Field 5
+		                [
+		                    "name" => "Burned",
+		                    "value" => $this->trimTrailingZeroes($asset->burned_normalized),
 		                    "inline" => true
 		                ]
 		                // Etc..

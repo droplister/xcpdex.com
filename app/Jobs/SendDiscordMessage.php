@@ -23,7 +23,7 @@ class SendDiscordMessage implements ShouldQueue
     protected $message;
 
     /**
-     * Asset
+     * Card
      *
      * @var string
      */
@@ -90,7 +90,7 @@ class SendDiscordMessage implements ShouldQueue
 
     private function sendMessage($photo)
     {
-    	$asset = Asset::whereAssetName($asset)->first();
+    	$asset = Asset::whereAssetName($this->card)->first();
     	$supply = $this->trimTrailingZeroes($asset->supply_normalized);
     	$burned = $asset->burned > 0 ? " (" . $this->trimTrailingZeroes($asset->burned_normalized) . " burned)" : "";
 

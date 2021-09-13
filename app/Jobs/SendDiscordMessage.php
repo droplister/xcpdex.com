@@ -91,6 +91,8 @@ class SendDiscordMessage implements ShouldQueue
     private function sendMessage($photo)
     {
     	$asset = Asset::whereAssetName($this->card)->first();
+    	$issued = $this->trimTrailingZeroes($asset->issuance_normalized);
+    	$burned = $asset->burned > 0 ? " (" . $this->trimTrailingZeroes($asset->burned_normalized) . " burned)" : "";
 
 		//=======================================================================================================
 		// Create new webhook in your Discord channel settings and copy&paste URL
@@ -115,6 +117,10 @@ class SendDiscordMessage implements ShouldQueue
 		            // Embed Type
 		            "type" => "rich",
 
+		            "title" => $this->card,
+
+		            "description" => "Issued: {$issued}{$burned}",
+
 		            // Timestamp of embed must be formatted as ISO8601
 		            "timestamp" => $timestamp,
 
@@ -123,8 +129,8 @@ class SendDiscordMessage implements ShouldQueue
 
 		            // Footer
 		            "footer" => [
-		                "text" => "Counterparty",
-		                "icon_url" => "https://pbs.twimg.com/profile_images/1366478613374148613/p-W2kIpA_400x400.png"
+		                "text" => "DIGIRARE",
+		                "icon_url" => "https://xcpdex.com/images/digirare.png"
 		            ],
 
 		            // Image to send
@@ -151,20 +157,7 @@ class SendDiscordMessage implements ShouldQueue
 		                    "name" => "Quantity",
 		                    "value" => $this->quantity,
 		                    "inline" => true
-		                ]
-		                // Field 4
-		                [
-		                    "name" => "Supply",
-		                    "value" => $this->trimTrailingZeroes($asset->issuance_normalized),
-		                    "inline" => true
 		                ],
-		                // Field 5
-		                [
-		                    "name" => "Burned",
-		                    "value" => $this->trimTrailingZeroes($asset->burned_normalized),
-		                    "inline" => true
-		                ]
-		                // Etc..
 		            ]
 		        ]
 		    ]

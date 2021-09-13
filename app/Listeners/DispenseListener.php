@@ -68,7 +68,7 @@ class DispenseListener
                 $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', $event->dispense->dispense_quantity_normalized);
 		        $message_1 = "*Buy* {$give_amount} [{$event->dispense->giveAssetModel->display_name}](https://xchain.io/asset/{$event->dispense->giveAssetModel->display_name})\n   @ {$btc_value} BTC\n--\nTotal: {$usd_value} USD  [disp.](https://xchain.io/tx/{$event->dispense->tx_hash})";
 
-		        $message_2 = "{$give_amount} x {$event->dispense->giveAssetModel->display_name} sold for ${$usd_value} USD";
+		        $message_2 = "Dispensed {$give_amount} x {$event->dispense->giveAssetModel->display_name} for ${$usd_value} USD";
 
 		        SendTelegramMessage::dispatch($message_1, config('xcpdex.channel_id'), $event->dispense->giveAssetModel->display_name);
 

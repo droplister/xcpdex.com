@@ -62,10 +62,10 @@ class UpdateScarceCityCommand extends Command
 
             foreach($sales as $sale) {
                 // Skip Existing
-                if (ScarceCity::whereAsset($sale['asset'])->whereTimestamp($sale['timestamp'])->exists()) continue;
+                if (ScarceCity::whereAsset($sale->asset)->whereTimestamp($sale->timestamp)->exists()) continue;
 
                 // Validate Asset
-                if (! Asset::whereAssetName($sale['asset'])->exists()) continue;
+                if (! Asset::whereAssetName($sale->asset)->exists()) continue;
 
             	$this->recordSale($sale);
             }
@@ -76,12 +76,12 @@ class UpdateScarceCityCommand extends Command
     {
         // Save This Sale
         ScarceCity::firstOrCreate([
-	        'asset' => $sale['asset'],
-	        'timestamp' => $sale['timestamp'],
+	        'asset' => $sale->asset,
+	        'timestamp' => $sale->timestamp,
         ], [
-	        'permalink' => $sale['listing_url'],
-	        'price_btc' => toSatoshi($sale['price_btc']),
-	        'price_usd' => $sale['price_usd'] * 100,
+	        'permalink' => $sale->listing_url,
+	        'price_btc' => toSatoshi($sale->price_btc),
+	        'price_usd' => $sale->price_usd * 100,
         ]);
     }
 }

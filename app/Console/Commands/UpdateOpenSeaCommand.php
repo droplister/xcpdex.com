@@ -118,7 +118,7 @@ class UpdateOpenSeaCommand extends Command
 
                     $trade_volume_usd = round($event['payment_token']['usd_price'] * $this->toDecimal($event['total_price'], $event['payment_token']['decimals']) * 100, 0);
 
-                    $trade_price_payment_token = floatval($this->toDecimal($event['total_price'] / $vault->values[0]->balance, $event['payment_token']['decimals']));
+                    $trade_price_payment_token = $this->trimTrailingZeroes($this->toDecimal($event['total_price'] / $vault->values[0]->balance, $event['payment_token']['decimals']));
 
                     OpenSea::firstOrCreate([
                         'tx_hash' => $event['transaction']['transaction_hash'],
@@ -154,5 +154,11 @@ class UpdateOpenSeaCommand extends Command
     private function toDecimal($integer, $decimals)
     {
         return $integer / pow(10, $decimals);
+    }
+
+    private function trimTrailingZeroes($nbr) {
+        if(strpos($nbr,'.')!==false) $nbr = rtrim($nbr,'0');
+
+        return rtrim($nbr,'.') ?: '0';
     }
 }

@@ -62,7 +62,7 @@ class DispenseListener
 
         	$usd_value = str_replace(',', '', $event->dispense->dispenser->trading_price_normalized) * ($event->dispense->dispense_quantity / $event->dispense->dispenser->give_quantity) * str_replace(',', '', $price_data['BTC']['price']);
 
-        	if($usd_value > 3000) {
+        	if($usd_value > 5000) {
         		$usd_value = number_format($usd_value);
         		$btc_value = $this->trimTrailingZeroes($event->dispense->dispenser->trading_price_normalized);
                 $give_amount = $event->dispense->giveAssetModel->divisible ? $event->dispense->dispense_quantity_normalized : str_replace('.00000000', '', $event->dispense->dispense_quantity_normalized);

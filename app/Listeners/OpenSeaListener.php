@@ -21,7 +21,7 @@ class OpenSeaListener
      */
     public function handle(OpenSeaWasCreated $event)
     {
-    	if($event->open_sea->total_volume_usd > 500000) {
+    	if($event->open_sea->total_volume_usd > 300000) {
     		$usd_value = number_format($event->open_sea->total_volume_usd / 100, 2);
 
 	        $message = "*xOS* {$event->open_sea->quantity} [{$event->open_sea->asset}](https://xchain.io/asset/{$event->open_sea->asset})\n   @ {$event->open_sea->trade_price_payment_token} {$event->open_sea->payment_token}\n--\nTotal: {$usd_value} USD  [view]({$event->open_sea->permalink})";

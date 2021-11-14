@@ -22,7 +22,7 @@ class IssuanceListener
         // Useful Switch
         if(config('xcp-core.indexing'))
         {
-            if($event->issuance->assetModel->confirmed_at < Carbon::now()->subYears(5)) {
+            if($event->issuance->assetModel->confirmed_at < Carbon::now()->subYears(6)) {
             	$year = $event->issuance->asset->confirmed_at->format('Y');
 		        $message = "*New Issuance* [{$event->issuance->asset}](https://xchain.io/tx/{$event->issuance->tx_index}) ({$year})";
 

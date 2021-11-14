@@ -15,6 +15,7 @@ return [
      * Telegram ID
      */
     'channel_id' => env('TELEGRAM_CHANNEL_ID'),
+    'bitcorn_channel_id' => env('BITCORN_CHANNEL_ID'),
 
     /**
      * Telegram ID

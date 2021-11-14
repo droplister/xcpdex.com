@@ -33,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
         'Droplister\XcpCore\App\Events\OrderMatchWasCreated' => [
             'App\Listeners\OrderMatchListener',
         ],
+        'Droplister\XcpCore\App\Events\IssuancesWasCreated' => [
+            'App\Listeners\IssuanceListener',
+        ],
         'App\Events\ScarceCityWasCreated' => [
             'App\Listeners\ScarceCityListener',
         ],

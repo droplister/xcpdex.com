@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Log;
 use Telegram;
 use Exception;
+use Curl\Curl;
 use Telegram\Bot\FileUpload\InputFile;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -121,6 +122,17 @@ class SendTelegramMessage implements ShouldQueue
             if(strpos($string, '200')) {
                 return $url;
             }
+        }
+
+        $curl = new Curl();
+        $curl->setUserAgent('XCPDEX.com');
+        $curl->get('https://digirare.com/api/widget/' . $this->card);
+
+        if ($curl->error) {
+            return null;
+        } else {
+            $response = json_decode($curl->response);
+            return 'https://digirare.com' . $response->data->image;
         }
 
         return null;

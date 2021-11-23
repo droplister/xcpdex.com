@@ -50,7 +50,7 @@ class UpdateMarketVolumes implements ShouldQueue
     public function handle()
     {
         // Dates
-        $start_date = $this->block->confirmed_at->subDays(30)->toDateTimeString();
+        $start_date = $this->block->confirmed_at->subDays(90)->toDateTimeString();
         $end_date = $this->block->confirmed_at->toDateTimeString();
 
         // Buys

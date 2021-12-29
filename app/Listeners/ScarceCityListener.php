@@ -19,7 +19,7 @@ class ScarceCityListener
      */
     public function handle(ScarceCityWasCreated $event)
     {
-    	if($event->scarce_city->price_usd > 300000) {
+    	if($event->scarce_city->price_usd > 100000) {
     		$usd_value = number_format($event->scarce_city->price_usd / 100, 2);
 	    	$btc_value = $this->trimTrailingZeroes(fromSatoshi($event->scarce_city->price_btc));
 

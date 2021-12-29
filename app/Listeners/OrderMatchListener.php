@@ -63,7 +63,7 @@ class OrderMatchListener
 
         	$usd_value = $event->order_match->trading_total_normalized * str_replace(',', '', $price_data[$event->order_match->trading_pair_quote_asset]['price']);
 
-        	if($usd_value > 3000) {
+        	if($usd_value > 1000) {
         		$usd_value = number_format($usd_value);
         		$xcp_value = $this->trimTrailingZeroes($event->order_match->trading_price_normalized);
 

@@ -38,4 +38,9 @@ return [
      * Discord
      */
     'discord_webhook' => env('DISCORD_WEBHOOK'),
+
+    /**
+     * OpenSea
+     */
+    'opensea_api_key' => env('OPENSEA_API_KEY'),
 ];

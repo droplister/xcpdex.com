@@ -55,6 +55,8 @@ class UpdateOpenSeaCommand extends Command
     {
         $client = new Client();
 
+        $client->authenticate(config('xcpdex.opensea_api_key'), null, Client::AUTH_ACCESS_TOKEN);
+
         // Latest Trades
         $response = $client->events()->all([
             'asset_contract_address' => '0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab',

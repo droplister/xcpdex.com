@@ -21,9 +21,6 @@ class OrderListener
      */
     public function handle(OrderWasCreated $event)
     {
-        if(! in_array($event->order->getAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ||
-           ! in_array($event->order->giveAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
-
         if(in_array($event->order->giveAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) {
             if($event->order->getAssetModel->divisible && $event->order->getAssetModel->supply > 30000000000 ||
              ! $event->order->getAssetModel->divisible && $event->order->getAssetModel->supply > 300) return;

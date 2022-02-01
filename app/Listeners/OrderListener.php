@@ -21,11 +21,13 @@ class OrderListener
      */
     public function handle(OrderWasCreated $event)
     {
-    	if(! in_array($event->order->getAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN'])) return;
+        if(! in_array($event->order->getAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ||
+             $event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 30000000000 ||
+           ! $event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 300) return;
 
-    	if ($event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 30000000000) return;
-
-    	if (! $event->order->giveAssetModel->divisible && $event->order->giveAssetModel->supply > 300) return;
+        if(! in_array($event->order->giveAssetModel->asset_name, ['XCP', 'BTC', 'PEPECASH', 'BITCORN']) ||
+             $event->order->getAssetModel->divisible && $event->order->giveAssetModel->supply > 30000000000 ||
+           ! $event->order->getAssetModel->divisible && $event->order->giveAssetModel->supply > 300) return;
 
         // Useful Switch
         if(config('xcp-core.indexing'))
@@ -70,7 +72,10 @@ class OrderListener
         	$usd_value = $event->order->trading_price_normalized * str_replace(',', '', $price_data[$event->order->trading_pair_quote_asset]['price']);
     		$usd_value = number_format($usd_value);
     		$amount_traded = str_replace('.00000000', '', $event->order->trading_quantity_normalized);
-	        $message = "*{$event->order->trading_type}* {$amount_traded} [{$event->order->trading_pair_base_asset}](https://xchain.io/asset/{$event->order->trading_pair_base_asset})\n   @ {$event->order->trading_price_normalized} {$event->order->trading_pair_quote_asset}\n--\nPrice: {$usd_value} USD  [order](https://xchain.io/tx/{$event->order->tx_index})";
+
+            $type = $event->order->trading_type === 'Buy' ? 'WTB' : 'WTS';
+
+	        $message = "*{$type}* {$amount_traded} [{$event->order->trading_pair_base_asset}](https://xchain.io/asset/{$event->order->trading_pair_base_asset})\n     @ {$event->order->trading_price_normalized} {$event->order->trading_pair_quote_asset}\n--\nPrice: {$usd_value} USD  [order](https://xchain.io/tx/{$event->order->tx_index})";
 
 	        SendTelegramMessage::dispatch($message, config('xcpdex.private_channel_id'), $event->order->trading_pair_base_asset);
         }
